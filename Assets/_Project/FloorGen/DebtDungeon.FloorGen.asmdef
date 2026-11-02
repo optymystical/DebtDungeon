@@ -1,0 +1,10 @@
+{
+    "name": "DebtDungeon.FloorGen",
+    "rootNamespace": "DebtDungeon.FloorGen",
+    "references": ["DebtDungeon.Core"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true,
+    "noEngineReferences": false
+}

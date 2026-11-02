@@ -1,0 +1,10 @@
+{
+    "name": "DebtDungeon.Player",
+    "rootNamespace": "DebtDungeon.Player",
+    "references": ["DebtDungeon.Core", "Unity.InputSystem", "UnityEngine.UI", "Unity.TextMeshPro"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true,
+    "noEngineReferences": false
+}

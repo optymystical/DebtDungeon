@@ -1,0 +1,10 @@
+{
+    "name": "DebtDungeon.Game",
+    "rootNamespace": "DebtDungeon.Game",
+    "references": ["DebtDungeon.Core", "DebtDungeon.FloorGen", "DebtDungeon.AI", "DebtDungeon.Player", "DebtDungeon.Progression", "DebtDungeon.Inventory", "Unity.InputSystem"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true,
+    "noEngineReferences": false
+}

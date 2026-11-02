@@ -1,0 +1,10 @@
+{
+    "name": "DebtDungeon.Inventory",
+    "rootNamespace": "DebtDungeon.Inventory",
+    "references": ["DebtDungeon.Core", "UnityEngine.UI", "Unity.TextMeshPro"],
+    "includePlatforms": [],
+    "excludePlatforms": [],
+    "allowUnsafeCode": false,
+    "autoReferenced": true,
+    "noEngineReferences": false
+}

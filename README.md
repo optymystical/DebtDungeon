@@ -2,7 +2,7 @@
 
 A real-time dungeon-crawler RPG by **Debt Collectors**, Full Sail University midterm project.
 
-- **Engine:** Unity **6.3 LTS — 6000.3.__** ← fill in the exact patch the team installed. Everyone uses this exact version for the whole midterm.
+- **Engine:** Unity **6.3 LTS — 6000.3.27f2**
 - **Template:** Universal 2D (URP)
 - **Platform:** Windows PC, keyboard + mouse
 
