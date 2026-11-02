@@ -1,0 +1,63 @@
+# Debt Dungeon — Unity .gitignore
+# Place at the ROOT of the repository, with the Unity project at the repo root
+# (Assets/, Packages/ and ProjectSettings/ sitting next to this file).
+
+# --- Unity-generated folders (rebuilt automatically, never commit) ---
+/[Ll]ibrary/
+/[Tt]emp/
+/[Oo]bj/
+/[Bb]uild/
+/[Bb]uilds/
+/[Ll]ogs/
+/[Uu]ser[Ss]ettings/
+/[Mm]emoryCaptures/
+/[Rr]ecordings/
+
+# --- IDE / editor files ---
+.vs/
+.vscode/
+.idea/
+.consulo/
+*.csproj
+*.unityproj
+*.sln
+*.slnx
+*.suo
+*.user
+*.userprefs
+*.pidb
+*.booproj
+*.svd
+*.pdb
+*.mdb
+*.opendb
+*.VC.db
+*.pidb.meta
+*.pdb.meta
+*.mdb.meta
+/[Aa]ssets/Plugins/Editor/JetBrains*
+
+# --- Build / crash / temp output ---
+ExportedObj/
+.gradle/
+sysinfo.txt
+mono_crash.*
+crashlytics-build.properties
+*.tmp
+*.apk
+*.aab
+*.app
+
+# --- Exported module packages (share these on Discord, don't commit them) ---
+*.unitypackage
+*.unitypackage.meta
+
+# --- Addressables build output ---
+/[Aa]ssets/[Aa]ddressable[Aa]ssets[Dd]ata/*/*.bin*
+/[Aa]ssets/[Ss]treamingAssets/aa.meta
+/[Aa]ssets/[Ss]treamingAssets/aa/*
+
+# --- OS junk ---
+.DS_Store
+Thumbs.db
+desktop.ini

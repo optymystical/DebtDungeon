@@ -1,0 +1,71 @@
+# Debt Dungeon — .gitattributes
+# Commit this BEFORE adding any art or audio, and run `git lfs install` once per machine.
+
+# Normalize line endings for text files
+* text=auto
+
+# --- Code and text ---
+*.cs      text diff=csharp
+*.shader  text
+*.hlsl    text
+*.json    text
+*.md      text
+*.txt     text
+*.asmdef  text
+*.asmref  text
+*.inputactions text
+
+# --- Unity YAML assets: text, merged with Unity's Smart Merge when configured ---
+# (If a member hasn't set up UnityYAMLMerge, Git falls back to its normal text merge.)
+*.unity            text merge=unityyamlmerge eol=lf
+*.prefab           text merge=unityyamlmerge eol=lf
+*.asset            text merge=unityyamlmerge eol=lf
+*.meta             text merge=unityyamlmerge eol=lf
+*.mat              text merge=unityyamlmerge eol=lf
+*.anim             text merge=unityyamlmerge eol=lf
+*.controller       text merge=unityyamlmerge eol=lf
+*.overrideController text merge=unityyamlmerge eol=lf
+*.physicsMaterial2D text merge=unityyamlmerge eol=lf
+*.spriteatlas      text merge=unityyamlmerge eol=lf
+*.spriteatlasv2    text merge=unityyamlmerge eol=lf
+*.mixer            text merge=unityyamlmerge eol=lf
+*.playable         text merge=unityyamlmerge eol=lf
+*.preset           text merge=unityyamlmerge eol=lf
+*.brush            text merge=unityyamlmerge eol=lf
+*.fontsettings     text merge=unityyamlmerge eol=lf
+*.renderTexture    text merge=unityyamlmerge eol=lf
+*.shadervariants   text merge=unityyamlmerge eol=lf
+
+# Baked lighting data is binary even though it ends in .asset
+LightingData.asset binary
+
+# --- Images (Git LFS) ---
+*.png      filter=lfs diff=lfs merge=lfs -text
+*.jpg      filter=lfs diff=lfs merge=lfs -text
+*.jpeg     filter=lfs diff=lfs merge=lfs -text
+*.gif      filter=lfs diff=lfs merge=lfs -text
+*.psd      filter=lfs diff=lfs merge=lfs -text
+*.psb      filter=lfs diff=lfs merge=lfs -text
+*.aseprite filter=lfs diff=lfs merge=lfs -text
+*.ase      filter=lfs diff=lfs merge=lfs -text
+*.tga      filter=lfs diff=lfs merge=lfs -text
+*.tif      filter=lfs diff=lfs merge=lfs -text
+*.exr      filter=lfs diff=lfs merge=lfs -text
+*.hdr      filter=lfs diff=lfs merge=lfs -text
+
+# --- Audio (Git LFS) ---
+*.wav  filter=lfs diff=lfs merge=lfs -text
+*.mp3  filter=lfs diff=lfs merge=lfs -text
+*.ogg  filter=lfs diff=lfs merge=lfs -text
+*.aif  filter=lfs diff=lfs merge=lfs -text
+*.aiff filter=lfs diff=lfs merge=lfs -text
+
+# --- Fonts, video, 3D, archives (Git LFS) ---
+*.ttf  filter=lfs diff=lfs merge=lfs -text
+*.otf  filter=lfs diff=lfs merge=lfs -text
+*.mp4  filter=lfs diff=lfs merge=lfs -text
+*.mov  filter=lfs diff=lfs merge=lfs -text
+*.fbx  filter=lfs diff=lfs merge=lfs -text
+*.blend filter=lfs diff=lfs merge=lfs -text
+*.zip  filter=lfs diff=lfs merge=lfs -text
+*.7z   filter=lfs diff=lfs merge=lfs -text
