@@ -9,9 +9,9 @@ A real-time dungeon-crawler RPG by **Debt Collectors**, Full Sail University mid
 ## First-time setup (every team member)
 
 1. Install **Git** and **Git LFS**, then run once: `git lfs install`
-2. Install Unity **6000.3.__** through Unity Hub (modules: Visual Studio Community, Documentation).
+2. Install Unity **6000.3.27f2** through Unity Hub (modules: Visual Studio Community, Documentation).
 3. Clone the repo: `git clone <repo URL>`
-4. Unity Hub → **Add** → select the cloned folder → open it with 6000.3.__.
+4. Unity Hub → **Add** → select the cloned folder → open it with 6000.3.27f2.
 5. The first open takes a few minutes while Unity rebuilds the `Library/` folder. That folder is ignored by Git on purpose.
 
 ### Optional: Unity Smart Merge for scene/prefab conflicts
@@ -22,7 +22,7 @@ Add this to your global Git config (`git config --global --edit`), using your ow
     tool = unityyamlmerge
 [mergetool "unityyamlmerge"]
     trustExitCode = false
-    cmd = 'C:/Program Files/Unity/Hub/Editor/6000.3.__/Editor/Data/Tools/UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
+    cmd = 'C:/Program Files/Unity/Hub/Editor/6000.3.27f2/Editor/Data/Tools/UnityYAMLMerge.exe' merge -p "$BASE" "$REMOTE" "$LOCAL" "$MERGED"
 ```
 If a merge conflicts on a `.unity` or `.prefab` file, run `git mergetool`.
 
