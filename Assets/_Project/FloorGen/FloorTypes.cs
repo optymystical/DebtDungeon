@@ -15,6 +15,8 @@ namespace DebtDungeon.FloorGen
         West = 8
     }
 
+    public enum ChunkRole { Normal, Start, Exit}
+
     public static class DirectionHelper
     {
         public static readonly Direction[] All = { Direction.North, Direction.East, Direction.South, Direction.West };
