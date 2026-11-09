@@ -37,8 +37,11 @@ namespace DebtDungeon.FloorGen
 
             if (chunkLibrary != null && floorTilemap != null && wallTilemap != null)
             {
+                System.Diagnostics.Stopwatch tileTimer = System.Diagnostics.Stopwatch.StartNew();
                 FloorTileBuilder builder = new FloorTileBuilder(chunkLibrary, floorTilemap, wallTilemap, seed);
                 builder.Build(cells);
+                tileTimer.Stop();
+                Debug.Log("Tiles built in " + tileTimer.ElapsedMilliseconds + " ms");
             }
             else
             {
@@ -59,6 +62,13 @@ namespace DebtDungeon.FloorGen
         {
             if (floorTilemap != null) floorTilemap.ClearAllTiles();
             if (wallTilemap != null) wallTilemap.ClearAllTiles();
+        }
+
+        // runs 1000 layouts with the current settings and logs a summary. No play mode needed
+        [ContextMenu("Run Evidence Test (1000 Floors)")]
+        public void RunEvidenceTest()
+        {
+            FloorEvidenceTest.Run(settings, 1000, 1);
         }
 
         void OnDrawGizmos()
