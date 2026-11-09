@@ -1,0 +1,19 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 229518d4959bdd044a779c54e4ea36e3, type: 3}
+  m_Name: ChunkLibrary_Placeholder
+  m_EditorClassIdentifier: DebtDungeon.FloorGen::DebtDungeon.FloorGen.ChunkLibrary
+  chunks:
+  - {fileID: 3151442719019197160, guid: cf248cd0ce16d274f9bc137cbf545148, type: 3}
+  - {fileID: 3151442719019197160, guid: 01359713e07d2a84fa1fe3831c078860, type: 3}
+  - {fileID: 3151442719019197160, guid: d47b6dfeb4585cf44bf0086976ffa8f0, type: 3}
+  wallTile: {fileID: 11400000, guid: 57331e79df720b8488b8d6128c743413, type: 2}

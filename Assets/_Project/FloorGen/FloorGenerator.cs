@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace DebtDungeon.FloorGen
 {
@@ -7,6 +8,15 @@ namespace DebtDungeon.FloorGen
         [SerializeField] private int seed = 12345;
         [SerializeField] private FloorSettings settings = new FloorSettings();
         [SerializeField] private int tilesPerChunk = 16;
+
+        [Header("Tiles")]
+        [SerializeField] private ChunkLibrary chunkLibrary;
+        [SerializeField] private Tilemap floorTilemap;
+        [SerializeField] private Tilemap wallTilemap;
+
+        [Header("Debug View")]
+        [SerializeField] private bool showCellOverlay = true;
+        [SerializeField, Range(0f, 1f)] private float overlayAlpha = 0.3f;
 
         private FloorLayoutGenerator layout;
         private CellData[,] cells;
@@ -24,6 +34,16 @@ namespace DebtDungeon.FloorGen
             Debug.Log("Floor generated. Seed: " + seed + 
                 " | Exit distance: " + cells[layout.ExitCell.x, layout.ExitCell.y].DistanceFromStart + 
                 " | Unreachable cells: " + layout.UnreachableCount);
+
+            if (chunkLibrary != null && floorTilemap != null && wallTilemap != null)
+            {
+                FloorTileBuilder builder = new FloorTileBuilder(chunkLibrary, floorTilemap, wallTilemap, seed);
+                builder.Build(cells);
+            }
+            else
+            {
+                Debug.LogWarning("Tiles skipped: assigne the Chunk Library and both Tilempas on FloorGenerator.");
+            }
         }
 
         [ContextMenu("Generate With New Seed")]
@@ -33,14 +53,27 @@ namespace DebtDungeon.FloorGen
             Generate();
         }
 
+        // removes generated tiles so they don't get saved into the scene file
+        [ContextMenu("Clear Tiles")]
+        public void ClearTiles()
+        {
+            if (floorTilemap != null) floorTilemap.ClearAllTiles();
+            if (wallTilemap != null) wallTilemap.ClearAllTiles();
+        }
+
         void OnDrawGizmos()
         {
             if (cells == null) return;
 
-            foreach (CellData cell in cells)
+            if (showCellOverlay)
             {
-                Gizmos.color = ColorFor(cell);
-                Gizmos.DrawCube(CellCenter(cell.Coord), new Vector3(tilesPerChunk - 1, tilesPerChunk - 1, 0.1f));
+                foreach (CellData cell in cells)
+                {
+                    Color color = ColorFor(cell);
+                    color.a = overlayAlpha; //see-through to the tiles show underneath
+                    Gizmos.color = color;
+                    Gizmos.DrawCube(CellCenter(cell.Coord), new Vector3(tilesPerChunk - 1, tilesPerChunk - 1, 0.1f));
+                }
             }
 
             // connections - drawing each link once (east and north to avoid doubles)
