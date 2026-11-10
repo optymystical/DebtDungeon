@@ -8,11 +8,11 @@
 ## Alpha scope
 - Rigidbody2D movement (in `FixedUpdate`) with 360° mouse aim, through the Input Actions asset (new Input System only).
 - Controls: right-click = basic attack, Q = defensive ability slot, 1–5 = abilities.
-- `Health` implementing `IDamageable`; damage resolves through `DamageInfo`.
+- The player uses **Core's `Health`** (Faction = Player); damage resolves through `DamageInfo`. Roll hits with `CombatRules.RollHit`.
 - Accuracy: hit chance is min(Accuracy, 100%); anything over 100% is crit chance; a crit does 2× damage.
-- Armor/Shroud absorption (Durability + Limit) in damage resolution.
-- Ability execution: an ability runner implementing `IAbilityUser` (v1.2 adds `RevokeAbility`). Basic attacks come
-  from equipment.
+- Armor/Shroud absorption is built into `Health` through `IDamageAbsorber` (Progression supplies the absorbers).
+- Ability execution: an ability runner implementing `IAbilityUser` (`GrantAbility`, `RevokeAbility`, `HasAbility`).
+  Slot by `AbilityDefinition.Kind`. Basic attacks come from equipment. Progression only grants usable abilities.
 - **In combat:** being chased, attacking or being attacked, or within 5 s of taking damage. Exposed through
   `ICombatState` in Core (v1.2) so the station and UI can read it.
 - Burden: −8% movement per step, capped at 2.
