@@ -21,8 +21,9 @@
 - Reads the floor only through `IFloorQuery` (from `GameEvents.FloorGenerated`). Keep pathfinding stateless: pass the
   floor data in as a parameter.
 - Units implement `IDamageable` and raise `GameEvents.ActorKilled`. v1.2 adds the XP-reward interface and Accuracy.
-- **Open decision:** the prototype's CombatAgent health should merge into the shared `Health`/`IDamageable`, but AI can't
-  reference the Player assembly. Chris will settle where `Health` lives as part of Core v1.2. Ask before you build it.
+- Use **Core's `Health`** component for units and spawners (it replaces the prototype's CombatAgent health). It raises
+  `ActorKilled` for you; listen to `Health.Died` for death animations and cleanup. Spawners raise `SpawnerDestroyed`.
+- Each unit and spawner gets a component implementing `IKillReward` (XP, gold, display name).
 
 ## Project settings to use
 Physics layers `Goblin`, `Spider` (and `Walls` for line of sight); sorting layer `Actors`.
