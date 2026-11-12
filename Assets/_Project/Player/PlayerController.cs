@@ -1,3 +1,4 @@
+using DebtDungeon.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
@@ -7,7 +8,7 @@ namespace DebtDungeon.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _moveSpeed = 100;
+        [SerializeField] private float _baseMoveSpeed = 100;
         private Vector2 _moveInput; 
         private Vector3 _mouseWorldPos; 
         private Vector2 _mouseDirection;
@@ -34,16 +35,13 @@ namespace DebtDungeon.Player
         {
             if (_rb != null)
             {
-                _rb.linearVelocity = _moveInput * _moveSpeed * Time.deltaTime;
+                _rb.linearVelocity = _moveInput * _baseMoveSpeed * Time.deltaTime;
 
                 // Rotates sprite to face destination while moving
                 if (_moveInput != Vector2.zero)
                 {
                     Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, _moveInput);
                     transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _turnSpeed * Time.deltaTime);
-
-                    //float angle = (Mathf.Atan2(_moveInput.y, _moveInput.x) * Mathf.Rad2Deg) - 90f;
-                    //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
                 }
                 _rb.angularVelocity = 0;
             }
