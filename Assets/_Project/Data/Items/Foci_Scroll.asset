@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e120ba390a519d54691c10f1e2c133d2, type: 3}
+  m_Name: Foci_Scroll
+  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.FociDefinition
+  _id: scroll
+  _displayName: Scroll
+  _description: "Channeler Foci (heavy). Slower, heavier bolts that scale with Reach. 2 free Offensive Affix slots."
+  _icon: {fileID: 0}
+  _statBonuses: []
+  _grantedAbilities: []
+  _tags: []
+  _fociType: 0
+  _freeOffensiveSlots: 2
