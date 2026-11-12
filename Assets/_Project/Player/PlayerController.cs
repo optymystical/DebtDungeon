@@ -1,4 +1,3 @@
-using log4net.Util;
 using UnityEngine;
 using UnityEngine.InputSystem;
 using static UnityEngine.GraphicsBuffer;
@@ -8,10 +7,11 @@ namespace DebtDungeon.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _speed;
-        public Vector2 _moveInput; // private
-        public Vector3 _mouseWorldPos; // private
-        public Vector2 _mouseDirection; // private
+        [SerializeField] private float _moveSpeed = 100;
+        private Vector2 _moveInput; 
+        private Vector3 _mouseWorldPos; 
+        private Vector2 _mouseDirection;
+        [SerializeField] private float _turnSpeed = 1;
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Start()
@@ -24,6 +24,39 @@ namespace DebtDungeon.Player
 
         // Update is called once per frame
         private void Update()
+        {
+            GatherInput();
+            FaceCursor();
+        }
+
+        // FixedUpdate is called once per frame
+        private void FixedUpdate()
+        {
+            if (_rb != null)
+            {
+                _rb.linearVelocity = _moveInput * _moveSpeed * Time.deltaTime;
+
+                // Rotates sprite to face destination while moving
+                if (_moveInput != Vector2.zero)
+                {
+                    Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, _moveInput);
+                    transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _turnSpeed * Time.deltaTime);
+
+                    //float angle = (Mathf.Atan2(_moveInput.y, _moveInput.x) * Mathf.Rad2Deg) - 90f;
+                    //transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
+                }
+                _rb.angularVelocity = 0;
+            }
+        }
+
+        // Gets movement input from user
+        private void OnMove(InputValue inputValue)
+        {
+            _moveInput = inputValue.Get<Vector2>();
+        }
+
+        // Reacts to keyboard and mouse input
+        private void GatherInput()
         {
             _mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             _mouseWorldPos.z = 0;
@@ -98,26 +131,14 @@ namespace DebtDungeon.Player
             }
         }
 
-        private void FixedUpdate()
+        private void FaceCursor()
         {
-            if (_rb != null)
+            // Rotates sprite to face cursor when stationary
+            if (_moveInput == Vector2.zero)
             {
-                _rb.linearVelocity = _moveInput * _speed * Time.deltaTime;
-
-                // Rotates sprite to face destination waypoint
-                if (_moveInput != Vector2.zero)
-                {
-                    float angle = (Mathf.Atan2(_moveInput.y, _moveInput.x) * Mathf.Rad2Deg) - 90f;
-                    transform.rotation = Quaternion.AngleAxis(angle, Vector3.forward);
-                }
-                _rb.angularVelocity = 0;
+                Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, _mouseDirection);
+                transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _turnSpeed * Time.deltaTime);
             }
-        }
-
-        // Gets movement input from user
-        private void OnMove(InputValue inputValue)
-        {
-            _moveInput = inputValue.Get<Vector2>();
         }
     }
 }

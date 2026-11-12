@@ -373,8 +373,8 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _rb: {fileID: 1784213311}
-  _speed: 200
-  _moveInput: {x: 0, y: 0}
+  _moveSpeed: 100
+  _turnSpeed: 200
 --- !u!212 &1784213309
 SpriteRenderer:
   serializedVersion: 2
