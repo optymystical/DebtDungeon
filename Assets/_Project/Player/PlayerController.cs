@@ -8,19 +8,51 @@ namespace DebtDungeon.Player
     public class PlayerController : MonoBehaviour
     {
         [SerializeField] private Rigidbody2D _rb;
-        [SerializeField] private float _baseMoveSpeed = 100;
-        private Vector2 _moveInput; 
+        [SerializeField] private float _baseMoveSpeed = 1;
+        private Vector2 _moveInput;
+        private PlayerInput _playerInput;
         private Vector3 _mouseWorldPos; 
         private Vector2 _mouseDirection;
         [SerializeField] private float _turnSpeed = 1;
+
+        private InputAction _attackAction;
+        private InputAction _ability1Action;
+        private InputAction _ability2Action;
+        private InputAction _ability3Action;
+        private InputAction _ability4Action;
+        private InputAction _ability5Action;
+        private InputAction _defensiveAction;
+        private InputAction _interactAction;
+        private InputAction _useItemAction;
+        private InputAction _openInventoryAction;
+        private InputAction _openSkillsAction;
+        private InputAction _pauseAction;
+
+        private void Awake()
+        {
+            _attackAction = InputSystem.actions.FindAction("Player/Attack");
+            _ability1Action = InputSystem.actions.FindAction("Player/Ability 1");
+            _ability2Action = InputSystem.actions.FindAction("Player/Ability 2");
+            _ability3Action = InputSystem.actions.FindAction("Player/Ability 3");
+            _ability4Action = InputSystem.actions.FindAction("Player/Ability 4");
+            _ability5Action = InputSystem.actions.FindAction("Player/Ability 5");
+            _defensiveAction = InputSystem.actions.FindAction("Player/Defensive Ability");
+            _interactAction = InputSystem.actions.FindAction("Player/Interact");
+            _useItemAction = InputSystem.actions.FindAction("Player/Use Item");
+            _openInventoryAction = InputSystem.actions.FindAction("Player/Open Inventory");
+            _openSkillsAction = InputSystem.actions.FindAction("Player/Open Skills");
+            _pauseAction = InputSystem.actions.FindAction("Player/Pause");
+        }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
         private void Start()
         {
             // Unlock the cursor to the center of the screen
             Cursor.lockState = CursorLockMode.None;
-            // Make the cursor visible
+            // Make the cursor visible  NOT WORKING
             Cursor.visible = true;
+
+            _playerInput = GetComponent<PlayerInput>();
         }
 
         // Update is called once per frame
@@ -35,7 +67,7 @@ namespace DebtDungeon.Player
         {
             if (_rb != null)
             {
-                _rb.linearVelocity = _moveInput * _baseMoveSpeed * Time.deltaTime;
+                _rb.linearVelocity = _moveInput * _baseMoveSpeed;
 
                 // Rotates sprite to face destination while moving
                 if (_moveInput != Vector2.zero)
@@ -59,73 +91,74 @@ namespace DebtDungeon.Player
             _mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             _mouseWorldPos.z = 0;
             _mouseDirection = (_mouseWorldPos - transform.position).normalized;
-            Debug.DrawRay(transform.position, _mouseDirection * 3, Color.red);
+            //Debug.DrawRay(transform.position, _mouseDirection * 3, Color.red);
 
             // Can the player click left and right mouse button at once?
             if (Mouse.current.leftButton.wasPressedThisFrame)
             {
-                Debug.Log("Left Click");
+                // Not used for now
             }
-            else if (Mouse.current.rightButton.wasPressedThisFrame)
+            else if (_attackAction.WasPressedThisFrame())
             {
-                Debug.Log("Right Click");
+                
             }
 
             // Can the player click a mouse button and any of these keys at once?
-            if (Keyboard.current.digit1Key.wasPressedThisFrame)
+            if (_ability1Action.WasPressedThisFrame())
             {
-                Debug.Log("1 Key");
+                
             }
-            else if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            else if (_ability2Action.WasPressedThisFrame())
             {
-                Debug.Log("2 Key");
+                
             }
-            else if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            else if (_ability3Action.WasPressedThisFrame())
             {
-                Debug.Log("3 Key");
+                
             }
-            else if (Keyboard.current.digit4Key.wasPressedThisFrame)
+            else if (_ability4Action.WasPressedThisFrame())
             {
-                Debug.Log("4 Key");
+                
             }
-            else if (Keyboard.current.digit5Key.wasPressedThisFrame)
+            else if (_ability5Action.WasPressedThisFrame())
             {
-                Debug.Log("5 Key");
+                
             }
-            else if (Keyboard.current.qKey.wasPressedThisFrame)
+            else if (_defensiveAction.WasPressedThisFrame())
             {
-                Debug.Log("Q Key");
+                
             }
-            else if (Keyboard.current.fKey.wasPressedThisFrame)
+            else if (_interactAction.WasPressedThisFrame())
             {
-                Debug.Log("F Key");
+                
             }
-            else if (Keyboard.current.eKey.wasPressedThisFrame)
+            else if (_useItemAction.WasPressedThisFrame())
             {
-                Debug.Log("E Key");
+                // Not used for now
             }
             // Menu keys
-            else if (Keyboard.current.iKey.wasPressedThisFrame)
+            else if (_openInventoryAction.WasPressedThisFrame())
             {
-                Debug.Log("I Key");
+                // Not used for now
             }
-            else if (Keyboard.current.tabKey.wasPressedThisFrame)
+            else if (_openSkillsAction.WasPressedThisFrame())
             {
-                Debug.Log("Tab Key");
+                
             }
-            else if (Keyboard.current.escapeKey.wasPressedThisFrame)
+            else if (_pauseAction.WasPressedThisFrame())
             {
-                Debug.Log("Esc Key");
+                
             }
 
+            // Scroll through consumables
             Vector2 scroll = Mouse.current.scroll.ReadValue();
             if (scroll.y > 0)
             {
-                Debug.Log("Scroll Up");
+                // Not used for now
             }
             else if (scroll.y < 0)
             {
-                Debug.Log("Scroll Down");
+                // Not used for now
             }
         }
 
