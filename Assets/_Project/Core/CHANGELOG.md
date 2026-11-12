@@ -3,6 +3,11 @@
 Every Core change gets a version bump and an entry here. "Affects" lists module numbers:
 1 FloorGen, 2 AI, 3 Player & Combat, 4 Progression, UI = HUD/menus.
 
+## v1.3 — Nov 12, 2026
+
+- `Health.RescaleMaxHealth(int)`: changes max HP and keeps the same fraction of current HP (half stays half;
+  a living character never drops below 1). Additive: nothing existing changed. *(4; anything else that changes max HP)*
+
 ## v1.2 — Alpha sprint (Nov 10, 2026)
 
 First version committed to the repo. Everything below is new compared with the v1.1 plan.
