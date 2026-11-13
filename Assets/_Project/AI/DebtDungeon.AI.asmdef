@@ -1,10 +1,17 @@
 {
     "name": "DebtDungeon.AI",
     "rootNamespace": "DebtDungeon.AI",
-    "references": ["DebtDungeon.Core"],
+    "references": [
+        "DebtDungeon.Core",
+        "Unity.InputSystem"
+    ],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
+    "overrideReferences": false,
+    "precompiledReferences": [],
     "autoReferenced": true,
+    "defineConstraints": [],
+    "versionDefines": [],
     "noEngineReferences": false
 }

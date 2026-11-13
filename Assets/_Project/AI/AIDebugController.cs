@@ -1,3 +1,4 @@
+using DebtDungeon.Core;
 using UnityEngine;
 
 namespace DebtDungeon.AI
@@ -11,126 +12,146 @@ namespace DebtDungeon.AI
         TopRight
     }
     /// <summary>
-    /// Developer diagnostic tool providing time-scale speed controls and unit status overlays.
+    /// On-screen time-scale controller
+    /// Tracks active headcounts per Core Faction, state breakdown, casualties, and gold collected.
     /// </summary>
     public class AIDebugController : MonoBehaviour
     {
-        [Header("Debug Controls")]
-        [Tooltip("Toggle drawing debug state labels in the Game view.")]
-        [SerializeField] private bool _showGameViewLabels = true;
+        [Header("Overlay Settings")]
+        [SerializeField] private bool _showOverlay = true;
+        [SerializeField] private float _statsRefreshInterval = 0.25f;
 
-        [Header("UI Placement")]
-        [Tooltip("Screen anchor corner for the time-scale control box.")]
-        [SerializeField] private UIAnchorPosition _anchor = UIAnchorPosition.TopLeft;
+        private int _goblinCount;
+        private int _spiderCount;
+        private int _wanderCount;
+        private int _chaseCount;
+        private int _attackCount;
+        private int _raidCount;
+        private int _totalCasualties;
+        private int _totalGoldCollected;
+        private float _refreshTimer;
 
-        [Tooltip("Padding offset from screen edges.")]
-        [SerializeField] private Vector2 _offset = new Vector2(20f, 20f);
+        private void OnEnable()
+        {
+            GameEvents.ActorKilled += HandleActorKilled;
+            GameEvents.GoldCollected += HandleGoldCollected;
+        }
 
-        [SerializeField] private Vector2 _boxSize = new Vector2(270f, 70f);
+        private void OnDisable()
+        {
+            GameEvents.ActorKilled -= HandleActorKilled;
+            GameEvents.GoldCollected -= HandleGoldCollected;
+        }
 
-        private float _currentTimeScale = 1.0f;
+        private void Update()
+        {
+            _refreshTimer -= Time.unscaledDeltaTime;
+            if (_refreshTimer <= 0f)
+            {
+                _refreshTimer = _statsRefreshInterval;
+                RefreshAgentTelemetry();
+            }
+        }
+
+        private void HandleActorKilled(KillInfo kill)
+        {
+            _totalCasualties++;
+        }
+
+        private void HandleGoldCollected(int amount)
+        {
+            _totalGoldCollected += amount;
+        }
+
+        private void RefreshAgentTelemetry()
+        {
+            _goblinCount = 0;
+            _spiderCount = 0;
+            _wanderCount = 0;
+            _chaseCount = 0;
+            _attackCount = 0;
+            _raidCount = 0;
+
+            FactionAI2D[] agents = FindObjectsByType<FactionAI2D>(FindObjectsSortMode.None);
+            for (int i = 0; i < agents.Length; i++)
+            {
+                FactionAI2D ai = agents[i];
+                if (ai == null || !ai.IsAlive)
+                {
+                    continue;
+                }
+
+                if (ai.TryGetComponent(out CombatAgent2D combat))
+                {
+                    if (combat.Faction == Faction.Goblin)
+                    {
+                        _goblinCount++;
+                    }
+                    else if (combat.Faction == Faction.Spider)
+                    {
+                        _spiderCount++;
+                    }
+                }
+
+                switch (ai.CurrentState)
+                {
+                    case AIState.Wander:
+                        _wanderCount++;
+                        break;
+                    case AIState.Chase:
+                        _chaseCount++;
+                        break;
+                    case AIState.Attack:
+                        _attackCount++;
+                        break;
+                    case AIState.Raid:
+                        _raidCount++;
+                        break;
+                }
+            }
+        }
 
         private void OnGUI()
         {
-            // Calculate screen position based on selected anchor
-            Rect panelRect = CalculatePanelRect();
-
-            // --- 1. TIME-SCALE SLIDER FOR COMBAT OBSERVATION ---
-            GUILayout.BeginArea(panelRect, GUI.skin.box);
-
-            GUILayout.BeginHorizontal();
-            GUILayout.Label($"Time Scale: {_currentTimeScale:F2}x", GUILayout.Width(110));
-
-            if (GUILayout.Button("0.5x", GUILayout.Width(40)))
-            {
-                _currentTimeScale = 0.5f;
-            }
-            if (GUILayout.Button("1.0x", GUILayout.Width(40)))
-            {
-                _currentTimeScale = 1.0f;
-            }
-            if (GUILayout.Button("2.0x", GUILayout.Width(40)))
-            {
-                _currentTimeScale = 2.0f;
-            }
-            GUILayout.EndHorizontal();
-
-            float newTimeScale = GUILayout.HorizontalSlider(_currentTimeScale, 0.1f, 3.0f);
-            if (Mathf.Abs(newTimeScale - _currentTimeScale) > 0.01f)
-            {
-                _currentTimeScale = newTimeScale;
-                Time.timeScale = _currentTimeScale;
-            }
-            GUILayout.EndArea();
-
-            // --- 2. GAME VIEW FLOATING STATE LABELS ---
-            if (!_showGameViewLabels || Camera.main == null)
+            if (!_showOverlay)
             {
                 return;
             }
 
-            FactionAI2D[] agents = FindObjectsByType<FactionAI2D>(FindObjectsSortMode.None);
-            Camera cam = Camera.main;
+            float panelWidth = 260f;
+            float panelHeight = 195f;
+            Rect panelRect = new Rect(Screen.width - panelWidth - 15f, 15f, panelWidth, panelHeight);
 
-            for (int i = 0; i < agents.Length; i++)
+            GUI.Box(panelRect, "DebtDungeon AI Diagnostics");
+
+            GUILayout.BeginArea(new Rect(panelRect.x + 10f, panelRect.y + 24f, panelWidth - 20f, panelHeight - 30f));
+
+            GUILayout.BeginHorizontal();
+            GUILayout.Label($"Time Scale: {Time.timeScale:0.0}x");
+            if (GUILayout.Button("0.5x", GUILayout.Width(42)))
             {
-                FactionAI2D ai = agents[i];
-                if (ai == null)
-                {
-                    continue;
-                }
-
-                CombatAgent2D combat = ai.GetComponent<CombatAgent2D>();
-                if (combat == null || !combat.IsAlive)
-                {
-                    continue;
-                }
-
-                Vector3 screenPos = cam.WorldToScreenPoint(ai.transform.position + Vector3.up * 0.85f);
-                if (screenPos.z < 0)
-                {
-                    continue;
-                } // Behind camera
-
-                GUIStyle style = new GUIStyle(GUI.skin.label);
-                style.alignment = TextAnchor.MiddleCenter;
-                style.fontSize = 11;
-                style.fontStyle = FontStyle.Bold;
-                style.normal.textColor = combat.Faction != null ? combat.Faction.DebugColor : Color.white;
-
-                string labelText = $"{ai.CurrentState}\nHP: {combat.CurrentHealth}";
-                Vector2 size = style.CalcSize(new GUIContent(labelText));
-                Rect labelRect = new Rect(screenPos.x - size.x / 2f, Screen.height - screenPos.y - size.y / 2f, size.x, size.y);
-
-                GUI.Label(labelRect, labelText, style);
-            }
-        }
-        private Rect CalculatePanelRect()
-        {
-            float x = _offset.x;
-            float y = _offset.y;
-
-            switch (_anchor)
-            {
-                case UIAnchorPosition.TopLeft:
-                    x = _offset.x;
-                    y = _offset.y;
-                    break;
-                case UIAnchorPosition.TopRight:
-                    x = Screen.width - _boxSize.x - _offset.x;
-                    y = _offset.y;
-                    break;
-                case UIAnchorPosition.BottomLeft:
-                    x = _offset.x;
-                    y = Screen.height - _boxSize.y - _offset.y;
-                    break;
-                case UIAnchorPosition.BottomRight:
-                    x = Screen.width - _boxSize.x - _offset.x;
-                    y = Screen.height - _boxSize.y - _offset.y;
-                    break;
+                Time.timeScale = 0.5f;
             }
 
-            return new Rect(x, y, _boxSize.x, _boxSize.y);
+            if (GUILayout.Button("1.0x", GUILayout.Width(42)))
+            {
+                Time.timeScale = 1.0f;
+            }
+
+            if (GUILayout.Button("2.0x", GUILayout.Width(42)))
+            {
+                Time.timeScale = 2.0f;
+            }
+
+            GUILayout.EndHorizontal();
+
+            GUILayout.Space(6f);
+            GUILayout.Label($"Goblins: {_goblinCount}  |  Spiders: {_spiderCount}");
+            GUILayout.Label($"Wander: {_wanderCount} | Chase: {_chaseCount} | Attack: {_attackCount} | Raid: {_raidCount}");
+            GUILayout.Label($"Casualties: {_totalCasualties}  |  Gold Collected: {_totalGoldCollected}");
+            GUILayout.Label($"Run Time: {Time.time:0.0}s");
+
+            GUILayout.EndArea();
         }
     }
 }

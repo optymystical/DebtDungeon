@@ -1,4 +1,5 @@
 using UnityEngine;
+using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {

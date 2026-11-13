@@ -1,5 +1,6 @@
 using UnityEngine;
-//using UnityEngine.InputSystem;
+using UnityEngine.InputSystem;
+using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {
@@ -10,6 +11,10 @@ namespace DebtDungeon.AI
     public class Player2D : MonoBehaviour
     {
         private const float MeleeAttackRadius = 1.4f;
+        private const float AttackOffsetDistance = 0.8f;
+        private const float DefaultMoveSpeed = 5.0f;
+        private const int DefaultAttackDamage = 10;
+        private const float DefaultKnockback = 7f;
 
         [Header("Combat Settings")]
         [Tooltip("Layer mask containing hostile enemies that can be hit by melee strikes.")]
@@ -49,31 +54,34 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            float speed = _combatAgent.Stats != null ? _combatAgent.Stats.MoveSpeed : 5.0f;
+            float speed = _combatAgent.Stats != null ? _combatAgent.Stats.MoveSpeed : DefaultMoveSpeed;
             _combatAgent.Rigidbody.linearVelocity = _moveInput * speed;
         }
 
         private void ReadMovementInput()
         {
+            Keyboard keyboard = Keyboard.current;
+            if (keyboard == null)
+            {
+                return;
+            }
+
             float horizontal = 0f;
             float vertical = 0f;
 
-            if (Input.GetKey(KeyCode.W) || Input.GetKey(KeyCode.UpArrow))
+            if (keyboard.wKey.isPressed || keyboard.upArrowKey.isPressed)
             {
                 vertical += 1f;
             }
-
-            if (Input.GetKey(KeyCode.S) || Input.GetKey(KeyCode.DownArrow))
+            if (keyboard.sKey.isPressed || keyboard.downArrowKey.isPressed)
             {
                 vertical -= 1f;
             }
-
-            if (Input.GetKey(KeyCode.A) || Input.GetKey(KeyCode.LeftArrow))
+            if (keyboard.aKey.isPressed || keyboard.leftArrowKey.isPressed)
             {
                 horizontal -= 1f;
             }
-
-            if (Input.GetKey(KeyCode.D) || Input.GetKey(KeyCode.RightArrow))
+            if (keyboard.dKey.isPressed || keyboard.rightArrowKey.isPressed)
             {
                 horizontal += 1f;
             }
@@ -88,7 +96,13 @@ namespace DebtDungeon.AI
 
         private void HandleMeleeInput()
         {
-            if (Input.GetKeyDown(KeyCode.Space) && Time.time >= _nextAttackTime)
+            Keyboard keyboard = Keyboard.current;
+            if (keyboard == null)
+            {
+                return;
+            }
+
+            if (keyboard.spaceKey.wasPressedThisFrame && Time.time >= _nextAttackTime)
             {
                 _nextAttackTime = Time.time + _attackCooldown;
                 ExecuteMeleeStrike();
@@ -97,20 +111,42 @@ namespace DebtDungeon.AI
 
         private void ExecuteMeleeStrike()
         {
-            Vector2 attackPoint = (Vector2)transform.position + _facingDirection * 0.8f;
+            Vector2 attackPoint = (Vector2)transform.position + _facingDirection * AttackOffsetDistance;
             Collider2D[] hitColliders = Physics2D.OverlapCircleAll(attackPoint, MeleeAttackRadius, _enemyMask);
 
-            int damage = _combatAgent.Stats != null ? _combatAgent.Stats.AttackDamage : 10;
-            float knockback = _combatAgent.Stats != null ? _combatAgent.Stats.KnockbackForce : 7f;
+            int baseDamage = _combatAgent.Stats != null ? _combatAgent.Stats.AttackDamage : DefaultAttackDamage;
+            DamageType damageType = _combatAgent.Stats != null ? _combatAgent.Stats.DamageType : DamageType.Physical;
+            int accuracy = _combatAgent.Stats != null ? _combatAgent.Stats.Accuracy : CombatRules.BaseAccuracy;
+            float knockback = _combatAgent.Stats != null ? _combatAgent.Stats.KnockbackForce : DefaultKnockback;
 
             for (int i = 0; i < hitColliders.Length; i++)
             {
-                CombatAgent2D enemy = hitColliders[i].GetComponent<CombatAgent2D>();
-                if (enemy != null && enemy != _combatAgent && enemy.IsAlive)
+                if (hitColliders[i].gameObject == gameObject)
                 {
-                    Vector2 hitDirection = ((Vector2)enemy.transform.position - (Vector2)transform.position).normalized;
-                    enemy.ApplyDamage(damage, hitDirection, knockback, _combatAgent);
+                    continue;
                 }
+                if (!hitColliders[i].TryGetComponent(out IDamageable targetDamageable))
+                {
+                    continue;
+                }
+
+                HitResult hitResult = CombatRules.RollHit(accuracy);
+                if (hitResult == HitResult.Miss)
+                {
+                    continue;
+                }
+
+                int finalDamage = CombatRules.GetDamage(baseDamage, hitResult);
+                bool isCritical = hitResult == HitResult.Critical;
+
+                if (hitColliders[i].TryGetComponent(out CombatAgent2D enemyAgent))
+                {
+                    Vector2 hitDir = ((Vector2)enemyAgent.transform.position - (Vector2)transform.position).normalized;
+                    enemyAgent.QueueKnockback(hitDir, knockback);
+                }
+
+                DamageInfo info = new DamageInfo(finalDamage, damageType, gameObject, _combatAgent.Faction, isCritical);
+                targetDamageable.TakeDamage(info);
             }
         }
 

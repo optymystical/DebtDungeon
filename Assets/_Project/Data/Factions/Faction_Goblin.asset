@@ -12,9 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f80f4b729ba034fb65483f73f395e7, type: 3}
   m_Name: Faction_Goblin
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionDefinition
-  _factionName: Faction
-  _debugColor: {r: 0.102789715, g: 0.6509434, b: 0.015352436, a: 1}
-  _isPlayerFaction: 0
-  _hostileFactions:
-  - {fileID: 11400000, guid: d773133b004fb2b4aa3146eb24bfb05d, type: 2}
-  - {fileID: 11400000, guid: fdad470ae145605478d11e173215ce64, type: 2}
+  _hostilePairs:
+  - FactionA: 2
+    FactionB: 3
+  - FactionA: 2
+    FactionB: 1
+  _factionColors: []

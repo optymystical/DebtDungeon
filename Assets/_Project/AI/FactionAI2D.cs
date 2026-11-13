@@ -1,7 +1,8 @@
 using UnityEngine;
-using System.Collections;
+//using System.Collections;
 using System.Collections.Generic;
 using System;
+using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {
@@ -24,16 +25,14 @@ namespace DebtDungeon.AI
 
     /// <summary>
     /// Modular finite-state machine controlling faction AI perception, stateless A* pathing,
-    /// role leashing, raid execution, and telegraphed combat.
+    /// role leashing, raid execution, and Core CombatRules telegraphed attacks.
     /// </summary>
     [RequireComponent(typeof(CombatAgent2D))]
     public class FactionAI2D : MonoBehaviour
     {
-        [Header("Perception & Combat Masks")]
-        [Tooltip("Physics layers containing hostile units (e.g., Player, Goblin, Spider).")]
+        [Header("Diplomacy & Masks")]
+        [SerializeField] private FactionData _factionData;
         [SerializeField] private LayerMask _targetMask;
-
-        [Tooltip("Physics layer containing walls and destructible structures.")]
         [SerializeField] private LayerMask _obstacleMask;
 
         [Header("Role & Territory Leash")]
@@ -48,7 +47,6 @@ namespace DebtDungeon.AI
         [SerializeField] private float _cornerAvoidanceRadius = 0.5f;
 
         [Header("Telegraphed Combat")]
-        [Tooltip("Wind-up duration (0.5 - 1.0s) before an attack lands.")]
         [SerializeField, Range(0.3f, 1.5f)] private float _attackTelegraphDuration = 0.65f;
         [SerializeField] private float _attackCooldown = 1.2f;
         [SerializeField, Range(0f, 0.5f)] private float _fleeHealthThreshold = 0.2f;
@@ -57,25 +55,22 @@ namespace DebtDungeon.AI
         private AIState _currentState = AIState.Wander;
         private CombatAgent2D _currentTarget;
 
-        // Territory & Raid Anchors
         private Vector2 _spawnAnchor;
         private Vector2 _rivalTerritoryOrigin;
         private Vector2 _wanderDestination;
         private bool _hasSpawnAnchor;
 
-        // Pathfinding Cache
         private List<Vector2> _waypoints = new List<Vector2>();
         private int _waypointIndex;
         private Vector2 _lastPathTargetPos = new Vector2(float.MaxValue, float.MaxValue);
         private float _repathTimer;
 
-        // Combat & State Timers
         private float _nextAttackTime;
         private float _telegraphTimer;
         private bool _isTelegraphing;
         private Vector2 _desiredVelocity;
 
-        // Optional FloorGen query delegate injected via Core events
+        private IFloorQuery _floor;
         private Func<Vector2Int, bool> _floorWalkableQuery;
 
         public AIState CurrentState => _currentState;
@@ -102,7 +97,7 @@ namespace DebtDungeon.AI
         {
             if (_agent != null)
             {
-                _agent.OnDamaged += HandleDamaged;
+                _agent.OnAttackedBy += HandleAttackedBy;
             }
         }
 
@@ -110,34 +105,45 @@ namespace DebtDungeon.AI
         {
             if (_agent != null)
             {
-                _agent.OnDamaged -= HandleDamaged;
+                _agent.OnAttackedBy -= HandleAttackedBy;
             }
         }
 
-        /// <summary>
-        /// Called by spawners upon instantiation to bind role, territory origin, and masks.
-        /// </summary>
-        public void ConfigureRole(UnitRole role, Vector2 spawnAnchor, LayerMask obstacleMask, Vector2 rivalTerritory = default)
+        public void ConfigureRole(
+            UnitRole role,
+            Vector2 spawnAnchor,
+            LayerMask obstacleMask,
+            FactionData factionData = null,
+            Vector2 rivalTerritory = default)
         {
             _role = role;
             _spawnAnchor = spawnAnchor;
             _hasSpawnAnchor = true;
             _obstacleMask = obstacleMask;
+
+            if (factionData != null)
+            {
+                _factionData = factionData;
+            }
+
             _rivalTerritoryOrigin = rivalTerritory;
             PickNewWanderDestination();
         }
 
-        /// <summary>
-        /// Injects the FloorGen walkability query so A* runs over IFloorQuery without tight coupling.
-        /// </summary>
+        public void SetFloorQuery(IFloorQuery floor)
+        {
+            _floor = floor;
+            if (_floor != null)
+            {
+                _floorWalkableQuery = _floor.IsWalkable;
+            }
+        }
+
         public void SetFloorWalkableQuery(Func<Vector2Int, bool> walkableQuery)
         {
             _floorWalkableQuery = walkableQuery;
         }
 
-        /// <summary>
-        /// Commands this unit to join a faction raid party marching on the target coordinate.
-        /// </summary>
         public void TriggerRaidState(Vector2 raidTargetPosition)
         {
             if (!IsAlive)
@@ -172,21 +178,27 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            // Lock movement during attack wind-up telegraph
             if (_isTelegraphing)
             {
                 _agent.Rigidbody.linearVelocity = Vector2.zero;
                 return;
             }
 
-            _agent.Rigidbody.linearVelocity = _desiredVelocity;
+            float tileSpeedMultiplier = 1f;
+            if (_floor != null)
+            {
+                Vector2Int currentCell = _floor.WorldToCell(transform.position);
+                tileSpeedMultiplier = _floor.GetMoveSpeedMultiplier(currentCell);
+            }
+
+            _agent.Rigidbody.linearVelocity = _desiredVelocity * tileSpeedMultiplier;
         }
 
         private void EvaluateStateTransitions()
         {
             float healthRatio = _agent.MaxHealth > 0 ? (float)_agent.CurrentHealth / _agent.MaxHealth : 1f;
 
-            // 1. Low-health flee check (Raiders fight to the death; Guards/Residents flee)
+            // 1. Low-health flee check
             if (_currentState != AIState.Flee && _currentState != AIState.Raid && healthRatio <= _fleeHealthThreshold)
             {
                 _isTelegraphing = false;
@@ -194,7 +206,7 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            // 2. Leash check (Applies to Wander and Chase; bypassed during Raid or Return)
+            // 2. Territory leash check
             if (_currentState == AIState.Wander || _currentState == AIState.Chase)
             {
                 float maxLeash = _role == UnitRole.Guard ? _guardLeashDistance : _residentLeashDistance;
@@ -208,18 +220,20 @@ namespace DebtDungeon.AI
                 }
             }
 
-            // 3. Return completion check
+            // 3. Return completion with 60% hysteresis buffer to prevent leash edge freezing
             if (_currentState == AIState.Return)
             {
-                if (Vector2.Distance(transform.position, _spawnAnchor) <= 1.2f)
+                float maxLeash = _role == UnitRole.Guard ? _guardLeashDistance : _residentLeashDistance;
+                if (Vector2.Distance(transform.position, _spawnAnchor) <= maxLeash * 0.6f)
                 {
                     TransitionToState(AIState.Wander);
                     PickNewWanderDestination();
                 }
+
                 return;
             }
 
-            // 4. Target acquisition & validation
+            // 4. Target acquisition & line-of-sight check
             if (_currentTarget == null || !_currentTarget.IsAlive)
             {
                 _currentTarget = ScanForHostileTarget();
@@ -272,6 +286,7 @@ namespace DebtDungeon.AI
                     {
                         PickNewWanderDestination();
                     }
+
                     UpdatePathfinding(_wanderDestination);
                     _desiredVelocity = ComputeSmoothSteering() * (moveSpeed * 0.65f);
                     break;
@@ -293,6 +308,7 @@ namespace DebtDungeon.AI
                         UpdatePathfinding(_currentTarget.transform.position);
                         _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
                     }
+
                     break;
 
                 case AIState.Attack:
@@ -325,8 +341,9 @@ namespace DebtDungeon.AI
                 {
                     _isTelegraphing = false;
                     _nextAttackTime = Time.time + _attackCooldown;
-                    ExecuteMeleeHit();
+                    ExecuteCoreCombatAttack();
                 }
+
                 return;
             }
 
@@ -334,7 +351,6 @@ namespace DebtDungeon.AI
             {
                 _isTelegraphing = true;
                 _telegraphTimer = _attackTelegraphDuration;
-                // Visual wind-up cue (tint yellow/orange during telegraph)
                 if (_agent.VisualRenderer != null)
                 {
                     _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
@@ -342,9 +358,8 @@ namespace DebtDungeon.AI
             }
         }
 
-        private void ExecuteMeleeHit()
+        private void ExecuteCoreCombatAttack()
         {
-            // Restore sprite color after telegraph
             if (_agent.VisualRenderer != null)
             {
                 _agent.VisualRenderer.color = Color.white;
@@ -358,30 +373,55 @@ namespace DebtDungeon.AI
             float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.2f;
             float dist = Vector2.Distance(transform.position, _currentTarget.transform.position);
 
-            // Allow slight grace margin (1.25x) so player can dodge out of wind-up telegraphs
-            if (dist <= attackRange * 1.25f)
+            if (dist > attackRange * 1.25f)
             {
-                int damage = _agent.Stats != null ? _agent.Stats.AttackDamage : 8;
-                float knockback = _agent.Stats != null ? _agent.Stats.KnockbackForce : 5f;
-                Vector2 hitDir = ((Vector2)_currentTarget.transform.position - (Vector2)transform.position).normalized;
+                return;
+            }
 
-                _currentTarget.ApplyDamage(damage, hitDir, knockback, _agent);
+            int accuracy = _agent.Stats != null ? _agent.Stats.Accuracy : CombatRules.BaseAccuracy;
+            HitResult hitResult = CombatRules.RollHit(accuracy);
+
+            if (hitResult == HitResult.Miss)
+            {
+                return;
+            }
+
+            int baseDamage = _agent.Stats != null ? _agent.Stats.AttackDamage : 8;
+            int finalDamage = CombatRules.GetDamage(baseDamage, hitResult);
+            DamageType damageType = _agent.Stats != null ? _agent.Stats.DamageType : DamageType.Physical;
+            bool isCritical = hitResult == HitResult.Critical;
+
+            float knockback = _agent.Stats != null ? _agent.Stats.KnockbackForce : 5f;
+            Vector2 hitDir = ((Vector2)_currentTarget.transform.position - (Vector2)transform.position).normalized;
+
+            _currentTarget.QueueKnockback(hitDir, knockback);
+
+            if (_currentTarget.TryGetComponent(out IDamageable damageable))
+            {
+                DamageInfo damageInfo = new DamageInfo(finalDamage, damageType, gameObject, _agent.Faction, isCritical);
+                damageable.TakeDamage(damageInfo);
             }
         }
 
-        private void HandleDamaged(CombatAgent2D attacker)
+        private void HandleAttackedBy(GameObject attackerObj)
         {
-            if (!IsAlive || attacker == null || !attacker.IsAlive)
-            {
-                return;
-            }
-            if (_agent.Faction != null && attacker.Faction == _agent.Faction)
+            if (!IsAlive || attackerObj == null)
             {
                 return;
             }
 
-            // Prioritize retaliating against the attacker (especially if it's the player)
-            if (_currentTarget == null || attacker.Faction != null && attacker.Faction.IsPlayerFaction)
+            CombatAgent2D attacker = attackerObj.GetComponent<CombatAgent2D>();
+            if (attacker == null || !attacker.IsAlive)
+            {
+                return;
+            }
+
+            if (attacker.Faction == _agent.Faction)
+            {
+                return;
+            }
+
+            if (_currentTarget == null || attacker.Faction == Faction.Player)
             {
                 _currentTarget = attacker;
                 if (_currentState != AIState.Attack && _currentState != AIState.Flee)
@@ -407,7 +447,8 @@ namespace DebtDungeon.AI
                 {
                     continue;
                 }
-                if (!IsHostileTo(candidate))
+
+                if (!IsHostileTo(candidate.Faction))
                 {
                     continue;
                 }
@@ -423,19 +464,21 @@ namespace DebtDungeon.AI
             return bestTarget;
         }
 
-        private bool IsHostileTo(CombatAgent2D other)
+        private bool IsHostileTo(Faction otherFaction)
         {
-            if (_agent.Faction == null || other.Faction == null)
+            if (_factionData != null)
             {
-                return false;
+                return _factionData.IsHostile(_agent.Faction, otherFaction);
             }
-            if (_agent.Faction == other.Faction)
+
+            if (_agent.Faction == otherFaction)
             {
                 return false;
             }
 
-            // Both Goblins and Spiders are hostile to each other and to the player
-            return _agent.Faction.IsHostileTo(other.Faction);
+            return _agent.Faction == Faction.Player || otherFaction == Faction.Player ||
+                   (_agent.Faction == Faction.Goblin && otherFaction == Faction.Spider) ||
+                   (_agent.Faction == Faction.Spider && otherFaction == Faction.Goblin);
         }
 
         private bool HasLineOfSight(Vector2 targetPos)
@@ -450,7 +493,6 @@ namespace DebtDungeon.AI
         {
             float targetDelta = Vector2.Distance(destination, _lastPathTargetPos);
 
-            // Repath only when target shifts > 2.5 tiles or current waypoint list finishes
             if ((targetDelta >= _repathThresholdDistance || _waypoints == null || _waypointIndex >= _waypoints.Count) && _repathTimer <= 0f)
             {
                 ForceRepath(destination);
@@ -482,12 +524,12 @@ namespace DebtDungeon.AI
                 {
                     return Vector2.zero;
                 }
+
                 nextWaypoint = _waypoints[_waypointIndex];
             }
 
             Vector2 desiredHeading = (nextWaypoint - currentPos).normalized;
 
-            // Soft corner repulsion to prevent snagging on 90-degree wall colliders
             Collider2D nearbyWall = Physics2D.OverlapCircle(currentPos, _cornerAvoidanceRadius, _obstacleMask);
             if (nearbyWall != null)
             {
@@ -531,21 +573,18 @@ namespace DebtDungeon.AI
 
             Vector3 currentPos = transform.position;
 
-            // 1. Sight Range Circle
             if (_agent != null && _agent.Stats != null)
             {
                 Gizmos.color = new Color(1f, 0.92f, 0.016f, 0.25f);
                 Gizmos.DrawWireSphere(currentPos, _agent.Stats.SightRadius);
             }
 
-            // 2. Target Line (Red line to locked hostile)
             if (_currentTarget != null && _currentTarget.IsAlive)
             {
                 Gizmos.color = Color.red;
                 Gizmos.DrawLine(currentPos, _currentTarget.transform.position);
             }
 
-            // 3. Active A* Waypoint Path (Green polyline)
             if (_waypoints != null && _waypoints.Count > 0)
             {
                 Gizmos.color = Color.green;
@@ -560,20 +599,13 @@ namespace DebtDungeon.AI
                 }
             }
 
-            // 4. Raid / Territory Route (Cyan line)
-            if (_rivalTerritoryOrigin != Vector2.zero && _currentState == AIState.Raid)
-            {
-                Gizmos.color = new Color(0f, 0.85f, 1f, 0.45f);
-                Gizmos.DrawLine(currentPos, _rivalTerritoryOrigin);
-                Gizmos.DrawWireCube(_rivalTerritoryOrigin, new Vector3(0.5f, 0.5f, 0f));
-            }
-
-            // 5. Floating State & Target Label
             string targetName = _currentTarget != null ? _currentTarget.name : "None";
             string stateLabel = $"[{_role} | {_currentState}]\nTarget: {targetName}";
 
             GUIStyle labelStyle = new GUIStyle();
-            labelStyle.normal.textColor = _agent != null && _agent.Faction != null ? _agent.Faction.DebugColor : Color.white;
+            labelStyle.normal.textColor = (_factionData != null && _agent != null)
+                ? _factionData.GetDebugColor(_agent.Faction)
+                : Color.white;
             labelStyle.fontSize = 11;
             labelStyle.fontStyle = FontStyle.Bold;
             labelStyle.alignment = TextAnchor.MiddleCenter;

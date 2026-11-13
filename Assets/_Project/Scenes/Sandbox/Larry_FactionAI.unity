@@ -814,10 +814,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7924da2b36395b4cb7adf78ec345f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.AIDebugController
-  _showGameViewLabels: 1
-  _anchor: 3
-  _offset: {x: 60, y: 20}
-  _boxSize: {x: 250, y: 50}
+  _showOverlay: 0
+  _statsRefreshInterval: 0.25
 --- !u!4 &645208846
 Transform:
   m_ObjectHideFlags: 0
@@ -967,6 +965,7 @@ GameObject:
   - component: {fileID: 1293096743}
   - component: {fileID: 1293096742}
   - component: {fileID: 1293096744}
+  - component: {fileID: 1293096745}
   m_Layer: 0
   m_Name: GoblinSpawner
   m_TagString: Untagged
@@ -986,7 +985,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dff9cc0c09b62f4890084ce78a55a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionSpawner2D
-  _faction: {fileID: 11400000, guid: 66f39528ab4c78248af3525dd1cdb016, type: 2}
+  _displayName: Goblin Camp
+  _xpReward: 50
+  _goldReward: 25
+  _factionData: {fileID: 0}
   _residentPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
   _guardPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
   _residentConfig: {fileID: 0}
@@ -998,7 +1000,6 @@ MonoBehaviour:
   _maxResidents: 6
   _maxGuards: 2
   _spawnInterval: 0.5
-  _maxHealth: 150
 --- !u!4 &1293096743
 Transform:
   m_ObjectHideFlags: 0
@@ -1060,6 +1061,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1293096745
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1293096741}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
+  _faction: 0
+  _maxHealth: 100
+  _invulnerabilityDuration: 0
 --- !u!1 &1550207998
 GameObject:
   m_ObjectHideFlags: 0
@@ -1071,6 +1087,7 @@ GameObject:
   - component: {fileID: 1550208000}
   - component: {fileID: 1550207999}
   - component: {fileID: 1550208001}
+  - component: {fileID: 1550208002}
   m_Layer: 0
   m_Name: SpiderSpawner
   m_TagString: Untagged
@@ -1090,7 +1107,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 3dff9cc0c09b62f4890084ce78a55a8b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionSpawner2D
-  _faction: {fileID: 11400000, guid: d773133b004fb2b4aa3146eb24bfb05d, type: 2}
+  _displayName: Goblin Camp
+  _xpReward: 50
+  _goldReward: 25
+  _factionData: {fileID: 0}
   _residentPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
   _guardPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
   _residentConfig: {fileID: 0}
@@ -1102,7 +1122,6 @@ MonoBehaviour:
   _maxResidents: 6
   _maxGuards: 2
   _spawnInterval: 0.5
-  _maxHealth: 150
 --- !u!4 &1550208000
 Transform:
   m_ObjectHideFlags: 0
@@ -1164,6 +1183,21 @@ BoxCollider2D:
   m_AutoTiling: 0
   m_Size: {x: 1, y: 1}
   m_EdgeRadius: 0
+--- !u!114 &1550208002
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1550207998}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
+  _faction: 0
+  _maxHealth: 100
+  _invulnerabilityDuration: 0
 --- !u!1 &1781141983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1351,13 +1385,14 @@ GameObject:
   - component: {fileID: 1995273976}
   - component: {fileID: 1995273975}
   - component: {fileID: 1995273974}
+  - component: {fileID: 1995273980}
   m_Layer: 6
   m_Name: Player
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1995273974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1386,7 +1421,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fd5c0e1d0c5144cad464a94986c2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.CombatAgent2D
-  _faction: {fileID: 11400000, guid: fdad470ae145605478d11e173215ce64, type: 2}
   _stats: {fileID: 11400000, guid: 21f70391d04333f40af38fd415c69df4, type: 2}
   _visualRenderer: {fileID: 1995273978}
 --- !u!50 &1995273976
@@ -1526,6 +1560,21 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &1995273980
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1995273973}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
+  _faction: 0
+  _maxHealth: 100
+  _invulnerabilityDuration: 0
 --- !u!1 &2052015168
 GameObject:
   m_ObjectHideFlags: 0

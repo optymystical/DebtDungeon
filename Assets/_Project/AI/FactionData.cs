@@ -1,50 +1,72 @@
 using UnityEngine;
 using System.Collections.Generic;
+using System;
+using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {
-    /// <summary>
-    /// Defines faction identity, team debug colors, and relationship hostility matrices.
-    /// </summary>
-    [CreateAssetMenu(fileName = "Faction_New", menuName = "DebtDungeon/FactionDefinition")]
-    public class FactionDefinition : ScriptableObject
+    [Serializable]
+    public struct FactionHostilityEntry
     {
-        [Header("Identity")]
-        [Tooltip("Display name for debugging and logging.")]
-        [SerializeField] private string _factionName = "Faction";
+        public Faction FactionA;
+        public Faction FactionB;
+    }
 
-        [Tooltip("Color used for prototype debug tints and minimap markers.")]
-        [SerializeField] private Color _debugColor = Color.white;
+    [Serializable]
+    public struct FactionColorEntry
+    {
+        public Faction Faction;
+        public Color DebugColor;
+    }
 
-        [Tooltip("True if this faction represents the local or allied player.")]
-        [SerializeField] private bool _isPlayerFaction = false;
+    /// <summary>
+    /// Centralized diplomacy and debug color lookup keyed by Core's Faction enum.
+    /// </summary>
+    [CreateAssetMenu(fileName = "FactionData", menuName = "DebtDungeon/AI/Faction Data")]
+    public class FactionData : ScriptableObject
+    {
+        [Header("Hostility Matrix")]
+        [SerializeField] private List<FactionHostilityEntry> _hostilePairs = new List<FactionHostilityEntry>();
 
-        [Header("Relationships")]
-        [Tooltip("List of other factions that this faction will actively attack.")]
-        [SerializeField] private List<FactionDefinition> _hostileFactions = new List<FactionDefinition>();
+        [Header("Debug Visuals")]
+        [SerializeField] private List<FactionColorEntry> _factionColors = new List<FactionColorEntry>();
 
-        public string FactionName => _factionName;
-        public Color DebugColor => _debugColor;
-        public bool IsPlayerFaction => _isPlayerFaction;
-
-        /// <summary>
-        /// Evaluates whether this faction is actively hostile toward another faction.
-        /// </summary>
-        public bool IsHostileTo(FactionDefinition other)
+        public bool IsHostile(Faction a, Faction b)
         {
-            if (other == null || other == this)
+            if (a == b)
             {
                 return false;
             }
 
-            // Dungeon rule: Monsters always engage the player, and vice versa.
-            if (other.IsPlayerFaction || _isPlayerFaction)
+            if (a == Faction.Player || b == Faction.Player)
             {
                 return true;
             }
 
-            // Bidirectional relationship lookup.
-            return _hostileFactions.Contains(other) || (other._hostileFactions != null && other._hostileFactions.Contains(this));
+            for (int i = 0; i < _hostilePairs.Count; i++)
+            {
+                FactionHostilityEntry entry = _hostilePairs[i];
+                if ((entry.FactionA == a && entry.FactionB == b) ||
+                    (entry.FactionA == b && entry.FactionB == a))
+                {
+                    return true;
+                }
+            }
+
+            return false;
+        }
+
+        public Color GetDebugColor(Faction faction)
+        {
+            for (int i = 0; i < _factionColors.Count; i++)
+            {
+                if (_factionColors[i].Faction == faction)
+                {
+                    return _factionColors[i].DebugColor;
+                }
+            }
+
+            return Color.white;
         }
     }
 }

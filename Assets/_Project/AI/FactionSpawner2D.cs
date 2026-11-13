@@ -1,6 +1,6 @@
 using UnityEngine;
 using System.Collections.Generic;
-using System;
+using DebtDungeon.Core;
 
 
 
@@ -8,71 +8,93 @@ namespace DebtDungeon.AI
 {
     /// <summary>
     /// Physical, destructible spawner structure placed in Major Chunks.
-    /// Manages squad role caps (Residents/Guards) and halts spawning upon destruction.
+    /// Uses Core's Health component, implements IKillReward, and raises GameEvents.RaiseSpawnerDestroyed on death.
     /// </summary>
     [RequireComponent(typeof(BoxCollider2D))]
-    public class FactionSpawner2D : MonoBehaviour
+    [RequireComponent(typeof(Health))]
+    public class FactionSpawner2D : MonoBehaviour, IKillReward
     {
         private const float DefaultSpawnRadius = 0.8f;
 
-        [Header("Faction Configuration")]
-        [Tooltip("Assigned faction data asset.")]
-        [SerializeField] private FactionDefinition _faction;
+        [Header("Spawner Identity & Rewards")]
+        [SerializeField] private string _displayName = "Goblin Camp";
+        [SerializeField, Min(0)] private int _xpReward = 50;
+        [SerializeField, Min(0)] private int _goldReward = 25;
 
-        [Tooltip("Prefab to instantiate (e.g., GoblinGrunt.prefab). Leave empty to use procedural fallback.")]
+        [Header("Spawner Configuration")]
+        [SerializeField] private FactionData _factionData;
         [SerializeField] private GameObject _residentPrefab;
-
-        [Tooltip("Prefab to instantiate for guards.")]
         [SerializeField] private GameObject _guardPrefab;
-
-        [Tooltip("Unit configuration asset for procedural fallback.")]
         [SerializeField] private UnitConfig _residentConfig;
-
-        [Tooltip("Unit configuration asset for guards.")]
         [SerializeField] private UnitConfig _guardConfig;
-
-        [Tooltip("Destination transform representing the opposing faction's camp.")]
         [SerializeField] private Transform _rivalTerritoryTarget;
-
-        [Tooltip("Layer mask designating static obstacle geometry.")]
         [SerializeField] private LayerMask _obstacleMask;
 
         [Header("Population Caps")]
-        [Tooltip("Maximum active resident units allowed simultaneously.")]
         [SerializeField, Min(1)] private int _maxResidents = 6;
-
-        [Tooltip("Maximum active guard units allowed simultaneously.")]
         [SerializeField, Min(1)] private int _maxGuards = 2;
-
-        [Tooltip("Interval in seconds between spawn attempts.")]
         [SerializeField, Min(0.5f)] private float _spawnInterval = 3.5f;
 
-        [Header("Structure Health")]
-        [Tooltip("Structure durability before being destroyed.")]
-        [SerializeField, Min(10)] private int _maxHealth = 150;
-        private int _currentHealth;
-
+        private Health _health;
+        private IFloorQuery _floor;
         private readonly List<FactionAI2D> _activeResidents = new List<FactionAI2D>();
         private readonly List<FactionAI2D> _activeGuards = new List<FactionAI2D>();
         private float _spawnTimer;
 
-        public FactionDefinition Faction => _faction;
+        // IKillReward Implementation
+        public string DisplayName => !string.IsNullOrWhiteSpace(_displayName) ? _displayName : gameObject.name;
+        public int XpReward => _xpReward;
+        public int GoldReward => _goldReward;
+
+        public Faction Faction => _health != null ? _health.Faction : Faction.Neutral;
         public IReadOnlyList<FactionAI2D> ActiveResidents => _activeResidents;
         public IReadOnlyList<FactionAI2D> ActiveGuards => _activeGuards;
         public int TotalLivingCount => _activeResidents.Count + _activeGuards.Count;
-        public bool IsDestroyed => _currentHealth <= 0;
-
-        /// <summary>
-        /// Hook for Core v1.2: raised when structure collapses.
-        /// First destroyed spawner spawns the floor exit.
-        /// </summary>
-        public static event Action<FactionSpawner2D> SpawnerDestroyed;
+        public bool IsDestroyed => _health == null || !_health.IsAlive;
 
         private void Awake()
         {
-            _currentHealth = _maxHealth;
-            // Spawner structure counts as wall obstacle geometry
+            _health = GetComponent<Health>();
             gameObject.layer = LayerMask.NameToLayer("Walls");
+        }
+
+        private void OnEnable()
+        {
+            if (_health != null)
+            {
+                _health.Died += HandleSpawnerDied;
+            }
+        }
+
+        private void OnDisable()
+        {
+            if (_health != null)
+            {
+                _health.Died -= HandleSpawnerDied;
+            }
+        }
+
+        public void ConfigureFromFloor(
+            IFloorQuery floor,
+            FactionData factionData,
+            LayerMask obstacleMask,
+            Vector3 rivalTerritory)
+        {
+            _floor = floor;
+
+            if (factionData != null)
+            {
+                _factionData = factionData;
+            }
+
+            _obstacleMask = obstacleMask;
+
+            if (_rivalTerritoryTarget == null && rivalTerritory != Vector3.zero)
+            {
+                GameObject marker = new GameObject($"{Faction}_RivalTarget");
+                marker.transform.position = rivalTerritory;
+                _rivalTerritoryTarget = marker.transform;
+            }
         }
 
         private void Update()
@@ -82,7 +104,6 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            // Strip null or dead unit references
             _activeResidents.RemoveAll(u => u == null || !u.IsAlive);
             _activeGuards.RemoveAll(u => u == null || !u.IsAlive);
 
@@ -108,68 +129,41 @@ namespace DebtDungeon.AI
 
         private void SpawnUnit(UnitRole role, GameObject prefab, UnitConfig config, List<FactionAI2D> trackerList)
         {
-            if (_faction == null)
+            if (prefab == null)
             {
-                Debug.LogWarning("FactionSpawner2D missing FactionDefinition assignment.", this);
+                Debug.LogWarning($"[FactionSpawner2D] Missing prefab for {role} on {gameObject.name}.", this);
                 return;
             }
 
             Vector2 spawnOffset = UnityEngine.Random.insideUnitCircle * DefaultSpawnRadius;
             Vector2 spawnPosition = (Vector2)transform.position + spawnOffset;
 
-            GameObject unitObject;
+            GameObject unitObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
 
-            if (prefab != null)
+            CombatAgent2D combatAgent = unitObject.GetComponent<CombatAgent2D>();
+            if (combatAgent != null && config != null)
             {
-                unitObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
+                combatAgent.Initialize(config);
             }
-            else
-            {
-                if (config == null)
-                {
-                    return;
-                }
-
-                unitObject = new GameObject($"{_faction.FactionName}_{role}_{config.name}");
-                unitObject.transform.position = spawnPosition;
-
-                SpriteRenderer renderer = unitObject.AddComponent<SpriteRenderer>();
-                renderer.sortingLayerName = "Actors";
-
-                CircleCollider2D collider = unitObject.AddComponent<CircleCollider2D>();
-                collider.radius = 0.45f;
-
-                CombatAgent2D combatAgent = unitObject.AddComponent<CombatAgent2D>();
-                combatAgent.Initialize(_faction, config);
-
-                unitObject.AddComponent<FactionAI2D>();
-            }
-
-            // Assign dedicated physics layer (7: Goblin, 8: Spider)
-            //unitObject.layer = _faction.FactionName == "Goblin" ? 7 : 8;
 
             FactionAI2D ai = unitObject.GetComponent<FactionAI2D>();
             if (ai != null)
             {
+                if (_floor != null)
+                {
+                    ai.SetFloorQuery(_floor);
+                }
+
                 Vector2 targetTerritory = _rivalTerritoryTarget != null ? (Vector2)_rivalTerritoryTarget.position : Vector2.zero;
-                ai.ConfigureRole(role, transform.position, _obstacleMask, targetTerritory);
+                ai.ConfigureRole(role, transform.position, _obstacleMask, _factionData, targetTerritory);
                 trackerList.Add(ai);
             }
         }
 
-        public void TakeDamage(int damage)
+        private void HandleSpawnerDied(KillInfo kill)
         {
-            if (IsDestroyed)
-            {
-                return;
-            }
-
-            _currentHealth -= damage;
-            if (_currentHealth <= 0)
-            {
-                SpawnerDestroyed?.Invoke(this);
-                Destroy(gameObject);
-            }
+            GameEvents.RaiseSpawnerDestroyed(Faction, transform.position);
+            Destroy(gameObject);
         }
     }
 }

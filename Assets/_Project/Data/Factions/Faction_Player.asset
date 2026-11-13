@@ -12,7 +12,9 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b5f80f4b729ba034fb65483f73f395e7, type: 3}
   m_Name: Faction_Player
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionDefinition
-  _factionName: Faction
-  _debugColor: {r: 0, g: 0.5019608, b: 0.5019608, a: 1}
-  _isPlayerFaction: 1
-  _hostileFactions: []
+  _hostilePairs:
+  - FactionA: 1
+    FactionB: 2
+  - FactionA: 1
+    FactionB: 3
+  _factionColors: []

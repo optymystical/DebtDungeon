@@ -14,6 +14,7 @@ GameObject:
   - component: {fileID: 4978337795061116773}
   - component: {fileID: 1295393456707509916}
   - component: {fileID: 4490947528810636179}
+  - component: {fileID: 7192877917674648436}
   m_Layer: 8
   m_Name: SpiderSkitterling
   m_TagString: Untagged
@@ -170,7 +171,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92fd5c0e1d0c5144cad464a94986c2b9, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.CombatAgent2D
-  _faction: {fileID: 11400000, guid: d773133b004fb2b4aa3146eb24bfb05d, type: 2}
   _stats: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
   _visualRenderer: {fileID: 145351672843802003}
 --- !u!114 &4490947528810636179
@@ -185,6 +185,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 325fd5ca7afd2164cbed125d4d3d294e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionAI2D
+  _factionData: {fileID: 11400000, guid: d773133b004fb2b4aa3146eb24bfb05d, type: 2}
   _targetMask:
     serializedVersion: 2
     m_Bits: 192
@@ -201,3 +202,18 @@ MonoBehaviour:
   _attackTelegraphDuration: 0.65
   _attackCooldown: 1.2
   _fleeHealthThreshold: 0.2
+--- !u!114 &7192877917674648436
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298115806659062241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
+  _faction: 3
+  _maxHealth: 100
+  _invulnerabilityDuration: 0

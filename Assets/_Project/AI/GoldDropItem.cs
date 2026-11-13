@@ -1,4 +1,5 @@
 using UnityEngine;
+using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {
@@ -16,6 +17,7 @@ namespace DebtDungeon.AI
         [SerializeField] private float _lifetimeSeconds = DefaultLifetimeSeconds;
 
         private float _despawnTimer;
+        private bool _collected;
 
         public int GoldAmount => _goldAmount;
 
@@ -29,7 +31,6 @@ namespace DebtDungeon.AI
         private void Awake()
         {
             _despawnTimer = _lifetimeSeconds;
-
             // Enforce trigger collider
             CircleCollider2D col = GetComponent<CircleCollider2D>();
             col.isTrigger = true;
@@ -47,11 +48,18 @@ namespace DebtDungeon.AI
 
         private void OnTriggerEnter2D(Collider2D other)
         {
+            if (_collected)
+            {
+                return;
+            }
+
             // Layer 6: Player or player component check
             if (other.gameObject.layer == 6 || other.CompareTag("Player") || other.GetComponent<Player2D>() != null)
             {
                 // In sandbox: log reward. When Core economy merges: add to Player Inventory/Bank
                 Debug.Log($"[Economy] Player collected {_goldAmount} gold!");
+                _collected = true;
+                GameEvents.RaiseGoldCollected(_goldAmount);
                 Destroy(gameObject);
             }
         }
