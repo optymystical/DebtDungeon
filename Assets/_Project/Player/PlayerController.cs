@@ -1,19 +1,23 @@
 using DebtDungeon.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
-using static UnityEngine.GraphicsBuffer;
 
 namespace DebtDungeon.Player
 {
     public class PlayerController : MonoBehaviour
     {
+        [Header("References")]
         [SerializeField] private Rigidbody2D _rb;
+
+        [Header("Settings")]
         [SerializeField] private float _baseMoveSpeed = 1;
+        [SerializeField] private float _turnSpeed = 1;
+
         private Vector2 _moveInput;
         private PlayerInput _playerInput;
         private Vector3 _mouseWorldPos; 
-        private Vector2 _mouseDirection;
-        [SerializeField] private float _turnSpeed = 1;
+        [HideInInspector] public Vector2 _mouseDirection;
+
 
         private InputAction _attackAction;
         private InputAction _ability1Action;
@@ -49,7 +53,7 @@ namespace DebtDungeon.Player
         {
             // Unlock the cursor to the center of the screen
             Cursor.lockState = CursorLockMode.None;
-            // Make the cursor visible  NOT WORKING
+            // Make the cursor visible  NOT WORKING?
             Cursor.visible = true;
 
             _playerInput = GetComponent<PlayerInput>();
