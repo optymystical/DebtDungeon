@@ -180,6 +180,7 @@ namespace DebtDungeon.Player
 
         public void SetBurdenSteps(int _amount)
         {
+            Debug.Log("SetBurdenStep: " + _amount);
             _currentBurdenStep = _amount;
             if (_currentBurdenStep > 2)
             {
@@ -203,6 +204,7 @@ namespace DebtDungeon.Player
                     _burdenMultiplier = 0.8f;
                     break;
             }
+            Debug.Log("_currentBurdenStep: " + _currentBurdenStep);
         }
     }
 }

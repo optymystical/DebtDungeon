@@ -1,28 +1,30 @@
 using UnityEngine;
+using UnityEngine.InputSystem;
 
 namespace DebtDungeon.Player
 {
     public class TestBurden : MonoBehaviour
     {
         [SerializeField] private PlayerController _targetScript;
-        [SerializeField] private bool _testing = false;
-        private bool _active = false;
 
         private void Update()
         {
-            if (_active && _testing)
+            if (Keyboard.current.digit0Key.wasPressedThisFrame)
             {
-                TestSetBurdenSteps(1);
-                _active = false;
+                _targetScript.SetBurdenSteps(0); // fakes Progression
             }
-            if (!_testing)
+            if (Keyboard.current.digit1Key.wasPressedThisFrame)
             {
-                _active = true;
+                _targetScript.SetBurdenSteps(1); // fakes Progression
             }
-        }
-
-        private void TestSetBurdenSteps(int amount) {
-            _targetScript.SetBurdenSteps(amount);
+            if (Keyboard.current.digit2Key.wasPressedThisFrame)
+            {
+                _targetScript.SetBurdenSteps(2); // fakes Progression
+            }
+            if (Keyboard.current.digit3Key.wasPressedThisFrame)
+            {
+                _targetScript.SetBurdenSteps(3); // to test cap
+            }
         }
     }
 }
