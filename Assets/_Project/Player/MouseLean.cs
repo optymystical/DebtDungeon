@@ -16,13 +16,16 @@ namespace DebtDungeon.Player
 
         private void Update()
         {
-            Vector3 mouseWorldPos = _Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
-            Vector2 mouseOffset = (Vector2)mouseWorldPos - (Vector2)_player.position;
+            if (_player)
+            {
+                Vector3 mouseWorldPos = _Camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+                Vector2 mouseOffset = (Vector2)mouseWorldPos - (Vector2)_player.position;
 
-            // A sensitivity of 0.2 means the camera leans 20% of the distance toward the mouse
-            targetPosition = (Vector2)_player.position + (mouseOffset * _leanSensitivity);
+                // A sensitivity of 0.2 means the camera leans 20% of the distance toward the mouse
+                targetPosition = (Vector2)_player.position + (mouseOffset * _leanSensitivity);
 
-            transform.position = targetPosition;
+                transform.position = targetPosition;
+            }
         }
     }
 }
