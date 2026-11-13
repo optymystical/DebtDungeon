@@ -8,10 +8,16 @@ namespace DebtDungeon.Player
     {
         [SerializeField] private Health _eventRaiser;
         [SerializeField] private SpriteRenderer _spriteRenderer;
+        [SerializeField] private Rigidbody2D _rigidBody;
+        [SerializeField] private float _knockbackForce = 1f;
+        [SerializeField] private float _knockbackDelay = 0.2f;
+        [SerializeField] private bool _isKnockingBack = false;
+        public bool IsKnockingBack => _isKnockingBack;
 
         public void PlayerHit(DamageInfo info, int damage)
         {
             FlashSprite();
+            Knockback(info.Source);
         }
 
         private void OnEnable()
@@ -30,10 +36,26 @@ namespace DebtDungeon.Player
             StartCoroutine(ChangeColor(0.1f, Color.red));
             StartCoroutine(ChangeColor(0.2f, original));
         }
-        protected IEnumerator ChangeColor(float delayTime, Color color)
+        private IEnumerator ChangeColor(float delayTime, Color color)
         {
             yield return new WaitForSeconds(delayTime);
             _spriteRenderer.color = color;
+        }
+
+        private void Knockback(GameObject source)
+        {
+            _isKnockingBack = true;
+
+            Vector2 direction = (transform.position - source.transform.position).normalized;
+            _rigidBody.AddForce(direction * _knockbackForce, ForceMode2D.Impulse);
+
+            StartCoroutine(resetKnockback());
+        }
+
+        private IEnumerator resetKnockback()
+        {
+            yield return new WaitForSeconds(_knockbackDelay);
+            _isKnockingBack = false;
         }
     }
 }

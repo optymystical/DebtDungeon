@@ -749,6 +749,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _rb: {fileID: 1784213311}
+  _hitFeedback: {fileID: 1784213319}
   _baseMoveSpeed: 3
   _turnSpeed: 300
 --- !u!212 &1784213309
@@ -1009,6 +1010,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _eventRaiser: {fileID: 1784213313}
   _spriteRenderer: {fileID: 1784213309}
+  _rigidBody: {fileID: 1784213311}
+  _knockbackForce: 10
+  _knockbackDelay: 0.2
+  _isKnockingBack: 0
 --- !u!1 &2001041211
 GameObject:
   m_ObjectHideFlags: 0
@@ -1040,7 +1045,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c971ebe4fbac0d44bbe50fd8f767860e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _damage: 50
+  _damage: 10
 --- !u!212 &2001041213
 SpriteRenderer:
   serializedVersion: 2

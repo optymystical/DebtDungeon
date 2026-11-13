@@ -8,6 +8,7 @@ namespace DebtDungeon.Player
     {
         [Header("References")]
         [SerializeField] private Rigidbody2D _rb;
+        [SerializeField] private HitFeedback _hitFeedback;
 
         [Header("Settings")]
         [SerializeField] private float _baseMoveSpeed = 1;
@@ -72,7 +73,7 @@ namespace DebtDungeon.Player
         // FixedUpdate is called once per frame
         private void FixedUpdate()
         {
-            if (_rb != null)
+            if (_rb != null && !_hitFeedback.IsKnockingBack)
             {
                 _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * 1; // 1 is placeholder for _terrainMultiplier
 
