@@ -10,7 +10,7 @@ namespace DebtDungeon.Player
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Rigidbody2D _rigidBody;
         [SerializeField] private float _knockbackForce = 1f;
-        [SerializeField] private float _knockbackDelay = 0.2f;
+        [SerializeField] private float _knockbackDelay = 0.5f;
         [SerializeField] private bool _isKnockingBack = false;
         public bool IsKnockingBack => _isKnockingBack;
 
@@ -33,8 +33,8 @@ namespace DebtDungeon.Player
         private void FlashSprite()
         {
             Color original = _spriteRenderer.color;
-            StartCoroutine(ChangeColor(0.1f, Color.red));
-            StartCoroutine(ChangeColor(0.2f, original));
+            StartCoroutine(ChangeColor(0f, Color.red));
+            StartCoroutine(ChangeColor(_knockbackDelay, original));
         }
         private IEnumerator ChangeColor(float delayTime, Color color)
         {
