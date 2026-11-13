@@ -16,8 +16,7 @@ namespace DebtDungeon.Player
         private Vector2 _moveInput;
         private PlayerInput _playerInput;
         private Vector3 _mouseWorldPos; 
-        [HideInInspector] public Vector2 _mouseDirection;
-
+        private Vector2 _mouseDirection;
 
         private InputAction _attackAction;
         private InputAction _ability1Action;
@@ -31,6 +30,10 @@ namespace DebtDungeon.Player
         private InputAction _openInventoryAction;
         private InputAction _openSkillsAction;
         private InputAction _pauseAction;
+
+        // Tests
+        private int _currentBurdenStep = 0;
+        private float _burdenMultiplier = 1f;
 
         private void Awake()
         {
@@ -71,7 +74,7 @@ namespace DebtDungeon.Player
         {
             if (_rb != null)
             {
-                _rb.linearVelocity = _moveInput * _baseMoveSpeed;
+                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * 1; // 1 is placeholder for _terrainMultiplier
 
                 // Rotates sprite to face destination while moving
                 if (_moveInput != Vector2.zero)
@@ -95,7 +98,6 @@ namespace DebtDungeon.Player
             _mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             _mouseWorldPos.z = 0;
             _mouseDirection = (_mouseWorldPos - transform.position).normalized;
-            //Debug.DrawRay(transform.position, _mouseDirection * 3, Color.red);
 
             // Can the player click left and right mouse button at once?
             if (Mouse.current.leftButton.wasPressedThisFrame)
@@ -173,6 +175,33 @@ namespace DebtDungeon.Player
             {
                 Quaternion targetRotation = Quaternion.LookRotation(Vector3.forward, _mouseDirection);
                 transform.rotation = Quaternion.RotateTowards(transform.rotation, targetRotation, _turnSpeed * Time.deltaTime);
+            }
+        }
+
+        public void SetBurdenSteps(int _amount)
+        {
+            _currentBurdenStep = _amount;
+            if (_currentBurdenStep > 2)
+            {
+                _currentBurdenStep = 2;
+            }
+            else if (_currentBurdenStep < 0)
+            {
+                _currentBurdenStep = 0;
+            }
+
+            // Adjust _burdenMultiplier based on current Burden Step
+            switch (_currentBurdenStep)
+            {
+                case 0:
+                    _burdenMultiplier = 1f;
+                    break;
+                case 1:
+                    _burdenMultiplier = 0.9f;
+                    break;
+                case 2:
+                    _burdenMultiplier = 0.8f;
+                    break;
             }
         }
     }
