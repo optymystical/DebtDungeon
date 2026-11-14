@@ -69,7 +69,10 @@ namespace DebtDungeon.Player
                 HitText.text += CombatRules.GetDamage(_baseDamage, _hitResult).ToString();
             }
 
-            StartCoroutine(DestroyPrefab(0.5f, newHitTextObject));
+            // Fade out to 0 alpha over 1 second
+            HitText.CrossFadeAlpha(0, 1f, true);
+
+            StartCoroutine(DestroyPrefab(1f, newHitTextObject));
         }
 
         private IEnumerator DestroyPrefab(float delayTime, GameObject newHitTextObject)
