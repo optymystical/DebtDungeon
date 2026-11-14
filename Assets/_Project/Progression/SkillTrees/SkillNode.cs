@@ -38,5 +38,17 @@ namespace DebtDungeon.Progression
 
         /// <summary>True if this node replaces an earlier ability.</summary>
         public bool IsUpgrade => _replacedAbility != null;
+
+        /// <summary>The line the UI shows on an upgrade node, e.g. "Upgrades Crackle". Null on a normal node.</summary>
+        public string GetUpgradeNote()
+        {
+            if (!IsUpgrade)
+            {
+                return null;
+            }
+
+            string replacedName = string.IsNullOrEmpty(_replacedAbility.DisplayName) ? _replacedAbility.name : _replacedAbility.DisplayName;
+            return $"Upgrades {replacedName}";
+        }
     }
 }

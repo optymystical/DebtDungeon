@@ -38,11 +38,12 @@ namespace DebtDungeon.Progression
         public CharacterSkills Skills { get; }
 
         /// <summary>
-        /// Spends one stat point to raise one of the character's stats by 1. Refused (with a reason for the UI) while
-        /// in combat, for another archetype's stat, or with no points left. Level-ups happen anytime; only spending
-        /// waits for out of combat (decided Nov 9). Pass null for combatState where there is no combat (e.g. the creator).
+        /// True if one point could go into this stat right now. Doesn't spend anything, so the stat panel can grey out
+        /// its +1 buttons and show why. Refused while in combat, for another archetype's stat, or with no points left.
+        /// Level-ups happen anytime; only spending waits for out of combat (decided Nov 9). Pass null for combatState
+        /// where there is no combat (e.g. the creator).
         /// </summary>
-        public bool TrySpendStatPoint(StatType stat, ICombatState combatState, out string refusalReason)
+        public bool CanSpendStatPoint(StatType stat, ICombatState combatState, out string refusalReason)
         {
             if (combatState != null && combatState.InCombat)
             {
@@ -56,14 +57,26 @@ namespace DebtDungeon.Progression
                 return false;
             }
 
-            if (!Progress.TryUseStatPoint())
+            if (Progress.UnspentStatPoints <= 0)
             {
                 refusalReason = "No stat points to spend.";
                 return false;
             }
 
-            Stats.SetBaseStat(stat, Stats.GetBaseStat(stat) + 1);
             refusalReason = null;
+            return true;
+        }
+
+        /// <summary>Spends one stat point to raise one stat by 1, if CanSpendStatPoint allows it.</summary>
+        public bool TrySpendStatPoint(StatType stat, ICombatState combatState, out string refusalReason)
+        {
+            if (!CanSpendStatPoint(stat, combatState, out refusalReason))
+            {
+                return false;
+            }
+
+            Progress.TryUseStatPoint();
+            Stats.SetBaseStat(stat, Stats.GetBaseStat(stat) + 1);
             return true;
         }
 
@@ -73,7 +86,21 @@ namespace DebtDungeon.Progression
             CharacterStats stats = preset.CreateStats();
             Loadout loadout = new Loadout(stats);
             preset.TryApplyStartingLoadout(loadout);
+            return Assemble(characterName, stats, loadout, curve);
+        }
 
+        /// <summary>Builds a level-1 character from the creator's blueprint: the preset's stats with the blueprint's gear.</summary>
+        public static CharacterData CreateFromBlueprint(CharacterBlueprint blueprint)
+        {
+            CharacterStats stats = blueprint.Preset.CreateStats();
+            Loadout loadout = new Loadout(stats);
+            blueprint.ApplyLoadout(loadout);
+            return Assemble(blueprint.Name, stats, loadout, blueprint.LevelCurve);
+        }
+
+        /// <summary>The shared last step of both builders: tidy the name and add fresh progress and skills.</summary>
+        private static CharacterData Assemble(string characterName, CharacterStats stats, Loadout loadout, LevelCurveDefinition curve)
+        {
             string name = string.IsNullOrWhiteSpace(characterName) ? DefaultName : characterName.Trim();
             CharacterProgress progress = new CharacterProgress(curve);
             CharacterSkills skills = new CharacterSkills(stats.Archetype, progress);

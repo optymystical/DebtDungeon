@@ -59,6 +59,27 @@ namespace DebtDungeon.Progression
             return !_requiresEquipment || loadout.HasTag(_requiredTag);
         }
 
+        /// <summary>The line the UI shows for the gear this tree needs, e.g. "Needs a Bladed weapon". Null if none.</summary>
+        public string GetEquipmentNote()
+        {
+            if (!_requiresEquipment)
+            {
+                return null;
+            }
+
+            switch (_requiredTag)
+            {
+                case EquipmentTag.Bladed:
+                    return "Needs a Bladed weapon";
+                case EquipmentTag.LightArmor:
+                    return "Needs Light armor";
+                case EquipmentTag.MediumArmor:
+                    return "Needs Medium armor";
+                default:
+                    return $"Needs {_requiredTag} gear";
+            }
+        }
+
         /// <summary>
         /// The abilities a character owns from this tree after unlocking the first unlockedNodeCount nodes.
         /// Walks the nodes in order: an upgrade node removes the ability it replaces, then every node adds its own.

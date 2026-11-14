@@ -47,6 +47,44 @@ namespace DebtDungeon.Progression
         }
 
         /// <summary>
+        /// How one node should look: Owned if bought, Next if it's the next one to buy, Locked otherwise.
+        /// nodeIndex counts from 0.
+        /// </summary>
+        public SkillNodeState GetNodeState(SkillTreeDefinition tree, int nodeIndex)
+        {
+            int unlocked = GetUnlockedCount(tree);
+
+            if (nodeIndex < unlocked)
+            {
+                return SkillNodeState.Owned;
+            }
+
+            return nodeIndex == unlocked ? SkillNodeState.Next : SkillNodeState.Locked;
+        }
+
+        /// <summary>
+        /// Every ability bought from any tree, each marked active or inactive for this loadout. Feeds the
+        /// Owned Abilities panel. (The AbilityGranter decides what is actually granted; this is for display.)
+        /// </summary>
+        public List<OwnedSkillAbility> GetOwnedAbilities(Loadout loadout)
+        {
+            List<OwnedSkillAbility> rows = new List<OwnedSkillAbility>();
+
+            foreach (SkillTreeDefinition tree in OwnedTrees)
+            {
+                bool isActive = tree.IsUsableWith(loadout);
+                string reason = isActive ? null : tree.GetEquipmentNote();
+
+                foreach (AbilityDefinition ability in GetOwnedAbilities(tree))
+                {
+                    rows.Add(new OwnedSkillAbility(ability, tree, isActive, reason));
+                }
+            }
+
+            return rows;
+        }
+
+        /// <summary>
         /// True if the next node of this tree could be bought right now. Doesn't spend anything, so the UI can
         /// use it to grey out the Unlock button and show the reason. Pass null for combatState where there is no combat.
         /// </summary>

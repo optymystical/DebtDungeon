@@ -4,6 +4,7 @@
     "references": [
         "DebtDungeon.Core",
         "DebtDungeon.Game",
+        "DebtDungeon.Progression",
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner"
     ],
