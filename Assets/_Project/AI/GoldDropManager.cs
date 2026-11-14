@@ -3,9 +3,10 @@ using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {
+    
     /// <summary>
-    /// Centralized manager listening to agent deaths to instantiate gold drops.
-    /// Prevents individual unit prefabs from needing serialized references to the economy coin prefab.
+    /// Event-driven economy manager that listens to Core's GameEvents.ActorKilled
+    /// and spawns timed gold drops at kill.Position without singletons.
     /// </summary>
     public class GoldDropManager : MonoBehaviour
     {
@@ -15,35 +16,35 @@ namespace DebtDungeon.AI
         [Tooltip("The GoldDrop prefab placed in world space upon actor death.")]
         [SerializeField] private GameObject _goldPrefab;
 
-        public static GoldDropManager Instance { get; private set; }
-
-        private void Awake()
+        private void OnEnable()
         {
-            if (Instance != null && Instance != this)
-            {
-                Destroy(gameObject);
-                return;
-            }
-            Instance = this;
+            GameEvents.ActorKilled += HandleActorKilled;
         }
 
-        /// <summary>
-        /// Instantiates a gold drop in world space with the specified reward amount.
-        /// </summary>
-        public void SpawnGold(Vector3 position, int amount)
+        private void OnDisable()
         {
+            GameEvents.ActorKilled -= HandleActorKilled;
+        }
+
+        private void HandleActorKilled(KillInfo kill)
+        {
+            if (kill.GoldReward <= 0)
+            {
+                return;
+            }
+
             if (_goldPrefab == null)
             {
                 Debug.LogWarning("[GoldDropManager] Gold prefab is not assigned in the Inspector.", this);
                 return;
             }
 
-            GameObject goldObj = Instantiate(_goldPrefab, position, Quaternion.identity);
+            GameObject goldObj = Instantiate(_goldPrefab, kill.Position, Quaternion.identity);
 
             GoldDropItem item = goldObj.GetComponent<GoldDropItem>();
             if (item != null)
             {
-                item.Initialize(amount, DefaultLifetime);
+                item.Initialize(kill.GoldReward, DefaultLifetime);
             }
             else
             {
