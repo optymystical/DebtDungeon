@@ -3,24 +3,37 @@ using UnityEngine;
 using UnityEngine.InputSystem;
 using System.Collections;
 using TMPro;
+using System.Collections.Generic;
 
 namespace DebtDungeon.Player
 {
     public class TestAttack : MonoBehaviour
     {
-        [SerializeField] private PlayerController _player;
-        [SerializeField] private GameObject _HitTextObject;
-        [SerializeField] private TextMeshPro _HitText;
+        [SerializeField] private Transform _playerTransform;
+        [SerializeField] private GameObject _HitTextPrefab;
         [SerializeField] private int _accuracy = 100;
         [SerializeField] private int _baseDamage = 10;
-
+        private List<GameObject> _hitTextObjects;
         private HitResult _hitResult;
+
+        private void Awake()
+        {
+            _hitTextObjects = new List<GameObject>();
+        }
 
         private void Update()
         {
-            _HitText.transform.rotation = Camera.main.transform.rotation;
+            // Locks any hit text objects rotation to the camera's
 
-            if (Keyboard.current.spaceKey.wasPressedThisFrame) // fakes Attack
+            if (_hitTextObjects != null) { 
+                foreach (GameObject hitTextObject in _hitTextObjects)
+                {
+                    hitTextObject.transform.rotation = Camera.main.transform.rotation;
+                }
+            }
+
+            // Fakes Attack
+            if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
                 RollToHit();
             }
@@ -28,41 +41,42 @@ namespace DebtDungeon.Player
 
         private void RollToHit()
         {
-            _HitTextObject.SetActive(true);
+            // Instantiate prefab as a child of player
+            GameObject newHitTextObject = Instantiate(_HitTextPrefab, _playerTransform);
+            _hitTextObjects.Add(newHitTextObject);
+            TextMeshPro HitText = newHitTextObject.GetComponent<TextMeshPro>();
+
             _hitResult = CombatRules.RollHit(_accuracy);
 
             switch (_hitResult)
             {
                 case HitResult.Critical:
-                    _HitText.text = "Critical ";
-                    _HitText.color = Color.yellow;
+                    HitText.text = "Critical ";
+                    HitText.color = Color.yellow;
                     break;
                 case HitResult.Hit:
-                    _HitText.text = "Hit ";
-                    _HitText.color = Color.white;
+                    HitText.text = "Hit ";
+                    HitText.color = Color.white;
                     break;
                 case HitResult.Miss:
-                    _HitText.text = "Miss";
-                    _HitText.color = Color.red;
+                    HitText.text = "Miss";
+                    HitText.color = Color.red;
                     break;
             }
 
-            DisplayDamage(CombatRules.GetDamage(_baseDamage, _hitResult));
-            StartCoroutine(SetInactive(0.5f));
-        }
-
-        private IEnumerator SetInactive(float delayTime)
-        {
-            yield return new WaitForSeconds(delayTime);
-            _HitTextObject.SetActive(false);
-        }
-
-        private void DisplayDamage(int damage)
-        {
             if (_hitResult != HitResult.Miss)
             {
-                _HitText.text += damage.ToString();
+                HitText.text += CombatRules.GetDamage(_baseDamage, _hitResult).ToString();
             }
+
+            StartCoroutine(DestroyPrefab(0.5f, newHitTextObject));
+        }
+
+        private IEnumerator DestroyPrefab(float delayTime, GameObject newHitTextObject)
+        {
+            yield return new WaitForSeconds(delayTime);
+            _hitTextObjects.Remove(newHitTextObject);
+            Destroy(newHitTextObject);
         }
     }
 }
