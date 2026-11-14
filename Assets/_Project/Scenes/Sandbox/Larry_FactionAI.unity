@@ -814,7 +814,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c7924da2b36395b4cb7adf78ec345f6f, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.AIDebugController
-  _showOverlay: 0
+  _showOverlay: 1
   _statsRefreshInterval: 0.25
 --- !u!4 &645208846
 Transform:
@@ -954,7 +954,17 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1 &1293096741
+--- !u!4 &1293096743 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+  m_PrefabInstance: {fileID: 2972612384952982413}
+  m_PrefabAsset: {fileID: 0}
+--- !u!4 &1550208000 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+  m_PrefabInstance: {fileID: 5951351315903613671}
+  m_PrefabAsset: {fileID: 0}
+--- !u!1 &1643868490
 GameObject:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -962,242 +972,76 @@ GameObject:
   m_PrefabAsset: {fileID: 0}
   serializedVersion: 6
   m_Component:
-  - component: {fileID: 1293096743}
-  - component: {fileID: 1293096742}
-  - component: {fileID: 1293096744}
-  - component: {fileID: 1293096745}
+  - component: {fileID: 1643868493}
+  - component: {fileID: 1643868492}
+  - component: {fileID: 1643868491}
   m_Layer: 0
-  m_Name: GoblinSpawner
+  m_Name: _FactionFloorDirector
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &1293096742
+--- !u!114 &1643868491
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293096741}
+  m_GameObject: {fileID: 1643868490}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dff9cc0c09b62f4890084ce78a55a8b, type: 3}
+  m_Script: {fileID: 11500000, guid: bf08efa77356e0547b2ba4fcae421c46, type: 3}
   m_Name: 
-  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionSpawner2D
-  _displayName: Goblin Camp
-  _xpReward: 50
-  _goldReward: 25
-  _factionData: {fileID: 0}
-  _residentPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
-  _guardPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
-  _residentConfig: {fileID: 0}
-  _guardConfig: {fileID: 0}
-  _rivalTerritoryTarget: {fileID: 1550208000}
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.GoldDropManager
+  _goldPrefab: {fileID: 4787719067516737484, guid: a8d57c190e5b9824ca7c024f40473550, type: 3}
+--- !u!114 &1643868492
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1643868490}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4a9796df3e8834bbf7dfdbe095e957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionFloorDirector
+  _factionData: {fileID: 11400000, guid: 66f39528ab4c78248af3525dd1cdb016, type: 2}
   _obstacleMask:
     serializedVersion: 2
     m_Bits: 512
-  _maxResidents: 6
-  _maxGuards: 2
-  _spawnInterval: 0.5
---- !u!4 &1293096743
+  _factionSets:
+  - Faction: 2
+    SpawnerPrefab: {fileID: 3260601129962617940, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+    ResidentPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
+    GuardPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
+    ResidentConfig: {fileID: 11400000, guid: 0f06e530e2ca480419760b6b96962d23, type: 2}
+    GuardConfig: {fileID: 11400000, guid: 0f06e530e2ca480419760b6b96962d23, type: 2}
+  - Faction: 3
+    SpawnerPrefab: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+    ResidentPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
+    GuardPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
+    ResidentConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
+    GuardConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
+  _maxResidentsPerFaction: 10
+  _maxGuardsPerFaction: 4
+  _raidIntervalSeconds: 10
+--- !u!4 &1643868493
 Transform:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293096741}
+  m_GameObject: {fileID: 1643868490}
   serializedVersion: 2
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -7, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_ConstrainProportionsScale: 0
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1293096744
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293096741}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1293096745
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1293096741}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
-  _faction: 0
-  _maxHealth: 100
-  _invulnerabilityDuration: 0
---- !u!1 &1550207998
-GameObject:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  serializedVersion: 6
-  m_Component:
-  - component: {fileID: 1550208000}
-  - component: {fileID: 1550207999}
-  - component: {fileID: 1550208001}
-  - component: {fileID: 1550208002}
-  m_Layer: 0
-  m_Name: SpiderSpawner
-  m_TagString: Untagged
-  m_Icon: {fileID: 0}
-  m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
-  m_IsActive: 1
---- !u!114 &1550207999
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550207998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 3dff9cc0c09b62f4890084ce78a55a8b, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionSpawner2D
-  _displayName: Goblin Camp
-  _xpReward: 50
-  _goldReward: 25
-  _factionData: {fileID: 0}
-  _residentPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
-  _guardPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
-  _residentConfig: {fileID: 0}
-  _guardConfig: {fileID: 0}
-  _rivalTerritoryTarget: {fileID: 1293096743}
-  _obstacleMask:
-    serializedVersion: 2
-    m_Bits: 512
-  _maxResidents: 6
-  _maxGuards: 2
-  _spawnInterval: 0.5
---- !u!4 &1550208000
-Transform:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550207998}
-  serializedVersion: 2
-  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 7, y: 0, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
-  m_ConstrainProportionsScale: 0
-  m_Children: []
-  m_Father: {fileID: 0}
-  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!61 &1550208001
-BoxCollider2D:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550207998}
-  m_Enabled: 1
-  serializedVersion: 3
-  m_Density: 1
-  m_Material: {fileID: 0}
-  m_IncludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_ExcludeLayers:
-    serializedVersion: 2
-    m_Bits: 0
-  m_LayerOverridePriority: 0
-  m_ForceSendLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ForceReceiveLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_ContactCaptureLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_CallbackLayers:
-    serializedVersion: 2
-    m_Bits: 4294967295
-  m_IsTrigger: 0
-  m_UsedByEffector: 0
-  m_CompositeOperation: 0
-  m_CompositeOrder: 0
-  m_Offset: {x: 0, y: 0}
-  m_SpriteTilingProperty:
-    border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0, y: 0}
-    oldSize: {x: 0, y: 0}
-    newSize: {x: 0, y: 0}
-    adaptiveTilingThreshold: 0
-    drawMode: 0
-    adaptiveTiling: 0
-  m_AutoTiling: 0
-  m_Size: {x: 1, y: 1}
-  m_EdgeRadius: 0
---- !u!114 &1550208002
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1550207998}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
-  _faction: 0
-  _maxHealth: 100
-  _invulnerabilityDuration: 0
 --- !u!1 &1781141983
 GameObject:
   m_ObjectHideFlags: 0
@@ -1392,7 +1236,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1995273974
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1572,7 +1416,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
-  _faction: 0
+  _faction: 1
   _maxHealth: 100
   _invulnerabilityDuration: 0
 --- !u!1 &2052015168
@@ -1758,6 +1602,136 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.GoldDropManager
   _goldPrefab: {fileID: 4787719067516737484, guid: a8d57c190e5b9824ca7c024f40473550, type: 3}
+--- !u!1001 &2972612384952982413
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3260601129962617940, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_Name
+      value: GoblinSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _rivalTerritoryTarget
+      value: 
+      objectReference: {fileID: 1550208000}
+    - target: {fileID: 4710787936106058159, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _faction
+      value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+--- !u!1001 &5951351315903613671
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 142783305003954384, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _faction
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _rivalTerritoryTarget
+      value: 
+      objectReference: {fileID: 1293096743}
+    - target: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_Name
+      value: SpiderSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -1769,7 +1743,8 @@ SceneRoots:
   - {fileID: 2052015171}
   - {fileID: 337167495}
   - {fileID: 1049391217}
-  - {fileID: 1293096743}
-  - {fileID: 1550208000}
+  - {fileID: 2972612384952982413}
+  - {fileID: 5951351315903613671}
   - {fileID: 1995273979}
   - {fileID: 645208846}
+  - {fileID: 1643868493}

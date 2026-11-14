@@ -1,6 +1,7 @@
 using UnityEngine;
 using System.Collections.Generic;
 using DebtDungeon.Core;
+using System;
 
 
 
@@ -31,14 +32,16 @@ namespace DebtDungeon.AI
         [SerializeField] private LayerMask _obstacleMask;
 
         [Header("Population Caps")]
-        [SerializeField, Min(1)] private int _maxResidents = 6;
-        [SerializeField, Min(1)] private int _maxGuards = 2;
+        [SerializeField, Min(1)] private int _fallbackMaxResidents = 6;
+        [SerializeField, Min(1)] private int _fallbackMaxGuards = 2;
         [SerializeField, Min(0.5f)] private float _spawnInterval = 3.5f;
 
         private Health _health;
         private IFloorQuery _floor;
-        private readonly List<FactionAI2D> _activeResidents = new List<FactionAI2D>();
-        private readonly List<FactionAI2D> _activeGuards = new List<FactionAI2D>();
+        private Func<Faction, UnitRole, bool> _canSpawnMapWideQuery;
+        private Action<Faction, FactionAI2D> _onUnitSpawnedCallback;
+        private readonly List<FactionAI2D> _localResidents = new List<FactionAI2D>();
+        private readonly List<FactionAI2D> _localGuards = new List<FactionAI2D>();
         private float _spawnTimer;
 
         // IKillReward Implementation
@@ -47,10 +50,12 @@ namespace DebtDungeon.AI
         public int GoldReward => _goldReward;
 
         public Faction Faction => _health != null ? _health.Faction : Faction.Neutral;
-        public IReadOnlyList<FactionAI2D> ActiveResidents => _activeResidents;
-        public IReadOnlyList<FactionAI2D> ActiveGuards => _activeGuards;
-        public int TotalLivingCount => _activeResidents.Count + _activeGuards.Count;
         public bool IsDestroyed => _health == null || !_health.IsAlive;
+
+        //public IReadOnlyList<FactionAI2D> ActiveResidents => _activeResidents;
+        //public IReadOnlyList<FactionAI2D> ActiveGuards => _activeGuards;
+        //public int TotalLivingCount => _activeResidents.Count + _activeGuards.Count;
+        //public bool IsDestroyed => _health == null || !_health.IsAlive;
 
         private void Awake()
         {
@@ -78,9 +83,13 @@ namespace DebtDungeon.AI
             IFloorQuery floor,
             FactionData factionData,
             LayerMask obstacleMask,
-            Vector3 rivalTerritory)
+            Vector3 rivalTerritory,
+            Func<Faction, UnitRole, bool> canSpawnMapWideQuery = null,
+            Action<Faction, FactionAI2D> onUnitSpawnedCallback = null)
         {
             _floor = floor;
+            _canSpawnMapWideQuery = canSpawnMapWideQuery;
+            _onUnitSpawnedCallback = onUnitSpawnedCallback;
 
             if (factionData != null)
             {
@@ -104,8 +113,8 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            _activeResidents.RemoveAll(u => u == null || !u.IsAlive);
-            _activeGuards.RemoveAll(u => u == null || !u.IsAlive);
+            _localResidents.RemoveAll(u => u == null || !u.IsAlive);
+            _localGuards.RemoveAll(u => u == null || !u.IsAlive);
 
             _spawnTimer -= Time.deltaTime;
             if (_spawnTimer <= 0f)
@@ -117,17 +126,28 @@ namespace DebtDungeon.AI
 
         private void TrySpawnNextUnit()
         {
-            if (_activeGuards.Count < _maxGuards)
+            if (CanSpawnRole(UnitRole.Guard))
             {
-                SpawnUnit(UnitRole.Guard, _guardPrefab, _guardConfig, _activeGuards);
+                SpawnUnit(UnitRole.Guard, _guardPrefab, _guardConfig, _localGuards);
             }
-            else if (_activeResidents.Count < _maxResidents)
+            else if (CanSpawnRole(UnitRole.Resident))
             {
-                SpawnUnit(UnitRole.Resident, _residentPrefab, _residentConfig, _activeResidents);
+                SpawnUnit(UnitRole.Resident, _residentPrefab, _residentConfig, _localResidents);
             }
         }
+        private bool CanSpawnRole(UnitRole role)
+        {
+            if (_canSpawnMapWideQuery != null)
+            {
+                return _canSpawnMapWideQuery(Faction, role);
+            }
 
-        private void SpawnUnit(UnitRole role, GameObject prefab, UnitConfig config, List<FactionAI2D> trackerList)
+            return role == UnitRole.Guard
+                ? _localGuards.Count < _fallbackMaxGuards
+                : _localResidents.Count < _fallbackMaxResidents;
+        }
+
+        private void SpawnUnit(UnitRole role, GameObject prefab, UnitConfig config, List<FactionAI2D> localTracker)
         {
             if (prefab == null)
             {
@@ -156,7 +176,8 @@ namespace DebtDungeon.AI
 
                 Vector2 targetTerritory = _rivalTerritoryTarget != null ? (Vector2)_rivalTerritoryTarget.position : Vector2.zero;
                 ai.ConfigureRole(role, transform.position, _obstacleMask, _factionData, targetTerritory);
-                trackerList.Add(ai);
+                localTracker.Add(ai);
+                _onUnitSpawnedCallback?.Invoke(Faction,ai);
             }
         }
 

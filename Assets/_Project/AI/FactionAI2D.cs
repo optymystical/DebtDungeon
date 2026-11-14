@@ -1,5 +1,4 @@
 using UnityEngine;
-//using System.Collections;
 using System.Collections.Generic;
 using System;
 using DebtDungeon.Core;
@@ -30,6 +29,9 @@ namespace DebtDungeon.AI
     [RequireComponent(typeof(CombatAgent2D))]
     public class FactionAI2D : MonoBehaviour
     {
+        private const float ScanIntervalSeconds = 0.2f;
+        private const int MaxScanColliders = 24;
+
         [Header("Diplomacy & Masks")]
         [SerializeField] private FactionData _factionData;
         [SerializeField] private LayerMask _targetMask;
@@ -53,7 +55,7 @@ namespace DebtDungeon.AI
 
         private CombatAgent2D _agent;
         private AIState _currentState = AIState.Wander;
-        private CombatAgent2D _currentTarget;
+        private Health _currentTarget;
 
         private Vector2 _spawnAnchor;
         private Vector2 _rivalTerritoryOrigin;
@@ -64,6 +66,10 @@ namespace DebtDungeon.AI
         private int _waypointIndex;
         private Vector2 _lastPathTargetPos = new Vector2(float.MaxValue, float.MaxValue);
         private float _repathTimer;
+        private float _scanTimer;
+
+        private readonly Collider2D[] _scanBuffer = new Collider2D[MaxScanColliders];
+        private ContactFilter2D _targetFilter;
 
         private float _nextAttackTime;
         private float _telegraphTimer;
@@ -80,6 +86,12 @@ namespace DebtDungeon.AI
         private void Awake()
         {
             _agent = GetComponent<CombatAgent2D>();
+            _targetFilter = new ContactFilter2D
+            {
+                useLayerMask = true,
+                layerMask = _targetMask,
+                useTriggers = true
+            };
         }
 
         private void Start()
@@ -90,6 +102,8 @@ namespace DebtDungeon.AI
                 _hasSpawnAnchor = true;
             }
 
+            // Stagger initial scan timers
+            _scanTimer = UnityEngine.Random.Range(0f, ScanIntervalSeconds);
             PickNewWanderDestination();
         }
 
@@ -166,6 +180,7 @@ namespace DebtDungeon.AI
             }
 
             _repathTimer -= Time.deltaTime;
+            _scanTimer -= Time.deltaTime;
 
             EvaluateStateTransitions();
             ExecuteStateLogic();
@@ -236,7 +251,11 @@ namespace DebtDungeon.AI
             // 4. Target acquisition & line-of-sight check
             if (_currentTarget == null || !_currentTarget.IsAlive)
             {
-                _currentTarget = ScanForHostileTarget();
+                if (_scanTimer <= 0f)
+                {
+                    _scanTimer = ScanIntervalSeconds;
+                    _currentTarget = ScanForHostileTarget();
+                }
             }
             else if (!HasLineOfSight(_currentTarget.transform.position))
             {
@@ -390,17 +409,17 @@ namespace DebtDungeon.AI
             int finalDamage = CombatRules.GetDamage(baseDamage, hitResult);
             DamageType damageType = _agent.Stats != null ? _agent.Stats.DamageType : DamageType.Physical;
             bool isCritical = hitResult == HitResult.Critical;
+            
 
-            float knockback = _agent.Stats != null ? _agent.Stats.KnockbackForce : 5f;
-            Vector2 hitDir = ((Vector2)_currentTarget.transform.position - (Vector2)transform.position).normalized;
-
-            _currentTarget.QueueKnockback(hitDir, knockback);
-
-            if (_currentTarget.TryGetComponent(out IDamageable damageable))
+            if (_currentTarget.TryGetComponent(out CombatAgent2D targetAgent))
             {
-                DamageInfo damageInfo = new DamageInfo(finalDamage, damageType, gameObject, _agent.Faction, isCritical);
-                damageable.TakeDamage(damageInfo);
+                float knockback = _agent.Stats != null ? _agent.Stats.KnockbackForce : 5f;
+                Vector2 hitDir = ((Vector2)_currentTarget.transform.position - (Vector2)transform.position).normalized;
+                targetAgent.QueueKnockback(hitDir, knockback);
             }
+
+            DamageInfo damageInfo = new DamageInfo(finalDamage, damageType, gameObject, _agent.Faction, isCritical);
+            _currentTarget.TakeDamage(damageInfo);
         }
 
         private void HandleAttackedBy(GameObject attackerObj)
@@ -410,40 +429,49 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            CombatAgent2D attacker = attackerObj.GetComponent<CombatAgent2D>();
-            if (attacker == null || !attacker.IsAlive)
+            Health attackerHealth = attackerObj.GetComponentInParent<Health>();
+            if (attackerHealth == null || !attackerHealth.IsAlive)
             {
                 return;
             }
 
-            if (attacker.Faction == _agent.Faction)
+            if (attackerHealth.Faction == _agent.Faction)
             {
                 return;
             }
 
-            if (_currentTarget == null || attacker.Faction == Faction.Player)
+            if (_currentTarget == null || attackerHealth.Faction == Faction.Player)
             {
-                _currentTarget = attacker;
+                _currentTarget = attackerHealth;
                 if (_currentState != AIState.Attack && _currentState != AIState.Flee)
                 {
                     TransitionToState(AIState.Chase);
-                    ForceRepath(attacker.transform.position);
+                    ForceRepath(attackerHealth.transform.position);
                 }
             }
         }
 
-        private CombatAgent2D ScanForHostileTarget()
+        private Health ScanForHostileTarget()
         {
             float sightRadius = _agent.Stats != null ? _agent.Stats.SightRadius : 6f;
-            Collider2D[] hits = Physics2D.OverlapCircleAll(transform.position, sightRadius, _targetMask);
+            _targetFilter.useLayerMask = _targetMask.value != 0;
+            _targetFilter.layerMask = _targetMask;
 
-            CombatAgent2D bestTarget = null;
+            int hitCount = Physics2D.OverlapCircle(transform.position, sightRadius, _targetFilter, _scanBuffer);
+
+            Health bestTarget = null;
             float closestDist = float.MaxValue;
 
-            for (int i = 0; i < hits.Length; i++)
+            for (int i = 0; i < hitCount; i++)
             {
-                CombatAgent2D candidate = hits[i].GetComponent<CombatAgent2D>();
-                if (candidate == null || candidate == _agent || !candidate.IsAlive)
+                Collider2D col = _scanBuffer[i];
+                if (col == null || col.gameObject == gameObject)
+                {
+                    continue;
+                }
+
+                Health candidate = col.GetComponentInParent<Health>();
+                if (candidate == null || candidate == _agent.Health || !candidate.IsAlive)
                 {
                     continue;
                 }

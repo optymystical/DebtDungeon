@@ -53,11 +53,9 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            // Layer 6: Player or player component check
-            if (other.gameObject.layer == 6 || other.CompareTag("Player") || other.GetComponent<Player2D>() != null)
+            IDamageable damageable = other.GetComponentInParent<IDamageable>();
+            if (damageable != null && damageable.IsAlive && damageable.Faction == Faction.Player)
             {
-                // In sandbox: log reward. When Core economy merges: add to Player Inventory/Bank
-                Debug.Log($"[Economy] Player collected {_goldAmount} gold!");
                 _collected = true;
                 GameEvents.RaiseGoldCollected(_goldAmount);
                 Destroy(gameObject);
