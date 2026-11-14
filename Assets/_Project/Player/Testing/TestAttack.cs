@@ -30,6 +30,12 @@ namespace DebtDungeon.Player
             if (_hitTextObjects != null) { 
                 foreach (GameObject hitTextObject in _hitTextObjects)
                 {
+                    // Reset _elapsed for each HitText
+                    if (_elapsed >= _lifetime)
+                    {
+                        _elapsed = 0f;
+                    }
+
                     // Locks rotation to the camera's
                     hitTextObject.transform.rotation = Camera.main.transform.rotation;
 
