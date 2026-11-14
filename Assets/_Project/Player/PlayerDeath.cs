@@ -5,21 +5,21 @@ namespace DebtDungeon.Player
 {
     public class PlayerDeath : MonoBehaviour
     {
+        [SerializeField] private Health _eventRaiser;
         public void KillPlayer(KillInfo info)
         {
-            Destroy(info.Victim);
+            info.Victim.SetActive(false);
+            info.Victim.GetComponent<Rigidbody2D>().linearVelocity = Vector2.zero;
         }
 
         private void OnEnable()
         {
-            //GameEvents.ActorKilled += KillPlayer;
-            GameEvents.PlayerDied += KillPlayer;
+            _eventRaiser.Died += KillPlayer;
         }
 
         private void OnDisable()
         {
-            //GameEvents.ActorKilled -= KillPlayer;
-            GameEvents.PlayerDied -= KillPlayer;
+            _eventRaiser.Died -= KillPlayer;
         }
     }
 }
