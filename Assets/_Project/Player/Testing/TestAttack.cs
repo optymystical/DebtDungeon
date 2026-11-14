@@ -12,6 +12,7 @@ namespace DebtDungeon.Player
         [SerializeField] private GameObject _HitTextObject;
         [SerializeField] private TextMeshPro _HitText;
         [SerializeField] private int _accuracy = 100;
+        [SerializeField] private int _baseDamage = 10;
 
         private HitResult _hitResult;
 
@@ -21,32 +22,47 @@ namespace DebtDungeon.Player
 
             if (Keyboard.current.spaceKey.wasPressedThisFrame) // fakes Attack
             {
-                _HitTextObject.SetActive(true);
-                _hitResult = CombatRules.RollHit(_accuracy); 
-
-                switch (_hitResult)
-                {
-                    case HitResult.Critical:
-                        _HitText.text = "Critical";
-                        _HitText.color = Color.yellow;
-                        break;
-                    case HitResult.Hit:
-                        _HitText.text = "Hit";
-                        _HitText.color = Color.white;
-                        break;
-                    case HitResult.Miss:
-                        _HitText.text = "Miss";
-                        _HitText.color = Color.red;
-                        break;
-                }
-
-                StartCoroutine(SetInactive(0.5f));
+                RollToHit();
             }
         }
+
+        private void RollToHit()
+        {
+            _HitTextObject.SetActive(true);
+            _hitResult = CombatRules.RollHit(_accuracy);
+
+            switch (_hitResult)
+            {
+                case HitResult.Critical:
+                    _HitText.text = "Critical ";
+                    _HitText.color = Color.yellow;
+                    break;
+                case HitResult.Hit:
+                    _HitText.text = "Hit ";
+                    _HitText.color = Color.white;
+                    break;
+                case HitResult.Miss:
+                    _HitText.text = "Miss";
+                    _HitText.color = Color.red;
+                    break;
+            }
+
+            DisplayDamage(CombatRules.GetDamage(_baseDamage, _hitResult));
+            StartCoroutine(SetInactive(0.5f));
+        }
+
         private IEnumerator SetInactive(float delayTime)
         {
             yield return new WaitForSeconds(delayTime);
             _HitTextObject.SetActive(false);
+        }
+
+        private void DisplayDamage(int damage)
+        {
+            if (_hitResult != HitResult.Miss)
+            {
+                _HitText.text += damage.ToString();
+            }
         }
     }
 }
