@@ -3,6 +3,13 @@
 Every Core change gets a version bump and an entry here. "Affects" lists module numbers:
 1 FloorGen, 2 AI, 3 Player & Combat, 4 Progression, UI = HUD/menus.
 
+## v1.4 — Nov 13, 2026
+
+- New `GameState` enum (MainMenu, CharacterCreation, Playing, Paused, Dead, Won). *(3, UI)*
+- `GameEvents.GameStateChanged(previous, current)` and `GameEvents.CurrentGameState` (the last state announced).
+  Raised only by Game's state machine. Player should ignore attack and ability input unless the state is Playing,
+  since `Time.timeScale = 0` stops movement but not input read in `Update`. Additive: nothing existing changed. *(3, UI)*
+
 ## v1.3 — Nov 12, 2026
 
 - `Health.RescaleMaxHealth(int)`: changes max HP and keeps the same fraction of current HP (half stays half;
