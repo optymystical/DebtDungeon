@@ -13,22 +13,32 @@ namespace DebtDungeon.Player
         [SerializeField] private GameObject _HitTextPrefab;
         [SerializeField] private int _accuracy = 100;
         [SerializeField] private int _baseDamage = 10;
+        [SerializeField] private float _lifetime = 1.0f;
+        [SerializeField] private float _floatSpeed = 1.5f;
         private List<GameObject> _hitTextObjects;
+        private float _elapsed;
         private HitResult _hitResult;
 
         private void Awake()
         {
             _hitTextObjects = new List<GameObject>();
+            _elapsed = 0f;
         }
 
         private void Update()
         {
-            // Locks any hit text objects rotation to the camera's
-
             if (_hitTextObjects != null) { 
                 foreach (GameObject hitTextObject in _hitTextObjects)
                 {
+                    // Locks rotation to the camera's
                     hitTextObject.transform.rotation = Camera.main.transform.rotation;
+
+                    // Moves upward
+                    hitTextObject.transform.position += Vector3.up * _floatSpeed * Time.deltaTime;
+
+                    // Fades out
+                    _elapsed += Time.deltaTime;
+                    hitTextObject.GetComponent<TextMeshPro>().alpha = Mathf.Clamp01(1f - (_elapsed / _lifetime));
                 }
             }
 
@@ -69,10 +79,7 @@ namespace DebtDungeon.Player
                 HitText.text += CombatRules.GetDamage(_baseDamage, _hitResult).ToString();
             }
 
-            // Fade out to 0 alpha over 1 second
-            HitText.CrossFadeAlpha(0, 1f, true);
-
-            StartCoroutine(DestroyPrefab(1f, newHitTextObject));
+            StartCoroutine(DestroyPrefab(_lifetime, newHitTextObject));
         }
 
         private IEnumerator DestroyPrefab(float delayTime, GameObject newHitTextObject)
