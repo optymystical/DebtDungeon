@@ -6,14 +6,19 @@ namespace DebtDungeon.Player
 {
     public class HitFeedback : MonoBehaviour
     {
-        [SerializeField] private Health _eventRaiser;
+        [SerializeField] private Health _Health;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Rigidbody2D _rigidBody;
         [SerializeField] private float _knockbackForce = 1f;
         [SerializeField] private float _knockbackDelay = 0.5f;
-        [SerializeField] private bool _isKnockingBack = false;
+        private Color _originalColor;
+        private bool _isKnockingBack = false;
         public bool IsKnockingBack => _isKnockingBack;
 
+        private void Awake()
+        {
+            _originalColor = _spriteRenderer.color;
+        }
         public void PlayerHit(DamageInfo info, int damage)
         {
             FlashSprite();
@@ -22,19 +27,18 @@ namespace DebtDungeon.Player
 
         private void OnEnable()
         {
-            _eventRaiser.Damaged += PlayerHit;
+            _Health.Damaged += PlayerHit;
         }
 
         private void OnDisable()
         {
-            _eventRaiser.Damaged -= PlayerHit;
+            _Health.Damaged -= PlayerHit;
         }
 
         private void FlashSprite()
         {
-            Color original = _spriteRenderer.color;
-            StartCoroutine(ChangeColor(0f, Color.red));
-            StartCoroutine(ChangeColor(_knockbackDelay, original));
+            _spriteRenderer.color = Color.red;
+            StartCoroutine(ChangeColor(_knockbackDelay, _originalColor));
         }
         private IEnumerator ChangeColor(float delayTime, Color color)
         {
@@ -44,15 +48,20 @@ namespace DebtDungeon.Player
 
         private void Knockback(GameObject source)
         {
+            if (source == null)
+            {
+                return;
+            }
+
             _isKnockingBack = true;
 
             Vector2 direction = (transform.position - source.transform.position).normalized;
             _rigidBody.AddForce(direction * _knockbackForce, ForceMode2D.Impulse);
 
-            StartCoroutine(resetKnockback());
+            StartCoroutine(ResetKnockback());
         }
 
-        private IEnumerator resetKnockback()
+        private IEnumerator ResetKnockback()
         {
             yield return new WaitForSeconds(_knockbackDelay);
             _isKnockingBack = false;

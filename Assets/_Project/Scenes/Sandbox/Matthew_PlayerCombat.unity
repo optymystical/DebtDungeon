@@ -1312,7 +1312,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: c739c3fe2be6a5449b2b6214bf8b530d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _eventRaiser: {fileID: 1784213313}
+  _Health: {fileID: 1784213313}
 --- !u!114 &1784213316
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1361,12 +1361,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 19223bfa001942a408c4cddb37f6e9b2, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
-  _eventRaiser: {fileID: 1784213313}
+  _Health: {fileID: 1784213313}
   _spriteRenderer: {fileID: 1784213309}
   _rigidBody: {fileID: 1784213311}
   _knockbackForce: 10
   _knockbackDelay: 0.2
-  _isKnockingBack: 0
 --- !u!1 &2001041211
 GameObject:
   m_ObjectHideFlags: 0
