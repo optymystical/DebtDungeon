@@ -27,3 +27,4 @@
 
 ## Project settings to use
 Physics layers `Goblin`, `Spider` (and `Walls` for line of sight); sorting layer `Actors`.
+Larry was here
