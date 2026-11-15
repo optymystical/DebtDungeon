@@ -1,0 +1,24 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 43d5190cce0a4257833cb7ed6c3ac8dc, type: 3}
+  m_Name: Preset_Vanguard
+  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PresetDefinition
+  _displayName: Vanguard
+  _description: "Martial Defense. A greatsword and a leather coat: slow, hard-hitting, and hard to put down."
+  _archetype: 0
+  _role: 1
+  _firstAttackStat: 15
+  _secondAttackStat: 5
+  _defensiveStat: 20
+  _startingEquipment:
+  - {fileID: 11400000, guid: 8063a497298d44ea93751acdd0266be3, type: 2}
+  - {fileID: 11400000, guid: 778ef5bf1cbf4db2b083a9c292025a48, type: 2}

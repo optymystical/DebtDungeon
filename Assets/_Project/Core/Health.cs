@@ -122,6 +122,27 @@ namespace DebtDungeon.Core
             HealthChanged?.Invoke(_currentHealth, _maxHealth);
         }
 
+        /// <summary>
+        /// Changes max health and keeps the same fraction of current health: a character at half health stays at half.
+        /// Use this when a stat change raises or lowers max HP mid-run. A living character never drops below 1 HP from it.
+        /// </summary>
+        public void RescaleMaxHealth(int newMaxHealth)
+        {
+            int clampedMaxHealth = Mathf.Max(1, newMaxHealth);
+
+            if (_isDead)
+            {
+                _maxHealth = clampedMaxHealth;
+                HealthChanged?.Invoke(_currentHealth, _maxHealth);
+                return;
+            }
+
+            float healthFraction = (float)_currentHealth / _maxHealth;
+            _maxHealth = clampedMaxHealth;
+            _currentHealth = Mathf.Clamp(Mathf.RoundToInt(healthFraction * _maxHealth), 1, _maxHealth);
+            HealthChanged?.Invoke(_currentHealth, _maxHealth);
+        }
+
         /// <summary>Adds armor, a Shroud or another absorber. Absorbers run in the order they were added.</summary>
         public void AddAbsorber(IDamageAbsorber absorber)
         {

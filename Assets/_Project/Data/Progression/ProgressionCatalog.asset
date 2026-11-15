@@ -1,0 +1,31 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e5d753948856489ea52d9c7c25e5ca64, type: 3}
+  m_Name: ProgressionCatalog
+  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.ProgressionCatalog
+  _levelCurve: {fileID: 11400000, guid: cffd322554c94135b6ed756ca6fc57ee, type: 2}
+  _presets:
+  - {fileID: 11400000, guid: 484736db625b461faf61b75acd6e6a7b, type: 2}
+  - {fileID: 11400000, guid: 37af5c9ba64d46f893a6cff370340a7f, type: 2}
+  - {fileID: 11400000, guid: 4a79a80be80f4e32879e8818901bf002, type: 2}
+  - {fileID: 11400000, guid: 8e686fa8495248ae984bad8a755d4e86, type: 2}
+  _equipment:
+  - {fileID: 11400000, guid: 21e8f33ce4524fcf9acfd358e363edb8, type: 2}
+  - {fileID: 11400000, guid: 8063a497298d44ea93751acdd0266be3, type: 2}
+  - {fileID: 11400000, guid: 778ef5bf1cbf4db2b083a9c292025a48, type: 2}
+  - {fileID: 11400000, guid: 5d64ef155ffa44f38f15d0b6a1973b09, type: 2}
+  - {fileID: 11400000, guid: c108f3df298444e8820c46837b7293d0, type: 2}
+  - {fileID: 11400000, guid: 6465a23b70b843a58635a83f667d0d7a, type: 2}
+  - {fileID: 11400000, guid: 829dc81e76364d2b8afa474f126f1fb7, type: 2}
+  - {fileID: 11400000, guid: 6a6e988482754126b599798fe828aa8e, type: 2}
+  - {fileID: 11400000, guid: ff156e87f8164d4fb1bff8be64fd7d3c, type: 2}
+  _skillTrees: []

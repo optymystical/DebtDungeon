@@ -19,7 +19,7 @@
 
 - **Archetypes:** Martial and Magic only.
 - **Skill trees:** 2 per archetype, nodes 1–3: Bladed Weapons and Medium Armor (Martial); Radiation and Protection Arcana (Magic).
-- **Equipment:** Martial: Light and Heavy melee weapons, 1 armor. Magic: 1 Foci, 1 Shroud, 2–3 simple Affixes.
+- **Equipment:** Martial: Sword (Light), Greatsword (Heavy), Leather Coat (Medium armor). Magic: Scroll (Channeler, Reach), Wand (Igniter, Grasp), Bastion Shroud, Agate + 2 placeholder Affixes.
 - **Loadout** picked at character creation; the spawn-chunk station is the only place to change it.
 - **No inventory, no consumables, no item loot.**
 - **Art:** placeholder colored shapes (player teal, goblins green, spiders purple, neutral grey stone). Claude-made
@@ -50,7 +50,10 @@
 **Combat**
 - Enemy attacks are telegraphed with 0.5–1 s wind-ups. Skitterlings are faster than the player.
 - Accuracy over 100% becomes crit chance; a crit deals 2× damage.
-- Burden: −8% movement per step, capped at 2.
+- Burden: −10% movement per step, capped at 2.
+- Basic attacks: right-click fires toward the mouse; movement isn't locked. Melee hitboxes stay attached to the character.
+  Light vs Heavy (Light weapon / Igniter vs Heavy weapon / Channeler): heavy has a longer windup, longer cooldown, bigger hitbox or projectile.
+- Shrouds: taking damage pauses recovery for 2.5 s, then they recover quickly (their Limit per second). Armor doesn't recover; the station repairs it.
 
 **Progression**
 - All 9 Flow State stats, 3 per archetype. A character uses only its own archetype's stats.

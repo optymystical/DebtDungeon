@@ -27,6 +27,18 @@ namespace DebtDungeon.Core
         /// <summary>The player picked up gold (the amount). Raised by Game's gold pickups and chests. The HUD adds it to the score.</summary>
         public static event Action<int> GoldCollected;
 
+        /// <summary>
+        /// The game flow changed state (previous, current). Raised by Game. Player ignores attack and ability input
+        /// unless the state is Playing; menus show and hide their screens.
+        /// </summary>
+        public static event Action<GameState, GameState> GameStateChanged;
+
+        /// <summary>
+        /// The last state announced through GameStateChanged. Lets something created later (e.g. the player,
+        /// spawned after Playing began) check the state without having heard the event.
+        /// </summary>
+        public static GameState CurrentGameState { get; private set; } = GameState.MainMenu;
+
         /// <summary>Announces that the floor is ready.</summary>
         public static void RaiseFloorGenerated(IFloorQuery floor)
         {
@@ -63,6 +75,13 @@ namespace DebtDungeon.Core
             GoldCollected?.Invoke(amount);
         }
 
+        /// <summary>Announces a game state change. Only Game's state machine should call this.</summary>
+        public static void RaiseGameStateChanged(GameState previous, GameState current)
+        {
+            CurrentGameState = current;
+            GameStateChanged?.Invoke(previous, current);
+        }
+
         /// <summary>
         /// Clears every listener when Play mode starts. Static events outlive scenes, so without this a listener
         /// left over from the last play session (if domain reload is off) could fire on a destroyed object.
@@ -76,6 +95,8 @@ namespace DebtDungeon.Core
             PlayerLeveledUp = null;
             SpawnerDestroyed = null;
             GoldCollected = null;
+            GameStateChanged = null;
+            CurrentGameState = GameState.MainMenu;
         }
     }
 }
