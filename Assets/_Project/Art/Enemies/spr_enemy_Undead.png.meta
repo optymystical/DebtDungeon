@@ -1,10 +1,145 @@
 fileFormatVersion: 2
-guid: 1d3220a7cc290bc4b911bc039ed8fc32
+guid: 17c271b43ac8cd547a62707a63ca3f16
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -7307120128884530594
-    second: spr_enemy_spiderTest2_0
+      213: 6148372588975086219
+    second: spr_enemy_Undead_0
+  - first:
+      213: 6674316239149256480
+    second: spr_enemy_Undead_1
+  - first:
+      213: -4098161893047158167
+    second: spr_enemy_Undead_2
+  - first:
+      213: -6230360794841335646
+    second: spr_enemy_Undead_3
+  - first:
+      213: 3956545605503656735
+    second: spr_enemy_Undead_4
+  - first:
+      213: -503388964916229075
+    second: spr_enemy_Undead_5
+  - first:
+      213: 8916110590239640159
+    second: spr_enemy_Undead_6
+  - first:
+      213: 5584576081013848048
+    second: spr_enemy_Undead_7
+  - first:
+      213: 672222644995447845
+    second: spr_enemy_Undead_8
+  - first:
+      213: 7087916229200037615
+    second: spr_enemy_Undead_9
+  - first:
+      213: 519961858409855215
+    second: spr_enemy_Undead_10
+  - first:
+      213: 5164272736249394943
+    second: spr_enemy_Undead_11
+  - first:
+      213: -6604168025958389504
+    second: spr_enemy_Undead_12
+  - first:
+      213: -5503653735393665471
+    second: spr_enemy_Undead_13
+  - first:
+      213: -4704752417995466200
+    second: spr_enemy_Undead_14
+  - first:
+      213: 2363761609222033117
+    second: spr_enemy_Undead_15
+  - first:
+      213: 6339908659708229008
+    second: spr_enemy_Undead_16
+  - first:
+      213: -6874125007196762899
+    second: spr_enemy_Undead_17
+  - first:
+      213: 5453638182343077252
+    second: spr_enemy_Undead_18
+  - first:
+      213: 4622167834252809105
+    second: spr_enemy_Undead_19
+  - first:
+      213: 783760973639983092
+    second: spr_enemy_Undead_20
+  - first:
+      213: 8480588617316159041
+    second: spr_enemy_Undead_21
+  - first:
+      213: -7855488912944234110
+    second: spr_enemy_Undead_22
+  - first:
+      213: -89593004055504347
+    second: spr_enemy_Undead_23
+  - first:
+      213: -32626649796140010
+    second: spr_enemy_Undead_24
+  - first:
+      213: -3607758729737543783
+    second: spr_enemy_Undead_25
+  - first:
+      213: 2832271868245852955
+    second: spr_enemy_Undead_26
+  - first:
+      213: -5934931258419354303
+    second: spr_enemy_Undead_27
+  - first:
+      213: -6131780055818183809
+    second: spr_enemy_Undead_28
+  - first:
+      213: 611650685996241417
+    second: spr_enemy_Undead_29
+  - first:
+      213: -4157728899176226053
+    second: spr_enemy_Undead_30
+  - first:
+      213: 2561206090776355286
+    second: spr_enemy_Undead_31
+  - first:
+      213: -2201547980095058962
+    second: spr_enemy_Undead_32
+  - first:
+      213: -5480051876431656525
+    second: spr_enemy_Undead_33
+  - first:
+      213: -4171590207413284251
+    second: spr_enemy_Undead_34
+  - first:
+      213: -9040120363152643261
+    second: spr_enemy_Undead_35
+  - first:
+      213: -1332840004273410465
+    second: spr_enemy_Undead_36
+  - first:
+      213: -5044219088117538014
+    second: spr_enemy_Undead_37
+  - first:
+      213: 592743140044998185
+    second: spr_enemy_Undead_38
+  - first:
+      213: 3679516141225152909
+    second: spr_enemy_Undead_39
+  - first:
+      213: -6526775665338474239
+    second: spr_enemy_Undead_40
+  - first:
+      213: -7505132248790457402
+    second: spr_enemy_Undead_41
+  - first:
+      213: 167010761694737031
+    second: spr_enemy_Undead_42
+  - first:
+      213: 2848334491786468673
+    second: spr_enemy_Undead_43
+  - first:
+      213: 1442346606955532773
+    second: spr_enemy_Undead_44
+  - first:
+      213: 8647337817426123525
+    second: spr_enemy_Undead_45
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +186,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,7 +235,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_0
+      name: spr_enemy_Undead_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +250,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: e522bb225f4e79a90800000000000000
-      internalID: -7307120128884530594
+      spriteID: b8adb905b48635550800000000000000
+      internalID: 6148372588975086219
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_1
+      name: spr_enemy_Undead_1
       rect:
         serializedVersion: 2
         x: 300
@@ -135,16 +270,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a1f254a99d711ec41ae38c93222e0653
-      internalID: -489045388
+      spriteID: 02fcc19e14fef9c50800000000000000
+      internalID: 6674316239149256480
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_2
+      name: spr_enemy_Undead_2
       rect:
         serializedVersion: 2
         x: 600
@@ -157,16 +292,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: aa8dd11c8190e6645bfc8365e7f996b3
-      internalID: -1834266907
+      spriteID: 96ab1e4a8776027c0800000000000000
+      internalID: -4098161893047158167
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_3
+      name: spr_enemy_Undead_3
       rect:
         serializedVersion: 2
         x: 900
@@ -179,16 +314,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 17f22e1573ec3314ea0b5378005b2bf2
-      internalID: 1796400700
+      spriteID: 2a836f0fddf4989a0800000000000000
+      internalID: -6230360794841335646
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_4
+      name: spr_enemy_Undead_4
       rect:
         serializedVersion: 2
         x: 1200
@@ -201,16 +336,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d3b939c82af0d3b4da73fa7d596eb929
-      internalID: -680621761
+      spriteID: f13ada9f34978e630800000000000000
+      internalID: 3956545605503656735
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_5
+      name: spr_enemy_Undead_5
       rect:
         serializedVersion: 2
         x: 1500
@@ -223,16 +358,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f33e14d697fc034499dce56710b7dd4b
-      internalID: 345441182
+      spriteID: d2c015a476a9309f0800000000000000
+      internalID: -503388964916229075
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_6
+      name: spr_enemy_Undead_6
       rect:
         serializedVersion: 2
         x: 1800
@@ -245,16 +380,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: c4a54762d4e7e69479a4cecb60634915
-      internalID: -1736227900
+      spriteID: f5a055d97536cbb70800000000000000
+      internalID: 8916110590239640159
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_7
+      name: spr_enemy_Undead_7
       rect:
         serializedVersion: 2
         x: 2100
@@ -267,16 +402,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 427894bb9fde1ef459da7a3f38c73fac
-      internalID: -1559108817
+      spriteID: 0f739f97b56608d40800000000000000
+      internalID: 5584576081013848048
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_8
+      name: spr_enemy_Undead_8
       rect:
         serializedVersion: 2
         x: 0
@@ -289,16 +424,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0251997d25a533844a9d82ac4722a5d3
-      internalID: -1168126622
+      spriteID: 52c5dec1fe6345900800000000000000
+      internalID: 672222644995447845
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_9
+      name: spr_enemy_Undead_9
       rect:
         serializedVersion: 2
         x: 300
@@ -311,16 +446,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 72b7497bc5a6a8c448cdcaf120379fdf
-      internalID: 971865969
+      spriteID: fe6c13fc1465d5260800000000000000
+      internalID: 7087916229200037615
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_10
+      name: spr_enemy_Undead_10
       rect:
         serializedVersion: 2
         x: 600
@@ -333,16 +468,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 50387534a4d2f854b90e54639b87c2c7
-      internalID: 989093309
+      spriteID: fe8754b2e86473700800000000000000
+      internalID: 519961858409855215
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_11
+      name: spr_enemy_Undead_11
       rect:
         serializedVersion: 2
         x: 900
@@ -355,16 +490,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9ed2159a83a1d024888cb8ddfa699f19
-      internalID: 1745746850
+      spriteID: ff6316f21be2ba740800000000000000
+      internalID: 5164272736249394943
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_12
+      name: spr_enemy_Undead_12
       rect:
         serializedVersion: 2
         x: 1200
@@ -377,16 +512,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 43c41043cfa9cfe4cbd96f955d90ca6f
-      internalID: 518080289
+      spriteID: 009e1c7bb284954a0800000000000000
+      internalID: -6604168025958389504
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_13
+      name: spr_enemy_Undead_13
       rect:
         serializedVersion: 2
         x: 1500
@@ -399,16 +534,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 013a61a59c3d77146b7c31b560d304bb
-      internalID: -785363375
+      spriteID: 14edb1756181f93b0800000000000000
+      internalID: -5503653735393665471
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_14
+      name: spr_enemy_Undead_14
       rect:
         serializedVersion: 2
         x: 1800
@@ -421,16 +556,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 735077fdc69eeb1498f184873de59f16
-      internalID: -2004403815
+      spriteID: 82a58394a9c55beb0800000000000000
+      internalID: -4704752417995466200
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_15
+      name: spr_enemy_Undead_15
       rect:
         serializedVersion: 2
         x: 2100
@@ -443,16 +578,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3dbe8879fac49144192a4daa0d31f982
-      internalID: 1796923717
+      spriteID: dde826be8a4cdc020800000000000000
+      internalID: 2363761609222033117
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_16
+      name: spr_enemy_Undead_16
       rect:
         serializedVersion: 2
         x: 0
@@ -465,16 +600,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 573eb6bde5dd1d2499f0ba465570b3d1
-      internalID: -1571346329
+      spriteID: 095f452f551ebf750800000000000000
+      internalID: 6339908659708229008
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_17
+      name: spr_enemy_Undead_17
       rect:
         serializedVersion: 2
         x: 300
@@ -487,16 +622,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: db20635156eea1546b5183f5e85bfd2d
-      internalID: -1816912324
+      spriteID: dec48640ab33a90a0800000000000000
+      internalID: -6874125007196762899
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_18
+      name: spr_enemy_Undead_18
       rect:
         serializedVersion: 2
         x: 600
@@ -509,16 +644,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 658d57911eb1d5e4899d589e03e91859
-      internalID: -975810017
+      spriteID: 48de01048073fab40800000000000000
+      internalID: 5453638182343077252
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_19
+      name: spr_enemy_Undead_19
       rect:
         serializedVersion: 2
         x: 900
@@ -531,16 +666,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4c29dd697d30a9a46a7b74fec9257e21
-      internalID: 2059197809
+      spriteID: 19310ece72d352040800000000000000
+      internalID: 4622167834252809105
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_20
+      name: spr_enemy_Undead_20
       rect:
         serializedVersion: 2
         x: 1200
@@ -553,16 +688,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1bf8eac48db096c4f97361f5de137887
-      internalID: 862108811
+      spriteID: 4ff10a6f37a70ea00800000000000000
+      internalID: 783760973639983092
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_21
+      name: spr_enemy_Undead_21
       rect:
         serializedVersion: 2
         x: 1500
@@ -575,16 +710,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5d8802cf2a1b0f3478f659be45a57dc4
-      internalID: 131266116
+      spriteID: 14ec9555a6a11b570800000000000000
+      internalID: 8480588617316159041
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_22
+      name: spr_enemy_Undead_22
       rect:
         serializedVersion: 2
         x: 1800
@@ -597,16 +732,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d7e82c5307e9db64e87e34092b2fc0d5
-      internalID: -1508503827
+      spriteID: 28180fe2472bbf290800000000000000
+      internalID: -7855488912944234110
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_23
+      name: spr_enemy_Undead_23
       rect:
         serializedVersion: 2
         x: 2100
@@ -619,16 +754,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f1241e67d6fcd804eadda5adbca2dcca
-      internalID: 1499189731
+      spriteID: 52a59e233a3b1cef0800000000000000
+      internalID: -89593004055504347
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_24
+      name: spr_enemy_Undead_24
       rect:
         serializedVersion: 2
         x: 0
@@ -641,16 +776,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: df910ac9a55006643b6c96d93a38db32
-      internalID: 1939276455
+      spriteID: 614a0b02c361c8ff0800000000000000
+      internalID: -32626649796140010
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_25
+      name: spr_enemy_Undead_25
       rect:
         serializedVersion: 2
         x: 300
@@ -663,16 +798,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7db86a71c772b0f46a26fc034f397d17
-      internalID: 2096793565
+      spriteID: 99fddaecc8aaeedc0800000000000000
+      internalID: -3607758729737543783
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_26
+      name: spr_enemy_Undead_26
       rect:
         serializedVersion: 2
         x: 600
@@ -685,16 +820,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 8853c6514881c97468edb176aa131a77
-      internalID: -6632936
+      spriteID: b13402612404e4720800000000000000
+      internalID: 2832271868245852955
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_27
+      name: spr_enemy_Undead_27
       rect:
         serializedVersion: 2
         x: 900
@@ -707,16 +842,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d2dc8a2ae7178cb4a9dd7b46c71a3781
-      internalID: -1759726111
+      spriteID: 1456d8f0773e2ada0800000000000000
+      internalID: -5934931258419354303
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_28
+      name: spr_enemy_Undead_28
       rect:
         serializedVersion: 2
         x: 1200
@@ -729,16 +864,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d1f78f75fbe71ba4381a228d8aa500dc
-      internalID: 145389185
+      spriteID: f7bd12cd68a87eaa0800000000000000
+      internalID: -6131780055818183809
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_29
+      name: spr_enemy_Undead_29
       rect:
         serializedVersion: 2
         x: 1500
@@ -751,16 +886,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f9a3e5ef2fd5d2e49914c46bcf0baa96
-      internalID: -546670440
+      spriteID: 9021e69ee050d7800800000000000000
+      internalID: 611650685996241417
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_30
+      name: spr_enemy_Undead_30
       rect:
         serializedVersion: 2
         x: 1800
@@ -773,16 +908,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 38ea9e6e9ce4f4e46914afbc2818e001
-      internalID: -1421339134
+      spriteID: bf2a9344897cc46c0800000000000000
+      internalID: -4157728899176226053
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_31
+      name: spr_enemy_Undead_31
       rect:
         serializedVersion: 2
         x: 2100
@@ -795,16 +930,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 554044cfa8df12149b24775eda727d9f
-      internalID: 518065603
+      spriteID: 6d1aa45ae5b3b8320800000000000000
+      internalID: 2561206090776355286
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_32
+      name: spr_enemy_Undead_32
       rect:
         serializedVersion: 2
         x: 0
@@ -817,16 +952,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 08d9299334b49c14eb0fe9c47f10cfee
-      internalID: 1429850994
+      spriteID: eeb8472c6c78271e0800000000000000
+      internalID: -2201547980095058962
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_33
+      name: spr_enemy_Undead_33
       rect:
         serializedVersion: 2
         x: 300
@@ -839,16 +974,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9b140e5abbd6cd44c9a438765f413c57
-      internalID: -268695449
+      spriteID: 3b9049a5ad1f2f3b0800000000000000
+      internalID: -5480051876431656525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_34
+      name: spr_enemy_Undead_34
       rect:
         serializedVersion: 2
         x: 600
@@ -861,16 +996,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 193bdcb6b6746534f89b6adfcf32a238
-      internalID: 594807425
+      spriteID: 56212a2fec88b16c0800000000000000
+      internalID: -4171590207413284251
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_35
+      name: spr_enemy_Undead_35
       rect:
         serializedVersion: 2
         x: 900
@@ -883,16 +1018,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3758da77185d4de40b3c45974c0f2b2e
-      internalID: 322808914
+      spriteID: 34be2832d6a0b8280800000000000000
+      internalID: -9040120363152643261
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_36
+      name: spr_enemy_Undead_36
       rect:
         serializedVersion: 2
         x: 1200
@@ -905,16 +1040,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ed070a35786e6954283b0bbd7717fee7
-      internalID: 184351348
+      spriteID: f5e6adae31dc08de0800000000000000
+      internalID: -1332840004273410465
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_37
+      name: spr_enemy_Undead_37
       rect:
         serializedVersion: 2
         x: 1500
@@ -927,16 +1062,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a36764af87df002438ef0e0d12052430
-      internalID: -664287700
+      spriteID: 223628bf6755ff9b0800000000000000
+      internalID: -5044219088117538014
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_38
+      name: spr_enemy_Undead_38
       rect:
         serializedVersion: 2
         x: 1800
@@ -949,16 +1084,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1cc229ba5957f41429ec1324665e59ec
-      internalID: -1026570492
+      spriteID: 9268e61deb8d93800800000000000000
+      internalID: 592743140044998185
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_39
+      name: spr_enemy_Undead_39
       rect:
         serializedVersion: 2
         x: 2100
@@ -971,16 +1106,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 4076ead523a333c4182bf4d0292e5526
-      internalID: 577048977
+      spriteID: d819a0f7f64401330800000000000000
+      internalID: 3679516141225152909
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_40
+      name: spr_enemy_Undead_40
       rect:
         serializedVersion: 2
         x: 0
@@ -993,16 +1128,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 06c6f793f7704ab4594d8a8e30c3b5c0
-      internalID: -1074575795
+      spriteID: 10126dadc1c3c65a0800000000000000
+      internalID: -6526775665338474239
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_41
+      name: spr_enemy_Undead_41
       rect:
         serializedVersion: 2
         x: 300
@@ -1015,16 +1150,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fec0b3555a0f3ee47a776bf31c0970c6
-      internalID: 280474004
+      spriteID: 6c3248ecbf968d790800000000000000
+      internalID: -7505132248790457402
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_42
+      name: spr_enemy_Undead_42
       rect:
         serializedVersion: 2
         x: 600
@@ -1037,16 +1172,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f1bc0aa80ddb34344bf835d473c38335
-      internalID: 499588608
+      spriteID: 7827b742767515200800000000000000
+      internalID: 167010761694737031
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_43
+      name: spr_enemy_Undead_43
       rect:
         serializedVersion: 2
         x: 900
@@ -1059,16 +1194,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 779883b6657857c4bb1a4e24b4de3a5b
-      internalID: 129885521
+      spriteID: 14ddc601121578720800000000000000
+      internalID: 2848334491786468673
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_44
+      name: spr_enemy_Undead_44
       rect:
         serializedVersion: 2
         x: 1200
@@ -1081,16 +1216,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: f705f8c8e07162849906b3d28e43f292
-      internalID: -2066819032
+      spriteID: 5e1139ed89e340410800000000000000
+      internalID: 1442346606955532773
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_45
+      name: spr_enemy_Undead_45
       rect:
         serializedVersion: 2
         x: 1500
@@ -1103,16 +1238,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 491aa5d8406d8e24596c8244da5202e0
-      internalID: -1899706052
+      spriteID: 50b5c7cede3810870800000000000000
+      internalID: 8647337817426123525
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_46
+      name: spr_enemy_Undead_46
       rect:
         serializedVersion: 2
         x: 1800
@@ -1127,14 +1262,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: beeebe92ea02d7d4b829d950faaf8be0
-      internalID: 1749664929
+      spriteID: 06204432100599646b9228aecbeca481
+      internalID: -1868057949
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest2_47
+      name: spr_enemy_Undead_47
       rect:
         serializedVersion: 2
         x: 2100
@@ -1149,8 +1284,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: 0
       bones: []
-      spriteID: eede8c931f8a67c48976cbb329dc7f47
-      internalID: 1079364181
+      spriteID: 20cac12133361df4f9a8668d3ef34849
+      internalID: -425802911
       vertices: []
       indices: 
       edges: []
@@ -1159,7 +1294,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: 05fb2a2d9e2f4b445ba9a07f16ce5729
+    spriteID: b2400e6b5279b9f408618560b42a4aff
     internalID: 0
     vertices: []
     indices: 
@@ -1171,54 +1306,54 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      spr_enemy_spiderTest2_0: -7307120128884530594
-      spr_enemy_spiderTest2_1: -489045388
-      spr_enemy_spiderTest2_10: 989093309
-      spr_enemy_spiderTest2_11: 1745746850
-      spr_enemy_spiderTest2_12: 518080289
-      spr_enemy_spiderTest2_13: -785363375
-      spr_enemy_spiderTest2_14: -2004403815
-      spr_enemy_spiderTest2_15: 1796923717
-      spr_enemy_spiderTest2_16: -1571346329
-      spr_enemy_spiderTest2_17: -1816912324
-      spr_enemy_spiderTest2_18: -975810017
-      spr_enemy_spiderTest2_19: 2059197809
-      spr_enemy_spiderTest2_2: -1834266907
-      spr_enemy_spiderTest2_20: 862108811
-      spr_enemy_spiderTest2_21: 131266116
-      spr_enemy_spiderTest2_22: -1508503827
-      spr_enemy_spiderTest2_23: 1499189731
-      spr_enemy_spiderTest2_24: 1939276455
-      spr_enemy_spiderTest2_25: 2096793565
-      spr_enemy_spiderTest2_26: -6632936
-      spr_enemy_spiderTest2_27: -1759726111
-      spr_enemy_spiderTest2_28: 145389185
-      spr_enemy_spiderTest2_29: -546670440
-      spr_enemy_spiderTest2_3: 1796400700
-      spr_enemy_spiderTest2_30: -1421339134
-      spr_enemy_spiderTest2_31: 518065603
-      spr_enemy_spiderTest2_32: 1429850994
-      spr_enemy_spiderTest2_33: -268695449
-      spr_enemy_spiderTest2_34: 594807425
-      spr_enemy_spiderTest2_35: 322808914
-      spr_enemy_spiderTest2_36: 184351348
-      spr_enemy_spiderTest2_37: -664287700
-      spr_enemy_spiderTest2_38: -1026570492
-      spr_enemy_spiderTest2_39: 577048977
-      spr_enemy_spiderTest2_4: -680621761
-      spr_enemy_spiderTest2_40: -1074575795
-      spr_enemy_spiderTest2_41: 280474004
-      spr_enemy_spiderTest2_42: 499588608
-      spr_enemy_spiderTest2_43: 129885521
-      spr_enemy_spiderTest2_44: -2066819032
-      spr_enemy_spiderTest2_45: -1899706052
-      spr_enemy_spiderTest2_46: 1749664929
-      spr_enemy_spiderTest2_47: 1079364181
-      spr_enemy_spiderTest2_5: 345441182
-      spr_enemy_spiderTest2_6: -1736227900
-      spr_enemy_spiderTest2_7: -1559108817
-      spr_enemy_spiderTest2_8: -1168126622
-      spr_enemy_spiderTest2_9: 971865969
+      spr_enemy_Undead_0: 6148372588975086219
+      spr_enemy_Undead_1: 6674316239149256480
+      spr_enemy_Undead_10: 519961858409855215
+      spr_enemy_Undead_11: 5164272736249394943
+      spr_enemy_Undead_12: -6604168025958389504
+      spr_enemy_Undead_13: -5503653735393665471
+      spr_enemy_Undead_14: -4704752417995466200
+      spr_enemy_Undead_15: 2363761609222033117
+      spr_enemy_Undead_16: 6339908659708229008
+      spr_enemy_Undead_17: -6874125007196762899
+      spr_enemy_Undead_18: 5453638182343077252
+      spr_enemy_Undead_19: 4622167834252809105
+      spr_enemy_Undead_2: -4098161893047158167
+      spr_enemy_Undead_20: 783760973639983092
+      spr_enemy_Undead_21: 8480588617316159041
+      spr_enemy_Undead_22: -7855488912944234110
+      spr_enemy_Undead_23: -89593004055504347
+      spr_enemy_Undead_24: -32626649796140010
+      spr_enemy_Undead_25: -3607758729737543783
+      spr_enemy_Undead_26: 2832271868245852955
+      spr_enemy_Undead_27: -5934931258419354303
+      spr_enemy_Undead_28: -6131780055818183809
+      spr_enemy_Undead_29: 611650685996241417
+      spr_enemy_Undead_3: -6230360794841335646
+      spr_enemy_Undead_30: -4157728899176226053
+      spr_enemy_Undead_31: 2561206090776355286
+      spr_enemy_Undead_32: -2201547980095058962
+      spr_enemy_Undead_33: -5480051876431656525
+      spr_enemy_Undead_34: -4171590207413284251
+      spr_enemy_Undead_35: -9040120363152643261
+      spr_enemy_Undead_36: -1332840004273410465
+      spr_enemy_Undead_37: -5044219088117538014
+      spr_enemy_Undead_38: 592743140044998185
+      spr_enemy_Undead_39: 3679516141225152909
+      spr_enemy_Undead_4: 3956545605503656735
+      spr_enemy_Undead_40: -6526775665338474239
+      spr_enemy_Undead_41: -7505132248790457402
+      spr_enemy_Undead_42: 167010761694737031
+      spr_enemy_Undead_43: 2848334491786468673
+      spr_enemy_Undead_44: 1442346606955532773
+      spr_enemy_Undead_45: 8647337817426123525
+      spr_enemy_Undead_46: -1868057949
+      spr_enemy_Undead_47: -425802911
+      spr_enemy_Undead_5: -503388964916229075
+      spr_enemy_Undead_6: 8916110590239640159
+      spr_enemy_Undead_7: 5584576081013848048
+      spr_enemy_Undead_8: 672222644995447845
+      spr_enemy_Undead_9: 7087916229200037615
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 

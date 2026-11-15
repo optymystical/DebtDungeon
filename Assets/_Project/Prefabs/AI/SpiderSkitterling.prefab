@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 1295393456707509916}
   - component: {fileID: 4490947528810636179}
   - component: {fileID: 7192877917674648436}
+  - component: {fileID: 6505486765359569911}
+  - component: {fileID: -581147443572989152}
   m_Layer: 8
   m_Name: SpiderSkitterling
   m_TagString: Untagged
@@ -217,3 +219,40 @@ MonoBehaviour:
   _faction: 3
   _maxHealth: 100
   _invulnerabilityDuration: 0
+--- !u!95 &6505486765359569911
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298115806659062241}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: f72ba95cc63c6ab4a9a210d73b00618e, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &-581147443572989152
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2298115806659062241}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ddc8439a6cad841a6e021ec50f749e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.UnitAnimator2D
+  _animator: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+  _deathAnimDuration: 0.65

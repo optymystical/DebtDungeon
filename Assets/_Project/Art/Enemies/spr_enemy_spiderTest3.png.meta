@@ -1,10 +1,163 @@
 fileFormatVersion: 2
-guid: fa6b87adb2d05e94f99d63bac04cf5b9
+guid: f13505ae0eec96a499c6c6923dccf76d
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -8423851992000224064
-    second: spr_enemy_spiderTest_0
+      213: -5459007189452134653
+    second: spr_enemy_spiderTest3_0
+  - first:
+      213: 2486153399832768680
+    second: spr_enemy_spiderTest3_1
+  - first:
+      213: -3603984946329149133
+    second: spr_enemy_spiderTest3_2
+  - first:
+      213: 5874214185339825202
+    second: spr_enemy_spiderTest3_3
+  - first:
+      213: -1235279540191642571
+    second: spr_enemy_spiderTest3_4
+  - first:
+      213: 3240664662717462593
+    second: spr_enemy_spiderTest3_5
+  - first:
+      213: -6229791497785111193
+    second: spr_enemy_spiderTest3_6
+  - first:
+      213: -3252104863004650327
+    second: spr_enemy_spiderTest3_7
+  - first:
+      213: -2030179976360775432
+    second: spr_enemy_spiderTest3_8
+  - first:
+      213: -5241740820529877967
+    second: spr_enemy_spiderTest3_9
+  - first:
+      213: -8364828835965385575
+    second: spr_enemy_spiderTest3_10
+  - first:
+      213: -220371491920756702
+    second: spr_enemy_spiderTest3_11
+  - first:
+      213: 5304794512971743601
+    second: spr_enemy_spiderTest3_12
+  - first:
+      213: -4010437023919989830
+    second: spr_enemy_spiderTest3_13
+  - first:
+      213: -4100818803564421276
+    second: spr_enemy_spiderTest3_14
+  - first:
+      213: 6910549290355855112
+    second: spr_enemy_spiderTest3_15
+  - first:
+      213: -7430976107245285965
+    second: spr_enemy_spiderTest3_16
+  - first:
+      213: -6802917762682120790
+    second: spr_enemy_spiderTest3_17
+  - first:
+      213: 2921977899886592192
+    second: spr_enemy_spiderTest3_18
+  - first:
+      213: -6406501532424717779
+    second: spr_enemy_spiderTest3_19
+  - first:
+      213: -1647235131754622759
+    second: spr_enemy_spiderTest3_20
+  - first:
+      213: -1053840197200957335
+    second: spr_enemy_spiderTest3_21
+  - first:
+      213: 592839347585427463
+    second: spr_enemy_spiderTest3_22
+  - first:
+      213: -6841759559532805587
+    second: spr_enemy_spiderTest3_23
+  - first:
+      213: -4525527135375566230
+    second: spr_enemy_spiderTest3_24
+  - first:
+      213: 206089455428001006
+    second: spr_enemy_spiderTest3_25
+  - first:
+      213: -1745897490167371544
+    second: spr_enemy_spiderTest3_26
+  - first:
+      213: 5182878407424986767
+    second: spr_enemy_spiderTest3_27
+  - first:
+      213: 7909979117930570477
+    second: spr_enemy_spiderTest3_28
+  - first:
+      213: -7156653510911754338
+    second: spr_enemy_spiderTest3_29
+  - first:
+      213: 7636782547511048685
+    second: spr_enemy_spiderTest3_30
+  - first:
+      213: -8579216046734219792
+    second: spr_enemy_spiderTest3_31
+  - first:
+      213: -7346653196963330124
+    second: spr_enemy_spiderTest3_32
+  - first:
+      213: 6047037405837555645
+    second: spr_enemy_spiderTest3_33
+  - first:
+      213: -990160134440978361
+    second: spr_enemy_spiderTest3_34
+  - first:
+      213: 8401461676616088523
+    second: spr_enemy_spiderTest3_35
+  - first:
+      213: 7803830127131722512
+    second: spr_enemy_spiderTest3_36
+  - first:
+      213: 3171728826184318021
+    second: spr_enemy_spiderTest3_37
+  - first:
+      213: -5841646604888858284
+    second: spr_enemy_spiderTest3_38
+  - first:
+      213: -867030106678219572
+    second: spr_enemy_spiderTest3_39
+  - first:
+      213: 6216419621778251098
+    second: spr_enemy_spiderTest3_40
+  - first:
+      213: 6738088034907196201
+    second: spr_enemy_spiderTest3_41
+  - first:
+      213: -4467655316031247283
+    second: spr_enemy_spiderTest3_42
+  - first:
+      213: -478132394397881038
+    second: spr_enemy_spiderTest3_43
+  - first:
+      213: -2628555841133260898
+    second: spr_enemy_spiderTest3_44
+  - first:
+      213: -3916090860736162969
+    second: spr_enemy_spiderTest3_45
+  - first:
+      213: 706602906645633091
+    second: spr_enemy_spiderTest3_46
+  - first:
+      213: 5414063227720674864
+    second: spr_enemy_spiderTest3_47
+  - first:
+      213: 1702308883935128874
+    second: spr_enemy_spiderTest3_48
+  - first:
+      213: -8534270048567460450
+    second: spr_enemy_spiderTest3_49
+  - first:
+      213: -3153068254720164839
+    second: spr_enemy_spiderTest3_50
+  - first:
+      213: -1488236696321500233
+    second: spr_enemy_spiderTest3_51
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -51,7 +204,7 @@ TextureImporter:
   spriteMeshType: 1
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 16
+  spritePixelsToUnits: 256
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -100,7 +253,7 @@ TextureImporter:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_0
+      name: spr_enemy_spiderTest3_0
       rect:
         serializedVersion: 2
         x: 0
@@ -115,14 +268,14 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: 0c42c58ae37781b80800000000000000
-      internalID: -8423851992000224064
+      spriteID: 307e66e52e5bd34b0800000000000000
+      internalID: -5459007189452134653
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_1
+      name: spr_enemy_spiderTest3_1
       rect:
         serializedVersion: 2
         x: 300
@@ -135,16 +288,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: cf3c36da998f4214abc5cd738fa5c526
-      internalID: 1409750807
+      spriteID: 8a0792e4857908220800000000000000
+      internalID: 2486153399832768680
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_2
+      name: spr_enemy_spiderTest3_2
       rect:
         serializedVersion: 2
         x: 600
@@ -157,16 +310,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3f1cf1960b893bd46a519112d6b44490
-      internalID: 128671380
+      spriteID: 331223a39c21cfdc0800000000000000
+      internalID: -3603984946329149133
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_3
+      name: spr_enemy_spiderTest3_3
       rect:
         serializedVersion: 2
         x: 900
@@ -179,16 +332,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5484f78d322246e44b6dd4e5de875cd7
-      internalID: 1275930715
+      spriteID: 23cadbbbda6658150800000000000000
+      internalID: 5874214185339825202
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_4
+      name: spr_enemy_spiderTest3_4
       rect:
         serializedVersion: 2
         x: 1200
@@ -201,16 +354,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3616ba80338f79e4987f74a651a7c4f1
-      internalID: 331150428
+      spriteID: 53cb1909dc76bdee0800000000000000
+      internalID: -1235279540191642571
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_5
+      name: spr_enemy_spiderTest3_5
       rect:
         serializedVersion: 2
         x: 1500
@@ -223,16 +376,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 58a9be49c37f3e840808ed472366bc24
-      internalID: 1801560119
+      spriteID: 1487f69475729fc20800000000000000
+      internalID: 3240664662717462593
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_6
+      name: spr_enemy_spiderTest3_6
       rect:
         serializedVersion: 2
         x: 1800
@@ -245,16 +398,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3b7b33d73eec95e48b90ee5bdeb165eb
-      internalID: -182282943
+      spriteID: 76d05cdb3a55b89a0800000000000000
+      internalID: -6229791497785111193
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_7
+      name: spr_enemy_spiderTest3_7
       rect:
         serializedVersion: 2
         x: 2100
@@ -267,16 +420,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 03ce813993eb2634d9e08d58a81d496a
-      internalID: 1891634690
+      spriteID: 9a499448bd33ed2d0800000000000000
+      internalID: -3252104863004650327
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_8
+      name: spr_enemy_spiderTest3_8
       rect:
         serializedVersion: 2
         x: 0
@@ -289,16 +442,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 66ba795a5dc979441a4124b625e7a959
-      internalID: -1458385580
+      spriteID: 8f0b7ee511a53d3e0800000000000000
+      internalID: -2030179976360775432
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_9
+      name: spr_enemy_spiderTest3_9
       rect:
         serializedVersion: 2
         x: 300
@@ -311,16 +464,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 47becd0401cfdcf498c693e706d7e914
-      internalID: -1124182295
+      spriteID: 13ce6a3ee789147b0800000000000000
+      internalID: -5241740820529877967
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_10
+      name: spr_enemy_spiderTest3_10
       rect:
         serializedVersion: 2
         x: 600
@@ -333,16 +486,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b508e56dfb2c4d845a596f7f07600b27
-      internalID: -416587215
+      spriteID: 994c6511e782aeb80800000000000000
+      internalID: -8364828835965385575
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_11
+      name: spr_enemy_spiderTest3_11
       rect:
         serializedVersion: 2
         x: 900
@@ -355,16 +508,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: e654b4aa9311e294690450abf179f761
-      internalID: 909336558
+      spriteID: 220c071bb4511fcf0800000000000000
+      internalID: -220371491920756702
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_12
+      name: spr_enemy_spiderTest3_12
       rect:
         serializedVersion: 2
         x: 1200
@@ -377,16 +530,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: eebdfe3589ae66a4da1b50542c694685
-      internalID: -1925106275
+      spriteID: 1714f18e08a6e9940800000000000000
+      internalID: 5304794512971743601
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_13
+      name: spr_enemy_spiderTest3_13
       rect:
         serializedVersion: 2
         x: 1500
@@ -399,16 +552,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9351bbfbb9992784195a5f7ea230ac00
-      internalID: 2039588769
+      spriteID: abb9c2366c01858c0800000000000000
+      internalID: -4010437023919989830
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_14
+      name: spr_enemy_spiderTest3_14
       rect:
         serializedVersion: 2
         x: 1800
@@ -421,16 +574,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 1111c2d7f014e8943b8989035c51a5c6
-      internalID: 2090785664
+      spriteID: 46fdc457607f617c0800000000000000
+      internalID: -4100818803564421276
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_15
+      name: spr_enemy_spiderTest3_15
       rect:
         serializedVersion: 2
         x: 2100
@@ -443,16 +596,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9b733051bdf4c2f4abd78a677befafdf
-      internalID: -377817509
+      spriteID: 80f0d7647f337ef50800000000000000
+      internalID: 6910549290355855112
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_16
+      name: spr_enemy_spiderTest3_16
       rect:
         serializedVersion: 2
         x: 0
@@ -465,16 +618,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6e9ca20482a6778449530b7bb86abacc
-      internalID: 1557832729
+      spriteID: 3bdca39f99edfd890800000000000000
+      internalID: -7430976107245285965
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_17
+      name: spr_enemy_spiderTest3_17
       rect:
         serializedVersion: 2
         x: 300
@@ -487,16 +640,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 86a78da11a2e04f42b58e47039694222
-      internalID: -499778648
+      spriteID: aa51327965e2791a0800000000000000
+      internalID: -6802917762682120790
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_18
+      name: spr_enemy_spiderTest3_18
       rect:
         serializedVersion: 2
         x: 600
@@ -509,16 +662,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: d3ae5a1ef81e32640af736bfe5e2b8f1
-      internalID: 596523256
+      spriteID: 0c0484c2b63fc8820800000000000000
+      internalID: 2921977899886592192
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_19
+      name: spr_enemy_spiderTest3_19
       rect:
         serializedVersion: 2
         x: 900
@@ -531,16 +684,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: b797c28967bdfb34c88ca8b0c4891d77
-      internalID: 1557457705
+      spriteID: d2a34d2acc88717a0800000000000000
+      internalID: -6406501532424717779
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_20
+      name: spr_enemy_spiderTest3_20
       rect:
         serializedVersion: 2
         x: 1200
@@ -553,16 +706,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 2d99f4aad90ac594daaed75fe06a5b10
-      internalID: -1379239008
+      spriteID: 9d0d8360068d329e0800000000000000
+      internalID: -1647235131754622759
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_21
+      name: spr_enemy_spiderTest3_21
       rect:
         serializedVersion: 2
         x: 1500
@@ -575,16 +728,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 62178aefd5178a64f921251abe36946b
-      internalID: -235197821
+      spriteID: 9603fc39ce10061f0800000000000000
+      internalID: -1053840197200957335
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_22
+      name: spr_enemy_spiderTest3_22
       rect:
         serializedVersion: 2
         x: 1800
@@ -597,16 +750,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 406c2c6c458b5784789b5d5bfa910257
-      internalID: -708317932
+      spriteID: 70824b1ee303a3800800000000000000
+      internalID: 592839347585427463
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_23
+      name: spr_enemy_spiderTest3_23
       rect:
         serializedVersion: 2
         x: 2100
@@ -619,16 +772,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 88f1d2b0f520edf46bd82d58676209b6
-      internalID: -78362961
+      spriteID: d220a670eef2d01a0800000000000000
+      internalID: -6841759559532805587
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_24
+      name: spr_enemy_spiderTest3_24
       rect:
         serializedVersion: 2
         x: 0
@@ -641,16 +794,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9f08fe9e8c792cf4684418be87fb1120
-      internalID: -1049775045
+      spriteID: a6a5c823c091231c0800000000000000
+      internalID: -4525527135375566230
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_25
+      name: spr_enemy_spiderTest3_25
       rect:
         serializedVersion: 2
         x: 300
@@ -663,16 +816,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 5aac2a20fa1d8c442918e692849f8edb
-      internalID: 2128226652
+      spriteID: eec5dbe844d2cd200800000000000000
+      internalID: 206089455428001006
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_26
+      name: spr_enemy_spiderTest3_26
       rect:
         serializedVersion: 2
         x: 600
@@ -685,16 +838,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 59f708e318dc34c47a32981c06340ca4
-      internalID: 1535563627
+      spriteID: 8e8e35c9b7355c7e0800000000000000
+      internalID: -1745897490167371544
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_27
+      name: spr_enemy_spiderTest3_27
       rect:
         serializedVersion: 2
         x: 900
@@ -707,16 +860,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a51aa2fd3c8dc274595ac6b255abaacb
-      internalID: 1965006397
+      spriteID: f8ecb9493784de740800000000000000
+      internalID: 5182878407424986767
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_28
+      name: spr_enemy_spiderTest3_28
       rect:
         serializedVersion: 2
         x: 1200
@@ -729,16 +882,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7e01c8cfc5379af4f908981adbbbe202
-      internalID: 2106748009
+      spriteID: de262015914e5cd60800000000000000
+      internalID: 7909979117930570477
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_29
+      name: spr_enemy_spiderTest3_29
       rect:
         serializedVersion: 2
         x: 1500
@@ -751,16 +904,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 41e16fd533f45014e8930af88e1c26c9
-      internalID: 919873129
+      spriteID: e9f7d85ac857eac90800000000000000
+      internalID: -7156653510911754338
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_30
+      name: spr_enemy_spiderTest3_30
       rect:
         serializedVersion: 2
         x: 1800
@@ -773,16 +926,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 6b26e3d233c3af24a807450a39376d17
-      internalID: 692128596
+      spriteID: de97c4bf34d4bf960800000000000000
+      internalID: 7636782547511048685
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_31
+      name: spr_enemy_spiderTest3_31
       rect:
         serializedVersion: 2
         x: 2100
@@ -795,16 +948,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 32a6604c982efaf4a80f077027bd567e
-      internalID: -1405007682
+      spriteID: 0f5631bc57080f880800000000000000
+      internalID: -8579216046734219792
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_32
+      name: spr_enemy_spiderTest3_32
       rect:
         serializedVersion: 2
         x: 0
@@ -817,16 +970,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 13f80610c31b70544a4280117388e9e5
-      internalID: 311563106
+      spriteID: 4b7430377d17b0a90800000000000000
+      internalID: -7346653196963330124
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_33
+      name: spr_enemy_spiderTest3_33
       rect:
         serializedVersion: 2
         x: 300
@@ -839,16 +992,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ba8d15b247bde46459179d87005f5901
-      internalID: 748951810
+      spriteID: db772766b746be350800000000000000
+      internalID: 6047037405837555645
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_34
+      name: spr_enemy_spiderTest3_34
       rect:
         serializedVersion: 2
         x: 600
@@ -861,16 +1014,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 0e51fbb7d257daf47b0bca9b9a5610d5
-      internalID: 1840812527
+      spriteID: 74874e39a9e3242f0800000000000000
+      internalID: -990160134440978361
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_35
+      name: spr_enemy_spiderTest3_35
       rect:
         serializedVersion: 2
         x: 900
@@ -883,16 +1036,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9963728c10287fb4a8595947cb1e21e5
-      internalID: -1638688422
+      spriteID: bcb72ccc1ecf79470800000000000000
+      internalID: 8401461676616088523
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_36
+      name: spr_enemy_spiderTest3_36
       rect:
         serializedVersion: 2
         x: 1200
@@ -905,16 +1058,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: a39b5107b9f9c9643aedecee1b59da88
-      internalID: 265553487
+      spriteID: 0138d277726cc4c60800000000000000
+      internalID: 7803830127131722512
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_37
+      name: spr_enemy_spiderTest3_37
       rect:
         serializedVersion: 2
         x: 1500
@@ -927,16 +1080,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7a829b427678199478a2caf0f7f7b677
-      internalID: -1847924080
+      spriteID: 54c3598109e340c20800000000000000
+      internalID: 3171728826184318021
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_38
+      name: spr_enemy_spiderTest3_38
       rect:
         serializedVersion: 2
         x: 1800
@@ -949,16 +1102,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 3a1b6f0b48050d5438b9a5db78e44dbc
-      internalID: 1361713299
+      spriteID: 451ab3cfc5d4eeea0800000000000000
+      internalID: -5841646604888858284
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_39
+      name: spr_enemy_spiderTest3_39
       rect:
         serializedVersion: 2
         x: 2100
@@ -971,16 +1124,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 11e4834ccf3dd174fbe4ee2411a16d22
-      internalID: 582904827
+      spriteID: ccc20e136b0b7f3f0800000000000000
+      internalID: -867030106678219572
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_40
+      name: spr_enemy_spiderTest3_40
       rect:
         serializedVersion: 2
         x: 0
@@ -993,16 +1146,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: ab934171d3bd6fb4280760e45fbb0f7e
-      internalID: 1259719288
+      spriteID: a5d5cd2c5b8254650800000000000000
+      internalID: 6216419621778251098
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_41
+      name: spr_enemy_spiderTest3_41
       rect:
         serializedVersion: 2
         x: 300
@@ -1015,16 +1168,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 812dfa2deec34c742903e2f55bc7e77d
-      internalID: -1033231511
+      spriteID: 92b04f92e5f728d50800000000000000
+      internalID: 6738088034907196201
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_42
+      name: spr_enemy_spiderTest3_42
       rect:
         serializedVersion: 2
         x: 600
@@ -1037,16 +1190,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: efeacd982b24a5f43bbc0171449bd16e
-      internalID: -167127473
+      spriteID: d4c62152923bff1c0800000000000000
+      internalID: -4467655316031247283
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_43
+      name: spr_enemy_spiderTest3_43
       rect:
         serializedVersion: 2
         x: 900
@@ -1059,16 +1212,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 82f576184cd801942a90647c2455ec8f
-      internalID: 1792107428
+      spriteID: 23dae4cde155d59f0800000000000000
+      internalID: -478132394397881038
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_44
+      name: spr_enemy_spiderTest3_44
       rect:
         serializedVersion: 2
         x: 1200
@@ -1081,16 +1234,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: fdadfc58871a6a145924db920f62ec0c
-      internalID: -1145818238
+      spriteID: e9f49f0a36e758bd0800000000000000
+      internalID: -2628555841133260898
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_45
+      name: spr_enemy_spiderTest3_45
       rect:
         serializedVersion: 2
         x: 1500
@@ -1103,16 +1256,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 7a866a75a4127894fa28feea4101e5e6
-      internalID: -1053066050
+      spriteID: 763daa94c1047a9c0800000000000000
+      internalID: -3916090860736162969
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_46
+      name: spr_enemy_spiderTest3_46
       rect:
         serializedVersion: 2
         x: 1800
@@ -1125,16 +1278,16 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: 9734d329a330ede42801bc3dfc782f9b
-      internalID: -2121189742
+      spriteID: 3481fdf899b5ec900800000000000000
+      internalID: 706602906645633091
       vertices: []
       indices: 
       edges: []
       weights: []
     - serializedVersion: 2
-      name: spr_enemy_spiderTest_47
+      name: spr_enemy_spiderTest3_47
       rect:
         serializedVersion: 2
         x: 2100
@@ -1147,10 +1300,10 @@ TextureImporter:
       customData: 
       outline: []
       physicsShape: []
-      tessellationDetail: 0
+      tessellationDetail: -1
       bones: []
-      spriteID: dc55b880099527543a23ceaf6cf2da1a
-      internalID: -901275000
+      spriteID: 03eabc712dd922b40800000000000000
+      internalID: 5414063227720674864
       vertices: []
       indices: 
       edges: []
@@ -1159,7 +1312,7 @@ TextureImporter:
     customData: 
     physicsShape: []
     bones: []
-    spriteID: fd7542bc6241e614f8531ff81b74e669
+    spriteID: 546b81805f0f5b948a8f22d6134f837f
     internalID: 0
     vertices: []
     indices: 
@@ -1171,54 +1324,54 @@ TextureImporter:
       - key: SpriteEditor.SliceSettings
         value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
     nameFileIdTable:
-      spr_enemy_spiderTest_0: -8423851992000224064
-      spr_enemy_spiderTest_1: 1409750807
-      spr_enemy_spiderTest_10: -416587215
-      spr_enemy_spiderTest_11: 909336558
-      spr_enemy_spiderTest_12: -1925106275
-      spr_enemy_spiderTest_13: 2039588769
-      spr_enemy_spiderTest_14: 2090785664
-      spr_enemy_spiderTest_15: -377817509
-      spr_enemy_spiderTest_16: 1557832729
-      spr_enemy_spiderTest_17: -499778648
-      spr_enemy_spiderTest_18: 596523256
-      spr_enemy_spiderTest_19: 1557457705
-      spr_enemy_spiderTest_2: 128671380
-      spr_enemy_spiderTest_20: -1379239008
-      spr_enemy_spiderTest_21: -235197821
-      spr_enemy_spiderTest_22: -708317932
-      spr_enemy_spiderTest_23: -78362961
-      spr_enemy_spiderTest_24: -1049775045
-      spr_enemy_spiderTest_25: 2128226652
-      spr_enemy_spiderTest_26: 1535563627
-      spr_enemy_spiderTest_27: 1965006397
-      spr_enemy_spiderTest_28: 2106748009
-      spr_enemy_spiderTest_29: 919873129
-      spr_enemy_spiderTest_3: 1275930715
-      spr_enemy_spiderTest_30: 692128596
-      spr_enemy_spiderTest_31: -1405007682
-      spr_enemy_spiderTest_32: 311563106
-      spr_enemy_spiderTest_33: 748951810
-      spr_enemy_spiderTest_34: 1840812527
-      spr_enemy_spiderTest_35: -1638688422
-      spr_enemy_spiderTest_36: 265553487
-      spr_enemy_spiderTest_37: -1847924080
-      spr_enemy_spiderTest_38: 1361713299
-      spr_enemy_spiderTest_39: 582904827
-      spr_enemy_spiderTest_4: 331150428
-      spr_enemy_spiderTest_40: 1259719288
-      spr_enemy_spiderTest_41: -1033231511
-      spr_enemy_spiderTest_42: -167127473
-      spr_enemy_spiderTest_43: 1792107428
-      spr_enemy_spiderTest_44: -1145818238
-      spr_enemy_spiderTest_45: -1053066050
-      spr_enemy_spiderTest_46: -2121189742
-      spr_enemy_spiderTest_47: -901275000
-      spr_enemy_spiderTest_5: 1801560119
-      spr_enemy_spiderTest_6: -182282943
-      spr_enemy_spiderTest_7: 1891634690
-      spr_enemy_spiderTest_8: -1458385580
-      spr_enemy_spiderTest_9: -1124182295
+      spr_enemy_spiderTest3_0: -5459007189452134653
+      spr_enemy_spiderTest3_1: 2486153399832768680
+      spr_enemy_spiderTest3_10: -8364828835965385575
+      spr_enemy_spiderTest3_11: -220371491920756702
+      spr_enemy_spiderTest3_12: 5304794512971743601
+      spr_enemy_spiderTest3_13: -4010437023919989830
+      spr_enemy_spiderTest3_14: -4100818803564421276
+      spr_enemy_spiderTest3_15: 6910549290355855112
+      spr_enemy_spiderTest3_16: -7430976107245285965
+      spr_enemy_spiderTest3_17: -6802917762682120790
+      spr_enemy_spiderTest3_18: 2921977899886592192
+      spr_enemy_spiderTest3_19: -6406501532424717779
+      spr_enemy_spiderTest3_2: -3603984946329149133
+      spr_enemy_spiderTest3_20: -1647235131754622759
+      spr_enemy_spiderTest3_21: -1053840197200957335
+      spr_enemy_spiderTest3_22: 592839347585427463
+      spr_enemy_spiderTest3_23: -6841759559532805587
+      spr_enemy_spiderTest3_24: -4525527135375566230
+      spr_enemy_spiderTest3_25: 206089455428001006
+      spr_enemy_spiderTest3_26: -1745897490167371544
+      spr_enemy_spiderTest3_27: 5182878407424986767
+      spr_enemy_spiderTest3_28: 7909979117930570477
+      spr_enemy_spiderTest3_29: -7156653510911754338
+      spr_enemy_spiderTest3_3: 5874214185339825202
+      spr_enemy_spiderTest3_30: 7636782547511048685
+      spr_enemy_spiderTest3_31: -8579216046734219792
+      spr_enemy_spiderTest3_32: -7346653196963330124
+      spr_enemy_spiderTest3_33: 6047037405837555645
+      spr_enemy_spiderTest3_34: -990160134440978361
+      spr_enemy_spiderTest3_35: 8401461676616088523
+      spr_enemy_spiderTest3_36: 7803830127131722512
+      spr_enemy_spiderTest3_37: 3171728826184318021
+      spr_enemy_spiderTest3_38: -5841646604888858284
+      spr_enemy_spiderTest3_39: -867030106678219572
+      spr_enemy_spiderTest3_4: -1235279540191642571
+      spr_enemy_spiderTest3_40: 6216419621778251098
+      spr_enemy_spiderTest3_41: 6738088034907196201
+      spr_enemy_spiderTest3_42: -4467655316031247283
+      spr_enemy_spiderTest3_43: -478132394397881038
+      spr_enemy_spiderTest3_44: -2628555841133260898
+      spr_enemy_spiderTest3_45: -3916090860736162969
+      spr_enemy_spiderTest3_46: 706602906645633091
+      spr_enemy_spiderTest3_47: 5414063227720674864
+      spr_enemy_spiderTest3_5: 3240664662717462593
+      spr_enemy_spiderTest3_6: -6229791497785111193
+      spr_enemy_spiderTest3_7: -3252104863004650327
+      spr_enemy_spiderTest3_8: -2030179976360775432
+      spr_enemy_spiderTest3_9: -5241740820529877967
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
