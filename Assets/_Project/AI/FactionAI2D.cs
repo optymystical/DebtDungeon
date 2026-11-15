@@ -31,6 +31,7 @@ namespace DebtDungeon.AI
     {
         private const float ScanIntervalSeconds = 0.2f;
         private const int MaxScanColliders = 24;
+        private const float RaidArrivalDistance = 2f;
 
         [Header("Diplomacy & Masks")]
         [SerializeField] private FactionData _factionData;
@@ -61,6 +62,7 @@ namespace DebtDungeon.AI
         private Vector2 _rivalTerritoryOrigin;
         private Vector2 _wanderDestination;
         private bool _hasSpawnAnchor;
+        private bool _isRaiding;
 
         private List<Vector2> _waypoints = new List<Vector2>();
         private int _waypointIndex;
@@ -166,6 +168,7 @@ namespace DebtDungeon.AI
             }
 
             _rivalTerritoryOrigin = raidTargetPosition;
+            _isRaiding = true;
             _isTelegraphing = false;
             TransitionToState(AIState.Raid);
             ForceRepath(raidTargetPosition);
@@ -213,16 +216,35 @@ namespace DebtDungeon.AI
         {
             float healthRatio = _agent.MaxHealth > 0 ? (float)_agent.CurrentHealth / _agent.MaxHealth : 1f;
 
-            // 1. Low-health flee check
-            if (_currentState != AIState.Flee && _currentState != AIState.Raid && healthRatio <= _fleeHealthThreshold)
+            // 1. Low-health flee check (only when there is something to flee from)
+            bool hasLiveTarget = _currentTarget != null && _currentTarget.IsAlive;
+            if (_currentState != AIState.Flee && _currentState != AIState.Raid && healthRatio <= _fleeHealthThreshold && hasLiveTarget)
             {
                 _isTelegraphing = false;
                 TransitionToState(AIState.Flee);
                 return;
             }
 
-            // 2. Territory leash check
-            if (_currentState == AIState.Wander || _currentState == AIState.Chase)
+            // 1b. While fleeing, skip the other rules until the threat is gone, then head home.
+            // (Without this, step 5 switched a fleeing unit back to Chase every frame.)
+            if (_currentState == AIState.Flee)
+            {
+                float fleeSightRadius = _agent.Stats != null ? _agent.Stats.SightRadius : 6f;
+                bool threatGone = !hasLiveTarget ||
+                    Vector2.Distance(transform.position, _currentTarget.transform.position) > fleeSightRadius * 1.3f;
+
+                if (threatGone)
+                {
+                    _currentTarget = null;
+                    TransitionToState(AIState.Return);
+                    ForceRepath(_spawnAnchor);
+                }
+
+                return;
+            }
+
+            // 2. Territory leash check (raiders are not leashed until their raid ends)
+            if (!_isRaiding && (_currentState == AIState.Wander || _currentState == AIState.Chase))
             {
                 float maxLeash = _role == UnitRole.Guard ? _guardLeashDistance : _residentLeashDistance;
                 if (Vector2.Distance(transform.position, _spawnAnchor) > maxLeash)
@@ -289,7 +311,8 @@ namespace DebtDungeon.AI
                 _isTelegraphing = false;
                 if (_currentState == AIState.Chase || _currentState == AIState.Attack)
                 {
-                    TransitionToState(_rivalTerritoryOrigin != Vector2.zero ? AIState.Raid : AIState.Wander);
+                    // Only units drafted by the raid manager go back to raiding; everyone else patrols.
+                    TransitionToState(_isRaiding ? AIState.Raid : AIState.Wander);
                 }
             }
         }
@@ -312,6 +335,14 @@ namespace DebtDungeon.AI
 
                 case AIState.Raid:
                     Vector2 raidDest = _rivalTerritoryOrigin != Vector2.zero ? _rivalTerritoryOrigin : _wanderDestination;
+
+                    // Raid ends on arrival: go home (Return) instead of staying in enemy territory forever.
+                    if (Vector2.Distance(transform.position, raidDest) <= RaidArrivalDistance)
+                    {
+                        EndRaid();
+                        break;
+                    }
+
                     UpdatePathfinding(raidDest);
                     _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
                     break;
@@ -574,6 +605,14 @@ namespace DebtDungeon.AI
             float wanderRadius = _role == UnitRole.Guard ? _guardLeashDistance * 0.7f : _residentLeashDistance * 0.7f;
             Vector2 randomOffset = UnityEngine.Random.insideUnitCircle * wanderRadius;
             _wanderDestination = _spawnAnchor + randomOffset;
+        }
+
+        private void EndRaid()
+        {
+            _isRaiding = false;
+            _desiredVelocity = Vector2.zero;
+            TransitionToState(AIState.Return);
+            ForceRepath(_spawnAnchor);
         }
 
         private void TransitionToState(AIState newState)
