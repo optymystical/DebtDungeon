@@ -119,6 +119,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
-  _faction: 0
+  _faction: 2
   _maxHealth: 100
   _invulnerabilityDuration: 0

@@ -15,10 +15,11 @@ namespace DebtDungeon.Player
         [SerializeField] private float _turnSpeed = 1;
 
         private Vector2 _moveInput;
-        private PlayerInput _playerInput;
+        private Camera _camera;
         private Vector3 _mouseWorldPos; 
         private Vector2 _mouseDirection;
 
+        private InputAction _moveAction;
         private InputAction _attackAction;
         private InputAction _ability1Action;
         private InputAction _ability2Action;
@@ -38,6 +39,8 @@ namespace DebtDungeon.Player
 
         private void Awake()
         {
+            _camera = Camera.main;
+            _moveAction = InputSystem.actions.FindAction("Player/Move");
             _attackAction = InputSystem.actions.FindAction("Player/Attack");
             _ability1Action = InputSystem.actions.FindAction("Player/Ability 1");
             _ability2Action = InputSystem.actions.FindAction("Player/Ability 2");
@@ -60,20 +63,36 @@ namespace DebtDungeon.Player
             // Make the cursor visible  NOT WORKING?
             Cursor.visible = true;
 
-            _playerInput = GetComponent<PlayerInput>();
         }
 
         // Update is called once per frame
         private void Update()
         {
+            // Core v1.4: no player input while paused or on the death/results screen.
+            // Time.timeScale = 0 stops movement, but Update still runs and would still read keys.
+            if (IsInputBlocked())
+            {
+                _moveInput = Vector2.zero;
+                return;
+            }
+
             GatherInput();
             FaceCursor();
+        }
+
+        // Blocked only in the frozen states, so sandbox scenes without a GameManager
+        // (CurrentGameState stays at its MainMenu default there) still accept input.
+        private static bool IsInputBlocked()
+        {
+            GameState state = GameEvents.CurrentGameState;
+            return state == GameState.Paused || state == GameState.Dead || state == GameState.Won;
         }
 
         // FixedUpdate is called once per frame
         private void FixedUpdate()
         {
-            if (_rb != null && !_hitFeedback.IsKnockingBack)
+            bool isKnockingBack = _hitFeedback != null && _hitFeedback.IsKnockingBack;
+            if (_rb != null && !isKnockingBack)
             {
                 _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * 1; // 1 is placeholder for _terrainMultiplier
 
@@ -87,16 +106,14 @@ namespace DebtDungeon.Player
             }
         }
 
-        // Gets movement input from user
-        private void OnMove(InputValue inputValue)
-        {
-            _moveInput = inputValue.Get<Vector2>();
-        }
-
         // Reacts to keyboard and mouse input
         private void GatherInput()
         {
-            _mouseWorldPos = Camera.main.ScreenToWorldPoint(Mouse.current.position.ReadValue());
+            // Read Move the same way as every other action (project-wide actions), instead of a
+            // PlayerInput component also driving the same asset.
+            _moveInput = _moveAction.ReadValue<Vector2>();
+
+            _mouseWorldPos = _camera.ScreenToWorldPoint(Mouse.current.position.ReadValue());
             _mouseWorldPos.z = 0;
             _mouseDirection = (_mouseWorldPos - transform.position).normalized;
 

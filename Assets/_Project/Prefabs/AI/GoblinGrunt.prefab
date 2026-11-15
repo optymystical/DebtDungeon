@@ -215,5 +215,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
   _faction: 2
-  _maxHealth: 100
+  _maxHealth: 30
   _invulnerabilityDuration: 0
