@@ -1,0 +1,1226 @@
+fileFormatVersion: 2
+guid: cce5801b54d8e5f4cbf5d1c4e77f8e43
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5459007189452134653
+    second: spr_enemy_spiderTest3_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 307e66e52e5bd34b0800000000000000
+      internalID: -5459007189452134653
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9b80bdd0a10203348af482fa2fb53700
+      internalID: -1235563923
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ed53d44844d2e4f4f831d91fd04cd0d7
+      internalID: 1589026588
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 777a332f0b89b624eb1cd557d3c34324
+      internalID: 1136707184
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d009190e01971b241873f068bd7b94a7
+      internalID: 1508718671
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a69027bffa4787642ad77d5b66371f9e
+      internalID: -2016673751
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9666744d7fe65bc4f81a302abe757faa
+      internalID: 1643857626
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9ef47caa3c1b9cd4889ae18bbc675695
+      internalID: 459308245
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1cc2115a12d4ee446968ef6328df0f1d
+      internalID: 577900640
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1286d657c04140142b9f9d5c23729610
+      internalID: 1464237729
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 430d778a8ae53b041bcf091d56437f61
+      internalID: -1121808980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9416befec589aa541b49001e5a63d3ae
+      internalID: 984865201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d0eff2100e9e0ae41be3acf83e87f856
+      internalID: -1572852009
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 346aaeda7c6ed364f84a8c83cbcd0b32
+      internalID: 1075288159
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_14
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f590a4a7d65e85144b0a6a2c11dfd8dd
+      internalID: -921802117
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7011f4a9bd998d24eb466bc0ded78435
+      internalID: -526467765
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0f3a111b309691b4ead131d81dbead01
+      internalID: 419748148
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b2ad23d8895b9ca40b28875f737c0e95
+      internalID: -1255570936
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a196d306c5078564e8735a6614ba75e4
+      internalID: 2074042521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f9dd2833b4412ff47a8e96cc30ed4bff
+      internalID: 1467198032
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_20
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3f76222ba7757cb48b61a08dac654665
+      internalID: 697001335
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_21
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c302981448c70e6479166f1ac75812a8
+      internalID: 1684467599
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_22
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8df90400ab64ff042b5c21c520fd7913
+      internalID: 1978885322
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33a0d3d64c97fee42ad8cbdfee1b8f60
+      internalID: 296481023
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: c0c23097573fb504da2d9732090dfbc8
+      internalID: -1407238136
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 56532c3eeac0e0b43ab0a924d836d8ac
+      internalID: -315810323
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 820f1c29cfe5ae74c8da8d74073f0dc5
+      internalID: 838431160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f573e5c5ab9ae644f899bac1b3411959
+      internalID: -1188671703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: aaf0ff44a1622ea48ab81efddc89752a
+      internalID: 593413885
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 9457a1120396ae549a24e1573a6089fc
+      internalID: -516463637
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_30
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f44005d2049ad2a40876fe8ee8a2b0fe
+      internalID: 1991562933
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_31
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6702ebd28ba8654581e5a3e41654675
+      internalID: 820846389
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14c73504abe31ce49a2289ee7c955081
+      internalID: 584305021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d33b0792b51eabc4fb1767760e5ec1c0
+      internalID: -870675391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_34
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: cbe0cba3e9d1b7c488ca36fd46334946
+      internalID: -1521521250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_35
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fb2f42b4fa7743b4cb1b82fd72fd56d5
+      internalID: -1358365641
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_36
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b5dcc44385ffac84fb2327fc0c462e3c
+      internalID: -1753120876
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_37
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 816a202accaae5d449f1f9238d297e40
+      internalID: 1716233960
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_38
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a3f290dbc231564588d61bc40c88b1a
+      internalID: -145478207
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_39
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4d9f96f390b20f24e8c5c1c8987e0770
+      internalID: 676277554
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 818198b606e638e468d06deb0a7311de
+      internalID: 783074374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_41
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f6f367a11f04c864d9a6212558ea2083
+      internalID: 285372878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_42
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 49d51aaa2f8cb08429fc6614d58755d4
+      internalID: -986071519
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_43
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: abc350eead70a624b833af8ee8bdd2e2
+      internalID: -1064214743
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_44
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: a6eb8b9b488bc904c9f3b1c345b0c737
+      internalID: 210313694
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_45
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b0031a8428cf9294794f8fac5637b706
+      internalID: -2082142141
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_46
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: af044ad1c63004649be161d79941074c
+      internalID: -1255420438
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderTest3_47
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3a96d08a8eb5dd14989ffbbbc3be7ddf
+      internalID: 15061086
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 4bfdfbdbc43c9044c8f3c71ae2891851
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_enemy_spiderTest3_0: -5459007189452134653
+      spr_enemy_spiderTest3_1: -1235563923
+      spr_enemy_spiderTest3_10: -1121808980
+      spr_enemy_spiderTest3_11: 984865201
+      spr_enemy_spiderTest3_12: -1572852009
+      spr_enemy_spiderTest3_13: 1075288159
+      spr_enemy_spiderTest3_14: -921802117
+      spr_enemy_spiderTest3_15: -526467765
+      spr_enemy_spiderTest3_16: 419748148
+      spr_enemy_spiderTest3_17: -1255570936
+      spr_enemy_spiderTest3_18: 2074042521
+      spr_enemy_spiderTest3_19: 1467198032
+      spr_enemy_spiderTest3_2: 1589026588
+      spr_enemy_spiderTest3_20: 697001335
+      spr_enemy_spiderTest3_21: 1684467599
+      spr_enemy_spiderTest3_22: 1978885322
+      spr_enemy_spiderTest3_23: 296481023
+      spr_enemy_spiderTest3_24: -1407238136
+      spr_enemy_spiderTest3_25: -315810323
+      spr_enemy_spiderTest3_26: 838431160
+      spr_enemy_spiderTest3_27: -1188671703
+      spr_enemy_spiderTest3_28: 593413885
+      spr_enemy_spiderTest3_29: -516463637
+      spr_enemy_spiderTest3_3: 1136707184
+      spr_enemy_spiderTest3_30: 1991562933
+      spr_enemy_spiderTest3_31: 820846389
+      spr_enemy_spiderTest3_32: 584305021
+      spr_enemy_spiderTest3_33: -870675391
+      spr_enemy_spiderTest3_34: -1521521250
+      spr_enemy_spiderTest3_35: -1358365641
+      spr_enemy_spiderTest3_36: -1753120876
+      spr_enemy_spiderTest3_37: 1716233960
+      spr_enemy_spiderTest3_38: -145478207
+      spr_enemy_spiderTest3_39: 676277554
+      spr_enemy_spiderTest3_4: 1508718671
+      spr_enemy_spiderTest3_40: 783074374
+      spr_enemy_spiderTest3_41: 285372878
+      spr_enemy_spiderTest3_42: -986071519
+      spr_enemy_spiderTest3_43: -1064214743
+      spr_enemy_spiderTest3_44: 210313694
+      spr_enemy_spiderTest3_45: -2082142141
+      spr_enemy_spiderTest3_46: -1255420438
+      spr_enemy_spiderTest3_47: 15061086
+      spr_enemy_spiderTest3_5: -2016673751
+      spr_enemy_spiderTest3_6: 1643857626
+      spr_enemy_spiderTest3_7: 459308245
+      spr_enemy_spiderTest3_8: 577900640
+      spr_enemy_spiderTest3_9: 1464237729
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

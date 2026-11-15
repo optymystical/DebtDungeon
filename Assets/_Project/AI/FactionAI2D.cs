@@ -370,6 +370,10 @@ namespace DebtDungeon.AI
             {
                 _isTelegraphing = true;
                 _telegraphTimer = _attackTelegraphDuration;
+                if (TryGetComponent(out UnitAnimator2D unitAnim))
+                {
+                    unitAnim.TriggerAttackAnimation();
+                }
                 if (_agent.VisualRenderer != null)
                 {
                     _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);

@@ -1,0 +1,1226 @@
+fileFormatVersion: 2
+guid: 55044b42fcb28a14386af080397f0961
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 3973535311118746941
+    second: spr_enemy_goblinTest2_0
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 16
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3544b11055d42730800000000000000
+      internalID: 3973535311118746941
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 57da586769b162846a68b05aca0dbcb3
+      internalID: -894349099
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 59b609f3efb099b4c9ba413167f11c0a
+      internalID: 2032729797
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 00a8ba7a7760e8440a6645776c130f79
+      internalID: -187468439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f837f58948e6c2b4282dda7b6ac9eb60
+      internalID: 844303331
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 72e7decb56c2cf04f9e6cb3ddb4d0ebb
+      internalID: 408910968
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7f412eba0aa929b44ba3bd1b4ea544a3
+      internalID: -1996812613
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5eea8da083ff924abd43e5dfbdce003
+      internalID: 1041196059
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 725d9500b246e7543856426e50324b3f
+      internalID: 1002841330
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ac0a1233dc4f92b4da724da08503893e
+      internalID: 1429080014
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 3d61d66cba847454089aeee979ecabab
+      internalID: 1393021163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 73bbf5dee903cc44ea3b8b1e6ae24877
+      internalID: -1387119915
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7c1dc34d4e462e147a9632b61ce44595
+      internalID: 476061829
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 239df6e69c1f5a44b80889765152b830
+      internalID: 451467369
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_14
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d4f24bdd86aa874187bb7667a6400ee
+      internalID: -2078295878
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b6d1e1303153574080140e94d32e070
+      internalID: -1506337644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0cbaa85a7ec7d534b9e4e471140e6ac3
+      internalID: 592757025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e5f08730bbda10e4cacc4d3c34d1aaf0
+      internalID: -205764046
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8a6b9cff583c8e649b00caae6ab94672
+      internalID: -1280010250
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bb5542a8f266fae40b861ca30929a00b
+      internalID: -529230544
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_20
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d50088aea44eef14681153c965c0bc74
+      internalID: 1841730379
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_21
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 22ceb54e5b428374491de5c161ce3a58
+      internalID: 1003709309
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_22
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0189eff390b69c544a8188adeb440dba
+      internalID: 1886280339
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 14cc1531e7dfed44e8732f4f7e64fa28
+      internalID: 28978466
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f294e016d8e9e17428ef6313040bc932
+      internalID: -422768060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 43efd8f8f92c20d4aaf1abbedf7d9873
+      internalID: -1653883476
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f4ec98b5af1032b45a833f297301a340
+      internalID: -1615376329
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8b693b22c70c6934694461dde89666c0
+      internalID: 573577684
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 1d332725b108d984586ea9f5e243559a
+      internalID: 1179321569
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4658e301590dd264bbfb627473b1e264
+      internalID: 1523884553
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_30
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 062e751ef0af2a345af64fbc898b9b85
+      internalID: 1079006934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_31
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ccbc0c9392252ca47a0c9cc017394b59
+      internalID: -791155025
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: e67a4b05c5e2fc045adb5c5434ecd291
+      internalID: -1753605768
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7671dcee4c8ad11459e072b05150d0e8
+      internalID: -1564603589
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_34
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b4300d83760ffa14ebe7082c2a545581
+      internalID: -1445260132
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_35
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: d45c82f3340534342911d0592f67cf4a
+      internalID: -1775010302
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_36
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b6bafe417cfb06947a1bd131de1ffbd0
+      internalID: -323351922
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_37
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: fa0fdd01b55cb584da6814ed1bf87c18
+      internalID: 1103586496
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_38
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2545b9dacb6531446a3c5bc4653bfc60
+      internalID: -1061028978
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_39
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ef7edd8178c967145a4c2377f669c988
+      internalID: 337112647
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 69357271fe39db44e93be5340faee5eb
+      internalID: -830898633
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_41
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 675ab620548a5c146aff26a0c1cc9698
+      internalID: 1368978713
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_42
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 275ec11c2e6be4c46a3307129d264f26
+      internalID: 747777295
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_43
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4e9c38a1d8651e843a06bb52e4edd291
+      internalID: -118148512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_44
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 4988bd2da3c19614ab3e7c8bee5ae1af
+      internalID: -186519934
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_45
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 13068964dd30f2f4da896a5a8382899b
+      internalID: -932714223
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_46
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 0b2121d13224e384884e8f3cf77516df
+      internalID: 806662220
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinTest2_47
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: f64d2f2130584044cb4b399f1957b343
+      internalID: -977814275
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: f2af75c8acd0c2e4b80a4a39de7903b2
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_enemy_goblinTest2_0: 3973535311118746941
+      spr_enemy_goblinTest2_1: -894349099
+      spr_enemy_goblinTest2_10: 1393021163
+      spr_enemy_goblinTest2_11: -1387119915
+      spr_enemy_goblinTest2_12: 476061829
+      spr_enemy_goblinTest2_13: 451467369
+      spr_enemy_goblinTest2_14: -2078295878
+      spr_enemy_goblinTest2_15: -1506337644
+      spr_enemy_goblinTest2_16: 592757025
+      spr_enemy_goblinTest2_17: -205764046
+      spr_enemy_goblinTest2_18: -1280010250
+      spr_enemy_goblinTest2_19: -529230544
+      spr_enemy_goblinTest2_2: 2032729797
+      spr_enemy_goblinTest2_20: 1841730379
+      spr_enemy_goblinTest2_21: 1003709309
+      spr_enemy_goblinTest2_22: 1886280339
+      spr_enemy_goblinTest2_23: 28978466
+      spr_enemy_goblinTest2_24: -422768060
+      spr_enemy_goblinTest2_25: -1653883476
+      spr_enemy_goblinTest2_26: -1615376329
+      spr_enemy_goblinTest2_27: 573577684
+      spr_enemy_goblinTest2_28: 1179321569
+      spr_enemy_goblinTest2_29: 1523884553
+      spr_enemy_goblinTest2_3: -187468439
+      spr_enemy_goblinTest2_30: 1079006934
+      spr_enemy_goblinTest2_31: -791155025
+      spr_enemy_goblinTest2_32: -1753605768
+      spr_enemy_goblinTest2_33: -1564603589
+      spr_enemy_goblinTest2_34: -1445260132
+      spr_enemy_goblinTest2_35: -1775010302
+      spr_enemy_goblinTest2_36: -323351922
+      spr_enemy_goblinTest2_37: 1103586496
+      spr_enemy_goblinTest2_38: -1061028978
+      spr_enemy_goblinTest2_39: 337112647
+      spr_enemy_goblinTest2_4: 844303331
+      spr_enemy_goblinTest2_40: -830898633
+      spr_enemy_goblinTest2_41: 1368978713
+      spr_enemy_goblinTest2_42: 747777295
+      spr_enemy_goblinTest2_43: -118148512
+      spr_enemy_goblinTest2_44: -186519934
+      spr_enemy_goblinTest2_45: -932714223
+      spr_enemy_goblinTest2_46: 806662220
+      spr_enemy_goblinTest2_47: -977814275
+      spr_enemy_goblinTest2_5: 408910968
+      spr_enemy_goblinTest2_6: -1996812613
+      spr_enemy_goblinTest2_7: 1041196059
+      spr_enemy_goblinTest2_8: 1002841330
+      spr_enemy_goblinTest2_9: 1429080014
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

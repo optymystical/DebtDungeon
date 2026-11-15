@@ -15,6 +15,8 @@ GameObject:
   - component: {fileID: 5934769959843523098}
   - component: {fileID: 4178453336386981533}
   - component: {fileID: 7938495285181322973}
+  - component: {fileID: 8964808833559840502}
+  - component: {fileID: 3170192365974430974}
   m_Layer: 7
   m_Name: GoblinGrunt
   m_TagString: Untagged
@@ -217,3 +219,40 @@ MonoBehaviour:
   _faction: 2
   _maxHealth: 100
   _invulnerabilityDuration: 0
+--- !u!95 &8964808833559840502
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645621396471598311}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: e5383f908b06562458d67c6b5653d5f2, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
+--- !u!114 &3170192365974430974
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4645621396471598311}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 85ddc8439a6cad841a6e021ec50f749e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.UnitAnimator2D
+  _animator: {fileID: 0}
+  _spriteRenderer: {fileID: 0}
+  _deathAnimDuration: 0.65
