@@ -32,6 +32,10 @@ namespace DebtDungeon.AI
         private const float ScanIntervalSeconds = 0.2f;
         private const int MaxScanColliders = 24;
 
+        private Color _baseSpriteColor = Color.white;
+        private float _backstepTimer;
+        private Vector2 _backstepVelocity;
+
         [Header("Diplomacy & Masks")]
         [SerializeField] private FactionData _factionData;
         [SerializeField] private LayerMask _targetMask;
@@ -100,6 +104,11 @@ namespace DebtDungeon.AI
             {
                 _spawnAnchor = transform.position;
                 _hasSpawnAnchor = true;
+            }
+
+            if (_agent.VisualRenderer != null)
+            {
+                _baseSpriteColor = _agent.VisualRenderer.color;
             }
 
             // Stagger initial scan timers
@@ -190,6 +199,13 @@ namespace DebtDungeon.AI
         {
             if (!IsAlive || _agent.Rigidbody == null)
             {
+                return;
+            }
+
+            if (_backstepTimer > 0f)
+            {
+                _backstepTimer -= Time.fixedDeltaTime;
+                _agent.Rigidbody.linearVelocity = _backstepVelocity;
                 return;
             }
 
@@ -350,33 +366,76 @@ namespace DebtDungeon.AI
             if (_currentTarget == null || !_currentTarget.IsAlive)
             {
                 _isTelegraphing = false;
-                return;
-            }
-
-            if (_isTelegraphing)
-            {
-                _telegraphTimer -= Time.deltaTime;
-                if (_telegraphTimer <= 0f)
-                {
-                    _isTelegraphing = false;
-                    _nextAttackTime = Time.time + _attackCooldown;
-                    ExecuteCoreCombatAttack();
-                }
-
-                return;
-            }
-
-            if (Time.time >= _nextAttackTime)
-            {
-                _isTelegraphing = true;
-                _telegraphTimer = _attackTelegraphDuration;
-                if (TryGetComponent(out UnitAnimator2D unitAnim))
-                {
-                    unitAnim.TriggerAttackAnimation();
-                }
                 if (_agent.VisualRenderer != null)
                 {
-                    _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
+                    _agent.VisualRenderer.color = _baseSpriteColor;
+                }
+                _currentState = AIState.Wander;
+                return;
+            }
+
+            float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.1f;
+            float windupDuration = _agent.Stats != null ? _agent.Stats.AttackWindupSeconds : 0.65f;
+            float cooldown = _agent.Stats != null ? _agent.Stats.AttackCooldownSeconds : 1.2f;
+
+            Vector2 toTarget = (Vector2)_currentTarget.transform.position - (Vector2)transform.position;
+            float dist = toTarget.magnitude;
+
+            if (!_isTelegraphing)
+            {
+                if (dist > attackRange * 1.15f)
+                {
+                    _currentState = AIState.Chase;
+                    return;
+                }
+
+                _agent.Rigidbody.linearVelocity = Vector2.zero;
+
+                if (Time.time >= _nextAttackTime)
+                {
+                    _isTelegraphing = true;
+                    _telegraphTimer = windupDuration;
+
+                    if (TryGetComponent(out UnitAnimator2D unitAnim))
+                    {
+                        unitAnim.TriggerAttackAnimation();
+                    }
+
+                    if (_agent.VisualRenderer != null)
+                    {
+                        _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
+                    }
+                }
+                return;
+            }
+
+            // Winding up attack
+            _agent.Rigidbody.linearVelocity = Vector2.zero;
+            _telegraphTimer -= Time.deltaTime;
+
+            if (_telegraphTimer <= 0f)
+            {
+                _isTelegraphing = false;
+                _nextAttackTime = Time.time + cooldown;
+
+                if (_agent.VisualRenderer != null)
+                {
+                    _agent.VisualRenderer.color = _baseSpriteColor;
+                }
+
+                if (dist <= attackRange * 1.35f)
+                {
+                    ExecuteCoreCombatAttack();
+
+                    // Hit-and-run jump away (Spider Skitterling)
+                    float backstepDist = _agent.Stats != null ? _agent.Stats.PostAttackBackstepDistance : 0f;
+                    float backstepDur = _agent.Stats != null ? _agent.Stats.PostAttackBackstepDuration : 0.25f;
+                    if (backstepDist > 0.01f && backstepDur > 0.01f)
+                    {
+                        Vector2 awayDir = dist > 0.01f ? -toTarget.normalized : -((Vector2)transform.up);
+                        _backstepVelocity = awayDir * (backstepDist / backstepDur);
+                        _backstepTimer = backstepDur;
+                    }
                 }
             }
         }
@@ -385,7 +444,7 @@ namespace DebtDungeon.AI
         {
             if (_agent.VisualRenderer != null)
             {
-                _agent.VisualRenderer.color = Color.white;
+                _agent.VisualRenderer.color = _baseSpriteColor;
             }
 
             if (_currentTarget == null || !_currentTarget.IsAlive)
@@ -562,6 +621,16 @@ namespace DebtDungeon.AI
 
             Vector2 desiredHeading = (nextWaypoint - currentPos).normalized;
 
+            // Blend ally pack cohesion during Wander/Chase (Goblin squad behavior)
+            if (_currentState == AIState.Wander || _currentState == AIState.Chase)
+            {
+                Vector2 cohesion = ComputePackCohesionSteering();
+                if (cohesion != Vector2.zero)
+                {
+                    desiredHeading = (desiredHeading + cohesion).normalized;
+                }
+            }
+
             Collider2D nearbyWall = Physics2D.OverlapCircle(currentPos, _cornerAvoidanceRadius, _obstacleMask);
             if (nearbyWall != null)
             {
@@ -571,6 +640,55 @@ namespace DebtDungeon.AI
             }
 
             return desiredHeading;
+        }
+
+        private Vector2 ComputePackCohesionSteering()
+        {
+            if (_agent.Stats == null || _agent.Stats.PackCohesionWeight <= 0f)
+            {
+                return Vector2.zero;
+            }
+
+            float radius = _agent.Stats.PackCohesionRadius;
+            _targetFilter.useLayerMask = _targetMask.value != 0;
+            _targetFilter.layerMask = _targetMask;
+
+            int hitCount = Physics2D.OverlapCircle(transform.position, radius, _targetFilter, _scanBuffer);
+
+            Vector2 centerOfMass = Vector2.zero;
+            int allyCount = 0;
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                Collider2D col = _scanBuffer[i];
+                if (col == null || col.gameObject == gameObject)
+                {
+                    continue;
+                }
+
+                Health ally = col.GetComponentInParent<Health>();
+                if (ally != null && ally.IsAlive && ally.Faction == _agent.Faction)
+                {
+                    centerOfMass += (Vector2)ally.transform.position;
+                    allyCount++;
+                }
+            }
+
+            if (allyCount == 0)
+            {
+                return Vector2.zero;
+            }
+
+            centerOfMass /= allyCount;
+            Vector2 toPack = centerOfMass - (Vector2)transform.position;
+
+            // Keep ~1.4 tiles of personal spacing so squadmates travel abreast without stacking
+            if (toPack.magnitude < 1.4f)
+            {
+                return Vector2.zero;
+            }
+
+            return toPack.normalized * _agent.Stats.PackCohesionWeight;
         }
 
         private void PickNewWanderDestination()
