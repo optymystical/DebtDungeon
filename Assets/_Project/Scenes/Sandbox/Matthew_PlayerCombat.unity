@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 802778188}
   - component: {fileID: 802778187}
   - component: {fileID: 802778189}
+  - component: {fileID: 802778190}
   m_Layer: 0
   m_Name: TestsHolder
   m_TagString: Untagged
@@ -505,9 +506,23 @@ MonoBehaviour:
   m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.TestAttack
   _playerTransform: {fileID: 1784213310}
   _HitTextPrefab: {fileID: 5751825521880025176, guid: 622a502866a52a94c932a0aa5c02166c, type: 3}
-  _HitText: {fileID: 20811089721046957, guid: 622a502866a52a94c932a0aa5c02166c, type: 3}
   _accuracy: 100
   _baseDamage: 10
+  _lifetime: 1
+  _floatSpeed: 1.5
+--- !u!114 &802778190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802778186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823488962afa76442909cbfd94bdf005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.TestStatus
+  _statusEffects: {fileID: 1784213317}
 --- !u!1 &879332022
 GameObject:
   m_ObjectHideFlags: 0
@@ -891,7 +906,6 @@ GameObject:
   - component: {fileID: 1784213308}
   - component: {fileID: 1784213309}
   - component: {fileID: 1784213311}
-  - component: {fileID: 1784213312}
   - component: {fileID: 1784213313}
   - component: {fileID: 1784213314}
   - component: {fileID: 1784213315}
@@ -922,6 +936,7 @@ MonoBehaviour:
   _hitFeedback: {fileID: 1784213319}
   _baseMoveSpeed: 3
   _turnSpeed: 300
+  _terrainMultiplier: 1
 --- !u!212 &1784213309
 SpriteRenderer:
   serializedVersion: 2
@@ -1023,36 +1038,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &1784213312
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1784213307}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 62899f850307741f2a39c98a8b639597, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: Unity.InputSystem::UnityEngine.InputSystem.PlayerInput
-  m_Actions: {fileID: -944628639613478452, guid: 2bcd2660ca9b64942af0de543d8d7100, type: 3}
-  m_NotificationBehavior: 0
-  m_UIInputModule: {fileID: 0}
-  m_DeviceLostEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_DeviceRegainedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ControlsChangedEvent:
-    m_PersistentCalls:
-      m_Calls: []
-  m_ActionEvents: []
-  m_NeverAutoSwitchControlSchemes: 0
-  m_DefaultControlScheme: 
-  m_DefaultActionMap: 
-  m_SplitScreenIndex: -1
-  m_Camera: {fileID: 0}
 --- !u!114 &1784213313
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1155,6 +1140,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7e58275a5388b4697f2fc35a52042b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _playerController: {fileID: 1784213308}
+  _health: {fileID: 1784213313}
+  _slowMultiplier: 0.5
+  _slowDuration: 1
+  _poisonDamage: 1
+  _poisonDuration: 3
 --- !u!114 &1784213318
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1167,6 +1158,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 606c4468221ca4f4e9ee727f032728eb, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _Health: {fileID: 1784213313}
 --- !u!114 &1784213319
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -13,6 +13,7 @@ namespace DebtDungeon.Player
         [Header("Settings")]
         [SerializeField] private float _baseMoveSpeed = 1;
         [SerializeField] private float _turnSpeed = 1;
+        public float _terrainMultiplier = 1;
 
         private Vector2 _moveInput;
         private Camera _camera;
@@ -94,7 +95,7 @@ namespace DebtDungeon.Player
             bool isKnockingBack = _hitFeedback != null && _hitFeedback.IsKnockingBack;
             if (_rb != null && !isKnockingBack)
             {
-                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * 1; // 1 is placeholder for _terrainMultiplier
+                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * _terrainMultiplier; 
 
                 // Rotates sprite to face destination while moving
                 if (_moveInput != Vector2.zero)

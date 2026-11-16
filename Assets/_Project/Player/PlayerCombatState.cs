@@ -1,9 +1,44 @@
+using DebtDungeon.Core;
 using UnityEngine;
+using System.Collections;
 
 namespace DebtDungeon.Player
 {
-    public class PlayerCombatState : MonoBehaviour
+    public class PlayerCombatState : MonoBehaviour, ICombatState
     {
-        
+        [SerializeField] private Health _Health;
+        private bool _inCombat = false;
+        public bool InCombat => _inCombat;
+        private Coroutine _myCoroutine;
+
+        private void OnEnable()
+        {
+            _Health.Damaged += EnterCombat;
+        }
+
+        private void OnDisable()
+        {
+            _Health.Damaged -= EnterCombat;
+        }
+
+        private void EnterCombat(DamageInfo info, int amount)
+        {
+            _inCombat = true;
+
+            // Stop any already running coroutines
+            if (_myCoroutine != null)
+            {
+                StopCoroutine(_myCoroutine);
+            }
+
+            // Start a new coroutine for timer
+            _myCoroutine = StartCoroutine(ResetTimer());
+        }
+
+        private IEnumerator ResetTimer()
+        {
+            yield return new WaitForSeconds(5f);
+            _inCombat = false;
+        }
     }
 }
