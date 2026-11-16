@@ -555,7 +555,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.ExitSpawner
   _gameManager: {fileID: 0}
   _bootstrap: {fileID: 0}
-  _exitPrefab: {fileID: 0}
+  _exitPrefab: {fileID: 3995699613843994786, guid: a91d3ceaba5658e4aad520e786dfb965, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
