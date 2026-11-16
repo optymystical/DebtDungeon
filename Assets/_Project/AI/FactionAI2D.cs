@@ -486,8 +486,8 @@ namespace DebtDungeon.AI
             }
 
             float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.1f;
-            float windupDuration = _agent.Stats != null ? _agent.Stats.AttackWindupSeconds : 0.65f;
-            float cooldown = _agent.Stats != null ? _agent.Stats.AttackCooldownSeconds : 1.2f;
+            float windupDuration = _agent.Stats != null ? _agent.Stats.AttackWindupSeconds : _attackTelegraphDuration;
+            float cooldown = _agent.Stats != null ? _agent.Stats.AttackCooldownSeconds : _attackCooldown;
             bool isRanged = _agent.Stats != null && _agent.Stats.IsRangedKiter && _agent.Stats.ProjectilePrefab != null;
 
             Vector2 toTarget = (Vector2)_currentTarget.transform.position - (Vector2)transform.position;

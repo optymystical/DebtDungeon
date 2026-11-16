@@ -371,6 +371,63 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &702102594
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3260601129962617940, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_Name
+      value: GoblinSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 7
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
 --- !u!1 &1398917773
 GameObject:
   m_ObjectHideFlags: 0
@@ -556,6 +613,141 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _bootstrap: {fileID: 0}
   _exitPrefab: {fileID: 3995699613843994786, guid: a91d3ceaba5658e4aad520e786dfb965, type: 3}
+--- !u!1001 &1822066189
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_Name
+      value: SpiderSpawner
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: -7
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+--- !u!1 &2085050228
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 2085050230}
+  - component: {fileID: 2085050229}
+  - component: {fileID: 2085050231}
+  m_Layer: 0
+  m_Name: AiDirector
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!114 &2085050229
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085050228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c4a9796df3e8834bbf7dfdbe095e957, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.FactionFloorDirector
+  _factionData: {fileID: 11400000, guid: 66f39528ab4c78248af3525dd1cdb016, type: 2}
+  _obstacleMask:
+    serializedVersion: 2
+    m_Bits: 512
+  _factionSets:
+  - Faction: 2
+    SpawnerPrefab: {fileID: 3260601129962617940, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+    ResidentPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
+    GuardPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
+    ResidentConfig: {fileID: 11400000, guid: 0f06e530e2ca480419760b6b96962d23, type: 2}
+    GuardConfig: {fileID: 11400000, guid: 0f06e530e2ca480419760b6b96962d23, type: 2}
+  - Faction: 3
+    SpawnerPrefab: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+    ResidentPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
+    GuardPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
+    ResidentConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
+    GuardConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
+  _maxResidentsPerFaction: 10
+  _maxGuardsPerFaction: 4
+  _raidIntervalSeconds: 10
+--- !u!4 &2085050230
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085050228}
+  serializedVersion: 2
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_ConstrainProportionsScale: 0
+  m_Children: []
+  m_Father: {fileID: 0}
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &2085050231
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2085050228}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bf08efa77356e0547b2ba4fcae421c46, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.GoldDropManager
+  _goldPrefab: {fileID: 4787719067516737484, guid: a8d57c190e5b9824ca7c024f40473550, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -564,3 +756,6 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1398917775}
   - {fileID: 541089413}
+  - {fileID: 702102594}
+  - {fileID: 1822066189}
+  - {fileID: 2085050230}

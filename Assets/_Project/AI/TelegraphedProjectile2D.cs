@@ -131,22 +131,25 @@ namespace DebtDungeon.AI
                 // 3. Control Effects (Web Weaver Slow + Togglable Poison)
                 if (_config.Style == AttackStyle.ControlWeaver)
                 {
-                    StatusEffectReceiver2D receiver = targetHealth.GetComponent<StatusEffectReceiver2D>();
-                    if (receiver == null)
+                    // Core v1.5: anyone with an IStatusReceiver (the player's StatusEffects, a unit's receiver).
+                    IStatusReceiver receiver = targetHealth.GetComponent<IStatusReceiver>();
+
+                    // Units get a receiver on demand. Never add one to the player: it already has StatusEffects,
+                    // and a second slow system would fight its movement code.
+                    if (receiver == null && targetHealth.Faction != Faction.Player)
                     {
                         receiver = targetHealth.gameObject.AddComponent<StatusEffectReceiver2D>();
                     }
 
-                    receiver.ApplySlow(_config.SlowMultiplier, _config.SlowDurationSeconds);
-
-                    if (_config.ApplyPoison)
+                    if (receiver != null)
                     {
-                        receiver.ApplyPoison(
-                            _config.PoisonTickDamage,
-                            _config.PoisonTickInterval,
-                            _config.PoisonDurationSeconds,
-                            _owner,
-                            _ownerFaction);
+                        receiver.ApplyStatus(StatusEffectType.Slowed, _config.SlowDurationSeconds, _config.SlowMultiplier, _owner, _ownerFaction, 1);
+
+                        if (_config.ApplyPoison)
+                        {
+                            // Core ticks poison every 1 s (all current unit configs already use 1 s).
+                            receiver.ApplyStatus(StatusEffectType.Poisoned, _config.PoisonDurationSeconds, _config.PoisonTickDamage, _owner, _ownerFaction, 1);
+                        }
                     }
                 }
             }

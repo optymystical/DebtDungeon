@@ -13,5 +13,12 @@ namespace DebtDungeon.AI
             OnNoiseEmitted?.Invoke(worldPosition, soundRadius);
         }
 
+        // The project has domain reload turned off (Enter Play Mode Options), so static events keep their
+        // listeners between Play sessions. Clear them when Play starts, the same way GameEvents does.
+        [RuntimeInitializeOnLoadMethod(RuntimeInitializeLoadType.SubsystemRegistration)]
+        private static void ResetOnPlay()
+        {
+            OnNoiseEmitted = null;
+        }
     }
 }

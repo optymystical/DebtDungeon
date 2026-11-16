@@ -1,93 +1,184 @@
-using DebtDungeon.Core;
 using System.Collections;
+using DebtDungeon.Core;
 using UnityEngine;
 
 namespace DebtDungeon.Player
 {
-    public enum StatusEffect
+    /// <summary>
+    /// The player's status effects. Implements Core's IStatusReceiver, so AI projectiles, traps and abilities can
+    /// apply effects without referencing Player. Slowed and Poisoned don't stack: reapplying keeps whichever end
+    /// time is later. Strengthened and Weakened come later (Status effects card).
+    /// </summary>
+    public class StatusEffects : MonoBehaviour, IStatusReceiver
     {
-        Slowed,
-        Poisoned,
-        Strengthened1,
-        Strengthened2,
-        Strengthened3,
-        Weakened1,
-        Weakened2,
-        Weakened3
-    }
+        private const float PoisonTickSeconds = 1f;
 
-    public class StatusEffects : MonoBehaviour
-    {
         [SerializeField] private PlayerController _playerController;
         [SerializeField] private Health _health;
 
+        [Header("Test defaults (used by TestStatus)")]
         [SerializeField] private float _slowMultiplier = 0.5f;
         [SerializeField] private float _slowDuration = 2f;
-        private Coroutine _slowCoroutine;
-
         [SerializeField] private int _poisonDamage = 1;
         [SerializeField] private float _poisonDuration = 3f;
-        private Coroutine _poisonCoroutine;
 
-        // Applies status effect to player
-        public void ApplyStatus(StatusEffect statusEffect)
+        private Coroutine _slowCoroutine;
+        private float _slowEndTime;
+
+        private Coroutine _poisonCoroutine;
+        private float _poisonEndTime;
+        private int _poisonDamagePerTick;
+        private GameObject _poisonSource;
+        private Faction _poisonFaction;
+
+        /// <summary>True while Slowed is active (for the HUD later).</summary>
+        public bool IsSlowed => _slowCoroutine != null;
+
+        /// <summary>True while Poisoned is active (for the HUD later).</summary>
+        public bool IsPoisoned => _poisonCoroutine != null;
+
+        private void Awake()
         {
-            switch (statusEffect)
+            // The player prefab may not have these wired in the Inspector, so fall back to this object's components.
+            if (_playerController == null)
             {
-                case StatusEffect.Slowed:
-                    // Stop an already running slow coroutine
+                _playerController = GetComponent<PlayerController>();
+            }
+
+            if (_health == null)
+            {
+                _health = GetComponent<Health>();
+            }
+        }
+
+        private void OnDisable()
+        {
+            // Disabling stops coroutines, so clear the state too, or the effects would look "active" forever.
+            RemoveStatus(StatusEffectType.Slowed);
+            RemoveStatus(StatusEffectType.Poisoned);
+        }
+
+        /// <summary>Core's IStatusReceiver: how AI, traps and abilities apply effects to the player.</summary>
+        public void ApplyStatus(StatusEffectType type, float duration, float magnitude, GameObject source, Faction sourceFaction, int stacks)
+        {
+            if (duration <= 0f || !isActiveAndEnabled || (_health != null && !_health.IsAlive))
+            {
+                return;
+            }
+
+            switch (type)
+            {
+                case StatusEffectType.Slowed:
+                    ApplySlow(duration, magnitude);
+                    break;
+                case StatusEffectType.Poisoned:
+                    ApplyPoison(duration, Mathf.Max(1, Mathf.RoundToInt(magnitude)), source, sourceFaction);
+                    break;
+                // Strengthened and Weakened aren't built yet (Status effects card).
+            }
+        }
+
+        /// <summary>Shortcut for test scripts: applies an effect with the Inspector defaults, poison as if from a spider.</summary>
+        public void ApplyStatus(StatusEffectType type)
+        {
+            bool isSlow = type == StatusEffectType.Slowed;
+            float duration = isSlow ? _slowDuration : _poisonDuration;
+            float magnitude = isSlow ? _slowMultiplier : _poisonDamage;
+            ApplyStatus(type, duration, magnitude, null, Faction.Spider, 1);
+        }
+
+        /// <summary>Ends an effect early. Safe to call when it isn't active.</summary>
+        public void RemoveStatus(StatusEffectType type)
+        {
+            switch (type)
+            {
+                case StatusEffectType.Slowed:
                     if (_slowCoroutine != null)
                     {
                         StopCoroutine(_slowCoroutine);
                     }
 
-                    // Start a new slow coroutine for timer
-                    _playerController._terrainMultiplier = _slowMultiplier;
-                    _slowCoroutine = StartCoroutine(EffectTimer(_slowDuration, StatusEffect.Slowed));
+                    EndSlow();
                     break;
-                case StatusEffect.Poisoned:
-                    // Stop an already running poison coroutine
-                    if (_slowCoroutine != null)
+                case StatusEffectType.Poisoned:
+                    if (_poisonCoroutine != null)
                     {
                         StopCoroutine(_poisonCoroutine);
                     }
 
-                    _poisonCoroutine = StartCoroutine(PoisonDoT());
+                    _poisonCoroutine = null;
+                    _poisonEndTime = 0f;
                     break;
             }
         }
 
-        // Removes status effect
-        public void RemoveStatus(StatusEffect statusEffect)
+        private void ApplySlow(float duration, float multiplier)
         {
-            switch (statusEffect)
+            _slowEndTime = Mathf.Max(_slowEndTime, Time.time + duration);
+
+            if (_playerController != null)
             {
-                case StatusEffect.Slowed:
-                    StopCoroutine(_slowCoroutine);
-                    _playerController._terrainMultiplier = 1f;
-                    break;
-                case StatusEffect.Poisoned:
-                    StopCoroutine(_poisonCoroutine);
-                    break;
+                _playerController.SetStatusSpeedMultiplier(Mathf.Clamp(multiplier, 0.1f, 1f));
+            }
+
+            if (_slowCoroutine == null)
+            {
+                _slowCoroutine = StartCoroutine(SlowTimer());
             }
         }
 
-        // Timer to remove status effect
-        private IEnumerator EffectTimer(float duration, StatusEffect statusEffect)
+        // Waits until the (possibly refreshed) end time, then restores normal speed.
+        private IEnumerator SlowTimer()
         {
-            yield return new WaitForSeconds(duration);
-            RemoveStatus(statusEffect);
+            while (Time.time < _slowEndTime)
+            {
+                yield return null;
+            }
+
+            EndSlow();
         }
 
-        // Deals poison damage every tick (1 sec)
+        private void EndSlow()
+        {
+            _slowCoroutine = null;
+            _slowEndTime = 0f;
+
+            if (_playerController != null)
+            {
+                _playerController.SetStatusSpeedMultiplier(1f);
+            }
+        }
+
+        private void ApplyPoison(float duration, int damagePerTick, GameObject source, Faction sourceFaction)
+        {
+            _poisonEndTime = Mathf.Max(_poisonEndTime, Time.time + duration);
+            _poisonDamagePerTick = damagePerTick;
+            _poisonSource = source;
+            _poisonFaction = sourceFaction;
+
+            if (_poisonCoroutine == null)
+            {
+                _poisonCoroutine = StartCoroutine(PoisonDoT());
+            }
+        }
+
+        // Deals poison damage once per second until the (possibly refreshed) end time.
         private IEnumerator PoisonDoT()
         {
-            float startTime = Time.time;
-            while (Time.time - startTime <= _poisonDuration)
+            while (Time.time < _poisonEndTime)
             {
-                yield return new WaitForSeconds(1f); // Poison damages once per sec
-                _health.TakeDamage(new DamageInfo(_poisonDamage, DamageType.Poison, null, Faction.Spider));
+                yield return new WaitForSeconds(PoisonTickSeconds);
+
+                if (_health == null || !_health.IsAlive)
+                {
+                    break;
+                }
+
+                // Source can be null (the spider may be dead by now); Health and the death screen handle that.
+                _health.TakeDamage(new DamageInfo(_poisonDamagePerTick, DamageType.Poison, _poisonSource, _poisonFaction));
             }
+
+            _poisonCoroutine = null;
         }
     }
 }
