@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c01c94b81a0bafd419b5e3a5aa1c7d23, type: 3}
+  m_Name: FloorGenConfig_Default
+  m_EditorClassIdentifier: DebtDungeon.FloorGen::DebtDungeon.FloorGen.FloorGenConfig
+  _gridSize: 5
+  _minHotspotDistance: 2
+  _minHotspotStrength: 0.8
+  _maxHotspotStrength: 1.2
+  _heatRadius: 3
+  _minorThreshold: 0.35
+  _majorThreshold: 0.75
+  _maxMajorPerFaction: 2
+  _extraConnections: 6
