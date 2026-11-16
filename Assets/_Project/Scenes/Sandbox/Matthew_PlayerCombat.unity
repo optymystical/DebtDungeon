@@ -456,6 +456,7 @@ GameObject:
   - component: {fileID: 802778188}
   - component: {fileID: 802778187}
   - component: {fileID: 802778189}
+  - component: {fileID: 802778190}
   m_Layer: 0
   m_Name: TestsHolder
   m_TagString: Untagged
@@ -509,6 +510,19 @@ MonoBehaviour:
   _baseDamage: 10
   _lifetime: 1
   _floatSpeed: 1.5
+--- !u!114 &802778190
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 802778186}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 823488962afa76442909cbfd94bdf005, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.TestStatus
+  _statusEffects: {fileID: 1784213317}
 --- !u!1 &879332022
 GameObject:
   m_ObjectHideFlags: 0
@@ -922,6 +936,7 @@ MonoBehaviour:
   _hitFeedback: {fileID: 1784213319}
   _baseMoveSpeed: 3
   _turnSpeed: 300
+  _terrainMultiplier: 1
 --- !u!212 &1784213309
 SpriteRenderer:
   serializedVersion: 2
@@ -1125,6 +1140,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: ec7e58275a5388b4697f2fc35a52042b, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _playerController: {fileID: 1784213308}
+  _slowDuration: 1
 --- !u!114 &1784213318
 MonoBehaviour:
   m_ObjectHideFlags: 0
