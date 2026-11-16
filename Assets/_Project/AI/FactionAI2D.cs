@@ -719,7 +719,13 @@ namespace DebtDungeon.AI
             Vector2 origin = transform.position;
             Vector2 dir = targetPos - origin;
             RaycastHit2D hit = Physics2D.Raycast(origin, dir.normalized, dir.magnitude, _obstacleMask);
-            return hit.collider == null;
+            if (hit.collider == null)
+            {
+                return true;
+            }
+
+            // Allow targeting destructible spawners/structures even if they sit on the Walls layer
+            return _currentTarget != null && hit.collider.transform.IsChildOf(_currentTarget.transform);
         }
 
         private void UpdatePathfinding(Vector2 destination)
