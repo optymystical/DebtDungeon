@@ -1,13 +1,15 @@
 {
-    "name": "Tests",
-    "rootNamespace": "",
+    "name": "DebtDungeon.FloorGen.Tests",
+    "rootNamespace": "DebtDungeon.FloorGen.Tests",
     "references": [
         "UnityEngine.TestRunner",
         "UnityEditor.TestRunner",
         "DebtDungeon.FloorGen",
         "DebtDungeon.Core"
     ],
-    "includePlatforms": [],
+    "includePlatforms": [
+        "Editor"
+    ],
     "excludePlatforms": [],
     "allowUnsafeCode": false,
     "overrideReferences": true,
