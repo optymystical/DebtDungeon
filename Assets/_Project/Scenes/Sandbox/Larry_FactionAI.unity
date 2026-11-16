@@ -801,7 +801,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &645208845
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -809,7 +809,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 645208844}
-  m_Enabled: 0
+  m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: c7924da2b36395b4cb7adf78ec345f6f, type: 3}
   m_Name: 
@@ -1615,12 +1615,32 @@ PrefabInstance:
       value: GoblinSpawner
       objectReference: {fileID: 0}
     - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _guardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: d43e63da6d6252e43b05b343038b5e2a, type: 2}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _guardPrefab
+      value: 
+      objectReference: {fileID: 4645621396471598311, guid: 7fd1e2313685d904cb83401057bed224, type: 3}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _fallbackMaxGuards
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _fallbackMaxResidents
+      value: 14
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
       propertyPath: _rivalTerritoryTarget
       value: 
       objectReference: {fileID: 1550208000}
     - target: {fileID: 4710787936106058159, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
       propertyPath: _faction
       value: 2
+      objectReference: {fileID: 0}
+    - target: {fileID: 4710787936106058159, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _maxHealth
+      value: 65
       objectReference: {fileID: 0}
     - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
       propertyPath: m_LocalPosition.x
@@ -1678,6 +1698,26 @@ PrefabInstance:
     - target: {fileID: 142783305003954384, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
       propertyPath: _faction
       value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 142783305003954384, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _maxHealth
+      value: 25
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _guardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: ada639a6de2087a4c8abcfe499b06226, type: 2}
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _guardPrefab
+      value: 
+      objectReference: {fileID: 6283056031644735363, guid: d3cafb3a51b124e49b2c51a71debaa8b, type: 3}
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _fallbackMaxGuards
+      value: 6
+      objectReference: {fileID: 0}
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _fallbackMaxResidents
+      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
       propertyPath: _rivalTerritoryTarget

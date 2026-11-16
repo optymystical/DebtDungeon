@@ -60,7 +60,10 @@ MonoBehaviour:
     m_Bits: 512
   _fallbackMaxResidents: 6
   _fallbackMaxGuards: 2
-  _spawnInterval: 0.5
+  _spawnInterval: 20
+  _specialistPrefab: {fileID: 0}
+  _specialistConfig: {fileID: 0}
+  _specialistSpawnChance: 0.3
 --- !u!61 &2875078934921924607
 BoxCollider2D:
   m_ObjectHideFlags: 0

@@ -88,7 +88,7 @@ SpriteRenderer:
   m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: -785780604830853824, guid: bb0c3a49138083a4587bb523e766dc26, type: 3}
+  m_Sprite: {fileID: 198057447, guid: 5e43c617711b8804b95f79cbebefeef5, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -204,6 +204,8 @@ MonoBehaviour:
   _attackTelegraphDuration: 0.65
   _attackCooldown: 1.2
   _fleeHealthThreshold: 0.2
+  _trajectoryLine: {fileID: 0}
+  _windupWarningCirclePrefab: {fileID: 0}
 --- !u!114 &7938495285181322973
 MonoBehaviour:
   m_ObjectHideFlags: 0
