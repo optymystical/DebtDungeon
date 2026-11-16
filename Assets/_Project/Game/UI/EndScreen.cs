@@ -79,7 +79,7 @@ namespace DebtDungeon.Game
             bool died = state == GameState.Dead;
             _title.text = died ? "You Died" : "You Escaped!";
             _title.color = died ? UIKit.WarningText : UIKit.Accent;
-            _subtitle.text = died ? DescribeDeath() : "You destroyed a camp and reached the exit. The collectors will want their cut.";
+            _subtitle.text = died ? DescribeDeath() : "A camp fell, the way out opened, and you reached it. The collectors will want their cut.";
 
             if (_stats == null)
             {
