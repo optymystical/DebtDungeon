@@ -11,11 +11,19 @@ namespace DebtDungeon.Player
         {
             if (Keyboard.current.tKey.wasPressedThisFrame)
             {
-                _statusEffects.ApplyStatus(StatusEffect.Slowed); // fakes applying status
+                _statusEffects.ApplyStatus(StatusEffect.Slowed); // fakes applying slowed
             }
-            if (Keyboard.current.yKey.wasPressedThisFrame)
+            else if (Keyboard.current.yKey.wasPressedThisFrame)
             {
-                _statusEffects.RemoveStatus(StatusEffect.Slowed); // fakes removing status
+                _statusEffects.RemoveStatus(StatusEffect.Slowed); // fakes removing slowed
+            }
+            else if (Keyboard.current.gKey.wasPressedThisFrame)
+            {
+                _statusEffects.ApplyStatus(StatusEffect.Poisoned); // fakes applying poisoned
+            }
+            else if (Keyboard.current.hKey.wasPressedThisFrame)
+            {
+                _statusEffects.RemoveStatus(StatusEffect.Poisoned); // fakes removing poisoned
             }
         }
     }

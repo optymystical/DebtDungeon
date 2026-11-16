@@ -1141,7 +1141,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _playerController: {fileID: 1784213308}
+  _health: {fileID: 1784213313}
+  _slowMultiplier: 0.5
   _slowDuration: 1
+  _poisonDamage: 1
+  _poisonDuration: 3
 --- !u!114 &1784213318
 MonoBehaviour:
   m_ObjectHideFlags: 0
