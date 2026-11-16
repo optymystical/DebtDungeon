@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 3588899924476854840}
   - component: {fileID: 4184363257564738494}
   - component: {fileID: 1816350114223370517}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: SpiderSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,14 +60,14 @@ MonoBehaviour:
   _rivalTerritoryTarget: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 256
   _fallbackMaxResidents: 6
   _fallbackMaxGuards: 2
   _spawnInterval: 20
   _specialistPrefab: {fileID: 0}
   _specialistConfig: {fileID: 0}
   _specialistSpawnChance: 0.3
-  _exitKeyPrefab: {fileID: 0}
+  _exitKeyPrefab: {fileID: 1871191044612620439, guid: 74384c25a2040634a9931f2c7a591a00, type: 3}
 --- !u!61 &1343616601263768819
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1720078, y: 1.1640625}
+    oldSize: {x: 2.3440156, y: 2.328125}
     newSize: {x: 1.1720078, y: 1.1640625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -248,7 +248,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1720078, y: 1.1640625}
+    oldSize: {x: 2.3440156, y: 2.328125}
     newSize: {x: 1.1720078, y: 1.1640625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

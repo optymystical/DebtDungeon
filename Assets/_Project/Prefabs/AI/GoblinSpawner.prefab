@@ -15,7 +15,7 @@ GameObject:
   - component: {fileID: 7997746938560221747}
   - component: {fileID: 6288931508417144022}
   - component: {fileID: 3754207795487656111}
-  m_Layer: 0
+  m_Layer: 7
   m_Name: GoblinSpawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -60,14 +60,14 @@ MonoBehaviour:
   _rivalTerritoryTarget: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
   _obstacleMask:
     serializedVersion: 2
-    m_Bits: 512
+    m_Bits: 128
   _fallbackMaxResidents: 6
   _fallbackMaxGuards: 2
   _spawnInterval: 20
   _specialistPrefab: {fileID: 0}
   _specialistConfig: {fileID: 0}
   _specialistSpawnChance: 0.3
-  _exitKeyPrefab: {fileID: 0}
+  _exitKeyPrefab: {fileID: 1871191044612620439, guid: 74384c25a2040634a9931f2c7a591a00, type: 3}
 --- !u!61 &2875078934921924607
 BoxCollider2D:
   m_ObjectHideFlags: 0
@@ -106,7 +106,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1720078, y: 1.1640625}
+    oldSize: {x: 2.3440156, y: 2.328125}
     newSize: {x: 1.1720078, y: 1.1640625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0
@@ -248,7 +248,7 @@ BoxCollider2D:
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
     pivot: {x: 0.5, y: 0.5}
-    oldSize: {x: 1.1720078, y: 1.1640625}
+    oldSize: {x: 2.3440156, y: 2.328125}
     newSize: {x: 1.1720078, y: 1.1640625}
     adaptiveTilingThreshold: 0.5
     drawMode: 0

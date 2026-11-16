@@ -75,7 +75,12 @@ namespace DebtDungeon.AI
         private void Awake()
         {
             _health = GetComponent<Health>();
-            gameObject.layer = LayerMask.NameToLayer("Walls");
+            int enemyLayer = LayerMask.NameToLayer("Enemy");
+            if (enemyLayer != -1)
+            {
+                gameObject.layer = enemyLayer;
+                //gameObject.layer = LayerMask.NameToLayer("Walls");
+            }
         }
 
         private void OnEnable()
@@ -185,7 +190,7 @@ namespace DebtDungeon.AI
             Vector2 spawnOffset = UnityEngine.Random.insideUnitCircle * DefaultSpawnRadius;
             Vector2 spawnPosition = (Vector2)transform.position + spawnOffset;
 
-            GameObject unitObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
+            GameObject unitObject = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
 
             if (TryGetComponent(out SpawnerAnimator2D spawnerAnim))
             {
@@ -193,9 +198,9 @@ namespace DebtDungeon.AI
             }
 
             CombatAgent2D combatAgent = unitObject.GetComponent<CombatAgent2D>();
-            if (combatAgent != null && config != null)
+            if (combatAgent != null && selectedConfig != null)
             {
-                combatAgent.Initialize(config);
+                combatAgent.Initialize(selectedConfig);
                
             }
 
