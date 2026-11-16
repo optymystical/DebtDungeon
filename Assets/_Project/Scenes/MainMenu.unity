@@ -350,6 +350,8 @@ GameObject:
   m_Component:
   - component: {fileID: 651274967}
   - component: {fileID: 651274966}
+  - component: {fileID: 651274969}
+  - component: {fileID: 651274968}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -403,6 +405,33 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!114 &651274968
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651274965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9ce812c996b48b4b531585482c582ff, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.CharacterCreatorScreen
+  _catalog: {fileID: 11400000, guid: f61356037d7a475a91b73169cb955798, type: 2}
+  _gameManager: {fileID: 0}
+--- !u!114 &651274969
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651274965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 35cffd8d2294439a83dbc714540e3392, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.MainMenuScreen
+  _gameManager: {fileID: 0}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

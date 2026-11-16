@@ -28,4 +28,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 829dc81e76364d2b8afa474f126f1fb7, type: 2}
   - {fileID: 11400000, guid: 6a6e988482754126b599798fe828aa8e, type: 2}
   - {fileID: 11400000, guid: ff156e87f8164d4fb1bff8be64fd7d3c, type: 2}
-  _skillTrees: []
+  _skillTrees:
+  - {fileID: 11400000, guid: 358677012cd64ee9ae270973ec812502, type: 2}
+  - {fileID: 11400000, guid: 266bdbd4f4204bb4b85f23de3566d7ba, type: 2}
+  - {fileID: 11400000, guid: 533991cbecef48d4b61d22f770d494ec, type: 2}
+  - {fileID: 11400000, guid: 3a8d3ffa0f8a4cbcaed6f923545f670a, type: 2}
