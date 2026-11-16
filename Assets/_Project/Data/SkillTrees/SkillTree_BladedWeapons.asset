@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ececb9f084ed45768fe23248e9ca378e, type: 3}
+  m_Name: SkillTree_BladedWeapons
+  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.SkillTreeDefinition
+  _displayName: Bladed Weapons
+  _description: Martial offense. Scales with your weapon's stat. Needs a Bladed weapon to use.
+  _archetype: 0
+  _requiresEquipment: 1
+  _requiredTag: 0
+  _nodes:
+  - _grantedAbilities:
+    - {fileID: 11400000, guid: e3b7c82d732c45ef83c18e553c1781cc, type: 2}
+    _replacedAbility: {fileID: 0}
+  - _grantedAbilities:
+    - {fileID: 11400000, guid: f2fa2ccd0f5d4ee38c181fdcf4fad915, type: 2}
+    _replacedAbility: {fileID: 0}
+  - _grantedAbilities:
+    - {fileID: 11400000, guid: 21d489f55e6f40cc96d98b1be60bf2a5, type: 2}
+    _replacedAbility: {fileID: 11400000, guid: e3b7c82d732c45ef83c18e553c1781cc, type: 2}
