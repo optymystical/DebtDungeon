@@ -1,3 +1,4 @@
+using DebtDungeon.Core;
 using UnityEngine;
 using UnityEngine.InputSystem;
 
@@ -11,19 +12,19 @@ namespace DebtDungeon.Player
         {
             if (Keyboard.current.tKey.wasPressedThisFrame)
             {
-                _statusEffects.ApplyStatus(StatusEffect.Slowed); // fakes applying slowed
+                _statusEffects.ApplyStatus(StatusEffectType.Slowed); // fakes applying slowed
             }
             else if (Keyboard.current.yKey.wasPressedThisFrame)
             {
-                _statusEffects.RemoveStatus(StatusEffect.Slowed); // fakes removing slowed
+                _statusEffects.RemoveStatus(StatusEffectType.Slowed); // fakes removing slowed
             }
             else if (Keyboard.current.gKey.wasPressedThisFrame)
             {
-                _statusEffects.ApplyStatus(StatusEffect.Poisoned); // fakes applying poisoned
+                _statusEffects.ApplyStatus(StatusEffectType.Poisoned); // fakes applying poisoned
             }
             else if (Keyboard.current.hKey.wasPressedThisFrame)
             {
-                _statusEffects.RemoveStatus(StatusEffect.Poisoned); // fakes removing poisoned
+                _statusEffects.RemoveStatus(StatusEffectType.Poisoned); // fakes removing poisoned
             }
         }
     }

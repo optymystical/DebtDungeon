@@ -3,7 +3,11 @@ using DebtDungeon.Core;
 
 namespace DebtDungeon.AI
 {
-    public class StatusEffectReceiver2D : MonoBehaviour
+    /// <summary>
+    /// Status effects on AI units. Implements Core's IStatusReceiver (v1.5), the same interface the player uses,
+    /// so projectiles and traps apply effects the same way to anyone.
+    /// </summary>
+    public class StatusEffectReceiver2D : MonoBehaviour, IStatusReceiver
     {
         private Health _health;
         private Rigidbody2D _rb;
@@ -28,6 +32,21 @@ namespace DebtDungeon.AI
             _health = GetComponent<Health>();
             _rb = GetComponent<Rigidbody2D>();
             _renderer = GetComponentInChildren<SpriteRenderer>();
+        }
+
+        /// <summary>Core's IStatusReceiver. Slowed: magnitude = speed multiplier. Poisoned: magnitude = damage per 1 s tick.</summary>
+        public void ApplyStatus(StatusEffectType type, float duration, float magnitude, GameObject source, Faction sourceFaction, int stacks)
+        {
+            switch (type)
+            {
+                case StatusEffectType.Slowed:
+                    ApplySlow(magnitude, duration);
+                    break;
+                case StatusEffectType.Poisoned:
+                    ApplyPoison(Mathf.Max(1, Mathf.RoundToInt(magnitude)), 1f, duration, source, sourceFaction);
+                    break;
+                // Strengthened and Weakened aren't built yet.
+            }
         }
 
         public void ApplySlow(float multiplier, float duration)

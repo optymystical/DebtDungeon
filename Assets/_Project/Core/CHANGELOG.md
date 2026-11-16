@@ -3,6 +3,15 @@
 Every Core change gets a version bump and an entry here. "Affects" lists module numbers:
 1 FloorGen, 2 AI, 3 Player & Combat, 4 Progression, UI = HUD/menus.
 
+## v1.5 — Nov 16, 2026
+
+- New `StatusEffectType` enum (Slowed, Poisoned, Strengthened, Weakened). *(2, 3, 1 for traps)*
+- New `IStatusReceiver.ApplyStatus(type, duration, magnitude, source, sourceFaction, stacks)`. Player's
+  `StatusEffects` and AI's `StatusEffectReceiver2D` implement it; projectiles, traps and abilities call it through
+  `GetComponent<IStatusReceiver>()`, so no module references another. Magnitude is the speed multiplier for Slowed
+  and damage per 1 s tick for Poisoned. Slowed and Poisoned don't stack (reapplying keeps the later end time);
+  Strengthened and Weakened stack to 3 (not built yet). Additive: nothing existing changed. *(1, 2, 3)*
+
 ## v1.4 — Nov 13, 2026
 
 - New `GameState` enum (MainMenu, CharacterCreation, Playing, Paused, Dead, Won). *(3, UI)*

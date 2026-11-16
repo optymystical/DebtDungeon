@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Serialization;
 using DebtDungeon.Core;
 using System.Collections;
 
@@ -6,7 +7,8 @@ namespace DebtDungeon.Player
 {
     public class HitFeedback : MonoBehaviour
     {
-        [SerializeField] private Health _Health;
+        [FormerlySerializedAs("_Health")]
+        [SerializeField] private Health _health;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Rigidbody2D _rigidBody;
         [SerializeField] private float _knockbackForce = 1f;
@@ -19,6 +21,11 @@ namespace DebtDungeon.Player
 
         private void Awake()
         {
+            if (_health == null)
+            {
+                _health = GetComponent<Health>();
+            }
+
             _originalColor = _spriteRenderer.color;
         }
         public void PlayerHit(DamageInfo info, int damage)
@@ -29,12 +36,12 @@ namespace DebtDungeon.Player
 
         private void OnEnable()
         {
-            _Health.Damaged += PlayerHit;
+            _health.Damaged += PlayerHit;
         }
 
         private void OnDisable()
         {
-            _Health.Damaged -= PlayerHit;
+            _health.Damaged -= PlayerHit;
         }
 
         private void FlashSprite()
