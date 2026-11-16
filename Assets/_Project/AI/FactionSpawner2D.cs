@@ -224,10 +224,12 @@ namespace DebtDungeon.AI
             if (!_exitKeyDroppedThisFloor && _exitKeyPrefab != null)
             {
                 _exitKeyDroppedThisFloor = true;
+                Vector3 keyOffset = new Vector3(-1.45f, -0.15f, 0f);
                 Instantiate(_exitKeyPrefab, transform.position, Quaternion.identity);
             }
 
             GameEvents.RaiseSpawnerDestroyed(Faction, transform.position);
+
             if (TryGetComponent(out Collider2D col))
             {
                 col.enabled = false;
