@@ -51,6 +51,7 @@ namespace DebtDungeon.AI
 
         private void Start()
         {
+            FactionSpawner2D.ResetFloorExitKeyState();
             // Support standalone sandbox scenes where spawners are placed manually in the Hierarchy
             if (_currentFloor == null)
             {

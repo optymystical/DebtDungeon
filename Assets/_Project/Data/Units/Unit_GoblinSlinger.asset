@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f1ce5ff0e105144abe46e695abfe65, type: 3}
+  m_Name: Unit_GoblinSlinger
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.UnitConfig
+  _attackWindupSeconds: 0.65
+  _postAttackBackstepDistance: 0
+  _postAttackBackstepDuration: 0.25
+  _packCohesionWeight: 0
+  _packCohesionRadius: 4.5
+  IsRangedKiter: 1
+  MinKeepDistance: 3.2
+  PreferredRange: 6.5
+  ProjectilePrefab: {fileID: 513091986193614285, guid: 650cc90219ab2f1479fcad9924f10457, type: 3}
+  ProjectileSpeed: 4.5
+  AoERadius: 1.35
+  ShowTrajectoryTelegraph: 1
+  ShowGroundWarningCircle: 1
+  SlowMultiplier: 0.45
+  SlowDurationSeconds: 3
+  ApplyPoison: 0
+  PoisonTickDamage: 2
+  PoisonTickInterval: 1
+  PoisonDurationSeconds: 4
+  DisplayName: Goblin Slinger
+  Style: 2
+  GoldDropAmount: 5
+  XpReward: 10
+  SightRadius: 8.5
+  HearingRadius: 9.5
+  MoveSpeed: 2.8
+  AttackDamage: 12
+  DamageType: 0
+  AttackRange: 6.5
+  AttackCooldownSeconds: 2
+  Accuracy: 100
+  KnockbackForce: 6

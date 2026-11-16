@@ -1,0 +1,2019 @@
+fileFormatVersion: 2
+guid: 29507e23f2bcd804d903fe5172113c48
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 6725746183190103094
+    second: spr_enemy_projectiles1_0
+  - first:
+      213: 934473060567591071
+    second: spr_enemy_projectiles1_1
+  - first:
+      213: -4224541782052294648
+    second: spr_enemy_projectiles1_2
+  - first:
+      213: -4172851758244387893
+    second: spr_enemy_projectiles1_3
+  - first:
+      213: 7274235920276097347
+    second: spr_enemy_projectiles1_4
+  - first:
+      213: 5571218998276536772
+    second: spr_enemy_projectiles1_5
+  - first:
+      213: 5975050538491077601
+    second: spr_enemy_projectiles1_6
+  - first:
+      213: 7996326226029210304
+    second: spr_enemy_projectiles1_7
+  - first:
+      213: 6555022953100290455
+    second: spr_enemy_projectiles1_8
+  - first:
+      213: -4874758777476631098
+    second: spr_enemy_projectiles1_9
+  - first:
+      213: -1980899611840727545
+    second: spr_enemy_projectiles1_10
+  - first:
+      213: -3261449459481036603
+    second: spr_enemy_projectiles1_11
+  - first:
+      213: 5145197835192240461
+    second: spr_enemy_projectiles1_12
+  - first:
+      213: -4437080919935071371
+    second: spr_enemy_projectiles1_13
+  - first:
+      213: -6946986203757805306
+    second: spr_enemy_projectiles1_14
+  - first:
+      213: -7985850822364703738
+    second: spr_enemy_projectiles1_15
+  - first:
+      213: 8218095322147400964
+    second: spr_enemy_projectiles1_16
+  - first:
+      213: 6914350051305088060
+    second: spr_enemy_projectiles1_17
+  - first:
+      213: -372905590619762019
+    second: spr_enemy_projectiles1_18
+  - first:
+      213: 4251723531983381029
+    second: spr_enemy_projectiles1_19
+  - first:
+      213: 8056000114723456288
+    second: spr_enemy_projectiles1_20
+  - first:
+      213: -7962466134192395202
+    second: spr_enemy_projectiles1_21
+  - first:
+      213: 5598988565724315425
+    second: spr_enemy_projectiles1_22
+  - first:
+      213: -8261143435989663940
+    second: spr_enemy_projectiles1_23
+  - first:
+      213: -2308402367201354421
+    second: spr_enemy_projectiles1_24
+  - first:
+      213: -1579724457192167233
+    second: spr_enemy_projectiles1_25
+  - first:
+      213: 1534501391017882808
+    second: spr_enemy_projectiles1_26
+  - first:
+      213: 4669622000241154831
+    second: spr_enemy_projectiles1_27
+  - first:
+      213: 3252508113256877875
+    second: spr_enemy_projectiles1_28
+  - first:
+      213: -4291561073126472183
+    second: spr_enemy_projectiles1_29
+  - first:
+      213: 1925575061641856297
+    second: spr_enemy_projectiles1_30
+  - first:
+      213: 4138697188439178154
+    second: spr_enemy_projectiles1_31
+  - first:
+      213: 8732169214691586190
+    second: spr_enemy_projectiles1_32
+  - first:
+      213: -6265111446590235169
+    second: spr_enemy_projectiles1_33
+  - first:
+      213: 6571781876525071837
+    second: spr_enemy_projectiles1_34
+  - first:
+      213: -2052619654747918575
+    second: spr_enemy_projectiles1_35
+  - first:
+      213: -1671506256906772581
+    second: spr_enemy_projectiles1_36
+  - first:
+      213: 1725672708357122758
+    second: spr_enemy_projectiles1_37
+  - first:
+      213: 7407788211983529297
+    second: spr_enemy_projectiles1_38
+  - first:
+      213: 7671078967918840620
+    second: spr_enemy_projectiles1_39
+  - first:
+      213: -4002651107443555907
+    second: spr_enemy_projectiles1_40
+  - first:
+      213: -1481043022106869458
+    second: spr_enemy_projectiles1_41
+  - first:
+      213: 1053609310861063706
+    second: spr_enemy_projectiles1_42
+  - first:
+      213: -419600447265110480
+    second: spr_enemy_projectiles1_43
+  - first:
+      213: -9201740659795402545
+    second: spr_enemy_projectiles1_44
+  - first:
+      213: 7980492605032563572
+    second: spr_enemy_projectiles1_45
+  - first:
+      213: -2808550727245847219
+    second: spr_enemy_projectiles1_46
+  - first:
+      213: 8159704618153572959
+    second: spr_enemy_projectiles1_47
+  - first:
+      213: -2778061043275010673
+    second: spr_enemy_projectiles1_48
+  - first:
+      213: -8823365510935067141
+    second: spr_enemy_projectiles1_49
+  - first:
+      213: 1390429996857627452
+    second: spr_enemy_projectiles1_50
+  - first:
+      213: 160249910095305735
+    second: spr_enemy_projectiles1_51
+  - first:
+      213: 4795280602320035206
+    second: spr_enemy_projectiles1_52
+  - first:
+      213: 7367226808065866907
+    second: spr_enemy_projectiles1_53
+  - first:
+      213: 7222709530344650243
+    second: spr_enemy_projectiles1_54
+  - first:
+      213: 5580235545760767337
+    second: spr_enemy_projectiles1_55
+  - first:
+      213: -3082853595272448204
+    second: spr_enemy_projectiles1_56
+  - first:
+      213: -1663140088686098508
+    second: spr_enemy_projectiles1_57
+  - first:
+      213: 1778842580844679903
+    second: spr_enemy_projectiles1_58
+  - first:
+      213: 3129818043545704309
+    second: spr_enemy_projectiles1_59
+  - first:
+      213: -5474104553662246802
+    second: spr_enemy_projectiles1_60
+  - first:
+      213: 9025963945020197038
+    second: spr_enemy_projectiles1_61
+  - first:
+      213: -309398433785490332
+    second: spr_enemy_projectiles1_62
+  - first:
+      213: -2847135799252621141
+    second: spr_enemy_projectiles1_63
+  - first:
+      213: 2985485902892322633
+    second: spr_enemy_projectiles1_64
+  - first:
+      213: -6963126783922080858
+    second: spr_enemy_projectiles1_65
+  - first:
+      213: 2705557736041351454
+    second: spr_enemy_projectiles1_66
+  - first:
+      213: 7193610501746461085
+    second: spr_enemy_projectiles1_67
+  - first:
+      213: 8579788301317593693
+    second: spr_enemy_projectiles1_68
+  - first:
+      213: -3825820592581716032
+    second: spr_enemy_projectiles1_69
+  - first:
+      213: 7205280398814137744
+    second: spr_enemy_projectiles1_70
+  - first:
+      213: -3584553463767118239
+    second: spr_enemy_projectiles1_71
+  - first:
+      213: 6029221469393496288
+    second: spr_enemy_projectiles1_72
+  - first:
+      213: -2715886564330446738
+    second: spr_enemy_projectiles1_73
+  - first:
+      213: 6887883914013545299
+    second: spr_enemy_projectiles1_74
+  - first:
+      213: -9188510763982510700
+    second: spr_enemy_projectiles1_75
+  - first:
+      213: 5005867918173899301
+    second: spr_enemy_projectiles1_76
+  - first:
+      213: -429966202555001730
+    second: spr_enemy_projectiles1_77
+  - first:
+      213: -652517149249645384
+    second: spr_enemy_projectiles1_78
+  - first:
+      213: -7686252642775335253
+    second: spr_enemy_projectiles1_79
+  - first:
+      213: 6077462304550564058
+    second: spr_enemy_projectiles1_80
+  - first:
+      213: 7286254231597438059
+    second: spr_enemy_projectiles1_81
+  - first:
+      213: -6379386586723170024
+    second: spr_enemy_projectiles1_82
+  - first:
+      213: 4090886820217471297
+    second: spr_enemy_projectiles1_83
+  - first:
+      213: 7310890061128210622
+    second: spr_enemy_projectiles1_84
+  - first:
+      213: -5994801360380156615
+    second: spr_enemy_projectiles1_85
+  - first:
+      213: -3800286773043975876
+    second: spr_enemy_projectiles1_86
+  - first:
+      213: 463797124195730792
+    second: spr_enemy_projectiles1_87
+  - first:
+      213: -2066263507476113408
+    second: spr_enemy_projectiles1_88
+  - first:
+      213: -6876713170401532332
+    second: spr_enemy_projectiles1_89
+  - first:
+      213: -3656868144291489613
+    second: spr_enemy_projectiles1_90
+  - first:
+      213: -1591462767478304842
+    second: spr_enemy_projectiles1_91
+  - first:
+      213: -7545568797397931153
+    second: spr_enemy_projectiles1_92
+  - first:
+      213: 8701633627823582731
+    second: spr_enemy_projectiles1_93
+  - first:
+      213: -96348412339199555
+    second: spr_enemy_projectiles1_94
+  - first:
+      213: 814111292983725492
+    second: spr_enemy_projectiles1_95
+  - first:
+      213: -6727167488306995534
+    second: spr_enemy_projectiles1_96
+  - first:
+      213: 3821354901055558708
+    second: spr_enemy_projectiles1_97
+  - first:
+      213: 9086427388393993106
+    second: spr_enemy_projectiles1_98
+  - first:
+      213: -5825758791298223
+    second: spr_enemy_projectiles1_99
+  - first:
+      213: -7787545314525435101
+    second: spr_enemy_projectiles1_100
+  - first:
+      213: -2517465549772166416
+    second: spr_enemy_projectiles1_101
+  - first:
+      213: 792693062370007464
+    second: spr_enemy_projectiles1_102
+  - first:
+      213: -2134577803613772391
+    second: spr_enemy_projectiles1_103
+  - first:
+      213: -3993987837565848199
+    second: spr_enemy_projectiles1_104
+  - first:
+      213: 7436762924080962771
+    second: spr_enemy_projectiles1_105
+  - first:
+      213: -4571051504766383743
+    second: spr_enemy_projectiles1_106
+  - first:
+      213: 7191615611689023158
+    second: spr_enemy_projectiles1_107
+  - first:
+      213: -4141147343887458318
+    second: spr_enemy_projectiles1_108
+  - first:
+      213: -6499809255402563224
+    second: spr_enemy_projectiles1_109
+  - first:
+      213: 1538903876805574374
+    second: spr_enemy_projectiles1_110
+  - first:
+      213: 7377687792834243894
+    second: spr_enemy_projectiles1_111
+  - first:
+      213: 5091496490798023953
+    second: spr_enemy_projectiles1_112
+  - first:
+      213: -6635039115517877977
+    second: spr_enemy_projectiles1_113
+  - first:
+      213: 8291024806045344696
+    second: spr_enemy_projectiles1_114
+  - first:
+      213: 3042980234797656002
+    second: spr_enemy_projectiles1_115
+  - first:
+      213: 2022200612092029336
+    second: spr_enemy_projectiles1_116
+  - first:
+      213: -5461740497751473884
+    second: spr_enemy_projectiles1_117
+  - first:
+      213: -4184220247270945501
+    second: spr_enemy_projectiles1_118
+  - first:
+      213: 2531269084781936692
+    second: spr_enemy_projectiles1_119
+  - first:
+      213: 8713743145556961499
+    second: spr_enemy_projectiles1_120
+  - first:
+      213: -1393318751909866966
+    second: spr_enemy_projectiles1_121
+  - first:
+      213: 9177045719855392195
+    second: spr_enemy_projectiles1_122
+  - first:
+      213: 2885837972373270458
+    second: spr_enemy_projectiles1_123
+  - first:
+      213: 2910505150891140128
+    second: spr_enemy_projectiles1_124
+  - first:
+      213: 2718332206993099929
+    second: spr_enemy_projectiles1_125
+  - first:
+      213: 3534695999280219707
+    second: spr_enemy_projectiles1_126
+  - first:
+      213: 8958876022219037592
+    second: spr_enemy_projectiles1_127
+  - first:
+      213: 2585404805575811371
+    second: spr_enemy_projectiles1_128
+  - first:
+      213: -927156653573487780
+    second: spr_enemy_projectiles1_129
+  - first:
+      213: 6723780669861781676
+    second: spr_enemy_projectiles1_130
+  - first:
+      213: -5563280810400700039
+    second: spr_enemy_projectiles1_131
+  - first:
+      213: -1799033530888720483
+    second: spr_enemy_projectiles1_132
+  - first:
+      213: 7114749871609503958
+    second: spr_enemy_projectiles1_133
+  - first:
+      213: -1981257467417773647
+    second: spr_enemy_projectiles1_134
+  - first:
+      213: -8328103849440595061
+    second: spr_enemy_projectiles1_135
+  - first:
+      213: -4805426007444643050
+    second: spr_enemy_projectiles1_136
+  - first:
+      213: 4406782591965517917
+    second: spr_enemy_projectiles1_137
+  - first:
+      213: 4931570279751294927
+    second: spr_enemy_projectiles1_138
+  - first:
+      213: 7686672466118535229
+    second: spr_enemy_projectiles1_139
+  - first:
+      213: -2731201027730997438
+    second: spr_enemy_projectiles1_140
+  - first:
+      213: 3585182530942708270
+    second: spr_enemy_projectiles1_141
+  - first:
+      213: 5496550614869531721
+    second: spr_enemy_projectiles1_142
+  - first:
+      213: 8252486438311846330
+    second: spr_enemy_projectiles1_143
+  - first:
+      213: 4955166189178835488
+    second: spr_enemy_projectiles1_144
+  - first:
+      213: -3928377204235118046
+    second: spr_enemy_projectiles1_145
+  - first:
+      213: 4269347207208808516
+    second: spr_enemy_projectiles1_146
+  - first:
+      213: -8013305438107468624
+    second: spr_enemy_projectiles1_147
+  - first:
+      213: -1426016190917895863
+    second: spr_enemy_projectiles1_148
+  - first:
+      213: 7528181365539707612
+    second: spr_enemy_projectiles1_149
+  - first:
+      213: -3919598423613050361
+    second: spr_enemy_projectiles1_150
+  - first:
+      213: 5934208571675837703
+    second: spr_enemy_projectiles1_151
+  - first:
+      213: 5816521227779178057
+    second: spr_enemy_projectiles1_152
+  - first:
+      213: -8360378349889546562
+    second: spr_enemy_projectiles1_153
+  - first:
+      213: -1161775645641421159
+    second: spr_enemy_projectiles1_154
+  - first:
+      213: -1242021769750246283
+    second: spr_enemy_projectiles1_155
+  - first:
+      213: 8068516081663466693
+    second: spr_enemy_projectiles1_156
+  - first:
+      213: 6766376045618930031
+    second: spr_enemy_projectiles1_157
+  - first:
+      213: -3889384707816629920
+    second: spr_enemy_projectiles1_158
+  - first:
+      213: -5883257685485975487
+    second: spr_enemy_projectiles1_159
+  - first:
+      213: 6715728491306707894
+    second: spr_enemy_projectiles1_160
+  - first:
+      213: -3789471439819775915
+    second: spr_enemy_projectiles1_161
+  - first:
+      213: 8373910671390182183
+    second: spr_enemy_projectiles1_162
+  - first:
+      213: 4031771983617285696
+    second: spr_enemy_projectiles1_163
+  - first:
+      213: -1950472201462842329
+    second: spr_enemy_projectiles1_164
+  - first:
+      213: 2371062922607509237
+    second: spr_enemy_projectiles1_165
+  - first:
+      213: -5241842151757811982
+    second: spr_enemy_projectiles1_166
+  - first:
+      213: -257089104869094394
+    second: spr_enemy_projectiles1_167
+  - first:
+      213: 5489715478410061794
+    second: spr_enemy_projectiles1_168
+  - first:
+      213: -8065236547833252083
+    second: spr_enemy_projectiles1_169
+  - first:
+      213: 2137693809933774026
+    second: spr_enemy_projectiles1_170
+  - first:
+      213: 9074296921520826617
+    second: spr_enemy_projectiles1_171
+  - first:
+      213: 4742445591615458932
+    second: spr_enemy_projectiles1_172
+  - first:
+      213: 724412382609792387
+    second: spr_enemy_projectiles1_173
+  - first:
+      213: -3473899821794832237
+    second: spr_enemy_projectiles1_174
+  - first:
+      213: 470694730705749693
+    second: spr_enemy_projectiles1_175
+  - first:
+      213: -8104680163336239962
+    second: spr_enemy_projectiles1_176
+  - first:
+      213: -9161514713353359346
+    second: spr_enemy_projectiles1_177
+  - first:
+      213: -3805537981359745053
+    second: spr_enemy_projectiles1_178
+  - first:
+      213: -4707584345555181259
+    second: spr_enemy_projectiles1_179
+  - first:
+      213: -3435696559574303293
+    second: spr_enemy_projectiles1_180
+  - first:
+      213: 5509443795904091402
+    second: spr_enemy_projectiles1_181
+  - first:
+      213: -2619106998171820195
+    second: spr_enemy_projectiles1_182
+  - first:
+      213: -7655097981132258054
+    second: spr_enemy_projectiles1_183
+  - first:
+      213: 7911098990851936253
+    second: spr_enemy_projectiles1_184
+  - first:
+      213: 4591665203418281193
+    second: spr_enemy_projectiles1_185
+  - first:
+      213: -8494441833610517824
+    second: spr_enemy_projectiles1_186
+  - first:
+      213: -947799128268118439
+    second: spr_enemy_projectiles1_187
+  - first:
+      213: 6997997239136127948
+    second: spr_enemy_projectiles1_188
+  - first:
+      213: 4631188255575603344
+    second: spr_enemy_projectiles1_189
+  - first:
+      213: 7917833402710994848
+    second: spr_enemy_projectiles1_190
+  - first:
+      213: 4215604512388138835
+    second: spr_enemy_projectiles1_191
+  - first:
+      213: 3493930598350339706
+    second: spr_enemy_projectiles1_192
+  - first:
+      213: -6428521449868447310
+    second: spr_enemy_projectiles1_193
+  - first:
+      213: 2373914505794376621
+    second: spr_enemy_projectiles1_194
+  - first:
+      213: -9222970511361069983
+    second: spr_enemy_projectiles1_195
+  - first:
+      213: -2425562459685557153
+    second: spr_enemy_projectiles1_196
+  - first:
+      213: -5534498987628121065
+    second: spr_enemy_projectiles1_197
+  - first:
+      213: -2884503079082726817
+    second: spr_enemy_projectiles1_198
+  - first:
+      213: -1633351590185282867
+    second: spr_enemy_projectiles1_199
+  - first:
+      213: 6931363500466619643
+    second: spr_enemy_projectiles1_200
+  - first:
+      213: -1488079674056278585
+    second: spr_enemy_projectiles1_201
+  - first:
+      213: 8783964222920338786
+    second: spr_enemy_projectiles1_202
+  - first:
+      213: -5725502140152088498
+    second: spr_enemy_projectiles1_203
+  - first:
+      213: -834201955526574917
+    second: spr_enemy_projectiles1_204
+  - first:
+      213: 8857287000619628204
+    second: spr_enemy_projectiles1_205
+  - first:
+      213: -7972213162445853522
+    second: spr_enemy_projectiles1_206
+  - first:
+      213: 1671354857540170680
+    second: spr_enemy_projectiles1_207
+  - first:
+      213: 417258363551371200
+    second: spr_enemy_projectiles1_208
+  - first:
+      213: -842618286342644627
+    second: spr_enemy_projectiles1_209
+  - first:
+      213: 4417041515430393185
+    second: spr_enemy_projectiles1_210
+  - first:
+      213: -5814463624833930070
+    second: spr_enemy_projectiles1_211
+  - first:
+      213: -1486488940951855389
+    second: spr_enemy_projectiles1_212
+  - first:
+      213: -2220299447876336744
+    second: spr_enemy_projectiles1_213
+  - first:
+      213: 2853369642104021435
+    second: spr_enemy_projectiles1_214
+  - first:
+      213: -6813431317882640066
+    second: spr_enemy_projectiles1_215
+  - first:
+      213: 1718577757605917715
+    second: spr_enemy_projectiles1_216
+  - first:
+      213: 8951959557768542837
+    second: spr_enemy_projectiles1_217
+  - first:
+      213: 7880754876516704863
+    second: spr_enemy_projectiles1_218
+  - first:
+      213: 8810083040771920773
+    second: spr_enemy_projectiles1_219
+  - first:
+      213: -6468490820254565073
+    second: spr_enemy_projectiles1_220
+  - first:
+      213: 1508505495396504110
+    second: spr_enemy_projectiles1_221
+  - first:
+      213: -7856335241540255808
+    second: spr_enemy_projectiles1_222
+  - first:
+      213: 7597825802647067727
+    second: spr_enemy_projectiles1_223
+  - first:
+      213: -8095322952746990184
+    second: spr_enemy_projectiles1_224
+  - first:
+      213: 1572873428978666235
+    second: spr_enemy_projectiles1_225
+  - first:
+      213: -741355919182294685
+    second: spr_enemy_projectiles1_226
+  - first:
+      213: 7717279016209968320
+    second: spr_enemy_projectiles1_227
+  - first:
+      213: -7940790592749693221
+    second: spr_enemy_projectiles1_228
+  - first:
+      213: -7362184309542523808
+    second: spr_enemy_projectiles1_229
+  - first:
+      213: -6715815654045845060
+    second: spr_enemy_projectiles1_230
+  - first:
+      213: 7431760332712050779
+    second: spr_enemy_projectiles1_231
+  - first:
+      213: 6087326957443656748
+    second: spr_enemy_projectiles1_232
+  - first:
+      213: -1363331086294164305
+    second: spr_enemy_projectiles1_233
+  - first:
+      213: -8624014417830751304
+    second: spr_enemy_projectiles1_234
+  - first:
+      213: -240449390206950441
+    second: spr_enemy_projectiles1_235
+  - first:
+      213: 7777424798403803423
+    second: spr_enemy_projectiles1_236
+  - first:
+      213: 3996330083330156793
+    second: spr_enemy_projectiles1_237
+  - first:
+      213: 2857784337184384214
+    second: spr_enemy_projectiles1_238
+  - first:
+      213: -3949586926731351666
+    second: spr_enemy_projectiles1_239
+  - first:
+      213: 3392638041152688541
+    second: spr_enemy_projectiles1_240
+  - first:
+      213: 7303909221225854329
+    second: spr_enemy_projectiles1_241
+  - first:
+      213: -4060023145847465720
+    second: spr_enemy_projectiles1_242
+  - first:
+      213: 3167421612201692417
+    second: spr_enemy_projectiles1_243
+  - first:
+      213: 2075590091422927653
+    second: spr_enemy_projectiles1_244
+  - first:
+      213: 8120586126869018447
+    second: spr_enemy_projectiles1_245
+  - first:
+      213: 4619699619125543064
+    second: spr_enemy_projectiles1_246
+  - first:
+      213: 7432257963621614041
+    second: spr_enemy_projectiles1_247
+  - first:
+      213: 8117845271989716752
+    second: spr_enemy_projectiles1_248
+  - first:
+      213: 2609004223139883908
+    second: spr_enemy_projectiles1_249
+  - first:
+      213: -8804004210122864205
+    second: spr_enemy_projectiles1_250
+  - first:
+      213: -1037425438048500663
+    second: spr_enemy_projectiles1_251
+  - first:
+      213: 7124686870806942081
+    second: spr_enemy_projectiles1_252
+  - first:
+      213: -1098211316826792640
+    second: spr_enemy_projectiles1_253
+  - first:
+      213: -2355909801559659407
+    second: spr_enemy_projectiles1_254
+  - first:
+      213: -368242486875367822
+    second: spr_enemy_projectiles1_255
+  - first:
+      213: 2534687227236152333
+    second: spr_enemy_projectiles1_256
+  - first:
+      213: 3135037394995653674
+    second: spr_enemy_projectiles1_257
+  - first:
+      213: 6616733155850051240
+    second: spr_enemy_projectiles1_258
+  - first:
+      213: -4732218083763671172
+    second: spr_enemy_projectiles1_259
+  - first:
+      213: -7861127373554161803
+    second: spr_enemy_projectiles1_260
+  - first:
+      213: -3598179616062593504
+    second: spr_enemy_projectiles1_261
+  - first:
+      213: -9007390281913369775
+    second: spr_enemy_projectiles1_262
+  - first:
+      213: -6897877002026012778
+    second: spr_enemy_projectiles1_263
+  - first:
+      213: 4894506976270964297
+    second: spr_enemy_projectiles1_264
+  - first:
+      213: 5161672776913385723
+    second: spr_enemy_projectiles1_265
+  - first:
+      213: -855054447597965378
+    second: spr_enemy_projectiles1_266
+  - first:
+      213: 6238387585477584850
+    second: spr_enemy_projectiles1_267
+  - first:
+      213: 8089562130966628153
+    second: spr_enemy_projectiles1_268
+  - first:
+      213: 1419192440091548716
+    second: spr_enemy_projectiles1_269
+  - first:
+      213: -4209387031052258985
+    second: spr_enemy_projectiles1_270
+  - first:
+      213: -2021623680839089388
+    second: spr_enemy_projectiles1_271
+  - first:
+      213: 8689955623182571049
+    second: spr_enemy_projectiles1_272
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6344c72e486a65d50800000000000000
+      internalID: 6725746183190103094
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f98ad4b2c4ae7fc00800000000000000
+      internalID: 934473060567591071
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8003afdb1a96f55c0800000000000000
+      internalID: -4224541782052294648
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bc3aa714f6d0716c0800000000000000
+      internalID: -4172851758244387893
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3498178670743f460800000000000000
+      internalID: 7274235920276097347
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c93e2e4922f05d40800000000000000
+      internalID: 5571218998276536772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1e364cdbec4abe250800000000000000
+      internalID: 5975050538491077601
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0ca6c921658a8fe60800000000000000
+      internalID: 7996326226029210304
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 799231655ae18fa50800000000000000
+      internalID: 6555022953100290455
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6c5b9ce28b0695cb0800000000000000
+      internalID: -4874758777476631098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 706368c5c4e6284e0800000000000000
+      internalID: -1980899611840727545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5c83eba1ff00db2d0800000000000000
+      internalID: -3261449459481036603
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d490eb1bb2a676740800000000000000
+      internalID: 5145197835192240461
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 57b4b9779625c62c0800000000000000
+      internalID: -4437080919935071371
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_14
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6010a79bad8579f90800000000000000
+      internalID: -6946986203757805306
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 604d0b7ecfe8c2190800000000000000
+      internalID: -7985850822364703738
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 40d25e6772a8c0270800000000000000
+      internalID: 8218095322147400964
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c346eb4ecb4b4ff50800000000000000
+      internalID: 6914350051305088060
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d921a50575c23daf0800000000000000
+      internalID: -372905590619762019
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 522e9079608210b30800000000000000
+      internalID: 4251723531983381029
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_20
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 025099cfb69accf60800000000000000
+      internalID: 8056000114723456288
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_21
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e3c6267ec33af7190800000000000000
+      internalID: -7962466134192395202
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_22
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 12fb8719f6a93bd40800000000000000
+      internalID: 5598988565724315425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c3f394b70d58a5d80800000000000000
+      internalID: -8261143435989663940
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b4dda480748e6ffd0800000000000000
+      internalID: -2308402367201354421
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fb86016d9f0b31ae0800000000000000
+      internalID: -1579724457192167233
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8b4b6fe82e4ab4510800000000000000
+      internalID: 1534501391017882808
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0b19bfe774ddc040800000000000000
+      internalID: 4669622000241154831
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 33f80cf75ea332d20800000000000000
+      internalID: 3252508113256877875
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906076011ff4174c0800000000000000
+      internalID: -4291561073126472183
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_30
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9258381015409ba10800000000000000
+      internalID: 1925575061641856297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_31
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aab33d54a2b9f6930800000000000000
+      internalID: 4138697188439178154
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_32
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e803b40c2a5ee2970800000000000000
+      internalID: 8732169214691586190
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_33
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdd51c3555add09a0800000000000000
+      internalID: -6265111446590235169
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_34
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ddd70a34cc8a33b50800000000000000
+      internalID: 6571781876525071837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_35
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11fe3cb9c41a383e0800000000000000
+      internalID: -2052619654747918575
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_36
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b9f9a355aed9dc8e0800000000000000
+      internalID: -1671506256906772581
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_37
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6ca663c6f22d2f710800000000000000
+      internalID: 1725672708357122758
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_38
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 155ba927120cdc660800000000000000
+      internalID: 7407788211983529297
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_39
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c2bc5ce9da5257a60800000000000000
+      internalID: 7671078967918840620
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_40
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: db1c005560ab378c0800000000000000
+      internalID: -4002651107443555907
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_41
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e21cf32e737427be0800000000000000
+      internalID: -1481043022106869458
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_42
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a16fae1061c2f9e00800000000000000
+      internalID: 1053609310861063706
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_43
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0360b29cd974d2af0800000000000000
+      internalID: -419600447265110480
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_44
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fc060a17f99dc4080800000000000000
+      internalID: -9201740659795402545
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_45
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4730997edb760ce60800000000000000
+      internalID: 7980492605032563572
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_projectiles1_46
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d45a8d07ef50609d0800000000000000
+      internalID: -2808550727245847219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: da40c4faf13c8ef4fb17e0d89f07cc97
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_enemy_projectiles1_0: 6725746183190103094
+      spr_enemy_projectiles1_1: 934473060567591071
+      spr_enemy_projectiles1_10: -1980899611840727545
+      spr_enemy_projectiles1_11: -3261449459481036603
+      spr_enemy_projectiles1_12: 5145197835192240461
+      spr_enemy_projectiles1_13: -4437080919935071371
+      spr_enemy_projectiles1_14: -6946986203757805306
+      spr_enemy_projectiles1_15: -7985850822364703738
+      spr_enemy_projectiles1_16: 8218095322147400964
+      spr_enemy_projectiles1_17: 6914350051305088060
+      spr_enemy_projectiles1_18: -372905590619762019
+      spr_enemy_projectiles1_19: 4251723531983381029
+      spr_enemy_projectiles1_2: -4224541782052294648
+      spr_enemy_projectiles1_20: 8056000114723456288
+      spr_enemy_projectiles1_21: -7962466134192395202
+      spr_enemy_projectiles1_22: 5598988565724315425
+      spr_enemy_projectiles1_23: -8261143435989663940
+      spr_enemy_projectiles1_24: -2308402367201354421
+      spr_enemy_projectiles1_25: -1579724457192167233
+      spr_enemy_projectiles1_26: 1534501391017882808
+      spr_enemy_projectiles1_27: 4669622000241154831
+      spr_enemy_projectiles1_28: 3252508113256877875
+      spr_enemy_projectiles1_29: -4291561073126472183
+      spr_enemy_projectiles1_3: -4172851758244387893
+      spr_enemy_projectiles1_30: 1925575061641856297
+      spr_enemy_projectiles1_31: 4138697188439178154
+      spr_enemy_projectiles1_32: 8732169214691586190
+      spr_enemy_projectiles1_33: -6265111446590235169
+      spr_enemy_projectiles1_34: 6571781876525071837
+      spr_enemy_projectiles1_35: -2052619654747918575
+      spr_enemy_projectiles1_36: -1671506256906772581
+      spr_enemy_projectiles1_37: 1725672708357122758
+      spr_enemy_projectiles1_38: 7407788211983529297
+      spr_enemy_projectiles1_39: 7671078967918840620
+      spr_enemy_projectiles1_4: 7274235920276097347
+      spr_enemy_projectiles1_40: -4002651107443555907
+      spr_enemy_projectiles1_41: -1481043022106869458
+      spr_enemy_projectiles1_42: 1053609310861063706
+      spr_enemy_projectiles1_43: -419600447265110480
+      spr_enemy_projectiles1_44: -9201740659795402545
+      spr_enemy_projectiles1_45: 7980492605032563572
+      spr_enemy_projectiles1_46: -2808550727245847219
+      spr_enemy_projectiles1_5: 5571218998276536772
+      spr_enemy_projectiles1_6: 5975050538491077601
+      spr_enemy_projectiles1_7: 7996326226029210304
+      spr_enemy_projectiles1_8: 6555022953100290455
+      spr_enemy_projectiles1_9: -4874758777476631098
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

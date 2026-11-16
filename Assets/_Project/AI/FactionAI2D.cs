@@ -12,7 +12,8 @@ namespace DebtDungeon.AI
         Attack,
         Flee,
         Return,
-        Raid
+        Raid,
+        Investigate
     }
 
     public enum UnitRole
@@ -32,6 +33,10 @@ namespace DebtDungeon.AI
         private const float ScanIntervalSeconds = 0.2f;
         private const int MaxScanColliders = 24;
         private const float RaidArrivalDistance = 2f;
+
+        private Color _baseSpriteColor = Color.white;
+        private float _backstepTimer;
+        private Vector2 _backstepVelocity;
 
         [Header("Diplomacy & Masks")]
         [SerializeField] private FactionData _factionData;
@@ -54,6 +59,15 @@ namespace DebtDungeon.AI
         [SerializeField] private float _attackCooldown = 1.2f;
         [SerializeField, Range(0f, 0.5f)] private float _fleeHealthThreshold = 0.2f;
 
+        [Header("Ranged Telegraph Visual")]
+        [SerializeField] private LineRenderer _trajectoryLine;
+        [SerializeField] private GameObject _windupWarningCirclePrefab;
+
+        private Vector2 _lockedAimPosition;
+        private GameObject _activeWindupCircle;
+        private Vector2 _investigatePosition;
+        private float _investigateTimer;
+
         private CombatAgent2D _agent;
         private AIState _currentState = AIState.Wander;
         private Health _currentTarget;
@@ -69,6 +83,8 @@ namespace DebtDungeon.AI
         private Vector2 _lastPathTargetPos = new Vector2(float.MaxValue, float.MaxValue);
         private float _repathTimer;
         private float _scanTimer;
+        private float _cohesionTimer;
+        private Vector2 _cachedCohesion;
 
         private readonly Collider2D[] _scanBuffer = new Collider2D[MaxScanColliders];
         private ContactFilter2D _targetFilter;
@@ -98,10 +114,17 @@ namespace DebtDungeon.AI
 
         private void Start()
         {
+            _cohesionTimer = UnityEngine.Random.Range(0f, 0.25f);
+
             if (!_hasSpawnAnchor)
             {
                 _spawnAnchor = transform.position;
                 _hasSpawnAnchor = true;
+            }
+
+            if (_agent.VisualRenderer != null)
+            {
+                _baseSpriteColor = _agent.VisualRenderer.color;
             }
 
             // Stagger initial scan timers
@@ -115,6 +138,8 @@ namespace DebtDungeon.AI
             {
                 _agent.OnAttackedBy += HandleAttackedBy;
             }
+
+            NoiseEventBus.OnNoiseEmitted += HandleNoiseHeard;
         }
 
         private void OnDisable()
@@ -122,6 +147,30 @@ namespace DebtDungeon.AI
             if (_agent != null)
             {
                 _agent.OnAttackedBy -= HandleAttackedBy;
+            }
+
+            NoiseEventBus.OnNoiseEmitted -= HandleNoiseHeard;
+            ClearRangedTelegraphs();
+        }
+
+        private void HandleNoiseHeard(Vector2 noisePos, float soundRadius)
+        {
+            if (!IsAlive || _agent.Stats == null || _agent.Stats.HearingRadius <= 0f)
+            {
+                return;
+            }
+            if (_currentState == AIState.Attack || _currentState == AIState.Chase || _currentState == AIState.Flee)
+            {
+                return;
+            }
+
+            float maxListenDist = Mathf.Min(_agent.Stats.HearingRadius, soundRadius);
+            if (Vector2.Distance(transform.position, noisePos) <= maxListenDist)
+            {
+                _investigatePosition = noisePos;
+                _investigateTimer = 4.0f;
+                TransitionToState(AIState.Investigate);
+                ForceRepath(_investigatePosition);
             }
         }
 
@@ -196,6 +245,13 @@ namespace DebtDungeon.AI
                 return;
             }
 
+            if (_backstepTimer > 0f)
+            {
+                _backstepTimer -= Time.fixedDeltaTime;
+                _agent.Rigidbody.linearVelocity = _backstepVelocity;
+                return;
+            }
+
             if (_isTelegraphing)
             {
                 _agent.Rigidbody.linearVelocity = Vector2.zero;
@@ -221,6 +277,7 @@ namespace DebtDungeon.AI
             if (_currentState != AIState.Flee && _currentState != AIState.Raid && healthRatio <= _fleeHealthThreshold && hasLiveTarget)
             {
                 _isTelegraphing = false;
+                ClearRangedTelegraphs();
                 TransitionToState(AIState.Flee);
                 return;
             }
@@ -251,6 +308,7 @@ namespace DebtDungeon.AI
                 {
                     _currentTarget = null;
                     _isTelegraphing = false;
+                    ClearRangedTelegraphs();
                     TransitionToState(AIState.Return);
                     ForceRepath(_spawnAnchor);
                     return;
@@ -309,6 +367,7 @@ namespace DebtDungeon.AI
             else
             {
                 _isTelegraphing = false;
+                ClearRangedTelegraphs();
                 if (_currentState == AIState.Chase || _currentState == AIState.Attack)
                 {
                     // Only units drafted by the raid manager go back to raiding; everyone else patrols.
@@ -333,6 +392,18 @@ namespace DebtDungeon.AI
                     _desiredVelocity = ComputeSmoothSteering() * (moveSpeed * 0.65f);
                     break;
 
+                case AIState.Investigate:
+                    _investigateTimer -= Time.deltaTime;
+                    UpdatePathfinding(_investigatePosition);
+                    _desiredVelocity = ComputeSmoothSteering() * (moveSpeed * 0.85f);
+
+                    if (_investigateTimer <= 0f || Vector2.Distance(transform.position, _investigatePosition) <= 0.8f)
+                    {
+                        TransitionToState(AIState.Wander);
+                        PickNewWanderDestination();
+                    }
+                    break;
+
                 case AIState.Raid:
                     Vector2 raidDest = _rivalTerritoryOrigin != Vector2.zero ? _rivalTerritoryOrigin : _wanderDestination;
 
@@ -355,13 +426,37 @@ namespace DebtDungeon.AI
                 case AIState.Chase:
                     if (_currentTarget != null)
                     {
-                        UpdatePathfinding(_currentTarget.transform.position);
-                        _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
+                        float dist = Vector2.Distance(transform.position, _currentTarget.transform.position);
+                        if (_agent.Stats != null && _agent.Stats.IsRangedKiter && dist < _agent.Stats.MinKeepDistance)
+                        {
+                            Vector2 retreatDir = ((Vector2)transform.position - (Vector2)_currentTarget.transform.position).normalized;
+                            Vector2 kiteTarget = (Vector2)transform.position + retreatDir * 3f;
+                            UpdatePathfinding(kiteTarget);
+                            _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
+                        }
+                        else
+                        {
+                            UpdatePathfinding(_currentTarget.transform.position);
+                            _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
+                        }
                     }
-
                     break;
 
                 case AIState.Attack:
+                    if (_currentTarget != null && !_isTelegraphing && _agent.Stats != null && _agent.Stats.IsRangedKiter)
+                    {
+                        float dist = Vector2.Distance(transform.position, _currentTarget.transform.position);
+                        if (dist < _agent.Stats.MinKeepDistance)
+                        {
+                            Vector2 retreatDir = ((Vector2)transform.position - (Vector2)_currentTarget.transform.position).normalized;
+                            Vector2 kiteTarget = (Vector2)transform.position + retreatDir * 3f;
+                            UpdatePathfinding(kiteTarget);
+                            _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
+                            HandleTelegraphedAttack();
+                            break;
+                        }
+                    }
+
                     _desiredVelocity = Vector2.zero;
                     HandleTelegraphedAttack();
                     break;
@@ -381,30 +476,138 @@ namespace DebtDungeon.AI
             if (_currentTarget == null || !_currentTarget.IsAlive)
             {
                 _isTelegraphing = false;
-                return;
-            }
-
-            if (_isTelegraphing)
-            {
-                _telegraphTimer -= Time.deltaTime;
-                if (_telegraphTimer <= 0f)
-                {
-                    _isTelegraphing = false;
-                    _nextAttackTime = Time.time + _attackCooldown;
-                    ExecuteCoreCombatAttack();
-                }
-
-                return;
-            }
-
-            if (Time.time >= _nextAttackTime)
-            {
-                _isTelegraphing = true;
-                _telegraphTimer = _attackTelegraphDuration;
+                ClearRangedTelegraphs();
                 if (_agent.VisualRenderer != null)
                 {
-                    _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
+                    _agent.VisualRenderer.color = _baseSpriteColor;
                 }
+                _currentState = AIState.Wander;
+                return;
+            }
+
+            float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.1f;
+            float windupDuration = _agent.Stats != null ? _agent.Stats.AttackWindupSeconds : 0.65f;
+            float cooldown = _agent.Stats != null ? _agent.Stats.AttackCooldownSeconds : 1.2f;
+            bool isRanged = _agent.Stats != null && _agent.Stats.IsRangedKiter && _agent.Stats.ProjectilePrefab != null;
+
+            Vector2 toTarget = (Vector2)_currentTarget.transform.position - (Vector2)transform.position;
+            float dist = toTarget.magnitude;
+
+            if (!_isTelegraphing)
+            {
+                if (dist > attackRange * 1.15f)
+                {
+                    _currentState = AIState.Chase;
+                    return;
+                }
+
+                // If ranged kiter is still retreating from a close enemy, don't freeze until ready to fire
+                if (Time.time >= _nextAttackTime)
+                {
+                    _agent.Rigidbody.linearVelocity = Vector2.zero;
+                    _isTelegraphing = true;
+                    _telegraphTimer = windupDuration;
+
+                    if (TryGetComponent(out UnitAnimator2D unitAnim))
+                    {
+                        unitAnim.TriggerAttackAnimation();
+                    }
+
+                    if (_agent.VisualRenderer != null)
+                    {
+                        _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
+                    }
+
+                    // 1. Lock aim position & spawn ranged telegraph visuals at wind-up start
+                    if (isRanged)
+                    {
+                        _lockedAimPosition = _currentTarget.transform.position;
+
+                        if (_agent.Stats.ShowTrajectoryTelegraph && _trajectoryLine != null)
+                        {
+                            _trajectoryLine.enabled = true;
+                            _trajectoryLine.positionCount = 2;
+                            _trajectoryLine.SetPosition(0, transform.position);
+                            _trajectoryLine.SetPosition(1, _lockedAimPosition);
+                        }
+
+                        if (_agent.Stats.ShowGroundWarningCircle && _windupWarningCirclePrefab != null)
+                        {
+                            _activeWindupCircle = Instantiate(_windupWarningCirclePrefab, _lockedAimPosition, Quaternion.identity);
+                            float diameter = Mathf.Max(0.45f, _agent.Stats.AoERadius) * 2f;
+                            _activeWindupCircle.transform.localScale = new Vector3(diameter, diameter, 1f);
+                        }
+                    }
+                }
+                return;
+            }
+
+            // Winding up attack
+            _agent.Rigidbody.linearVelocity = Vector2.zero;
+            _telegraphTimer -= Time.deltaTime;
+
+            // Keep line start anchored to unit in case of slight physics push
+            if (isRanged && _trajectoryLine != null && _trajectoryLine.enabled)
+            {
+                _trajectoryLine.SetPosition(0, transform.position);
+            }
+
+            if (_telegraphTimer <= 0f)
+            {
+                _isTelegraphing = false;
+                _nextAttackTime = Time.time + cooldown;
+                ClearRangedTelegraphs();
+
+                if (_agent.VisualRenderer != null)
+                {
+                    _agent.VisualRenderer.color = _baseSpriteColor;
+                }
+
+                if (isRanged)
+                {
+                    // Fire slow, telegraphed projectile toward the locked aim point
+                    GameObject projObj = Instantiate(_agent.Stats.ProjectilePrefab, transform.position, Quaternion.identity);
+                    if (projObj.TryGetComponent(out TelegraphedProjectile2D proj))
+                    {
+                        proj.Initialize(
+                            transform.position,
+                            _lockedAimPosition,
+                            gameObject,
+                            _agent.Faction,
+                            _agent.Stats,
+                            _targetMask);
+                    }
+
+                    NoiseEventBus.EmitNoise(transform.position, 6.5f);
+                }
+                else if (dist <= attackRange * 1.35f)
+                {
+                    ExecuteCoreCombatAttack();
+
+                    // Hit-and-run jump away (Spider Skitterling)
+                    float backstepDist = _agent.Stats != null ? _agent.Stats.PostAttackBackstepDistance : 0f;
+                    float backstepDur = _agent.Stats != null ? _agent.Stats.PostAttackBackstepDuration : 0.25f;
+                    if (backstepDist > 0.01f && backstepDur > 0.01f)
+                    {
+                        Vector2 awayDir = dist > 0.01f ? -toTarget.normalized : -((Vector2)transform.up);
+                        _backstepVelocity = awayDir * (backstepDist / backstepDur);
+                        _backstepTimer = backstepDur;
+                    }
+                }
+            }
+        }
+
+        private void ClearRangedTelegraphs()
+        {
+            if (_trajectoryLine != null)
+            {
+                _trajectoryLine.enabled = false;
+            }
+
+            if (_activeWindupCircle != null)
+            {
+                Destroy(_activeWindupCircle);
+                _activeWindupCircle = null;
             }
         }
 
@@ -412,7 +615,7 @@ namespace DebtDungeon.AI
         {
             if (_agent.VisualRenderer != null)
             {
-                _agent.VisualRenderer.color = Color.white;
+                _agent.VisualRenderer.color = _baseSpriteColor;
             }
 
             if (_currentTarget == null || !_currentTarget.IsAlive)
@@ -451,6 +654,8 @@ namespace DebtDungeon.AI
 
             DamageInfo damageInfo = new DamageInfo(finalDamage, damageType, gameObject, _agent.Faction, isCritical);
             _currentTarget.TakeDamage(damageInfo);
+
+            NoiseEventBus.EmitNoise(transform.position, 7.5f);
         }
 
         private void HandleAttackedBy(GameObject attackerObj)
@@ -545,7 +750,13 @@ namespace DebtDungeon.AI
             Vector2 origin = transform.position;
             Vector2 dir = targetPos - origin;
             RaycastHit2D hit = Physics2D.Raycast(origin, dir.normalized, dir.magnitude, _obstacleMask);
-            return hit.collider == null;
+            if (hit.collider == null)
+            {
+                return true;
+            }
+
+            // Allow targeting destructible spawners/structures even if they sit on the Walls layer
+            return _currentTarget != null && hit.collider.transform.IsChildOf(_currentTarget.transform);
         }
 
         private void UpdatePathfinding(Vector2 destination)
@@ -589,6 +800,16 @@ namespace DebtDungeon.AI
 
             Vector2 desiredHeading = (nextWaypoint - currentPos).normalized;
 
+            // Blend ally pack cohesion during Wander/Chase (Goblin squad behavior)
+            if (_currentState == AIState.Wander || _currentState == AIState.Chase)
+            {
+                Vector2 cohesion = ComputePackCohesionSteering();
+                if (cohesion != Vector2.zero)
+                {
+                    desiredHeading = (desiredHeading + cohesion).normalized;
+                }
+            }
+
             Collider2D nearbyWall = Physics2D.OverlapCircle(currentPos, _cornerAvoidanceRadius, _obstacleMask);
             if (nearbyWall != null)
             {
@@ -598,6 +819,56 @@ namespace DebtDungeon.AI
             }
 
             return desiredHeading;
+        }
+
+        private Vector2 ComputePackCohesionSteering()
+        {
+            if (_agent.Stats == null || _agent.Stats.PackCohesionWeight <= 0f)
+            {
+                return Vector2.zero;
+            }
+
+            _cohesionTimer = 0.25f;
+            float radius = _agent.Stats.PackCohesionRadius;
+            _targetFilter.useLayerMask = _targetMask.value != 0;
+            _targetFilter.layerMask = _targetMask;
+
+            int hitCount = Physics2D.OverlapCircle(transform.position, radius, _targetFilter, _scanBuffer);
+
+            Vector2 centerOfMass = Vector2.zero;
+            int allyCount = 0;
+
+            for (int i = 0; i < hitCount; i++)
+            {
+                Collider2D col = _scanBuffer[i];
+                if (col == null || col.gameObject == gameObject)
+                {
+                    continue;
+                }
+
+                Health ally = col.GetComponentInParent<Health>();
+                if (ally != null && ally.IsAlive && ally.Faction == _agent.Faction)
+                {
+                    centerOfMass += (Vector2)ally.transform.position;
+                    allyCount++;
+                }
+            }
+
+            if (allyCount == 0)
+            {
+                _cachedCohesion = Vector2.zero;
+                return _cachedCohesion;
+            }
+
+            centerOfMass /= allyCount;
+            Vector2 toPack = centerOfMass - (Vector2)transform.position;
+            
+
+            _cachedCohesion = toPack.magnitude < 1.4f
+                ? Vector2.zero
+                : toPack.normalized * _agent.Stats.PackCohesionWeight;
+
+            return _cachedCohesion;
         }
 
         private void PickNewWanderDestination()

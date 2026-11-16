@@ -1,0 +1,1571 @@
+fileFormatVersion: 2
+guid: 38c71ad68d94eae48ba790fbbe93138a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -5597245130582148735
+    second: spr_enemy_goblinSpawner_0
+  - first:
+      213: 4815136354001239447
+    second: spr_enemy_goblinSpawner_1
+  - first:
+      213: 2555588252528254230
+    second: spr_enemy_goblinSpawner_2
+  - first:
+      213: -3994077778661377201
+    second: spr_enemy_goblinSpawner_3
+  - first:
+      213: 7018693961794657118
+    second: spr_enemy_goblinSpawner_4
+  - first:
+      213: -2846524752860543931
+    second: spr_enemy_goblinSpawner_5
+  - first:
+      213: 4207171979441101565
+    second: spr_enemy_goblinSpawner_6
+  - first:
+      213: -5785130587010756772
+    second: spr_enemy_goblinSpawner_7
+  - first:
+      213: -1591471009090583150
+    second: spr_enemy_goblinSpawner_8
+  - first:
+      213: 7026442031558202728
+    second: spr_enemy_goblinSpawner_9
+  - first:
+      213: 6009683692108708219
+    second: spr_enemy_goblinSpawner_10
+  - first:
+      213: 3633698406634251855
+    second: spr_enemy_goblinSpawner_11
+  - first:
+      213: -7501888941228286623
+    second: spr_enemy_goblinSpawner_12
+  - first:
+      213: 4884066218845956115
+    second: spr_enemy_goblinSpawner_13
+  - first:
+      213: 3339118999359786488
+    second: spr_enemy_goblinSpawner_14
+  - first:
+      213: 4616158905769099106
+    second: spr_enemy_goblinSpawner_15
+  - first:
+      213: -3035681118470230211
+    second: spr_enemy_goblinSpawner_16
+  - first:
+      213: -7061068576890282387
+    second: spr_enemy_goblinSpawner_17
+  - first:
+      213: -8514076420911170280
+    second: spr_enemy_goblinSpawner_18
+  - first:
+      213: -5662832920112898114
+    second: spr_enemy_goblinSpawner_19
+  - first:
+      213: -8506096759055944426
+    second: spr_enemy_goblinSpawner_20
+  - first:
+      213: -7321970662634860137
+    second: spr_enemy_goblinSpawner_21
+  - first:
+      213: -6471873602419395954
+    second: spr_enemy_goblinSpawner_22
+  - first:
+      213: 2590697180637207827
+    second: spr_enemy_goblinSpawner_23
+  - first:
+      213: 5082545204176971578
+    second: spr_enemy_goblinSpawner_24
+  - first:
+      213: -7267747123130331869
+    second: spr_enemy_goblinSpawner_25
+  - first:
+      213: 4734025032382454573
+    second: spr_enemy_goblinSpawner_26
+  - first:
+      213: 2850251267840136909
+    second: spr_enemy_goblinSpawner_27
+  - first:
+      213: -3183552394051698760
+    second: spr_enemy_goblinSpawner_28
+  - first:
+      213: 2819769036254030152
+    second: spr_enemy_goblinSpawner_29
+  - first:
+      213: 2196747499414892732
+    second: spr_enemy_goblinSpawner_30
+  - first:
+      213: -841421116719552980
+    second: spr_enemy_goblinSpawner_31
+  - first:
+      213: -4789557385208701226
+    second: spr_enemy_goblinSpawner_32
+  - first:
+      213: 411524824677872816
+    second: spr_enemy_goblinSpawner_33
+  - first:
+      213: 4904530187125855784
+    second: spr_enemy_goblinSpawner_34
+  - first:
+      213: -7277830479289021950
+    second: spr_enemy_goblinSpawner_35
+  - first:
+      213: -4288156806656265644
+    second: spr_enemy_goblinSpawner_36
+  - first:
+      213: 6053007595563184529
+    second: spr_enemy_goblinSpawner_37
+  - first:
+      213: -2007374187472436045
+    second: spr_enemy_goblinSpawner_38
+  - first:
+      213: -8529086978918734091
+    second: spr_enemy_goblinSpawner_39
+  - first:
+      213: 6633020868463468814
+    second: spr_enemy_goblinSpawner_40
+  - first:
+      213: -3947449053501706427
+    second: spr_enemy_goblinSpawner_41
+  - first:
+      213: -5061601764870982230
+    second: spr_enemy_goblinSpawner_42
+  - first:
+      213: 4374896248170116790
+    second: spr_enemy_goblinSpawner_43
+  - first:
+      213: 7139606438639227469
+    second: spr_enemy_goblinSpawner_44
+  - first:
+      213: -1007157459717333388
+    second: spr_enemy_goblinSpawner_45
+  - first:
+      213: 3524122638891271024
+    second: spr_enemy_goblinSpawner_46
+  - first:
+      213: -988353871741927833
+    second: spr_enemy_goblinSpawner_47
+  - first:
+      213: 3722692529820396594
+    second: spr_enemy_goblinSpawner_48
+  - first:
+      213: 8603084541088859317
+    second: spr_enemy_goblinSpawner_49
+  - first:
+      213: -3245112205882939983
+    second: spr_enemy_goblinSpawner_50
+  - first:
+      213: 5919126792368868105
+    second: spr_enemy_goblinSpawner_51
+  - first:
+      213: -8756662247690986573
+    second: spr_enemy_goblinSpawner_52
+  - first:
+      213: -3767731191543249669
+    second: spr_enemy_goblinSpawner_53
+  - first:
+      213: 896305109858797917
+    second: spr_enemy_goblinSpawner_54
+  - first:
+      213: 6588884462525423261
+    second: spr_enemy_goblinSpawner_55
+  - first:
+      213: 9078352835124565530
+    second: spr_enemy_goblinSpawner_56
+  - first:
+      213: -2574927850608821926
+    second: spr_enemy_goblinSpawner_57
+  - first:
+      213: 7320048673353961617
+    second: spr_enemy_goblinSpawner_58
+  - first:
+      213: 2106050763331768959
+    second: spr_enemy_goblinSpawner_59
+  - first:
+      213: -9210467252073438048
+    second: spr_enemy_goblinSpawner_60
+  - first:
+      213: -7899159074116885456
+    second: spr_enemy_goblinSpawner_61
+  - first:
+      213: 4901886804864920752
+    second: spr_enemy_goblinSpawner_62
+  - first:
+      213: 5652959717304798507
+    second: spr_enemy_goblinSpawner_63
+  - first:
+      213: -4375589064766372764
+    second: spr_enemy_goblinSpawner_64
+  - first:
+      213: 6610982804309878871
+    second: spr_enemy_goblinSpawner_65
+  - first:
+      213: 8933195351587214693
+    second: spr_enemy_goblinSpawner_66
+  - first:
+      213: -8367007217295180790
+    second: spr_enemy_goblinSpawner_67
+  - first:
+      213: -7263460093033502667
+    second: spr_enemy_goblinSpawner_68
+  - first:
+      213: 3441430221818895148
+    second: spr_enemy_goblinSpawner_69
+  - first:
+      213: 3140259266017160250
+    second: spr_enemy_goblinSpawner_70
+  - first:
+      213: -959902367932473838
+    second: spr_enemy_goblinSpawner_71
+  - first:
+      213: 4154496165108315585
+    second: spr_enemy_goblinSpawner_72
+  - first:
+      213: -6015525548677426730
+    second: spr_enemy_goblinSpawner_73
+  - first:
+      213: -6668031551658328748
+    second: spr_enemy_goblinSpawner_74
+  - first:
+      213: -6685772339365339484
+    second: spr_enemy_goblinSpawner_75
+  - first:
+      213: -606461171582409133
+    second: spr_enemy_goblinSpawner_76
+  - first:
+      213: 7940615525837279909
+    second: spr_enemy_goblinSpawner_77
+  - first:
+      213: -2968068373062491485
+    second: spr_enemy_goblinSpawner_78
+  - first:
+      213: 1836356137807797300
+    second: spr_enemy_goblinSpawner_79
+  - first:
+      213: 1851290366921948060
+    second: spr_enemy_goblinSpawner_80
+  - first:
+      213: 2430893189117896219
+    second: spr_enemy_goblinSpawner_81
+  - first:
+      213: -9065188661263828695
+    second: spr_enemy_goblinSpawner_82
+  - first:
+      213: -1299207448665107227
+    second: spr_enemy_goblinSpawner_83
+  - first:
+      213: 4219916791811157094
+    second: spr_enemy_goblinSpawner_84
+  - first:
+      213: -3103572566758197212
+    second: spr_enemy_goblinSpawner_85
+  - first:
+      213: -6460921654684776037
+    second: spr_enemy_goblinSpawner_86
+  - first:
+      213: 2331540704737843200
+    second: spr_enemy_goblinSpawner_87
+  - first:
+      213: 37716577698464231
+    second: spr_enemy_goblinSpawner_88
+  - first:
+      213: 3662240160274581355
+    second: spr_enemy_goblinSpawner_89
+  - first:
+      213: 320427294711326053
+    second: spr_enemy_goblinSpawner_90
+  - first:
+      213: -3512284217612042641
+    second: spr_enemy_goblinSpawner_91
+  - first:
+      213: -6304401747747477757
+    second: spr_enemy_goblinSpawner_92
+  - first:
+      213: -4337666883835566138
+    second: spr_enemy_goblinSpawner_93
+  - first:
+      213: 3768516872660428658
+    second: spr_enemy_goblinSpawner_94
+  - first:
+      213: 8727397044550524246
+    second: spr_enemy_goblinSpawner_95
+  - first:
+      213: 4760029994467843094
+    second: spr_enemy_goblinSpawner_96
+  - first:
+      213: -5527490650876226563
+    second: spr_enemy_goblinSpawner_97
+  - first:
+      213: -1865199057541348650
+    second: spr_enemy_goblinSpawner_98
+  - first:
+      213: -1689347012628531040
+    second: spr_enemy_goblinSpawner_99
+  - first:
+      213: -1960276287936045750
+    second: spr_enemy_goblinSpawner_100
+  - first:
+      213: 4086795533224472387
+    second: spr_enemy_goblinSpawner_101
+  - first:
+      213: 1429094930989509943
+    second: spr_enemy_goblinSpawner_102
+  - first:
+      213: -7535331864716300830
+    second: spr_enemy_goblinSpawner_103
+  - first:
+      213: -8670152790594515191
+    second: spr_enemy_goblinSpawner_104
+  - first:
+      213: -700766538219630367
+    second: spr_enemy_goblinSpawner_105
+  - first:
+      213: 8800078688813741095
+    second: spr_enemy_goblinSpawner_106
+  - first:
+      213: -3637445317472240588
+    second: spr_enemy_goblinSpawner_107
+  - first:
+      213: 7140445606880857630
+    second: spr_enemy_goblinSpawner_108
+  - first:
+      213: -216821304712578829
+    second: spr_enemy_goblinSpawner_109
+  - first:
+      213: -7724349301226193391
+    second: spr_enemy_goblinSpawner_110
+  - first:
+      213: 5335582829855621476
+    second: spr_enemy_goblinSpawner_111
+  - first:
+      213: -1252237311795628053
+    second: spr_enemy_goblinSpawner_112
+  - first:
+      213: -3576447764055440521
+    second: spr_enemy_goblinSpawner_113
+  - first:
+      213: -5742149870107372799
+    second: spr_enemy_goblinSpawner_114
+  - first:
+      213: 4709058303572231219
+    second: spr_enemy_goblinSpawner_115
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 189bdde85379252b0800000000000000
+      internalID: -5597245130582148735
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79d3055900dc2d240800000000000000
+      internalID: 4815136354001239447
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 61d9b10c9f5477320800000000000000
+      internalID: 2555588252528254230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f4b7b9dfb6f2298c0800000000000000
+      internalID: -3994077778661377201
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e5b13fbb8f8676160800000000000000
+      internalID: 7018693961794657118
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 544046d91dc1f78d0800000000000000
+      internalID: -2846524752860543931
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dfa509fef90e26a30800000000000000
+      internalID: 4207171979441101565
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c5f0afdc16617bfa0800000000000000
+      internalID: -5785130587010756772
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 295c2d89c85f9e9e0800000000000000
+      internalID: -1591471009090583150
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 86596edcccfe28160800000000000000
+      internalID: 7026442031558202728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b79f8903a7fa66350800000000000000
+      internalID: 6009683692108708219
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f46665cd27d7d6230800000000000000
+      internalID: 3633698406634251855
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 16d18a131cfe3e790800000000000000
+      internalID: -7501888941228286623
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3186cc16950b7c340800000000000000
+      internalID: 4884066218845956115
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_14
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8fd099bd90fe65e20800000000000000
+      internalID: 3339118999359786488
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 26f7f1d3114ef0040800000000000000
+      internalID: 4616158905769099106
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d3fa8324b181fd5d0800000000000000
+      internalID: -3035681118470230211
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d6e18cb5a8b020e90800000000000000
+      internalID: -7061068576890282387
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 81d7f0dca9ce7d980800000000000000
+      internalID: -8514076420911170280
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ebf584e46739961b0800000000000000
+      internalID: -5662832920112898114
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_20
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6157e5b901644f980800000000000000
+      internalID: -8506096759055944426
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_21
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 79151ddc972236a90800000000000000
+      internalID: -7321970662634860137
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_22
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e8270908f394f26a0800000000000000
+      internalID: -6471873602419395954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31d9c741c5104f320800000000000000
+      internalID: 2590697180637207827
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a3765d94fe3d88640800000000000000
+      internalID: 5082545204176971578
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 32d03786f76c32b90800000000000000
+      internalID: -7267747123130331869
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d2b96fc5fa2a2b140800000000000000
+      internalID: 4734025032382454573
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc6d7344d602e8720800000000000000
+      internalID: 2850251267840136909
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8bf34bcf6ffb1d3d0800000000000000
+      internalID: -3183552394051698760
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 849219aaff4d12720800000000000000
+      internalID: 2819769036254030152
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_30
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cb03adb363a6c7e10800000000000000
+      internalID: 2196747499414892732
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_31
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c262b6fc3fba254f0800000000000000
+      internalID: -841421116719552980
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6de594f2fe2188db0800000000000000
+      internalID: -4789557385208701226
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0b4fd2fc5a706b500800000000000000
+      internalID: 411524824677872816
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_34
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 82611d94834601440800000000000000
+      internalID: 4904530187125855784
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_35
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 20a877a1db3fffa90800000000000000
+      internalID: -7277830479289021950
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_36
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 452741e9a186d74c0800000000000000
+      internalID: -4288156806656265644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_37
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 191f844865a900450800000000000000
+      internalID: 6053007595563184529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_38
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3b4ca60efcf5424e0800000000000000
+      internalID: -2007374187472436045
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_39
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5f6a32be49892a980800000000000000
+      internalID: -8529086978918734091
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e01a48c26593d0c50800000000000000
+      internalID: 6633020868463468814
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_41
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 54f24151008d739c0800000000000000
+      internalID: -3947449053501706427
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_42
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: aa5ff5a230491c9b0800000000000000
+      internalID: -5061601764870982230
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_43
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6b67e5165f0c6bc30800000000000000
+      internalID: 4374896248170116790
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_44
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d42de2b8a3af41360800000000000000
+      internalID: 7139606438639227469
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_45
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 47ed9a460abd502f0800000000000000
+      internalID: -1007157459717333388
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_46
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073c6045ed238e030800000000000000
+      internalID: 3524122638891271024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_goblinSpawner_47
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 76eb072e369a842f0800000000000000
+      internalID: -988353871741927833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 41bbf17a3607491458faf5a1641c1592
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_enemy_goblinSpawner_0: -5597245130582148735
+      spr_enemy_goblinSpawner_1: 4815136354001239447
+      spr_enemy_goblinSpawner_10: 6009683692108708219
+      spr_enemy_goblinSpawner_11: 3633698406634251855
+      spr_enemy_goblinSpawner_12: -7501888941228286623
+      spr_enemy_goblinSpawner_13: 4884066218845956115
+      spr_enemy_goblinSpawner_14: 3339118999359786488
+      spr_enemy_goblinSpawner_15: 4616158905769099106
+      spr_enemy_goblinSpawner_16: -3035681118470230211
+      spr_enemy_goblinSpawner_17: -7061068576890282387
+      spr_enemy_goblinSpawner_18: -8514076420911170280
+      spr_enemy_goblinSpawner_19: -5662832920112898114
+      spr_enemy_goblinSpawner_2: 2555588252528254230
+      spr_enemy_goblinSpawner_20: -8506096759055944426
+      spr_enemy_goblinSpawner_21: -7321970662634860137
+      spr_enemy_goblinSpawner_22: -6471873602419395954
+      spr_enemy_goblinSpawner_23: 2590697180637207827
+      spr_enemy_goblinSpawner_24: 5082545204176971578
+      spr_enemy_goblinSpawner_25: -7267747123130331869
+      spr_enemy_goblinSpawner_26: 4734025032382454573
+      spr_enemy_goblinSpawner_27: 2850251267840136909
+      spr_enemy_goblinSpawner_28: -3183552394051698760
+      spr_enemy_goblinSpawner_29: 2819769036254030152
+      spr_enemy_goblinSpawner_3: -3994077778661377201
+      spr_enemy_goblinSpawner_30: 2196747499414892732
+      spr_enemy_goblinSpawner_31: -841421116719552980
+      spr_enemy_goblinSpawner_32: -4789557385208701226
+      spr_enemy_goblinSpawner_33: 411524824677872816
+      spr_enemy_goblinSpawner_34: 4904530187125855784
+      spr_enemy_goblinSpawner_35: -7277830479289021950
+      spr_enemy_goblinSpawner_36: -4288156806656265644
+      spr_enemy_goblinSpawner_37: 6053007595563184529
+      spr_enemy_goblinSpawner_38: -2007374187472436045
+      spr_enemy_goblinSpawner_39: -8529086978918734091
+      spr_enemy_goblinSpawner_4: 7018693961794657118
+      spr_enemy_goblinSpawner_40: 6633020868463468814
+      spr_enemy_goblinSpawner_41: -3947449053501706427
+      spr_enemy_goblinSpawner_42: -5061601764870982230
+      spr_enemy_goblinSpawner_43: 4374896248170116790
+      spr_enemy_goblinSpawner_44: 7139606438639227469
+      spr_enemy_goblinSpawner_45: -1007157459717333388
+      spr_enemy_goblinSpawner_46: 3524122638891271024
+      spr_enemy_goblinSpawner_47: -988353871741927833
+      spr_enemy_goblinSpawner_5: -2846524752860543931
+      spr_enemy_goblinSpawner_6: 4207171979441101565
+      spr_enemy_goblinSpawner_7: -5785130587010756772
+      spr_enemy_goblinSpawner_8: -1591471009090583150
+      spr_enemy_goblinSpawner_9: 7026442031558202728
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 
