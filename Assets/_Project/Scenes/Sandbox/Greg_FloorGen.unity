@@ -288,7 +288,7 @@ MonoBehaviour:
   _config: {fileID: 11400000, guid: 81253be6a6eed994b8df61059024b6c7, type: 2}
   _debugSeed: 12345
   _generateOnStart: 1
-  _showCellOverlay: 1
+  _showCellOverlay: 0
   _overlayAlpha: 0.35
 --- !u!4 &565273399
 Transform:
@@ -342,7 +342,7 @@ MonoBehaviour:
   m_Intensity: 1
   m_LightVolumeIntensity: 1
   m_LightVolumeEnabled: 0
-  m_ApplyToSortingLayers: 00000000
+  m_ApplyToSortingLayers: 00000000cfe53f2706867e2c8a28e962
   m_LightCookieSprite: {fileID: 0}
   m_DeprecatedPointLightCookieSprite: {fileID: 0}
   m_LightOrder: 0
