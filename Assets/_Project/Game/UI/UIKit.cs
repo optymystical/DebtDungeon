@@ -133,10 +133,10 @@ namespace DebtDungeon.Game
             return label;
         }
 
-        /// <summary>A button with a centered label. onClick runs when it's pressed.</summary>
+        /// <summary>A button with a centered label. onClick runs when it's pressed. Every button plays the menu sounds.</summary>
         public static Button CreateButton(Transform parent, string label, UnityAction onClick, float height)
         {
-            GameObject buttonObject = new GameObject(label + " Button", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement));
+            GameObject buttonObject = new GameObject(label + " Button", typeof(RectTransform), typeof(Image), typeof(Button), typeof(LayoutElement), typeof(UISelectSound));
             buttonObject.transform.SetParent(parent, false);
 
             Image image = buttonObject.GetComponent<Image>();
@@ -155,6 +155,9 @@ namespace DebtDungeon.Game
             {
                 button.onClick.AddListener(onClick);
             }
+
+            // Added after onClick, so a volume button's click already plays at the new volume (the preview).
+            button.onClick.AddListener(UISounds.PlayClick);
 
             LayoutElement layout = buttonObject.GetComponent<LayoutElement>();
             layout.minHeight = height;

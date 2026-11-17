@@ -445,6 +445,8 @@ GameObject:
   - component: {fileID: 1398917777}
   - component: {fileID: 1398917776}
   - component: {fileID: 1398917782}
+  - component: {fileID: 1398917783}
+  - component: {fileID: 1398917784}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -613,6 +615,53 @@ MonoBehaviour:
   _gameManager: {fileID: 0}
   _bootstrap: {fileID: 0}
   _exitPrefab: {fileID: 3995699613843994786, guid: a91d3ceaba5658e4aad520e786dfb965, type: 3}
+--- !u!114 &1398917783
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398917773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: de16b5d525aa4270a167e88191dea908, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.StationScreen
+  _gameManager: {fileID: 0}
+  _bootstrap: {fileID: 0}
+  _useAction:
+    m_Name: Use Station
+    m_Type: 1
+    m_ExpectedControlType: 
+    m_Id: 692d53df-4de5-4dac-a37e-c45d0970dac8
+    m_Processors: 
+    m_Interactions: 
+    m_SingletonActionBindings:
+    - m_Name: 
+      m_Id: b9bead7c-2f2a-4b84-a3cb-13572bc005f9
+      m_Path: <Keyboard>/e
+      m_Interactions: 
+      m_Processors: 
+      m_Groups: 
+      m_Action: Use Station
+      m_Flags: 0
+    m_Flags: 0
+    m_Priority: 0
+--- !u!114 &1398917784
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398917773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd103a1f44244b3beced9c3cf6f1e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.GameAudio
+  _music: {fileID: 8300000, guid: a6648f5deac048be80af8d863e76629e, type: 3}
+  _uiMove: {fileID: 8300000, guid: 5be68b670c704b9b8761ae63c293db49, type: 3}
+  _uiClick: {fileID: 8300000, guid: adbdca8a5e1d4130afe3564da78e030d, type: 3}
 --- !u!1001 &1822066189
 PrefabInstance:
   m_ObjectHideFlags: 0
@@ -748,6 +797,63 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.GoldDropManager
   _goldPrefab: {fileID: 4787719067516737484, guid: a8d57c190e5b9824ca7c024f40473550, type: 3}
+--- !u!1001 &1041466499301829804
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 3
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 2767327491599049309, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 7257112416641590013, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
+      propertyPath: m_Name
+      value: Station
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0
@@ -759,3 +865,4 @@ SceneRoots:
   - {fileID: 702102594}
   - {fileID: 1822066189}
   - {fileID: 2085050230}
+  - {fileID: 1041466499301829804}

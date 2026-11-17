@@ -352,6 +352,7 @@ GameObject:
   - component: {fileID: 651274966}
   - component: {fileID: 651274969}
   - component: {fileID: 651274968}
+  - component: {fileID: 651274970}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -432,6 +433,21 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.MainMenuScreen
   _gameManager: {fileID: 0}
+--- !u!114 &651274970
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 651274965}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 5dd103a1f44244b3beced9c3cf6f1e3a, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.GameAudio
+  _music: {fileID: 8300000, guid: 9337893bfcdc4697a7f44f4e56e1bf49, type: 3}
+  _uiMove: {fileID: 8300000, guid: 5be68b670c704b9b8761ae63c293db49, type: 3}
+  _uiClick: {fileID: 8300000, guid: adbdca8a5e1d4130afe3564da78e030d, type: 3}
 --- !u!1660057539 &9223372036854775807
 SceneRoots:
   m_ObjectHideFlags: 0

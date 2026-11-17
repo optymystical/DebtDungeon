@@ -21,9 +21,6 @@ namespace DebtDungeon.Game
         private const int PreviewHealthPerPoint = 5;
         private const int NameCharacterLimit = 24;
 
-        private static readonly EquipmentSlot[] WornSlots =
-            { EquipmentSlot.Weapon, EquipmentSlot.Armor, EquipmentSlot.Foci, EquipmentSlot.Shroud };
-
         [SerializeField] private ProgressionCatalog _catalog;
 
         [Tooltip("Leave empty to use the GameManager on this object.")]
@@ -31,6 +28,7 @@ namespace DebtDungeon.Game
 
         private CharacterCreator _creator;
         private Loadout _watchedLoadout;
+        private LoadoutEditor _loadoutEditor;
 
         private GameObject _root;
         private RectTransform _archetypeList;
@@ -57,6 +55,7 @@ namespace DebtDungeon.Game
 
             _creator = new CharacterCreator(_catalog);
             Build();
+            _loadoutEditor = new LoadoutEditor(_loadoutList, _creator.GetEquipmentChoices, SetStatus);
             _root.SetActive(false);
         }
 
@@ -158,80 +157,20 @@ namespace DebtDungeon.Game
 
         private void RefreshLoadout()
         {
-            UIKit.ClearChildren(_loadoutList);
             CharacterData draft = _creator.Draft;
             if (draft == null)
             {
+                UIKit.ClearChildren(_loadoutList);
                 UIKit.CreateText(_loadoutList, "Pick a preset to edit its gear.", 24f, TextAlignmentOptions.Left, UIKit.MutedText);
                 _burdenText.text = string.Empty;
                 _startButton.interactable = false;
                 return;
             }
 
-            foreach (EquipmentSlot slot in WornSlots)
-            {
-                if (_creator.GetEquipmentChoices(slot).Count > 0)
-                {
-                    AddSlotRow(draft.Loadout, slot);
-                }
-            }
-
-            List<EquipmentDefinition> affixes = _creator.GetEquipmentChoices(EquipmentSlot.Affix);
-            if (affixes.Count > 0)
-            {
-                UIKit.CreateText(_loadoutList, "Affixes", 28f, TextAlignmentOptions.Left, UIKit.TextColor);
-                foreach (EquipmentDefinition affix in affixes)
-                {
-                    AddAffixRow(draft.Loadout, (AffixDefinition)affix);
-                }
-            }
-
-            Loadout loadout = draft.Loadout;
-            _burdenText.text = $"Burden {loadout.BurdenSteps}/{Loadout.MaxBurdenSteps}    Move speed {Mathf.RoundToInt(loadout.MoveSpeedMultiplier * 100f)}%";
+            // The rows themselves are drawn by LoadoutEditor, which the equipment station shares.
+            _loadoutEditor.Draw(draft.Loadout);
+            _burdenText.text = LoadoutEditor.DescribeBurden(draft.Loadout);
             _startButton.interactable = _creator.CanConfirm(out _);
-        }
-
-        // One row per slot: "< Sword >" cycles through this slot's items plus "(none)".
-        private void AddSlotRow(Loadout loadout, EquipmentSlot slot)
-        {
-            EquipmentDefinition equipped = loadout.GetEquipped(slot);
-            string itemName = equipped != null ? equipped.DisplayName : "(none)";
-
-            RectTransform row = UIKit.CreateGroup(_loadoutList, slot + " Row");
-            UIKit.AddHorizontalLayout(row, 8f, 0);
-            UIKit.SetSize(row, 56f);
-
-            Button previous = UIKit.CreateButton(row, "<", () => CycleSlot(loadout, slot, -1), 56f);
-            UIKit.SetSize(previous, 56f, 56f).flexibleWidth = 0f;
-            UIKit.CreateText(row, $"{slot}: {itemName}", 26f, TextAlignmentOptions.Center, UIKit.TextColor);
-            Button next = UIKit.CreateButton(row, ">", () => CycleSlot(loadout, slot, 1), 56f);
-            UIKit.SetSize(next, 56f, 56f).flexibleWidth = 0f;
-
-            if (equipped != null && !string.IsNullOrEmpty(equipped.Description))
-            {
-                UIKit.CreateText(_loadoutList, equipped.Description, 20f, TextAlignmentOptions.Left, UIKit.MutedText);
-            }
-        }
-
-        private void AddAffixRow(Loadout loadout, AffixDefinition affix)
-        {
-            string state = "not attuned";
-            foreach (EquippedAffix attuned in loadout.Affixes)
-            {
-                if (attuned.Affix == affix)
-                {
-                    state = attuned.Form.ToString();
-                }
-            }
-
-            RectTransform row = UIKit.CreateGroup(_loadoutList, affix.DisplayName + " Row");
-            UIKit.AddHorizontalLayout(row, 8f, 0);
-            UIKit.SetSize(row, 52f);
-
-            UIKit.CreateText(row, $"{affix.DisplayName}: {state}", 24f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
-            UIKit.CreateButton(row, "Offensive", () => AttuneAffix(loadout, affix, AffixForm.Offensive), 52f);
-            UIKit.CreateButton(row, "Defensive", () => AttuneAffix(loadout, affix, AffixForm.Defensive), 52f);
-            UIKit.CreateButton(row, "Remove", () => RemoveAffix(loadout, affix), 52f);
         }
 
         // ----- Actions -----
@@ -242,63 +181,6 @@ namespace DebtDungeon.Game
             {
                 SetStatus(reason, true);
             }
-        }
-
-        private void CycleSlot(Loadout loadout, EquipmentSlot slot, int direction)
-        {
-            // Choices are this slot's items plus null for "(none)"; step through them and wrap around.
-            List<EquipmentDefinition> choices = new List<EquipmentDefinition> { null };
-            choices.AddRange(_creator.GetEquipmentChoices(slot));
-
-            int index = choices.IndexOf(loadout.GetEquipped(slot));
-            int nextIndex = (index + direction + choices.Count) % choices.Count;
-            EquipmentDefinition next = choices[nextIndex];
-
-            string reason;
-            bool changed = next == null ? loadout.TryUnequip(slot, out reason) : loadout.TryEquip(next, out reason);
-            SetStatus(changed ? string.Empty : reason, !changed);
-        }
-
-        private void AttuneAffix(Loadout loadout, AffixDefinition affix, AffixForm form)
-        {
-            // Switching form = remove, then add. If the add is refused, put the old form back.
-            AffixForm? oldForm = null;
-            foreach (EquippedAffix attuned in loadout.Affixes)
-            {
-                if (attuned.Affix == affix)
-                {
-                    oldForm = attuned.Form;
-                }
-            }
-
-            if (oldForm == form)
-            {
-                return;
-            }
-
-            if (oldForm.HasValue)
-            {
-                loadout.TryRemoveAffix(affix, out _);
-            }
-
-            if (loadout.TryAddAffix(affix, form, out string reason))
-            {
-                SetStatus(string.Empty, false);
-                return;
-            }
-
-            if (oldForm.HasValue)
-            {
-                loadout.TryAddAffix(affix, oldForm.Value, out _);
-            }
-
-            SetStatus(reason, true);
-        }
-
-        private void RemoveAffix(Loadout loadout, AffixDefinition affix)
-        {
-            bool removed = loadout.TryRemoveAffix(affix, out string reason);
-            SetStatus(removed ? string.Empty : reason, !removed);
         }
 
         private void StartRun()
@@ -363,6 +245,7 @@ namespace DebtDungeon.Game
             RectTransform middle = CreateColumn(columns, "3. Loadout");
             _loadoutList = CreateList(middle, "Loadout");
             _burdenText = UIKit.CreateText(middle, string.Empty, 26f, TextAlignmentOptions.Left, UIKit.Accent);
+            UIKit.CreateText(middle, "You can change gear and repair armor later at the station in your starting room (out of combat).", 20f, TextAlignmentOptions.Left, UIKit.MutedText);
 
             RectTransform right = CreateColumn(columns, "4. Name");
             _nameBox = UIInput.CreateTextBox(right, "Unnamed Debtor", NameCharacterLimit, 64f);

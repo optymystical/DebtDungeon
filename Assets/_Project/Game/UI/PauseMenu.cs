@@ -40,8 +40,10 @@ namespace DebtDungeon.Game
 
         private void OnGameStateChanged(GameState previous, GameState current)
         {
-            _root.SetActive(current == GameState.Paused);
-            if (current == GameState.Paused)
+            // The station also pauses the game, but shows its own screen instead of this one.
+            bool visible = current == GameState.Paused && !_gameManager.IsStationOpen;
+            _root.SetActive(visible);
+            if (visible)
             {
                 UIKit.Select(_resumeButton);
             }
