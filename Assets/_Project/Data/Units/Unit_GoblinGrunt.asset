@@ -12,11 +12,20 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 71f1ce5ff0e105144abe46e695abfe65, type: 3}
   m_Name: Unit_GoblinGrunt
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.UnitConfig
+  _attackWindupSeconds: 0.8
+  _postAttackBackstepDistance: 0
+  _postAttackBackstepDuration: 0.25
+  _packCohesionWeight: 0.75
+  _packCohesionRadius: 5
+  DisplayName: Goblin Grunt
   Style: 0
-  MaxHealth: 30
   GoldDropAmount: 5
-  MoveSpeed: 3.5
+  XpReward: 10
+  MoveSpeed: 2.5
   SightRadius: 6.5
-  AttackDamage: 8
+  AttackDamage: 16
+  DamageType: 0
   AttackRange: 1.2
+  AttackCooldownSeconds: 1.5
+  Accuracy: 100
   KnockbackForce: 5

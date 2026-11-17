@@ -1,7 +1,7 @@
 {
     "name": "DebtDungeon.Game",
     "rootNamespace": "DebtDungeon.Game",
-    "references": ["DebtDungeon.Core", "DebtDungeon.FloorGen", "DebtDungeon.AI", "DebtDungeon.Player", "DebtDungeon.Progression", "DebtDungeon.Inventory", "Unity.InputSystem"],
+    "references": ["DebtDungeon.Core", "DebtDungeon.FloorGen", "DebtDungeon.AI", "DebtDungeon.Player", "DebtDungeon.Progression", "DebtDungeon.Inventory", "Unity.InputSystem", "Unity.TextMeshPro", "UnityEngine.UI"],
     "includePlatforms": [],
     "excludePlatforms": [],
     "allowUnsafeCode": false,

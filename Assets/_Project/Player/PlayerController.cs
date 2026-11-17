@@ -37,6 +37,10 @@ namespace DebtDungeon.Player
         private int _currentBurdenStep = 0;
         private float _burdenMultiplier = 1f;
 
+        // Water (from the floor) and status slows (from StatusEffects) are separate, so one never overwrites the other.
+        private float _terrainMultiplier = 1f;
+        private float _statusSpeedMultiplier = 1f;
+
         private void Awake()
         {
             _camera = Camera.main;
@@ -94,7 +98,7 @@ namespace DebtDungeon.Player
             bool isKnockingBack = _hitFeedback != null && _hitFeedback.IsKnockingBack;
             if (_rb != null && !isKnockingBack)
             {
-                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * 1; // 1 is placeholder for _terrainMultiplier
+                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * _terrainMultiplier * _statusSpeedMultiplier;
 
                 // Rotates sprite to face destination while moving
                 if (_moveInput != Vector2.zero)
@@ -196,18 +200,9 @@ namespace DebtDungeon.Player
             }
         }
 
-        public void SetBurdenSteps(int _amount)
+        public void SetBurdenSteps(int steps)
         {
-            Debug.Log("SetBurdenStep: " + _amount);
-            _currentBurdenStep = _amount;
-            if (_currentBurdenStep > 2)
-            {
-                _currentBurdenStep = 2;
-            }
-            else if (_currentBurdenStep < 0)
-            {
-                _currentBurdenStep = 0;
-            }
+            _currentBurdenStep = Mathf.Clamp(steps, 0, 2);
 
             // Adjust _burdenMultiplier based on current Burden Step
             switch (_currentBurdenStep)
@@ -222,7 +217,18 @@ namespace DebtDungeon.Player
                     _burdenMultiplier = 0.8f;
                     break;
             }
-            Debug.Log("_currentBurdenStep: " + _currentBurdenStep);
+        }
+
+        /// <summary>Speed multiplier from the ground under the player (water). 1 = normal.</summary>
+        public void SetTerrainMultiplier(float multiplier)
+        {
+            _terrainMultiplier = Mathf.Max(0f, multiplier);
+        }
+
+        /// <summary>Speed multiplier from status effects (Slowed). 1 = normal. Set by StatusEffects.</summary>
+        public void SetStatusSpeedMultiplier(float multiplier)
+        {
+            _statusSpeedMultiplier = Mathf.Max(0f, multiplier);
         }
     }
 }

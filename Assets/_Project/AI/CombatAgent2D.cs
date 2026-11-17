@@ -122,7 +122,16 @@ namespace DebtDungeon.AI
 
         private void HandleHealthDied(KillInfo kill)
         {
-            Destroy(gameObject);
+            if (TryGetComponent(out Collider2D col))
+            {
+                col.enabled = false;
+            }
+
+            float destroyDelay = TryGetComponent(out UnitAnimator2D unitAnim)
+                ? unitAnim.DeathAnimDuration
+                : 0f;
+
+            Destroy(gameObject, destroyDelay);
         }
 
         private void ConfigureRigidbodyForTopDown()

@@ -1,0 +1,21 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88ebf8ecfcf44625a3981eaf028c4b93, type: 3}
+  m_Name: Ability_Crackle
+  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PlaceholderAbility
+  _id: crackle
+  _displayName: Crackle
+  _description: "A bolt toward the mouse (8 x Power Magic damage) that chains to nearby enemies, each jump at -20% Accuracy, up to 4 jumps. (Placeholder: not usable until the ability framework lands.)"
+  _icon: {fileID: 0}
+  _kind: 2
+  _cooldown: 3
+  _energyCost: 15

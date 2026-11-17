@@ -36,6 +36,11 @@ namespace DebtDungeon.AI
         [SerializeField, Min(1)] private int _fallbackMaxGuards = 2;
         [SerializeField, Min(0.5f)] private float _spawnInterval = 3.5f;
 
+        [Header("Specialist Roster (Optional Resident Mix-In)")]
+        [SerializeField] private GameObject _specialistPrefab;
+        [SerializeField] private UnitConfig _specialistConfig;
+        [SerializeField, Range(0f, 1f)] private float _specialistSpawnChance = 0.3f;
+
         private Health _health;
         private IFloorQuery _floor;
         private Func<Faction, UnitRole, bool> _canSpawnMapWideQuery;
@@ -60,7 +65,7 @@ namespace DebtDungeon.AI
         private void Awake()
         {
             _health = GetComponent<Health>();
-            gameObject.layer = LayerMask.NameToLayer("Walls");
+            // Layer comes from the prefab (Goblin or Spider), so faction attacks and masks can hit the spawner.
         }
 
         private void OnEnable()
@@ -149,7 +154,19 @@ namespace DebtDungeon.AI
 
         private void SpawnUnit(UnitRole role, GameObject prefab, UnitConfig config, List<FactionAI2D> localTracker)
         {
-            if (prefab == null)
+            GameObject selectedPrefab = prefab;
+            UnitConfig selectedConfig = config;
+
+            if (role == UnitRole.Resident && _specialistPrefab != null && UnityEngine.Random.value < _specialistSpawnChance)
+            {
+                selectedPrefab = _specialistPrefab;
+                if (_specialistConfig != null)
+                {
+                    selectedConfig = _specialistConfig;
+                }
+            }
+
+            if (selectedPrefab == null)
             {
                 Debug.LogWarning($"[FactionSpawner2D] Missing prefab for {role} on {gameObject.name}.", this);
                 return;
@@ -158,12 +175,18 @@ namespace DebtDungeon.AI
             Vector2 spawnOffset = UnityEngine.Random.insideUnitCircle * DefaultSpawnRadius;
             Vector2 spawnPosition = (Vector2)transform.position + spawnOffset;
 
-            GameObject unitObject = Instantiate(prefab, spawnPosition, Quaternion.identity);
+            GameObject unitObject = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
+
+            if (TryGetComponent(out SpawnerAnimator2D spawnerAnim))
+            {
+                spawnerAnim.TriggerSpawnAnimation();
+            }
 
             CombatAgent2D combatAgent = unitObject.GetComponent<CombatAgent2D>();
-            if (combatAgent != null && config != null)
+            if (combatAgent != null && selectedConfig != null)
             {
-                combatAgent.Initialize(config);
+                combatAgent.Initialize(selectedConfig);
+               
             }
 
             FactionAI2D ai = unitObject.GetComponent<FactionAI2D>();
@@ -183,8 +206,23 @@ namespace DebtDungeon.AI
 
         private void HandleSpawnerDied(KillInfo kill)
         {
+            // No exit key (decided Nov 10): Game's ExitSpawner opens the exit where the first spawner falls.
             GameEvents.RaiseSpawnerDestroyed(Faction, transform.position);
-            Destroy(gameObject);
+
+            if (TryGetComponent(out Collider2D col))
+            {
+                col.enabled = false;
+            }
+
+            if (TryGetComponent(out SpawnerAnimator2D spawnerAnim))
+            {
+                spawnerAnim.TriggerDeathAnimation();
+                Destroy(gameObject, 0.75f);
+            }
+            else
+            {
+                Destroy(gameObject);
+            }
         }
     }
 }
