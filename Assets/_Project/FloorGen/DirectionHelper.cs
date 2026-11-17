@@ -28,6 +28,24 @@ namespace DebtDungeon.FloorGen
             }
         }
 
+        /// <summary>The direction pointing the other way: North and South, East and West.</summary>
+        public static Direction Opposite(Direction direction)
+        {
+            switch (direction)
+            {
+                case Direction.North:
+                    return Direction.South;
+                case Direction.East:
+                    return Direction.West;
+                case Direction.South:
+                    return Direction.North;
+                case Direction.West:
+                    return Direction.East;
+                default:
+                    return Direction.None;
+            }
+        }
+
         ///<summary>True if the set includes this direction.</summary>
         public static bool Contains(Direction set, Direction direction)
         {
