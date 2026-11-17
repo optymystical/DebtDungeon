@@ -1,6 +1,5 @@
 using UnityEngine;
 using DebtDungeon.Core;
-using PlasticGui.WorkspaceWindow;
 
 namespace DebtDungeon.FloorGen
 {
