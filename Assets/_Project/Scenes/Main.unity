@@ -383,6 +383,22 @@ PrefabInstance:
       propertyPath: m_Name
       value: GoblinSpawner
       objectReference: {fileID: 0}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _guardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: 0f06e530e2ca480419760b6b96962d23, type: 2}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _guardPrefab
+      value: 
+      objectReference: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _specialistConfig
+      value: 
+      objectReference: {fileID: 0}
+    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+      propertyPath: _specialistPrefab
+      value: 
+      objectReference: {fileID: 0}
     - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
       propertyPath: m_LocalPosition.x
       value: 7
@@ -621,6 +637,14 @@ PrefabInstance:
     serializedVersion: 3
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _guardConfig
+      value: 
+      objectReference: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
+    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+      propertyPath: _guardPrefab
+      value: 
+      objectReference: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
     - target: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
       propertyPath: m_Name
       value: SpiderSpawner
