@@ -24,7 +24,8 @@ namespace DebtDungeon.FloorGen
         public Faction Owner => _owner;
         public ChunkIntensity Intensity => _intensity;
         public bool IsSpawnChunk => _isSpawnChunk;
-        public Direction Openings => _openings;
+        // "Everything" in the Inspector saves -1 (all bits); keep only the four real edges
+        public Direction Openings => _openings & Direction.All;
         public ChunkLayout Layout => _layout;
 
         /// <summary>Checks this chunk against the authoring rules. Returns every problem found; empty means valid.</summary>

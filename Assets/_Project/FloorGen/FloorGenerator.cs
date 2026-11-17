@@ -1,5 +1,6 @@
 using DebtDungeon.Core;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace DebtDungeon.FloorGen
 {
@@ -10,6 +11,14 @@ namespace DebtDungeon.FloorGen
     {
         [Header("Setup")]
         [SerializeField] private FloorGenConfig _config;
+        [SerializeField] private ChunkLibrary _library;
+
+        [Header("Tilemaps")]
+        [SerializeField] private Tilemap _floorTilemap;
+        [Tooltip("Needs a Tilemap Collider 2D merged into a Composite Collider 2D, on the Walls layer.")]
+        [SerializeField] private Tilemap _wallTilemap;
+        [Tooltip("Wall tile used to close door slots a cell doesn't connect through.")]
+        [SerializeField] private TileBase _plugTile;
 
         [Header("Debug")]
         [Tooltip("Seed used when this component builds the floor itself (sandbox testing). Game passes the run seed instead.")]
@@ -21,16 +30,9 @@ namespace DebtDungeon.FloorGen
 
         private FloorLayoutGenerator _layout;
         private int _currentSeed;
+        private ChunkDefinition[,] _placedChunks;
 
         public int CurrentSeed => _currentSeed;
-
-        private void Awake()
-        {
-            if (_config == null)
-            {
-                Debug.LogError("FloorGenerator needs a FloorGenConfig assigned.", this);
-            }
-        }
 
         private void Start()
         {
@@ -43,15 +45,49 @@ namespace DebtDungeon.FloorGen
         /// <summary>Builds a floor from a seed. The same seed always builds the same floor.</summary>
         public void Generate(int seed)
         {
-            if (_config == null)
+            if (!IsSetUp())
             {
                 return;
             }
 
             _currentSeed = seed;
             _layout = new FloorLayoutGenerator(_config, seed);
-            _layout.Generate();
+            FloorCell[,] cells = _layout.Generate();
+            _placedChunks = _library.PickAll(cells, seed);
+            new FloorStamper(_floorTilemap, _wallTilemap, _plugTile).Stamp(cells, _placedChunks);
+
             Debug.Log("Floor generated. Seed: " + seed, this);
+        }
+
+        // Logs every missing reference at once, so a broken setup is obvious in the Console
+        private bool IsSetUp()
+        {
+            bool isSetUp = true;
+            if (_config == null)
+            {
+                Debug.LogError("FloorGenerator needs a FloorGenConfig.", this);
+                isSetUp = false;
+            }
+
+            if (_library == null)
+            {
+                Debug.LogError("FloorGenerator needs a ChunkLibrary.", this);
+                isSetUp = false;
+            }
+
+            if (_floorTilemap == null || _wallTilemap == null)
+            {
+                Debug.LogError("FloorGenerator needs both the floor and wall tilemaps.", this);
+                isSetUp = false;
+            }
+
+            if (_plugTile == null)
+            {
+                Debug.LogError("FloorGenerator needs a plug tile for unused doors.", this);
+                isSetUp = false;
+            }
+
+            return isSetUp;
         }
 
         [ContextMenu("Generate With Debug Seed")]
@@ -65,6 +101,24 @@ namespace DebtDungeon.FloorGen
         {
             _debugSeed = UnityEngine.Random.Range(0, int.MaxValue);
             Generate(_debugSeed);
+        }
+
+        // Run this before saving the scene, so thousands of stamped tiles don't get committed
+        [ContextMenu("Clear Floor")]
+        private void ClearFloor()
+        {
+            if (_floorTilemap != null)
+            {
+                _floorTilemap.ClearAllTiles();
+            }
+
+            if (_wallTilemap != null)
+            {
+                _wallTilemap.ClearAllTiles();
+            }
+
+            _layout = null;
+            _placedChunks = null;
         }
 
         private void OnDrawGizmos()
