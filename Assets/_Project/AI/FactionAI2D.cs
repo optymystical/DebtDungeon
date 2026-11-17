@@ -68,6 +68,11 @@ namespace DebtDungeon.AI
         private Vector2 _investigatePosition;
         private float _investigateTimer;
 
+        private const float PlayerCombatPingInterval = 1.0f;
+        private float _playerCombatPingTimer;
+        private Health _cachedTargetHealth;
+        private ICombatState _cachedTargetCombatState;
+
         private CombatAgent2D _agent;
         private AIState _currentState = AIState.Wander;
         private Health _currentTarget;
@@ -235,6 +240,7 @@ namespace DebtDungeon.AI
             _scanTimer -= Time.deltaTime;
 
             EvaluateStateTransitions();
+            NotifyPlayerInCombat();
             ExecuteStateLogic();
         }
 
@@ -743,6 +749,34 @@ namespace DebtDungeon.AI
             return _agent.Faction == Faction.Player || otherFaction == Faction.Player ||
                    (_agent.Faction == Faction.Goblin && otherFaction == Faction.Spider) ||
                    (_agent.Faction == Faction.Spider && otherFaction == Faction.Goblin);
+        }
+
+        private void NotifyPlayerInCombat()
+        {
+            if ((_currentState != AIState.Chase && _currentState != AIState.Attack) ||
+                _currentTarget == null ||
+                !_currentTarget.IsAlive ||
+                _currentTarget.Faction != Faction.Player)
+            {
+                _playerCombatPingTimer = 0f;
+                return;
+            }
+
+            _playerCombatPingTimer -= Time.deltaTime;
+            if (_playerCombatPingTimer > 0f)
+            {
+                return;
+            }
+
+            _playerCombatPingTimer = PlayerCombatPingInterval;
+
+            if (_cachedTargetHealth != _currentTarget)
+            {
+                _cachedTargetHealth = _currentTarget;
+                _cachedTargetCombatState = _currentTarget.GetComponentInParent<ICombatState>();
+            }
+
+            _cachedTargetCombatState?.MarkInCombat();
         }
 
         private bool HasLineOfSight(Vector2 targetPos)
