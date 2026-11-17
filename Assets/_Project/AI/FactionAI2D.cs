@@ -307,7 +307,8 @@ namespace DebtDungeon.AI
             }
 
             // 2. Territory leash check (raiders are not leashed until their raid ends)
-            if (!_isRaiding && (_currentState == AIState.Wander || _currentState == AIState.Chase))
+            bool attackingSpawner = _currentTarget != null && _currentTarget.GetComponent<FactionSpawner2D>() != null;
+            if (!_isRaiding && !attackingSpawner && (_currentState == AIState.Wander || _currentState == AIState.Chase))
             {
                 float maxLeash = _role == UnitRole.Guard ? _guardLeashDistance : _residentLeashDistance;
                 if (Vector2.Distance(transform.position, _spawnAnchor) > maxLeash)
@@ -343,7 +344,7 @@ namespace DebtDungeon.AI
                     _currentTarget = ScanForHostileTarget();
                 }
             }
-            else if (!HasLineOfSight(_currentTarget.transform.position))
+            else if (!HasLineOfSight(_currentTarget.transform))
             {
                 float sightRadius = _agent.Stats != null ? _agent.Stats.SightRadius : 6f;
                 if (Vector2.Distance(transform.position, _currentTarget.transform.position) > sightRadius * 1.3f)
@@ -355,8 +356,8 @@ namespace DebtDungeon.AI
             // 5. Combat vs Patrol/Raid state routing
             if (_currentTarget != null && _currentTarget.IsAlive)
             {
-                float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.2f;
-                float distToTarget = Vector2.Distance(transform.position, _currentTarget.transform.position);
+                float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.2f;               
+                float distToTarget = GetDistanceToTarget(_currentTarget);
 
                 if (distToTarget <= attackRange)
                 {
@@ -416,7 +417,11 @@ namespace DebtDungeon.AI
                     // Raid ends on arrival: go home (Return) instead of staying in enemy territory forever.
                     if (Vector2.Distance(transform.position, raidDest) <= RaidArrivalDistance)
                     {
-                        EndRaid();
+                        _currentTarget = ScanForHostileTarget();
+                        if (_currentTarget == null)
+                        {
+                            EndRaid();
+                        }
                         break;
                     }
 
@@ -497,7 +502,7 @@ namespace DebtDungeon.AI
             bool isRanged = _agent.Stats != null && _agent.Stats.IsRangedKiter && _agent.Stats.ProjectilePrefab != null;
 
             Vector2 toTarget = (Vector2)_currentTarget.transform.position - (Vector2)transform.position;
-            float dist = toTarget.magnitude;
+            float dist = GetDistanceToTarget(_currentTarget);
 
             if (!_isTelegraphing)
             {
@@ -630,7 +635,7 @@ namespace DebtDungeon.AI
             }
 
             float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.2f;
-            float dist = Vector2.Distance(transform.position, _currentTarget.transform.position);
+            float dist = GetDistanceToTarget(_currentTarget);
 
             if (dist > attackRange * 1.25f)
             {
@@ -724,7 +729,7 @@ namespace DebtDungeon.AI
                 }
 
                 float dist = Vector2.Distance(transform.position, candidate.transform.position);
-                if (dist < closestDist && HasLineOfSight(candidate.transform.position))
+                if (dist < closestDist && HasLineOfSight(candidate.transform))
                 {
                     closestDist = dist;
                     bestTarget = candidate;
@@ -779,10 +784,15 @@ namespace DebtDungeon.AI
             _cachedTargetCombatState?.MarkInCombat();
         }
 
-        private bool HasLineOfSight(Vector2 targetPos)
+        private bool HasLineOfSight(Transform targetTransform)
         {
+            if (targetTransform == null)
+            {
+                return false;
+            }
+
             Vector2 origin = transform.position;
-            Vector2 dir = targetPos - origin;
+            Vector2 dir = (Vector2)targetTransform.position - origin;
             RaycastHit2D hit = Physics2D.Raycast(origin, dir.normalized, dir.magnitude, _obstacleMask);
             if (hit.collider == null)
             {
@@ -790,7 +800,22 @@ namespace DebtDungeon.AI
             }
 
             // Allow targeting destructible spawners/structures even if they sit on the Walls layer
-            return _currentTarget != null && hit.collider.transform.IsChildOf(_currentTarget.transform);
+            return hit.collider.transform.IsChildOf(targetTransform);
+        }
+
+        private float GetDistanceToTarget(Health target)
+        {
+            if (target == null)
+            {
+                return float.MaxValue;
+            }
+
+            Collider2D targetCol = target.GetComponent<Collider2D>();
+            Vector2 targetPoint = targetCol != null
+                ? targetCol.ClosestPoint(transform.position)
+                : (Vector2)target.transform.position;
+
+            return Vector2.Distance(transform.position, targetPoint);
         }
 
         private void UpdatePathfinding(Vector2 destination)
