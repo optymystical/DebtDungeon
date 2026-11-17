@@ -3,6 +3,14 @@
 Every Core change gets a version bump and an entry here. "Affects" lists module numbers:
 1 FloorGen, 2 AI, 3 Player & Combat, 4 Progression, UI = HUD/menus.
 
+## v1.6 — Nov 16, 2026
+
+- `ICombatState.MarkInCombat()`: starts or restarts the 5 s in-combat timer. Lets AI keep the player in combat
+  while chasing (the GDD counts being chased as in combat) without referencing Player. AI caches
+  `GetComponent<ICombatState>()` when it targets the player and calls this about once per second during Chase
+  or Attack. Player's `PlayerCombatState` already had this public method, so it needs no change; any other
+  class implementing `ICombatState` (Progression's test fakes) must add it. *(2, 3, 4)*
+
 ## v1.5 — Nov 16, 2026
 
 - New `StatusEffectType` enum (Slowed, Poisoned, Strengthened, Weakened). *(2, 3, 1 for traps)*

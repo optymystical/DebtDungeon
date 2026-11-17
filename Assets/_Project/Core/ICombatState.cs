@@ -8,5 +8,11 @@ namespace DebtDungeon.Core
     {
         /// <summary>True while the character counts as in combat.</summary>
         bool InCombat { get; }
+
+        /// <summary>
+        /// Starts or restarts the 5 s in-combat timer. Called by attack code, and by AI about once per second
+        /// while a unit is chasing or attacking this character.
+        /// </summary>
+        void MarkInCombat();
     }
 }
