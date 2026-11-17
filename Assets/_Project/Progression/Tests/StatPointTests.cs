@@ -99,6 +99,9 @@ namespace DebtDungeon.Progression.Tests
             }
 
             public bool InCombat { get; }
+
+            // Tests set InCombat in the constructor, so marking does nothing here.
+            public void MarkInCombat() { }
         }
     }
 }
