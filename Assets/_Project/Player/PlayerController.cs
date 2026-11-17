@@ -73,7 +73,6 @@ namespace DebtDungeon.Player
         private void Update()
         {
             // Core v1.4: no player input while paused or on the death/results screen.
-            // Time.timeScale = 0 stops movement, but Update still runs and would still read keys.
             if (IsInputBlocked())
             {
                 _moveInput = Vector2.zero;
@@ -84,8 +83,7 @@ namespace DebtDungeon.Player
             FaceCursor();
         }
 
-        // Blocked only in the frozen states, so sandbox scenes without a GameManager
-        // (CurrentGameState stays at its MainMenu default there) still accept input.
+        // Blocked only in the frozen states, so sandbox scenes without a GameManager still accept input.
         private static bool IsInputBlocked()
         {
             GameState state = GameEvents.CurrentGameState;
@@ -219,13 +217,13 @@ namespace DebtDungeon.Player
             }
         }
 
-        /// <summary>Speed multiplier from the ground under the player (water). 1 = normal.</summary>
+        // Speed multiplier from the ground under the player (water). 1 = normal
         public void SetTerrainMultiplier(float multiplier)
         {
             _terrainMultiplier = Mathf.Max(0f, multiplier);
         }
 
-        /// <summary>Speed multiplier from status effects (Slowed). 1 = normal. Set by StatusEffects.</summary>
+        // Speed multiplier from status effects (Slowed). 1 = normal. Set by StatusEffects
         public void SetStatusSpeedMultiplier(float multiplier)
         {
             _statusSpeedMultiplier = Mathf.Max(0f, multiplier);

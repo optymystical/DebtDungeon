@@ -4,11 +4,9 @@ using UnityEngine;
 
 namespace DebtDungeon.Player
 {
-    /// <summary>
-    /// The player's status effects. Implements Core's IStatusReceiver, so AI projectiles, traps and abilities can
-    /// apply effects without referencing Player. Slowed and Poisoned don't stack: reapplying keeps whichever end
-    /// time is later. Strengthened and Weakened come later (Status effects card).
-    /// </summary>
+    // The player's status effects. Implements Core's IStatusReceiver, so AI projectiles, traps and abilities can
+    // apply effects without referencing Player. Slowed and Poisoned don't stack: reapplying keeps whichever end
+    // time is later. Strengthened and Weakened do apply stacks.
     public class StatusEffects : MonoBehaviour, IStatusReceiver
     {
         private const float PoisonTickSeconds = 1f;
@@ -21,6 +19,8 @@ namespace DebtDungeon.Player
         [SerializeField] private float _slowDuration = 2f;
         [SerializeField] private int _poisonDamage = 1;
         [SerializeField] private float _poisonDuration = 3f;
+        [SerializeField] private int _strengthenStacks = 0;
+        [SerializeField] private float _strengthenDuration = 3f;
 
         private Coroutine _slowCoroutine;
         private float _slowEndTime;
@@ -31,11 +31,12 @@ namespace DebtDungeon.Player
         private GameObject _poisonSource;
         private Faction _poisonFaction;
 
-        /// <summary>True while Slowed is active (for the HUD later).</summary>
-        public bool IsSlowed => _slowCoroutine != null;
+        private Coroutine _strengthenCoroutine;
+        private float _strengthenEndTime;
 
-        /// <summary>True while Poisoned is active (for the HUD later).</summary>
+        public bool IsSlowed => _slowCoroutine != null;
         public bool IsPoisoned => _poisonCoroutine != null;
+        public bool IsStrengthened => _strengthenCoroutine != null;
 
         private void Awake()
         {
@@ -56,9 +57,10 @@ namespace DebtDungeon.Player
             // Disabling stops coroutines, so clear the state too, or the effects would look "active" forever.
             RemoveStatus(StatusEffectType.Slowed);
             RemoveStatus(StatusEffectType.Poisoned);
+            RemoveStatus(StatusEffectType.Strengthened);
         }
 
-        /// <summary>Core's IStatusReceiver: how AI, traps and abilities apply effects to the player.</summary>
+        // Core's IStatusReceiver: how AI, traps and abilities apply effects to the player
         public void ApplyStatus(StatusEffectType type, float duration, float magnitude, GameObject source, Faction sourceFaction, int stacks)
         {
             if (duration <= 0f || !isActiveAndEnabled || (_health != null && !_health.IsAlive))
@@ -74,20 +76,38 @@ namespace DebtDungeon.Player
                 case StatusEffectType.Poisoned:
                     ApplyPoison(duration, Mathf.Max(1, Mathf.RoundToInt(magnitude)), source, sourceFaction);
                     break;
-                // Strengthened and Weakened aren't built yet (Status effects card).
+                case StatusEffectType.Strengthened:
+                    ApplyStrengthened(duration, (int)magnitude);
+                    break;
             }
         }
 
-        /// <summary>Shortcut for test scripts: applies an effect with the Inspector defaults, poison as if from a spider.</summary>
+        // Shortcut for test scripts: applies an effect with the Inspector defaults, poisons as if from a spider
         public void ApplyStatus(StatusEffectType type)
         {
-            bool isSlow = type == StatusEffectType.Slowed;
-            float duration = isSlow ? _slowDuration : _poisonDuration;
-            float magnitude = isSlow ? _slowMultiplier : _poisonDamage;
+            float duration = 0f;
+            float magnitude = 0f;
+
+            switch (type)
+            {
+                case StatusEffectType.Slowed:
+                    duration = _slowDuration;
+                    magnitude = _slowMultiplier;
+                    break;
+                case StatusEffectType.Poisoned:
+                    duration = _poisonDuration;
+                    magnitude = _poisonDamage;
+                    break;
+                case StatusEffectType.Strengthened:
+                    duration = _strengthenDuration;
+                    magnitude = _strengthenStacks;
+                    break;
+            }
+
             ApplyStatus(type, duration, magnitude, null, Faction.Spider, 1);
         }
 
-        /// <summary>Ends an effect early. Safe to call when it isn't active.</summary>
+        // Ends an effect early. Safe to call when it isn't active
         public void RemoveStatus(StatusEffectType type)
         {
             switch (type)
@@ -179,6 +199,44 @@ namespace DebtDungeon.Player
             }
 
             _poisonCoroutine = null;
+        }
+
+        // Applies stacks of strengthened buff
+        private void ApplyStrengthened(float duration, int stacks)
+        {
+            _strengthenEndTime = Mathf.Max(_strengthenEndTime, Time.time + duration);
+
+            if (_playerController != null)
+            {
+                //_playerController.SetStatusSpeedMultiplier(1f);  Attack code needs a stat to modifier here
+            }
+
+            if (_strengthenCoroutine == null)
+            {
+                _strengthenCoroutine = StartCoroutine(StrengthenTimer());
+            }
+        }
+
+        // Waits until the (possibly refreshed) end time, then restores
+        private IEnumerator StrengthenTimer()
+        {
+            while (Time.time < _strengthenEndTime)
+            {
+                yield return null;
+            }
+
+            EndStrengthen();
+        }
+
+        private void EndStrengthen()
+        {
+            _strengthenCoroutine = null;
+            _strengthenEndTime = 0f;
+
+            if (_playerController != null)
+            {
+                //_playerController.SetStatusSpeedMultiplier(1f);  Attack code needs a stat to modifier here
+            }
         }
     }
 }
