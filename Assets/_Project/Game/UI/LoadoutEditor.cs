@@ -74,7 +74,8 @@ namespace DebtDungeon.Game
 
             Button previous = UIKit.CreateButton(row, "<", () => CycleSlot(loadout, slot, -1), 56f);
             UIKit.SetSize(previous, 56f, 56f).flexibleWidth = 0f;
-            UIKit.CreateText(row, $"{slot}: {itemName}", 26f, TextAlignmentOptions.Center, UIKit.TextColor);
+            TextMeshProUGUI slotLabel = UIKit.CreateText(row, $"{slot}: {itemName}", 26f, TextAlignmentOptions.Center, UIKit.TextColor);
+            UIKit.FitText(slotLabel, 16f);
             Button next = UIKit.CreateButton(row, ">", () => CycleSlot(loadout, slot, 1), 56f);
             UIKit.SetSize(next, 56f, 56f).flexibleWidth = 0f;
 
@@ -99,7 +100,8 @@ namespace DebtDungeon.Game
             UIKit.AddHorizontalLayout(row, 8f, 0);
             UIKit.SetSize(row, 52f);
 
-            UIKit.CreateText(row, $"{affix.DisplayName}: {state}", 24f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
+            TextMeshProUGUI affixLabel = UIKit.CreateText(row, $"{affix.DisplayName}: {state}", 24f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
+            UIKit.FitText(affixLabel, 16f);
             UIKit.CreateButton(row, "Offensive", () => AttuneAffix(loadout, affix, AffixForm.Offensive), 52f);
             UIKit.CreateButton(row, "Defensive", () => AttuneAffix(loadout, affix, AffixForm.Defensive), 52f);
             UIKit.CreateButton(row, "Remove", () => RemoveAffix(loadout, affix), 52f);

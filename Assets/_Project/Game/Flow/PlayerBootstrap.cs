@@ -26,6 +26,9 @@ namespace DebtDungeon.Game
         [Tooltip("Used when the Main scene is opened directly (no character from the creator). Empty = the catalog's first preset.")]
         [SerializeField] private PresetDefinition _fallbackPreset;
 
+        [Tooltip("The CameraTarget's MouseLean (Player). The Cinemachine camera follows that target; it gets the spawned player here.")]
+        [SerializeField] private MouseLean _cameraTarget;
+
         private PlayerController _controller;
         private AbilityGranter _abilityGranter;
 
@@ -89,6 +92,15 @@ namespace DebtDungeon.Game
             Defenses = GetOrAdd<PlayerDefenses>(PlayerObject);
             Defenses.Initialize(Character.Loadout);
             GetOrAdd<PlayerProgression>(PlayerObject).Initialize(Character);
+
+            if (_cameraTarget != null)
+            {
+                _cameraTarget.SetPlayer(PlayerObject.transform);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerBootstrap has no Camera Target, so the camera won't follow the player.", this);
+            }
 
             _controller = PlayerObject.GetComponent<PlayerController>();
             ApplyBurden();

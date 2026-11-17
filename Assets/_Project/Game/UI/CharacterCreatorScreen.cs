@@ -233,8 +233,8 @@ namespace DebtDungeon.Game
 
             UIKit.CreateText(background, "Create Your Debtor", 64f, TextAlignmentOptions.Center, UIKit.Accent);
 
+            // No layout group here: the three columns are pinned with anchors below (UIKit.PlaceColumns).
             RectTransform columns = UIKit.CreateGroup(background, "Columns");
-            UIKit.AddHorizontalLayout(columns, 32f, 0);
             UIKit.SetSize(columns, 820f);
 
             RectTransform left = CreateColumn(columns, "1. Archetype");
@@ -253,6 +253,9 @@ namespace DebtDungeon.Game
             _startButton = UIKit.CreateButton(right, "Start Run", StartRun, 72f);
             UIKit.CreateButton(right, "Back", _gameManager.BackToTitle, 64f);
             _statusText = UIKit.CreateText(right, string.Empty, 24f, TextAlignmentOptions.Left, UIKit.MutedText);
+
+            // Fixed slices of the width (left 1, loadout 1.4, name 0.9), so the columns never move as text changes.
+            UIKit.PlaceColumns(32f, new[] { left, middle, right }, new[] { 1f, 1.4f, 0.9f });
         }
 
         private static RectTransform CreateColumn(Transform parent, string heading)

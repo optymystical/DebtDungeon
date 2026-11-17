@@ -165,7 +165,51 @@ namespace DebtDungeon.Game
 
             TextMeshProUGUI text = CreateText(buttonObject.transform, label, 28f, TextAlignmentOptions.Center, TextColor);
             Stretch(text.rectTransform);
+            FitText(text, 16f); // a long label shrinks to fit the button instead of spilling out
             return button;
+        }
+
+        /// <summary>
+        /// Pins columns side by side inside their parent, each in a fixed slice of the parent's width set by its
+        /// weight (weights 1, 2, 1 = a quarter, a half, a quarter; null = equal slices). It uses anchors, not a
+        /// layout group, so a column's size never depends on its text: nothing the player clicks can move them.
+        /// The parent must not have a layout group of its own. gap = pixels between neighbouring columns.
+        /// </summary>
+        public static void PlaceColumns(float gap, RectTransform[] columns, float[] weights = null)
+        {
+            float totalWeight = 0f;
+            for (int i = 0; i < columns.Length; i++)
+            {
+                totalWeight += weights != null ? weights[i] : 1f;
+            }
+
+            float start = 0f;
+            for (int i = 0; i < columns.Length; i++)
+            {
+                float end = start + (weights != null ? weights[i] : 1f) / totalWeight;
+                RectTransform column = columns[i];
+
+                // Anchors are fractions of the parent: this column spans [start, end] across, full height.
+                column.anchorMin = new Vector2(start, 0f);
+                column.anchorMax = new Vector2(end, 1f);
+                column.pivot = new Vector2(0.5f, 0.5f);
+
+                // Half the gap on each inner edge; the outer edges stay flush with the parent.
+                column.offsetMin = new Vector2(i == 0 ? 0f : gap * 0.5f, 0f);
+                column.offsetMax = new Vector2(i == columns.Length - 1 ? 0f : -gap * 0.5f, 0f);
+                start = end;
+            }
+        }
+
+        /// <summary>
+        /// Lets a label shrink (down to minSize) when its text doesn't fit its box, e.g. in a fixed-height row.
+        /// Uses TextMeshPro's auto-size between minSize and the label's current font size.
+        /// </summary>
+        public static void FitText(TextMeshProUGUI label, float minSize)
+        {
+            label.fontSizeMax = label.fontSize;
+            label.fontSizeMin = Mathf.Min(minSize, label.fontSize);
+            label.enableAutoSizing = true;
         }
 
         /// <summary>Changes a button's label.</summary>

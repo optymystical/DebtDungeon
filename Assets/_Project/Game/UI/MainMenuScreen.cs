@@ -137,15 +137,20 @@ namespace DebtDungeon.Game
             UIKit.Stretch(background);
 
             RectTransform column = UIKit.CreateGroup(background, "Column");
-            UIKit.Center(column, new Vector2(560f, 620f));
+            // Wide enough for the tagline on one line and tall enough for everything, so the layout never has
+            // to squeeze a label below its real height (that's what made the tagline overlap Start).
+            UIKit.Center(column, new Vector2(960f, 760f));
             UIKit.AddVerticalLayout(column, 22f, 0);
 
             UIKit.CreateText(column, "Debt Dungeon", 96f, TextAlignmentOptions.Center, UIKit.Accent);
             UIKit.CreateText(column, "Work off what you owe. Try not to die doing it.", 28f, TextAlignmentOptions.Center, UIKit.MutedText);
-            _startButton = UIKit.CreateButton(column, "Start", _gameManager.OpenCharacterCreation, 72f);
-            _optionsButton = UIKit.CreateButton(column, "Options", () => ShowOptions(true), 72f);
-            UIKit.CreateButton(column, "Credits", () => ShowCredits(true), 72f);
-            UIKit.CreateButton(column, "Quit", Quit, 72f);
+            // The buttons sit in their own group, padded in from the sides so they stay 560 px wide.
+            RectTransform buttons = UIKit.CreateGroup(column, "Buttons");
+            UIKit.AddVerticalLayout(buttons, 22f, 0).padding = new RectOffset(200, 200, 0, 0);
+            _startButton = UIKit.CreateButton(buttons, "Start", _gameManager.OpenCharacterCreation, 72f);
+            _optionsButton = UIKit.CreateButton(buttons, "Options", () => ShowOptions(true), 72f);
+            UIKit.CreateButton(buttons, "Credits", () => ShowCredits(true), 72f);
+            UIKit.CreateButton(buttons, "Quit", Quit, 72f);
 
             // Credits: a window over the menu
             RectTransform credits = UIKit.CreatePanel(background, "Credits", UIKit.Backdrop);

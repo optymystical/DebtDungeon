@@ -238,6 +238,7 @@ namespace DebtDungeon.Game
             UIKit.AddHorizontalLayout(armorRow, 12f, 0);
             UIKit.SetSize(armorRow, 60f);
             _armorText = UIKit.CreateText(armorRow, string.Empty, 26f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
+            UIKit.FitText(_armorText, 16f);
             _repairButton = UIKit.CreateButton(armorRow, "Repair armor", Repair, 60f);
             UIKit.SetSize(_repairButton, 60f, 220f).flexibleWidth = 0f;
 
