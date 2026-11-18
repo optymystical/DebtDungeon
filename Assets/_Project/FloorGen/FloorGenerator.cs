@@ -21,6 +21,9 @@ namespace DebtDungeon.FloorGen
         [Tooltip("Wall tile used to close door slots a cell doesn't connect through.")]
         [SerializeField] private TileBase _plugTile;
 
+        [Tooltip("Floor tile painted where a chunk has a Water marker.")]
+        [SerializeField] private TileBase _waterTile;
+
         [Header("Debug")]
         [Tooltip("Seed used when this component builds the floor itself (sandbox testing). Game passes the run seed instead.")]
         [SerializeField] private int _debugSeed = 12345;
@@ -33,6 +36,7 @@ namespace DebtDungeon.FloorGen
         private int _currentSeed;
         private ChunkDefinition[,] _placedChunks;
         private FloorQuery _floorQuery;
+        private const float SpawnGizmoRadius = 0.4f;
 
         public int CurrentSeed => _currentSeed;
 
@@ -61,10 +65,13 @@ namespace DebtDungeon.FloorGen
             _layout = new FloorLayoutGenerator(_config, seed);
             FloorCell[,] cells = _layout.Generate();
             _placedChunks = _library.PickAll(cells, seed);
-            new FloorStamper(_floorTilemap, _wallTilemap, _plugTile).Stamp(cells, _placedChunks);
+            FloorStamper stamper = new FloorStamper(_floorTilemap, _wallTilemap, _plugTile);
+            stamper.Stamp(cells, _placedChunks);
 
-            // Spawn points come from the chunk markers (next card); empty until then
-            _floorQuery = new FloorQuery(cells, _layout.StartCell, _floorTilemap, _wallTilemap, new List<SpawnPoint>());
+            FloorMarkers markers = new MarkerReader(_library, _config).Read(cells, _placedChunks, _floorTilemap, seed);
+            stamper.PaintWater(markers.WaterTiles, _waterTile);
+
+            _floorQuery = new FloorQuery(cells, _layout.StartCell, _floorTilemap, _wallTilemap, markers, _config.WaterSpeedMultiplier);
 
             // Log before raising, so the seed is in the Console even if a listener throws
             Debug.Log("Floor generated. Seed: " + seed, this);
@@ -96,6 +103,12 @@ namespace DebtDungeon.FloorGen
             if (_plugTile == null)
             {
                 Debug.LogError("FloorGenerator needs a plug tile for unused doors.", this);
+                isSetUp = false;
+            }
+
+            if (_waterTile == null)
+            {
+                Debug.LogError("FloorGenerator needs a water tile.", this);
                 isSetUp = false;
             }
 
@@ -157,6 +170,17 @@ namespace DebtDungeon.FloorGen
             Vector3 markerSize = cellSize * 0.6f;
             Gizmos.DrawWireCube(CellCenter(_layout.GoblinHotspot), markerSize);
             Gizmos.DrawWireCube(CellCenter(_layout.SpiderHotspot), markerSize);
+
+            if (_floorQuery == null)
+            {
+                return;
+            }
+
+            foreach (SpawnPoint point in _floorQuery.GetSpawnPoints())
+            {
+                Gizmos.color = SpawnColorFor(point.Type);
+                Gizmos.DrawSphere(point.Position, SpawnGizmoRadius);
+            }
         }
 
         private Vector3 CellCenter(Vector2Int coord)
@@ -182,6 +206,21 @@ namespace DebtDungeon.FloorGen
             }
 
             return new Color(0.6f, 0.6f, 0.65f);
+        }
+
+        private static Color SpawnColorFor(SpawnPointType type)
+        {
+            switch (type)
+            {
+                case SpawnPointType.Spawner:
+                    return Color.red;
+                case SpawnPointType.Station:
+                    return Color.cyan;
+                case SpawnPointType.Chest:
+                    return Color.yellow;
+                default:
+                    return new Color(1f, 0.5f, 0f); // single enemy: orange
+            }
         }
     }
 }

@@ -1,6 +1,7 @@
 using System.Collections.Generic;
 using DebtDungeon.Core;
 using UnityEngine;
+using UnityEngine.Tilemaps;
 
 namespace DebtDungeon.FloorGen
 {
@@ -12,6 +13,13 @@ namespace DebtDungeon.FloorGen
     public class ChunkLibrary : ScriptableObject
     {
         [SerializeField] private List<ChunkDefinition> _chunks = new List<ChunkDefinition>();
+        [Header("Marker tiles")]
+        [Tooltip("Painted on a chunk's Markers tilemap. Each becomes a spawn point (or water) when the floor is built.")]
+        [SerializeField] private TileBase _spawnerMarker;
+        [SerializeField] private TileBase _stationMarker;
+        [SerializeField] private TileBase _chestMarker;
+        [SerializeField] private TileBase _enemyMarker;
+        [SerializeField] private TileBase _waterMarker;
 
         /// <summary>Picks a chunk for a cell. Falls back to a neutral 4-way; returns null only if there is none.</summary>
         public ChunkDefinition Pick(FloorCell cell, System.Random random)
@@ -61,6 +69,48 @@ namespace DebtDungeon.FloorGen
             return chunks;
         }
 
+        /// <summary>Which marker a tile is. False for any tile that isn't one of the five marker tiles.</summary>
+        public bool TryGetMarkerKind(TileBase tile, out MarkerKind kind)
+        {
+            kind = MarkerKind.Spawner;
+            if (tile == null)
+            {
+                return false;
+            }
+
+            if (tile == _spawnerMarker)
+            {
+                kind = MarkerKind.Spawner;
+                return true;
+            }
+
+            if (tile == _stationMarker)
+            {
+                kind = MarkerKind.Station;
+                return true;
+            }
+
+            if (tile == _chestMarker)
+            {
+                kind = MarkerKind.Chest;
+                return true;
+            }
+
+            if (tile == _enemyMarker)
+            {
+                kind = MarkerKind.Enemy;
+                return true;
+            }
+
+            if (tile == _waterMarker)
+            {
+                kind = MarkerKind.Water;
+                return true;
+            }
+
+            return false;
+        }
+
         /// <summary>Checks that every chunk type has a 4-way fallback. Returns every problem found; empty means valid.</summary>
         public List<string> Validate()
         {
@@ -79,6 +129,19 @@ namespace DebtDungeon.FloorGen
             CheckFourWay(problems, Faction.Goblin, ChunkIntensity.Major, false, "Goblin Major");
             CheckFourWay(problems, Faction.Spider, ChunkIntensity.Minor, false, "Spider Minor");
             CheckFourWay(problems, Faction.Spider, ChunkIntensity.Major, false, "Spider Major");
+
+            if (_spawnerMarker == null || _stationMarker == null || _chestMarker == null || _enemyMarker == null || _waterMarker == null)
+            {
+                problems.Add("All five marker tiles need to be assigned.");
+            }
+
+            foreach (ChunkDefinition chunk in _chunks)
+            {
+                if (chunk != null)
+                {
+                    CheckMarkers(chunk, problems);
+                }
+            }
             return problems;
         }
 
@@ -110,6 +173,85 @@ namespace DebtDungeon.FloorGen
             }
 
             problems.Add("No 4-way " + typeName + " chunk. Every type needs one as its fallback.");
+        }
+
+        // One Station, in spawn chunks only; at least one Spawner in Major chunks, and only there;
+        // Enemies in faction chunks only; every marker on walkable floor
+        private void CheckMarkers(ChunkDefinition chunk, List<string> problems)
+        {
+            if (chunk.Layout == null)
+            {
+                return; // ChunkDefinition.Validate already reports a missing layout
+            }
+
+            int stations = 0;
+            int spawners = 0;
+            Tilemap markers = chunk.Layout.Markers;
+            if (markers != null)
+            {
+                TileBase[] tiles = markers.GetTilesBlock(ChunkRules.LocalBounds);
+                for (int i = 0; i < tiles.Length; i++)
+                {
+                    if (tiles[i] == null)
+                    {
+                        continue;
+                    }
+
+                    // GetTilesBlock fills a row at a time: x first, then y
+                    Vector2Int tile = new Vector2Int(i % ChunkRules.Size, i / ChunkRules.Size);
+                    string where = chunk.name + " " + tile;
+
+                    MarkerKind kind;
+                    if (!TryGetMarkerKind(tiles[i], out kind))
+                    {
+                        problems.Add(where + ": the Markers tilemap has a tile that isn't a marker.");
+                        continue;
+                    }
+
+                    if (!IsWalkable(chunk, tile))
+                    {
+                        problems.Add(where + ": " + kind + " marker isn't on walkable floor.");
+                    }
+
+                    if (kind == MarkerKind.Station)
+                    {
+                        stations++;
+                    }
+                    else if (kind == MarkerKind.Spawner)
+                    {
+                        spawners++;
+                        if (chunk.Intensity != ChunkIntensity.Major)
+                        {
+                            problems.Add(where + ": Spawners only go in Major chunks.");
+                        }
+                    }
+                    else if (kind == MarkerKind.Enemy && chunk.Owner == Faction.Neutral)
+                    {
+                        problems.Add(where + ": Enemies only go in faction chunks.");
+                    }
+                }
+            }
+
+            if (chunk.IsSpawnChunk && stations != 1)
+            {
+                problems.Add(chunk.name + ": spawn chunks need exactly one Station marker (found " + stations + ").");
+            }
+
+            if (!chunk.IsSpawnChunk && stations > 0)
+            {
+                problems.Add(chunk.name + ": only spawn chunks can have a Station marker.");
+            }
+
+            if (chunk.Intensity == ChunkIntensity.Major && spawners == 0)
+            {
+                problems.Add(chunk.name + ": Major chunks need at least one Spawner marker.");
+            }
+        }
+
+        private static bool IsWalkable(ChunkDefinition chunk, Vector2Int tile)
+        {
+            Vector3Int position = new Vector3Int(tile.x, tile.y, 0);
+            return chunk.Layout.Floor.HasTile(position) && !chunk.Layout.Walls.HasTile(position);
         }
 
         // The start cell only takes spawn chunks; every other cell takes a matching faction and intensity

@@ -15,6 +15,9 @@ namespace DebtDungeon.FloorGen
         ///<summary>Half the chunk size. The player starts on the corner shared by the four middle tiles.</summary>
         public const int Middle = Size / 2;
 
+        /// <summary>One chunk's tiles in its own local coordinates, for reading a whole chunk in one call.</summary>
+        public static readonly BoundsInt LocalBounds = new BoundsInt(0, 0, 0, Size, Size, 1);
+
         /// <summary>Chunk-local tile number <paramref name="index"/> (0 or 1) of the door slot on an edge.</summary>
         public static Vector2Int DoorTile(Direction edge, int index)
         {

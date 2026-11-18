@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 namespace DebtDungeon.FloorGen
 {
@@ -39,6 +40,15 @@ namespace DebtDungeon.FloorGen
                 CopyTiles(chunk.Layout.Floor, _floor, origin);
                 CopyTiles(chunk.Layout.Walls, _walls, origin);
                 PlugUnusedDoors(chunk.Openings & ~cell.Openings, origin);
+            }
+        }
+
+        /// <summary>Swaps the floor tile under each water marker for the water tile. Water stays walkable, just slower.</summary>
+        public void PaintWater(IEnumerable<Vector2Int> waterTiles, TileBase waterTile)
+        {
+            foreach (Vector2Int tile in waterTiles)
+            {
+                _floor.SetTile(new Vector3Int(tile.x, tile.y, 0), waterTile);
             }
         }
 

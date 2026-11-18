@@ -17,13 +17,18 @@ namespace DebtDungeon.FloorGen
         private readonly Tilemap _floor;
         private readonly bool[,] _walkable;
         private readonly List<SpawnPoint> _spawnPoints;
+        private readonly HashSet<Vector2Int> _waterTiles;
+        private readonly float _waterSpeedMultiplier;
         private readonly int _floorSize;
 
-        public FloorQuery(FloorCell[,] cells, Vector2Int startCell, Tilemap floor, Tilemap walls, List<SpawnPoint> spawnPoints)
+        public FloorQuery(FloorCell[,] cells, Vector2Int startCell, Tilemap floor, Tilemap walls,
+                  FloorMarkers markers, float waterSpeedMultiplier)
         {
             _cells = cells;
             _floor = floor;
-            _spawnPoints = spawnPoints;
+            _spawnPoints = markers.SpawnPoints;
+            _waterTiles = markers.WaterTiles;
+            _waterSpeedMultiplier = waterSpeedMultiplier;
             _floorSize = cells.GetLength(0) * ChunkRules.Size;
             Bounds = new BoundsInt(0, 0, 0, _floorSize, _floorSize, 1);
 
@@ -53,8 +58,7 @@ namespace DebtDungeon.FloorGen
 
         public float GetMoveSpeedMultiplier(Vector2Int tileCell)
         {
-            // Water comes from the chunk marker pass; until then every tile is normal speed
-            return NormalMoveSpeed;
+            return _waterTiles.Contains(tileCell) ? _waterSpeedMultiplier : NormalMoveSpeed;
         }
 
         public Vector2Int WorldToCell(Vector3 worldPosition)
