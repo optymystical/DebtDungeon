@@ -8,6 +8,7 @@ namespace DebtDungeon.Player
     public class AbilityRunner : MonoBehaviour, IAbilityUser
     {
         [SerializeField] private GameObject _player;
+        [SerializeField] private PlayerCombatState _playerCombatState;
         private List<AbilityDefinition> _abilities = new List<AbilityDefinition>();
         private Dictionary<AbilityDefinition, float> _readyTime = new Dictionary<AbilityDefinition, float>();
         private IStatProvider _stats;
@@ -74,6 +75,8 @@ namespace DebtDungeon.Player
 
         public bool TryUseBasicAttack(Vector2 direction)
         {
+            _playerCombatState.MarkInCombat();
+
             BasicAttackDefinition basicAttack = null;
 
             foreach (AbilityDefinition ability in _abilities)

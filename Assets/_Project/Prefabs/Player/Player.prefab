@@ -239,6 +239,7 @@ MonoBehaviour:
   _rigidBody: {fileID: 1030241875207564683}
   _knockbackForce: 10
   _knockbackDelay: 0.2
+  _playerCombatState: {fileID: 6098436760110208286}
 --- !u!114 &6098436760110208286
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,5 +286,6 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _player: {fileID: 707825229474092213}
+  _playerCombatState: {fileID: 6098436760110208286}
   _testAbilities:
-  - {fileID: 11400000, guid: b7057d670ca41654dbbf180d6dbf8125, type: 2}
+  - {fileID: 11400000, guid: d35aba36238fe584699865f27defbc44, type: 2}

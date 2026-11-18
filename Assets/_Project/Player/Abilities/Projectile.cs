@@ -1,5 +1,6 @@
 using DebtDungeon.Core;
 using UnityEngine;
+using System.Collections;
 
 namespace DebtDungeon.Player
 {
@@ -17,7 +18,6 @@ namespace DebtDungeon.Player
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
-            Destroy(gameObject, _lifetime);
         }
 
         public void Launch(Vector2 direction, float lifetime, GameObject user, Faction faction, int damage,
@@ -34,6 +34,15 @@ namespace DebtDungeon.Player
 
             // Move projectile
             _rb.linearVelocity = direction;
+
+            // Timer to destroy projectile
+            StartCoroutine(ProjectileTimer(lifetime));
+        }
+
+        private IEnumerator ProjectileTimer(float lifetime)
+        {
+            yield return new WaitForSeconds(lifetime);
+            Destroy(gameObject);
         }
 
         // When the projectile collides

@@ -20,7 +20,7 @@ namespace DebtDungeon.Player
         {
             _health.Damaged -= EnterCombat;
 
-            // Reseting 
+            // Resetting 
             _inCombat = false;
             _myCoroutine = null;
         }
