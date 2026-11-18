@@ -25,6 +25,12 @@ MonoBehaviour:
   - {fileID: 11400000, guid: a3b3ffae762240549bd8fbaf49f5df9e, type: 2}
   - {fileID: 11400000, guid: 851c33f324b0acc48a7fc628fbe59abf, type: 2}
   - {fileID: 11400000, guid: 9060058dab9f14148a7cbad7bb5a7f0e, type: 2}
+  - {fileID: 11400000, guid: cc1ba9951c2960f4f9797e8a2fdf6574, type: 2}
+  - {fileID: 11400000, guid: 097a97cccf493f04f8f453844744233a, type: 2}
+  - {fileID: 11400000, guid: 4ef4aa58b3d749a498e1a3df50c858cf, type: 2}
+  - {fileID: 11400000, guid: 4a4b282a998d67d4c86b1f68d4a274e4, type: 2}
+  - {fileID: 11400000, guid: c97a21a451b3bfc4ebb416004cf2b1f5, type: 2}
+  - {fileID: 11400000, guid: dd67ec17c2299894b9f5dbdca665fb35, type: 2}
   _spawnerMarker: {fileID: 11400000, guid: ea5d48bce1558134e8b6ca57d71dd016, type: 2}
   _stationMarker: {fileID: 11400000, guid: 6d35bacd1fe21df4491b95b8a4c4d730, type: 2}
   _chestMarker: {fileID: 11400000, guid: 3df9271c1f2937a409f1f455a6db34e0, type: 2}
