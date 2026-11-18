@@ -134,23 +134,23 @@ namespace DebtDungeon.Player
             // Can the player click a mouse button and any of these keys at once?
             if (_ability1Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(1);
             }
             else if (_ability2Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(2);
             }
             else if (_ability3Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(3);
             }
             else if (_ability4Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(4);
             }
             else if (_ability5Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(5);
             }
             else if (_defensiveAction.WasPressedThisFrame())
             {

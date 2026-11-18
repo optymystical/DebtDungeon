@@ -24,6 +24,11 @@ namespace DebtDungeon.Player
         private AbilityDefinition _defensive = null;
 
         private Coroutine _windingUpCoroutine = null;
+        private Coroutine _active1Coroutine = null;
+        private Coroutine _active2Coroutine = null;
+        private Coroutine _active3Coroutine = null;
+        private Coroutine _active4Coroutine = null;
+        private Coroutine _active5Coroutine = null;
         private Coroutine _defensiveCoroutine = null;
 
         // For testing
@@ -180,6 +185,67 @@ namespace DebtDungeon.Player
         }
 
         // Assuming player can only have one defensive ability at a time
+        public bool TryUseAbility(int num)
+        {
+            _playerCombatState.MarkInCombat();
+
+            // Identify which ability is being used
+            AbilityDefinition activeAbility = null;
+            switch (num)
+            {
+                case 1:
+                    activeAbility = _ability1;
+                    break;
+                case 2:
+                    activeAbility = _ability2;
+                    break;
+                case 3:
+                    activeAbility = _ability3;
+                    break;
+                case 4:
+                    activeAbility = _ability4;
+                    break;
+                case 5:
+                    activeAbility = _ability5;
+                    break;
+            }
+
+            // Cancel if can't use it now
+            if (!activeAbility || !IsReady(activeAbility) || _windingUpCoroutine != null)
+            {
+                return false;
+            }
+
+            // Use energy, canceling if can't
+            if (_playerEnergy.UseEnergy(activeAbility.EnergyCost))
+            {
+                _readyTime[activeAbility] = Time.time + activeAbility.Cooldown;
+                if (activeAbility == _ability1)
+                {
+                    _active1Coroutine = StartCoroutine(Active1Timer(activeAbility.Cooldown));
+                }
+                else if (activeAbility == _ability2)
+                {
+                    _active2Coroutine = StartCoroutine(Active2Timer(activeAbility.Cooldown));
+                }
+                else if (activeAbility == _ability3)
+                {
+                    _active3Coroutine = StartCoroutine(Active3Timer(activeAbility.Cooldown));
+                }
+                else if (activeAbility == _ability4)
+                {
+                    _active4Coroutine = StartCoroutine(Active4Timer(activeAbility.Cooldown));
+                }
+                else if (activeAbility == _ability5)
+                {
+                    _active5Coroutine = StartCoroutine(Active5Timer(activeAbility.Cooldown));
+                }
+                return true;
+            }
+            return false;
+        }
+
+        // Assuming player can only have one defensive ability at a time
         public bool TryUseDefensive()
         {
             _playerCombatState.MarkInCombat();
@@ -230,11 +296,36 @@ namespace DebtDungeon.Player
             _windingUpCoroutine = null;
         }
 
+        private IEnumerator Active1Timer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _active1Coroutine = null;
+        }
+        private IEnumerator Active2Timer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _active2Coroutine = null;
+        }
+        private IEnumerator Active3Timer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _active3Coroutine = null;
+        }
+        private IEnumerator Active4Timer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _active4Coroutine = null;
+        }
+        private IEnumerator Active5Timer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _active5Coroutine = null;
+        }
+
         private IEnumerator DefensiveTimer(float cooldown)
         {
             yield return new WaitForSeconds(cooldown);
             _defensiveCoroutine = null;
-            Debug.Log("Defensive Off Cooldown");
         }
     }
 }

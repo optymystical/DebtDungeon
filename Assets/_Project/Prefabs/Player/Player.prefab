@@ -295,6 +295,12 @@ MonoBehaviour:
   _testAbilities:
   - {fileID: 11400000, guid: 98aa35d96533459e9922d63321de85c1, type: 2}
   - {fileID: 11400000, guid: b7057d670ca41654dbbf180d6dbf8125, type: 2}
+  - {fileID: 11400000, guid: 9c526caec2e74d96b06826e7abe2bf3d, type: 2}
+  - {fileID: 11400000, guid: f2fa2ccd0f5d4ee38c181fdcf4fad915, type: 2}
+  - {fileID: 11400000, guid: e3b7c82d732c45ef83c18e553c1781cc, type: 2}
+  - {fileID: 11400000, guid: c861534537004c238ab8ee8051199017, type: 2}
+  - {fileID: 11400000, guid: ba5108ce5f86468fb77c19d43ba49e5f, type: 2}
+  - {fileID: 11400000, guid: 975c621596e94035b6d366c55034c522, type: 2}
 --- !u!114 &7083286062687095106
 MonoBehaviour:
   m_ObjectHideFlags: 0
