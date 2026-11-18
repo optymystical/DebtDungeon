@@ -52,6 +52,21 @@ namespace DebtDungeon.Game.Tests
             Assert.Throws<ArgumentNullException>(() => RunSession.SetBlueprint(null));
         }
 
+        // Run seed card: a seed set from a bug report is the seed the floor gets built with - GR
+        [Test]
+        public void SetSeed_IsTheSeedUsed()
+        {
+            RunSession.SetSeed(424242);
+            Assert.AreEqual(424242, RunSession.Seed);
+        }
+
+        [Test]
+        public void RollNewSeed_StoresTheSeedItReturns()
+        {
+            int rolled = RunSession.RollNewSeed();
+            Assert.AreEqual(rolled, RunSession.Seed);
+        }
+
         private static CharacterBlueprint CreateBlueprint(string characterName)
         {
             PresetDefinition preset = AssetDatabase.LoadAssetAtPath<PresetDefinition>(PresetPath);

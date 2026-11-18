@@ -18,6 +18,24 @@ namespace DebtDungeon.Game
         /// <summary>True once the creator has confirmed a character.</summary>
         public static bool HasBlueprint => Blueprint != null;
 
+        // Adding per Chris' approval - GR
+
+        /// <summary>The floor seed for the current run. 0 until a seed is rolled or set.</summary>
+        public static int Seed { get; private set; }
+
+        /// <summary>Rolls a fresh floor seed for a new run and returns it.</summary>
+        public static int RollNewSeed()
+        {
+            Seed = UnityEngine.Random.Range(0, int.MaxValue);
+            return Seed;
+        }
+
+        /// <summary>Uses a specific floor seed, e.g. to rebuild a bug floor from the seed in its log.</summary>
+        public static void SetSeed(int seed)
+        {
+            Seed = seed;
+        }
+
         /// <summary>Stores the creator's choices. Called by the creator screen just before GameManager.StartRun.</summary>
         public static void SetBlueprint(CharacterBlueprint blueprint)
         {
@@ -49,6 +67,7 @@ namespace DebtDungeon.Game
         private static void ResetOnPlay()
         {
             Blueprint = null;
+            Seed = 0; // Added - GR
         }
     }
 }
