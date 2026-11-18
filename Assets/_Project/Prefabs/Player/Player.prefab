@@ -290,9 +290,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _player: {fileID: 707825229474092213}
   _playerCombatState: {fileID: 6098436760110208286}
-  _statusEffects: {fileID: 0}
+  _playerEnergy: {fileID: 7083286062687095106}
+  _statusEffects: {fileID: 2317975496077565927}
   _testAbilities:
-  - {fileID: 11400000, guid: d35aba36238fe584699865f27defbc44, type: 2}
+  - {fileID: 11400000, guid: 98aa35d96533459e9922d63321de85c1, type: 2}
+  - {fileID: 11400000, guid: b7057d670ca41654dbbf180d6dbf8125, type: 2}
 --- !u!114 &7083286062687095106
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -305,3 +307,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 8f9b3efe10ebb1842aa14e981e415409, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _energyMax: 100
+  _energyCurrent: 100
+  _rechargeRate: 10

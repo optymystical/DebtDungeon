@@ -9,11 +9,22 @@ namespace DebtDungeon.Player
     {
         [SerializeField] private GameObject _player;
         [SerializeField] private PlayerCombatState _playerCombatState;
+        [SerializeField] private PlayerEnergy _playerEnergy;
         [SerializeField] private StatusEffects _statusEffects;
+
         private List<AbilityDefinition> _abilities = new List<AbilityDefinition>();
         private Dictionary<AbilityDefinition, float> _readyTime = new Dictionary<AbilityDefinition, float>();
         private IStatProvider _stats;
+
+        private AbilityDefinition _ability1 = null;
+        private AbilityDefinition _ability2 = null;
+        private AbilityDefinition _ability3 = null;
+        private AbilityDefinition _ability4 = null;
+        private AbilityDefinition _ability5 = null;
+        private AbilityDefinition _defensive = null;
+
         private Coroutine _windingUpCoroutine = null;
+        private Coroutine _defensiveCoroutine = null;
 
         // For testing
         [SerializeField] private List<AbilityDefinition> _testAbilities;
@@ -29,12 +40,18 @@ namespace DebtDungeon.Player
         private void OnDisable()
         {
             _windingUpCoroutine = null;
+            _defensiveCoroutine = null;
         }
 
         /// <summary>Adds an ability and slots it by its Kind. Granting one it already has does nothing.</summary>
         public void GrantAbility(AbilityDefinition ability)
         {
             _abilities.Add(ability);
+
+            if (ability.Kind == AbilityKind.Active)
+            {
+                TryAddActiveToSlot(ability); 
+            }
         }
 
         /// <summary>
@@ -44,6 +61,11 @@ namespace DebtDungeon.Player
         public void RevokeAbility(AbilityDefinition ability)
         {
             _abilities.Remove(ability);
+
+            if (ability.Kind == AbilityKind.Active || ability.Kind == AbilityKind.Defensive)
+            {
+                RemoveFromSlot(ability);
+            }
         }
 
         /// <summary>True if this ability is currently granted.</summary>
@@ -54,6 +76,64 @@ namespace DebtDungeon.Player
                 return true;
             }
             return false;
+        }
+
+        private bool TryAddActiveToSlot(AbilityDefinition ability)
+        {
+            if (!_ability1)
+            {
+                _ability1 = ability;
+            }
+            else if (!_ability2)
+            {
+                _ability2 = ability;
+            }
+            else if (!_ability3)
+            {
+                _ability3 = ability;
+            }
+            else if (!_ability4)
+            {
+                _ability4 = ability;
+            }
+            else if (!_ability5)
+            {
+                _ability5 = ability;
+            }
+            else
+            {
+                return false;
+            }
+
+            return true;
+        }
+
+        private void RemoveFromSlot(AbilityDefinition ability)
+        {
+            if (_ability1 == ability)
+            {
+                _ability1 = null;
+            }
+            else if (_ability2 == ability)
+            {
+                _ability2 = null;
+            }
+            else if (_ability3 == ability)
+            {
+                _ability3 = null;
+            }
+            else if (_ability4 == ability)
+            {
+                _ability4 = null;
+            }
+            else if (_ability5 == ability)
+            {
+                _ability5 = null;
+            }
+            else if (_defensive == ability)
+            {
+                _defensive = null;
+            }
         }
 
         public void SetStats(IStatProvider stats)
@@ -99,6 +179,37 @@ namespace DebtDungeon.Player
             return true;
         }
 
+        // Assuming player can only have one defensive ability at a time
+        public bool TryUseDefensive()
+        {
+            _playerCombatState.MarkInCombat();
+
+            AbilityDefinition defensiveAbility = null;
+
+            foreach (AbilityDefinition ability in _abilities)
+            {
+                if (ability.Kind == AbilityKind.Defensive)
+                {
+                    defensiveAbility = ability;
+                    break;
+                }
+            }
+            // Cancel if can't use it now
+            if (!defensiveAbility || !IsReady(defensiveAbility) || _windingUpCoroutine != null)
+            {
+                return false;
+            }
+
+            // Use energy, canceling if can't
+            if (_playerEnergy.UseEnergy(defensiveAbility.EnergyCost))
+            {
+                _readyTime[defensiveAbility] = Time.time + defensiveAbility.Cooldown;
+                _defensiveCoroutine = StartCoroutine(DefensiveTimer(defensiveAbility.Cooldown));
+                return true;
+            }
+            return false;
+        }
+
         private IEnumerator WindingUp(BasicAttackDefinition basicAttack, Vector2 direction)
         {
             yield return new WaitForSeconds(basicAttack.Windup);
@@ -117,6 +228,13 @@ namespace DebtDungeon.Player
 
             basicAttack.Execute(_player, Faction.Player, direction, Mathf.RoundToInt(basicAttack.BaseDamage * power), 100);
             _windingUpCoroutine = null;
+        }
+
+        private IEnumerator DefensiveTimer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _defensiveCoroutine = null;
+            Debug.Log("Defensive Off Cooldown");
         }
     }
 }

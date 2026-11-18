@@ -7,7 +7,7 @@ namespace DebtDungeon.Player
     {
         [SerializeField] private int _energyMax = 100;
         [SerializeField] private int _energyCurrent = 100;
-        [SerializeField] private int _rechargeRate = 10; // per second
+        [SerializeField] private int _rechargeRate = 1; // per second
         private float _timer = 0f;
 
         // Update is called once per frame
@@ -28,6 +28,18 @@ namespace DebtDungeon.Player
             {
                 _energyCurrent = _energyMax;
             }
+        }
+
+        public bool UseEnergy(int energy)
+        {
+            if (_energyCurrent - energy < 0)
+            {
+                Debug.Log("Not enough energy");
+                return false;
+            }
+            _energyCurrent -= energy;
+            Debug.Log(energy + " energy used");
+            return true;
         }
     }
 }

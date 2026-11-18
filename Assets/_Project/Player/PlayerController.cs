@@ -154,11 +154,11 @@ namespace DebtDungeon.Player
             }
             else if (_defensiveAction.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseDefensive();
             }
             else if (_interactAction.WasPressedThisFrame())
             {
-                
+                // Not used for now?
             }
             else if (_useItemAction.WasPressedThisFrame())
             {
@@ -171,11 +171,11 @@ namespace DebtDungeon.Player
             }
             else if (_openSkillsAction.WasPressedThisFrame())
             {
-                
+                // Not used for now?
             }
             else if (_pauseAction.WasPressedThisFrame())
             {
-                
+                // Not used for now?
             }
 
             // Scroll through consumables
