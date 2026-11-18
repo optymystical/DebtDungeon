@@ -1,6 +1,5 @@
 using UnityEngine;
 using DebtDungeon.Core;
-using PlasticGui.WorkspaceWindow;
 
 namespace DebtDungeon.FloorGen
 {
@@ -22,5 +21,14 @@ namespace DebtDungeon.FloorGen
         public Faction Owner { get; internal set; }
         public ChunkIntensity Intensity { get; internal set; }
         public bool IsStart { get; internal set; }
+
+        ///<summary>Edges that connect to a neighboring cell. The chunk placed here needs at least these openings.</summary>
+        public Direction Openings { get; internal set; }
+
+        ///<summary>True if this cell connects to its neighbor in that direction.</summary>
+        public bool IsOpen(Direction direction)
+        {
+            return DirectionHelper.Contains(Openings, direction);
+        }
     }
 }

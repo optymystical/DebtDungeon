@@ -15,6 +15,7 @@ namespace DebtDungeon.FloorGen
 
         private const int OuterRingWidth = 1;
         private const int MaxDemotionPasses = 100;
+        private const int MaxExtraConnectionAttempts = 100;
 
         private readonly FloorGenConfig _config;
         private readonly System.Random _random;
@@ -39,6 +40,8 @@ namespace DebtDungeon.FloorGen
             PlaceHotspots();
             BuildHeatMap();
             AssignIntensity();
+            BuildSpanningTree();
+            AddExtraConnections();
             return _cells;
         }
 
@@ -165,6 +168,82 @@ namespace DebtDungeon.FloorGen
 
                 weakest.Intensity = ChunkIntensity.Minor;
             }
+        }
+
+        // Randomized depth-first search from the start: carves one path to every cell, with no loops
+        private void BuildSpanningTree()
+        {
+            int size = _config.GridSize;
+            bool[,] visited = new bool[size, size];
+            Stack<Vector2Int> stack = new Stack<Vector2Int>();
+            List<Direction> options = new List<Direction>();
+
+            visited[StartCell.x, StartCell.y] = true;
+            stack.Push(StartCell);
+
+            while (stack.Count > 0)
+            {
+                Vector2Int current = stack.Peek();
+
+                options.Clear();
+                foreach (Direction direction in DirectionHelper.Cardinals)
+                {
+                    Vector2Int next = current + DirectionHelper.ToOffset(direction);
+                    if (IsInGrid(next) && !visited[next.x, next.y])
+                    {
+                        options.Add(direction);
+                    }
+                }
+
+                if (options.Count == 0)
+                {
+                    stack.Pop(); // Dead end: back up to the previous cell
+                    continue;
+                }
+
+                Direction chosen = options[_random.Next(options.Count)];
+                Vector2Int chosenCell = current + DirectionHelper.ToOffset(chosen);
+                Connect(current, chosen);
+                visited[chosenCell.x, chosenCell.y] = true;
+                stack.Push(chosenCell);
+            }
+        }
+
+        // Adds a few extra links so the floor has loops and more than one route
+        private void AddExtraConnections()
+        {
+            int added = 0;
+            int attempts = 0;
+
+            while (added < _config.ExtraConnections && attempts < MaxExtraConnectionAttempts)
+            {
+                attempts++;
+
+                Vector2Int cell = new Vector2Int(_random.Next(_config.GridSize), _random.Next(_config.GridSize));
+                Direction direction = DirectionHelper.Cardinals[_random.Next(DirectionHelper.Cardinals.Length)];
+                Vector2Int neighbor = cell + DirectionHelper.ToOffset(direction);
+
+                if (!IsInGrid(neighbor) || _cells[cell.x, cell.y].IsOpen(direction))
+                {
+                    continue;
+                }
+
+                Connect(cell, direction);
+                added++;
+            }
+        }
+
+        // Opens the shared edge on both sides, so the two chunks' doors line up
+        private void Connect(Vector2Int cell, Direction direction)
+        {
+            Vector2Int neighbor = cell + DirectionHelper.ToOffset(direction);
+            _cells[cell.x, cell.y].Openings |= direction;
+            _cells[neighbor.x, neighbor.y].Openings |= DirectionHelper.Opposite(direction);
+        }
+
+        private bool IsInGrid(Vector2Int coord)
+        {
+            return coord.x >= 0 && coord.y >= 0 && coord.x < _config.GridSize && coord.y < _config.GridSize;
         }
 
         private List<Vector2Int> GetCellsFarFrom(Vector2Int origin, int minDistance)

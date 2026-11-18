@@ -1,5 +1,7 @@
 using DebtDungeon.Core;
 using UnityEngine;
+using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 namespace DebtDungeon.FloorGen
 {
@@ -10,6 +12,17 @@ namespace DebtDungeon.FloorGen
     {
         [Header("Setup")]
         [SerializeField] private FloorGenConfig _config;
+        [SerializeField] private ChunkLibrary _library;
+
+        [Header("Tilemaps")]
+        [SerializeField] private Tilemap _floorTilemap;
+        [Tooltip("Needs a Tilemap Collider 2D merged into a Composite Collider 2D, on the Walls layer.")]
+        [SerializeField] private Tilemap _wallTilemap;
+        [Tooltip("Wall tile used to close door slots a cell doesn't connect through.")]
+        [SerializeField] private TileBase _plugTile;
+
+        [Tooltip("Floor tile painted where a chunk has a Water marker.")]
+        [SerializeField] private TileBase _waterTile;
 
         [Header("Debug")]
         [Tooltip("Seed used when this component builds the floor itself (sandbox testing). Game passes the run seed instead.")]
@@ -21,16 +34,16 @@ namespace DebtDungeon.FloorGen
 
         private FloorLayoutGenerator _layout;
         private int _currentSeed;
+        private ChunkDefinition[,] _placedChunks;
+        private FloorQuery _floorQuery;
+        private const float SpawnGizmoRadius = 0.4f;
 
         public int CurrentSeed => _currentSeed;
 
-        private void Awake()
-        {
-            if (_config == null)
-            {
-                Debug.LogError("FloorGenerator needs a FloorGenConfig assigned.", this);
-            }
-        }
+        /// <summary>
+        /// The last floor built, or null before the first Generate. Most systems get it from GameEvents.FloorGenerated instead.
+        /// </summary>
+        public IFloorQuery Floor => _floorQuery;
 
         private void Start()
         {
@@ -43,15 +56,63 @@ namespace DebtDungeon.FloorGen
         /// <summary>Builds a floor from a seed. The same seed always builds the same floor.</summary>
         public void Generate(int seed)
         {
-            if (_config == null)
+            if (!IsSetUp())
             {
                 return;
             }
 
             _currentSeed = seed;
             _layout = new FloorLayoutGenerator(_config, seed);
-            _layout.Generate();
+            FloorCell[,] cells = _layout.Generate();
+            _placedChunks = _library.PickAll(cells, seed);
+            FloorStamper stamper = new FloorStamper(_floorTilemap, _wallTilemap, _plugTile);
+            stamper.Stamp(cells, _placedChunks);
+
+            FloorMarkers markers = new MarkerReader(_library, _config).Read(cells, _placedChunks, _floorTilemap, seed);
+            stamper.PaintWater(markers.WaterTiles, _waterTile);
+
+            _floorQuery = new FloorQuery(cells, _layout.StartCell, _floorTilemap, _wallTilemap, markers, _config.WaterSpeedMultiplier);
+
+            // Log before raising, so the seed is in the Console even if a listener throws
             Debug.Log("Floor generated. Seed: " + seed, this);
+            GameEvents.RaiseFloorGenerated(_floorQuery);
+        }
+
+        // Logs every missing reference at once, so a broken setup is obvious in the Console
+        private bool IsSetUp()
+        {
+            bool isSetUp = true;
+            if (_config == null)
+            {
+                Debug.LogError("FloorGenerator needs a FloorGenConfig.", this);
+                isSetUp = false;
+            }
+
+            if (_library == null)
+            {
+                Debug.LogError("FloorGenerator needs a ChunkLibrary.", this);
+                isSetUp = false;
+            }
+
+            if (_floorTilemap == null || _wallTilemap == null)
+            {
+                Debug.LogError("FloorGenerator needs both the floor and wall tilemaps.", this);
+                isSetUp = false;
+            }
+
+            if (_plugTile == null)
+            {
+                Debug.LogError("FloorGenerator needs a plug tile for unused doors.", this);
+                isSetUp = false;
+            }
+
+            if (_waterTile == null)
+            {
+                Debug.LogError("FloorGenerator needs a water tile.", this);
+                isSetUp = false;
+            }
+
+            return isSetUp;
         }
 
         [ContextMenu("Generate With Debug Seed")]
@@ -65,6 +126,25 @@ namespace DebtDungeon.FloorGen
         {
             _debugSeed = UnityEngine.Random.Range(0, int.MaxValue);
             Generate(_debugSeed);
+        }
+
+        // Run this before saving the scene, so thousands of stamped tiles don't get committed
+        [ContextMenu("Clear Floor")]
+        private void ClearFloor()
+        {
+            if (_floorTilemap != null)
+            {
+                _floorTilemap.ClearAllTiles();
+            }
+
+            if (_wallTilemap != null)
+            {
+                _wallTilemap.ClearAllTiles();
+            }
+
+            _layout = null;
+            _placedChunks = null;
+            _floorQuery = null;
         }
 
         private void OnDrawGizmos()
@@ -90,6 +170,17 @@ namespace DebtDungeon.FloorGen
             Vector3 markerSize = cellSize * 0.6f;
             Gizmos.DrawWireCube(CellCenter(_layout.GoblinHotspot), markerSize);
             Gizmos.DrawWireCube(CellCenter(_layout.SpiderHotspot), markerSize);
+
+            if (_floorQuery == null)
+            {
+                return;
+            }
+
+            foreach (SpawnPoint point in _floorQuery.GetSpawnPoints())
+            {
+                Gizmos.color = SpawnColorFor(point.Type);
+                Gizmos.DrawSphere(point.Position, SpawnGizmoRadius);
+            }
         }
 
         private Vector3 CellCenter(Vector2Int coord)
@@ -115,6 +206,21 @@ namespace DebtDungeon.FloorGen
             }
 
             return new Color(0.6f, 0.6f, 0.65f);
+        }
+
+        private static Color SpawnColorFor(SpawnPointType type)
+        {
+            switch (type)
+            {
+                case SpawnPointType.Spawner:
+                    return Color.red;
+                case SpawnPointType.Station:
+                    return Color.cyan;
+                case SpawnPointType.Chest:
+                    return Color.yellow;
+                default:
+                    return new Color(1f, 0.5f, 0f); // single enemy: orange
+            }
         }
     }
 }

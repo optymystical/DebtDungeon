@@ -34,6 +34,12 @@ namespace DebtDungeon.FloorGen
         [Tooltip("Extra links added after the spanning tree so floors have loops. 6 tested best in the Week 2 evidence test.")]
         [SerializeField, Min(0)] private int _extraConnections = 6;
 
+        [Header("Markers")]
+        [Tooltip("Chance each Enemy marker holds an enemy, rolled once per floor.")]
+        [SerializeField, Range(0f, 1f)] private float _singleEnemyChance = 0.6f;
+        [Tooltip("Move speed on water tiles: 1 = normal, 0.5 = half speed.")]
+        [SerializeField, Range(0.1f, 1f)] private float _waterSpeedMultiplier = 0.5f;
+
         public int GridSize => _gridSize;
         public int MinHotspotDistance => _minHotspotDistance;
         public float MinHotspotStrength => _minHotspotStrength;
@@ -43,6 +49,8 @@ namespace DebtDungeon.FloorGen
         public float MajorThreshold => _majorThreshold;
         public int MaxMajorPerFaction => _maxMajorPerFaction;
         public int ExtraConnections => _extraConnections;
+        public float SingleEnemyChance => _singleEnemyChance;
+        public float WaterSpeedMultiplier => _waterSpeedMultiplier;
 
         private void OnValidate()
         {
