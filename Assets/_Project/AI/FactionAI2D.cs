@@ -12,6 +12,7 @@ namespace DebtDungeon.AI
         Attack,
         Flee,
         Return,
+        Rally,
         Raid,
         Investigate
     }
@@ -68,6 +69,11 @@ namespace DebtDungeon.AI
         private Vector2 _investigatePosition;
         private float _investigateTimer;
 
+        private const float PlayerCombatPingInterval = 1.0f;
+        private float _playerCombatPingTimer;
+        private Health _cachedTargetHealth;
+        private ICombatState _cachedTargetCombatState;
+
         private CombatAgent2D _agent;
         private AIState _currentState = AIState.Wander;
         private Health _currentTarget;
@@ -75,8 +81,11 @@ namespace DebtDungeon.AI
         private Vector2 _spawnAnchor;
         private Vector2 _rivalTerritoryOrigin;
         private Vector2 _wanderDestination;
+        private Vector2 _rallyPoint;
         private bool _hasSpawnAnchor;
         private bool _isRaiding;
+        private bool _isRallying;
+        private float _raidSweepTimer;
 
         private List<Vector2> _waypoints = new List<Vector2>();
         private int _waypointIndex;
@@ -127,7 +136,6 @@ namespace DebtDungeon.AI
                 _baseSpriteColor = _agent.VisualRenderer.color;
             }
 
-            // Stagger initial scan timers
             _scanTimer = UnityEngine.Random.Range(0f, ScanIntervalSeconds);
             PickNewWanderDestination();
         }
@@ -159,6 +167,7 @@ namespace DebtDungeon.AI
             {
                 return;
             }
+
             if (_currentState == AIState.Attack || _currentState == AIState.Chase || _currentState == AIState.Flee)
             {
                 return;
@@ -217,10 +226,43 @@ namespace DebtDungeon.AI
             }
 
             _rivalTerritoryOrigin = raidTargetPosition;
+            _isRallying = false;
             _isRaiding = true;
             _isTelegraphing = false;
+            _raidSweepTimer = 3.0f;
             TransitionToState(AIState.Raid);
             ForceRepath(raidTargetPosition);
+        }
+
+        public void BeginRally(Vector2 rallyPoint)
+        {
+            if (!IsAlive)
+            {
+                return;
+            }
+
+            _rallyPoint = rallyPoint;
+            _isRallying = true;
+            _isRaiding = true;
+            _isTelegraphing = false;
+            TransitionToState(AIState.Rally);
+            ForceRepath(rallyPoint);
+        }
+
+        public void CancelRally()
+        {
+            if (!IsAlive)
+            {
+                return;
+            }
+
+            EndRaid();
+        }
+
+        public bool IsAtRallyPoint(float tolerance = 1.25f)
+        {
+            return IsAlive && _currentState == AIState.Rally &&
+                   Vector2.Distance(transform.position, _rallyPoint) <= tolerance;
         }
 
         private void Update()
@@ -235,6 +277,7 @@ namespace DebtDungeon.AI
             _scanTimer -= Time.deltaTime;
 
             EvaluateStateTransitions();
+            NotifyPlayerInCombat();
             ExecuteStateLogic();
         }
 
@@ -283,7 +326,6 @@ namespace DebtDungeon.AI
             }
 
             // 1b. While fleeing, skip the other rules until the threat is gone, then head home.
-            // (Without this, step 5 switched a fleeing unit back to Chase every frame.)
             if (_currentState == AIState.Flee)
             {
                 float fleeSightRadius = _agent.Stats != null ? _agent.Stats.SightRadius : 6f;
@@ -300,8 +342,9 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            // 2. Territory leash check (raiders are not leashed until their raid ends)
-            if (!_isRaiding && (_currentState == AIState.Wander || _currentState == AIState.Chase))
+            // 2. Territory leash check (raiders and rallying units are not leashed until their raid ends)
+            bool attackingSpawner = _currentTarget != null && _currentTarget.GetComponent<FactionSpawner2D>() != null;
+            if (!_isRaiding && !_isRallying && !attackingSpawner && (_currentState == AIState.Wander || _currentState == AIState.Chase))
             {
                 float maxLeash = _role == UnitRole.Guard ? _guardLeashDistance : _residentLeashDistance;
                 if (Vector2.Distance(transform.position, _spawnAnchor) > maxLeash)
@@ -337,7 +380,7 @@ namespace DebtDungeon.AI
                     _currentTarget = ScanForHostileTarget();
                 }
             }
-            else if (!HasLineOfSight(_currentTarget.transform.position))
+            else if (!HasLineOfSight(_currentTarget.transform))
             {
                 float sightRadius = _agent.Stats != null ? _agent.Stats.SightRadius : 6f;
                 if (Vector2.Distance(transform.position, _currentTarget.transform.position) > sightRadius * 1.3f)
@@ -346,11 +389,11 @@ namespace DebtDungeon.AI
                 }
             }
 
-            // 5. Combat vs Patrol/Raid state routing
+            // 5. Combat vs Rally/Raid/Patrol state routing
             if (_currentTarget != null && _currentTarget.IsAlive)
             {
                 float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.2f;
-                float distToTarget = Vector2.Distance(transform.position, _currentTarget.transform.position);
+                float distToTarget = GetDistanceToTarget(_currentTarget);
 
                 if (distToTarget <= attackRange)
                 {
@@ -370,8 +413,15 @@ namespace DebtDungeon.AI
                 ClearRangedTelegraphs();
                 if (_currentState == AIState.Chase || _currentState == AIState.Attack)
                 {
-                    // Only units drafted by the raid manager go back to raiding; everyone else patrols.
-                    TransitionToState(_isRaiding ? AIState.Raid : AIState.Wander);
+                    if (_isRallying)
+                    {
+                        TransitionToState(AIState.Rally);
+                        ForceRepath(_rallyPoint);
+                    }
+                    else
+                    {
+                        TransitionToState(_isRaiding ? AIState.Raid : AIState.Wander);
+                    }
                 }
             }
         }
@@ -404,13 +454,35 @@ namespace DebtDungeon.AI
                     }
                     break;
 
+                case AIState.Rally:
+                    if (Vector2.Distance(transform.position, _rallyPoint) <= 1.0f)
+                    {
+                        _desiredVelocity = Vector2.zero;
+                    }
+                    else
+                    {
+                        UpdatePathfinding(_rallyPoint);
+                        _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
+                    }
+                    break;
+
                 case AIState.Raid:
                     Vector2 raidDest = _rivalTerritoryOrigin != Vector2.zero ? _rivalTerritoryOrigin : _wanderDestination;
 
-                    // Raid ends on arrival: go home (Return) instead of staying in enemy territory forever.
                     if (Vector2.Distance(transform.position, raidDest) <= RaidArrivalDistance)
                     {
-                        EndRaid();
+                        _desiredVelocity = Vector2.zero;
+                        _currentTarget = ScanForHostileTarget();
+                        if (_currentTarget != null)
+                        {
+                            break;
+                        }
+
+                        _raidSweepTimer -= Time.deltaTime;
+                        if (_raidSweepTimer <= 0f)
+                        {
+                            EndRaid();
+                        }
                         break;
                     }
 
@@ -481,7 +553,7 @@ namespace DebtDungeon.AI
                 {
                     _agent.VisualRenderer.color = _baseSpriteColor;
                 }
-                _currentState = AIState.Wander;
+                _currentState = _isRallying ? AIState.Rally : (_isRaiding ? AIState.Raid : AIState.Wander);
                 return;
             }
 
@@ -491,7 +563,7 @@ namespace DebtDungeon.AI
             bool isRanged = _agent.Stats != null && _agent.Stats.IsRangedKiter && _agent.Stats.ProjectilePrefab != null;
 
             Vector2 toTarget = (Vector2)_currentTarget.transform.position - (Vector2)transform.position;
-            float dist = toTarget.magnitude;
+            float dist = GetDistanceToTarget(_currentTarget);
 
             if (!_isTelegraphing)
             {
@@ -501,7 +573,6 @@ namespace DebtDungeon.AI
                     return;
                 }
 
-                // If ranged kiter is still retreating from a close enemy, don't freeze until ready to fire
                 if (Time.time >= _nextAttackTime)
                 {
                     _agent.Rigidbody.linearVelocity = Vector2.zero;
@@ -518,7 +589,6 @@ namespace DebtDungeon.AI
                         _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
                     }
 
-                    // 1. Lock aim position & spawn ranged telegraph visuals at wind-up start
                     if (isRanged)
                     {
                         _lockedAimPosition = _currentTarget.transform.position;
@@ -542,11 +612,9 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            // Winding up attack
             _agent.Rigidbody.linearVelocity = Vector2.zero;
             _telegraphTimer -= Time.deltaTime;
 
-            // Keep line start anchored to unit in case of slight physics push
             if (isRanged && _trajectoryLine != null && _trajectoryLine.enabled)
             {
                 _trajectoryLine.SetPosition(0, transform.position);
@@ -565,7 +633,6 @@ namespace DebtDungeon.AI
 
                 if (isRanged)
                 {
-                    // Fire slow, telegraphed projectile toward the locked aim point
                     GameObject projObj = Instantiate(_agent.Stats.ProjectilePrefab, transform.position, Quaternion.identity);
                     if (projObj.TryGetComponent(out TelegraphedProjectile2D proj))
                     {
@@ -584,7 +651,6 @@ namespace DebtDungeon.AI
                 {
                     ExecuteCoreCombatAttack();
 
-                    // Hit-and-run jump away (Spider Skitterling)
                     float backstepDist = _agent.Stats != null ? _agent.Stats.PostAttackBackstepDistance : 0f;
                     float backstepDur = _agent.Stats != null ? _agent.Stats.PostAttackBackstepDuration : 0.25f;
                     if (backstepDist > 0.01f && backstepDur > 0.01f)
@@ -624,7 +690,7 @@ namespace DebtDungeon.AI
             }
 
             float attackRange = _agent.Stats != null ? _agent.Stats.AttackRange : 1.2f;
-            float dist = Vector2.Distance(transform.position, _currentTarget.transform.position);
+            float dist = GetDistanceToTarget(_currentTarget);
 
             if (dist > attackRange * 1.25f)
             {
@@ -643,7 +709,6 @@ namespace DebtDungeon.AI
             int finalDamage = CombatRules.GetDamage(baseDamage, hitResult);
             DamageType damageType = _agent.Stats != null ? _agent.Stats.DamageType : DamageType.Physical;
             bool isCritical = hitResult == HitResult.Critical;
-            
 
             if (_currentTarget.TryGetComponent(out CombatAgent2D targetAgent))
             {
@@ -718,7 +783,7 @@ namespace DebtDungeon.AI
                 }
 
                 float dist = Vector2.Distance(transform.position, candidate.transform.position);
-                if (dist < closestDist && HasLineOfSight(candidate.transform.position))
+                if (dist < closestDist && HasLineOfSight(candidate.transform))
                 {
                     closestDist = dist;
                     bestTarget = candidate;
@@ -745,18 +810,65 @@ namespace DebtDungeon.AI
                    (_agent.Faction == Faction.Spider && otherFaction == Faction.Goblin);
         }
 
-        private bool HasLineOfSight(Vector2 targetPos)
+        private void NotifyPlayerInCombat()
         {
+            if ((_currentState != AIState.Chase && _currentState != AIState.Attack) ||
+                _currentTarget == null ||
+                !_currentTarget.IsAlive ||
+                _currentTarget.Faction != Faction.Player)
+            {
+                _playerCombatPingTimer = 0f;
+                return;
+            }
+
+            _playerCombatPingTimer -= Time.deltaTime;
+            if (_playerCombatPingTimer > 0f)
+            {
+                return;
+            }
+
+            _playerCombatPingTimer = PlayerCombatPingInterval;
+
+            if (_cachedTargetHealth != _currentTarget)
+            {
+                _cachedTargetHealth = _currentTarget;
+                _cachedTargetCombatState = _currentTarget.GetComponentInParent<ICombatState>();
+            }
+
+            _cachedTargetCombatState?.MarkInCombat();
+        }
+
+        private bool HasLineOfSight(Transform targetTransform)
+        {
+            if (targetTransform == null)
+            {
+                return false;
+            }
+
             Vector2 origin = transform.position;
-            Vector2 dir = targetPos - origin;
+            Vector2 dir = (Vector2)targetTransform.position - origin;
             RaycastHit2D hit = Physics2D.Raycast(origin, dir.normalized, dir.magnitude, _obstacleMask);
             if (hit.collider == null)
             {
                 return true;
             }
 
-            // Allow targeting destructible spawners/structures even if they sit on the Walls layer
-            return _currentTarget != null && hit.collider.transform.IsChildOf(_currentTarget.transform);
+            return hit.collider.transform.IsChildOf(targetTransform);
+        }
+
+        private float GetDistanceToTarget(Health target)
+        {
+            if (target == null)
+            {
+                return float.MaxValue;
+            }
+
+            Collider2D targetCol = target.GetComponent<Collider2D>();
+            Vector2 targetPoint = targetCol != null
+                ? targetCol.ClosestPoint(transform.position)
+                : (Vector2)target.transform.position;
+
+            return Vector2.Distance(transform.position, targetPoint);
         }
 
         private void UpdatePathfinding(Vector2 destination)
@@ -800,7 +912,6 @@ namespace DebtDungeon.AI
 
             Vector2 desiredHeading = (nextWaypoint - currentPos).normalized;
 
-            // Blend ally pack cohesion during Wander/Chase (Goblin squad behavior)
             if (_currentState == AIState.Wander || _currentState == AIState.Chase)
             {
                 Vector2 cohesion = ComputePackCohesionSteering();
@@ -862,7 +973,6 @@ namespace DebtDungeon.AI
 
             centerOfMass /= allyCount;
             Vector2 toPack = centerOfMass - (Vector2)transform.position;
-            
 
             _cachedCohesion = toPack.magnitude < 1.4f
                 ? Vector2.zero
@@ -880,6 +990,7 @@ namespace DebtDungeon.AI
 
         private void EndRaid()
         {
+            _isRallying = false;
             _isRaiding = false;
             _desiredVelocity = Vector2.zero;
             TransitionToState(AIState.Return);

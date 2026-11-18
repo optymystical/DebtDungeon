@@ -9,7 +9,7 @@ namespace DebtDungeon.AI
     /// </summary>
     public static class Pathfinding2D
     {
-        private const int MaxSearchIterations = 400;
+        private const int MaxSearchIterations = 4000;
         private const float NodeRadius = 0.38f;
         private const float TileBoxCheckSize = 0.75f;
         private const float GoalFreeCheckSize = 0.7f;
