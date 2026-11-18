@@ -1028,20 +1028,22 @@ MonoBehaviour:
   _maxGuardsPerFaction: 4
   _raidSettings:
   - Faction: 2
-    RaidIntervalSeconds: 45
-    MinResidentsToRally: 4
+    RaidIntervalSeconds: 15
+    MinResidentsToRally: 2
     RallyOffsetDistance: 2.2
     RaidHornCue: {fileID: 0}
     Timer: 0
+    RallyElapsed: 0
     IsRallying: 0
     ActiveRallyPoint: {x: 0, y: 0}
     RaidSquad: []
   - Faction: 3
-    RaidIntervalSeconds: 50
-    MinResidentsToRally: 4
+    RaidIntervalSeconds: 15
+    MinResidentsToRally: 2
     RallyOffsetDistance: 2.2
     RaidHornCue: {fileID: 0}
     Timer: 0
+    RallyElapsed: 0
     IsRallying: 0
     ActiveRallyPoint: {x: 0, y: 0}
     RaidSquad: []
@@ -1674,7 +1676,7 @@ PrefabInstance:
       objectReference: {fileID: 4645621396471598311, guid: 7fd1e2313685d904cb83401057bed224, type: 3}
     - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
       propertyPath: _spawnInterval
-      value: 0.5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
       propertyPath: _fallbackMaxGuards
@@ -1891,7 +1893,7 @@ PrefabInstance:
       objectReference: {fileID: 6283056031644735363, guid: d3cafb3a51b124e49b2c51a71debaa8b, type: 3}
     - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
       propertyPath: _spawnInterval
-      value: 0.5
+      value: 20
       objectReference: {fileID: 0}
     - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
       propertyPath: _fallbackMaxGuards

@@ -26,6 +26,7 @@ namespace DebtDungeon.AI
         public AudioClip RaidHornCue;
 
         [HideInInspector] public float Timer;
+        [HideInInspector] public float RallyElapsed;
         [HideInInspector] public bool IsRallying;
         [HideInInspector] public Vector2 ActiveRallyPoint;
         [HideInInspector] public List<FactionAI2D> RaidSquad = new List<FactionAI2D>();
@@ -316,7 +317,7 @@ namespace DebtDungeon.AI
                 List<FactionAI2D> availableResidents = GetAvailableResidents(cfg.Faction);
                 if (availableResidents.Count < cfg.MinResidentsToRally)
                 {
-                    cfg.Timer = 3f; // Retry shortly until at least MinResidentsToRally are alive
+                    cfg.Timer = 3f;
                     return;
                 }
 
@@ -360,47 +361,86 @@ namespace DebtDungeon.AI
                     cfg.RaidSquad.Add(unit);
                 }
 
+                cfg.RallyElapsed = 0f;
                 cfg.IsRallying = true;
                 return;
             }
 
-            // Abort rally if squad suffers heavy casualties before assembling
             if (cfg.RaidSquad.Count < 2)
             {
-                cfg.IsRallying = false;
-                cfg.Timer = cfg.RaidIntervalSeconds;
+                AbortAndReleaseSquad(cfg);
                 return;
             }
 
-            bool allAssembled = true;
+            cfg.RallyElapsed += Time.deltaTime;
+            bool timedOut = cfg.RallyElapsed >= 8f;
+
+            List<FactionAI2D> assembledUnits = new List<FactionAI2D>();
             for (int i = 0; i < cfg.RaidSquad.Count; i++)
             {
-                if (!cfg.RaidSquad[i].IsAtRallyPoint(1.5f))
+                if (cfg.RaidSquad[i].IsAtRallyPoint(2.25f))
                 {
-                    allAssembled = false;
-                    break;
+                    assembledUnits.Add(cfg.RaidSquad[i]);
                 }
             }
 
-            if (allAssembled)
+            bool allAssembled = assembledUnits.Count == cfg.RaidSquad.Count;
+
+            if (allAssembled || timedOut)
             {
-                FactionSpawner2D homeSpawner = GetActiveSpawner(cfg.Faction);
-                Vector2 origin = homeSpawner != null ? (Vector2)homeSpawner.transform.position : cfg.ActiveRallyPoint;
-                Vector3 finalTarget = FindRivalTargetPosition(cfg.Faction, origin);
-
-                if (finalTarget != Vector3.zero)
+                if (assembledUnits.Count >= 2)
                 {
-                    PlayRaidCueSound(cfg, origin);
-
                     for (int i = 0; i < cfg.RaidSquad.Count; i++)
                     {
-                        cfg.RaidSquad[i].TriggerRaidState(finalTarget);
+                        if (!assembledUnits.Contains(cfg.RaidSquad[i]))
+                        {
+                            cfg.RaidSquad[i].CancelRally();
+                        }
+                    }
+
+                    FactionSpawner2D homeSpawner = GetActiveSpawner(cfg.Faction);
+                    Vector2 origin = homeSpawner != null ? (Vector2)homeSpawner.transform.position : cfg.ActiveRallyPoint;
+                    Vector3 finalTarget = FindRivalTargetPosition(cfg.Faction, origin);
+
+                    if (finalTarget != Vector3.zero)
+                    {
+                        PlayRaidCueSound(cfg, origin);
+
+                        for (int i = 0; i < assembledUnits.Count; i++)
+                        {
+                            assembledUnits[i].TriggerRaidState(finalTarget);
+                        }
+
+                        cfg.RaidSquad.Clear();
+                        cfg.IsRallying = false;
+                        cfg.Timer = cfg.RaidIntervalSeconds;
+                    }
+                    else
+                    {
+                        AbortAndReleaseSquad(cfg);
                     }
                 }
-
-                cfg.IsRallying = false;
-                cfg.Timer = cfg.RaidIntervalSeconds;
+                else
+                {
+                    AbortAndReleaseSquad(cfg);
+                }
             }
+        }
+
+        private void AbortAndReleaseSquad(FactionRaidSettings cfg)
+        {
+            for (int i = 0; i < cfg.RaidSquad.Count; i++)
+            {
+                if (cfg.RaidSquad[i] != null && cfg.RaidSquad[i].IsAlive)
+                {
+                    cfg.RaidSquad[i].CancelRally();
+                }
+            }
+
+            cfg.RaidSquad.Clear();
+            cfg.RallyElapsed = 0f;
+            cfg.IsRallying = false;
+            cfg.Timer = cfg.RaidIntervalSeconds;
         }
 
         private void PlayRaidCueSound(FactionRaidSettings cfg, Vector2 origin)
