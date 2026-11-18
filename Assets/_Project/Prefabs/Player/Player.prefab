@@ -19,6 +19,7 @@ GameObject:
   - component: {fileID: 6098436760110208286}
   - component: {fileID: 2317975496077565927}
   - component: {fileID: 7117527635846813071}
+  - component: {fileID: 7083286062687095106}
   m_Layer: 6
   m_Name: Player
   m_TagString: Player
@@ -273,6 +274,8 @@ MonoBehaviour:
   _poisonDuration: 3
   _strengthenStacks: 0
   _strengthenDuration: 3
+  _weakenedStacks: 0
+  _weakenedDuration: 3
 --- !u!114 &7117527635846813071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -287,5 +290,18 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _player: {fileID: 707825229474092213}
   _playerCombatState: {fileID: 6098436760110208286}
+  _statusEffects: {fileID: 0}
   _testAbilities:
   - {fileID: 11400000, guid: d35aba36238fe584699865f27defbc44, type: 2}
+--- !u!114 &7083286062687095106
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707825229474092213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 8f9b3efe10ebb1842aa14e981e415409, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: '::'
