@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 3072451612480557246}
   - component: {fileID: 5734232304748800099}
   m_Layer: 0
-  m_Name: FloorGen_Placeholder
+  m_Name: FloorGenPalette_placeholder
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

@@ -10,10 +10,10 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 13312, guid: 0000000000000000e000000000000000, type: 0}
-  m_Name: Tile_Wall
+  m_Name: spr_tile_floor_spiider_placeholder
   m_EditorClassIdentifier: UnityEngine.dll::UnityEngine.Tilemaps.Tile
   m_Sprite: {fileID: 7482667652216324306, guid: ba1b362d23df0314f86fa944f607d8d6, type: 3}
-  m_Color: {r: 0.1764706, g: 0.15686275, b: 0.19607843, a: 1}
+  m_Color: {r: 0.5882353, g: 0.43137255, b: 0.7058824, a: 1}
   m_Transform:
     e00: 1
     e01: 0
