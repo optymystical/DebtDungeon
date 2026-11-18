@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 5255371588130219473}
   - component: {fileID: 8537543836161227434}
   m_Layer: 10
-  m_Name: MagicBolt
+  m_Name: WandBolt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0

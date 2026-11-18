@@ -1,7 +1,5 @@
-using Codice.Client.Common;
 using DebtDungeon.Core;
 using UnityEngine;
-using static Codice.Client.Common.EventTracking.TrackFeatureUseEvent.Features.DesktopGUI.Filters;
 
 namespace DebtDungeon.Player
 {
@@ -16,7 +14,7 @@ namespace DebtDungeon.Player
         private int _accuracy;
         private DamageType _damageType;
 
-        private void Start()
+        private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
             Destroy(gameObject, _lifetime);
@@ -45,11 +43,13 @@ namespace DebtDungeon.Player
             if (collision.gameObject.layer == LayerMask.NameToLayer("Walls"))
             {
                 Destroy(gameObject);
+                return;
             }
 
             // They try to hit and damage living enemies
             Health targetsHealth = collision.GetComponentInParent<Health>();
-            if (GetComponentInParent<Health>().Faction != targetsHealth.Faction && targetsHealth.IsAlive)
+            if (targetsHealth != null && targetsHealth.gameObject != _user && _faction != targetsHealth.Faction
+                && targetsHealth.IsAlive)
             {
                 HitResult result = CombatRules.RollHit(_accuracy);
                 if (result != HitResult.Miss)

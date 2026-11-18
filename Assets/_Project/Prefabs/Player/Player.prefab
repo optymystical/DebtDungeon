@@ -12,8 +12,8 @@ GameObject:
   - component: {fileID: 410552026794592155}
   - component: {fileID: 4009666917000852287}
   - component: {fileID: 1030241875207564683}
-  - component: {fileID: 8239117192879967569}
   - component: {fileID: 5148722464881902685}
+  - component: {fileID: 8239117192879967569}
   - component: {fileID: 3858413593578034013}
   - component: {fileID: 2383624863722295484}
   - component: {fileID: 6098436760110208286}
@@ -144,21 +144,6 @@ Rigidbody2D:
   m_SleepingMode: 1
   m_CollisionDetection: 0
   m_Constraints: 4
---- !u!114 &8239117192879967569
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 707825229474092213}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
-  _faction: 1
-  _maxHealth: 100
-  _invulnerabilityDuration: 0.5
 --- !u!60 &5148722464881902685
 PolygonCollider2D:
   m_ObjectHideFlags: 0
@@ -209,6 +194,21 @@ PolygonCollider2D:
       - {x: -0.5, y: -0.28866667}
       - {x: 0.5, y: -0.28866667}
   m_UseDelaunayMesh: 1
+--- !u!114 &8239117192879967569
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 707825229474092213}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e539f12003cc0404a9ed826c105b15a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Core::DebtDungeon.Core.Health
+  _faction: 1
+  _maxHealth: 100
+  _invulnerabilityDuration: 0.5
 --- !u!114 &3858413593578034013
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -285,3 +285,5 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: '::'
   _player: {fileID: 707825229474092213}
+  _testAbilities:
+  - {fileID: 11400000, guid: b7057d670ca41654dbbf180d6dbf8125, type: 2}

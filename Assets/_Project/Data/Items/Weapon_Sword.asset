@@ -14,10 +14,11 @@ MonoBehaviour:
   m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.WeaponDefinition
   _id: sword
   _displayName: Sword
-  _description: "Light Bladed weapon. Fast slashes that scale with Dexterity. Grants Parry."
+  _description: Light Bladed weapon. Fast slashes that scale with Dexterity. Grants
+    Parry.
   _icon: {fileID: 0}
   _statBonuses: []
-  _grantedAbilities: []
-  _tags:
-  - 0
+  _grantedAbilities:
+  - {fileID: 11400000, guid: e0e206a7eb5f2e44f8b52cfd229afa41, type: 2}
+  _tags: 00000000
   _weight: 0

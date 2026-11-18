@@ -14,10 +14,12 @@ MonoBehaviour:
   m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.FociDefinition
   _id: wand
   _displayName: Wand
-  _description: "Igniter Foci (light). Quick bolts that scale with Grasp; every other cast costs less energy."
+  _description: Igniter Foci (light). Quick bolts that scale with Grasp; every other
+    cast costs less energy.
   _icon: {fileID: 0}
   _statBonuses: []
-  _grantedAbilities: []
-  _tags: []
+  _grantedAbilities:
+  - {fileID: 11400000, guid: b7057d670ca41654dbbf180d6dbf8125, type: 2}
+  _tags: 
   _fociType: 1
   _freeOffensiveSlots: 0

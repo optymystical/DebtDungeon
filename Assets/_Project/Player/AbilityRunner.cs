@@ -13,6 +13,17 @@ namespace DebtDungeon.Player
         private IStatProvider _stats;
         private Coroutine _windingUpCoroutine = null;
 
+        // For testing
+        [SerializeField] private List<AbilityDefinition> _testAbilities;
+
+        private void Start()
+        {
+            foreach (AbilityDefinition ability in _testAbilities)
+            {
+                GrantAbility(ability);
+            }
+        }
+
         private void OnDisable()
         {
             _windingUpCoroutine = null;
@@ -45,7 +56,8 @@ namespace DebtDungeon.Player
 
         public void SetStats(IStatProvider stats)
         {
-            // If null Power = 1?
+            // Power is 1 for now
+            _stats = stats;
         }
 
         // Tests if an ability is off cooldown
@@ -73,7 +85,7 @@ namespace DebtDungeon.Player
                 }
             }
             // Cancel if can't attack now
-            if (!basicAttack || !IsReady(basicAttack) || _windingUpCoroutine == null)
+            if (!basicAttack || !IsReady(basicAttack) || _windingUpCoroutine != null)
             {
                 return false;
             }
@@ -85,10 +97,11 @@ namespace DebtDungeon.Player
 
         private IEnumerator WindingUp(BasicAttackDefinition basicAttack, Vector2 direction)
         {
-            yield return new WaitForSeconds(basicAttack._windUp);
+            yield return new WaitForSeconds(basicAttack.Windup);
             _readyTime[basicAttack] = Time.time + basicAttack.Cooldown;
-            float power = _stats != null ? StatRules.GetPower(_stats.GetStat(basicAttack._scalingStat)) : 1f;
-            basicAttack.Execute(_player, Faction.Player, direction, Mathf.RoundToInt(basicAttack._baseDamage * power), 100);
+            float power = _stats != null ? StatRules.GetPower(_stats.GetStat(basicAttack.ScalingStat)) : 1f;
+            basicAttack.Execute(_player, Faction.Player, direction, Mathf.RoundToInt(basicAttack.BaseDamage * power), 100);
+            _windingUpCoroutine = null;
         }
     }
 }
