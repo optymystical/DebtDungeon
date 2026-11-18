@@ -1,6 +1,7 @@
-using System.Collections;
 using DebtDungeon.Core;
 using UnityEngine;
+using System.Collections;
+using System.Collections.Generic;
 
 namespace DebtDungeon.Player
 {
@@ -22,6 +23,8 @@ namespace DebtDungeon.Player
         [SerializeField] private int _strengthenStacks = 0;
         [SerializeField] private float _strengthenDuration = 3f;
 
+        private List<StatusEffectType> _statusEffectTypes = new List<StatusEffectType>();
+
         private Coroutine _slowCoroutine;
         private float _slowEndTime;
 
@@ -37,6 +40,8 @@ namespace DebtDungeon.Player
         public bool IsSlowed => _slowCoroutine != null;
         public bool IsPoisoned => _poisonCoroutine != null;
         public bool IsStrengthened => _strengthenCoroutine != null;
+
+        public event System.Action<List<StatusEffectType>> EffectsChanged;
 
         private void Awake()
         {
@@ -80,6 +85,9 @@ namespace DebtDungeon.Player
                     ApplyStrengthened(duration, (int)magnitude);
                     break;
             }
+
+            _statusEffectTypes.Add(type);
+            EffectsChanged?.Invoke(_statusEffectTypes);
         }
 
         // Shortcut for test scripts: applies an effect with the Inspector defaults, poisons as if from a spider
@@ -105,6 +113,9 @@ namespace DebtDungeon.Player
             }
 
             ApplyStatus(type, duration, magnitude, null, Faction.Spider, 1);
+
+            _statusEffectTypes.Add(type);
+            EffectsChanged?.Invoke(_statusEffectTypes);
         }
 
         // Ends an effect early. Safe to call when it isn't active
@@ -130,6 +141,9 @@ namespace DebtDungeon.Player
                     _poisonEndTime = 0f;
                     break;
             }
+
+            _statusEffectTypes.Remove(type);
+            EffectsChanged?.Invoke(_statusEffectTypes);
         }
 
         private void ApplySlow(float duration, float multiplier)

@@ -55,6 +55,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: '::'
   _rb: {fileID: 1030241875207564683}
   _hitFeedback: {fileID: 2383624863722295484}
+  _abilityRunner: {fileID: 7117527635846813071}
   _baseMoveSpeed: 3
   _turnSpeed: 300
 --- !u!212 &4009666917000852287
@@ -269,6 +270,8 @@ MonoBehaviour:
   _slowDuration: 1
   _poisonDamage: 1
   _poisonDuration: 3
+  _strengthenStacks: 0
+  _strengthenDuration: 3
 --- !u!114 &7117527635846813071
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -281,3 +284,4 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 27c1ef656120da64594bf6e7c3fb6dbf, type: 3}
   m_Name: 
   m_EditorClassIdentifier: '::'
+  _player: {fileID: 707825229474092213}

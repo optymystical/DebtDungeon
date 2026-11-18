@@ -9,6 +9,7 @@ namespace DebtDungeon.Player
         [Header("References")]
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private HitFeedback _hitFeedback;
+        [SerializeField] private AbilityRunner _abilityRunner;
 
         [Header("Settings")]
         [SerializeField] private float _baseMoveSpeed = 1;
@@ -57,6 +58,7 @@ namespace DebtDungeon.Player
             _openInventoryAction = InputSystem.actions.FindAction("Player/Open Inventory");
             _openSkillsAction = InputSystem.actions.FindAction("Player/Open Skills");
             _pauseAction = InputSystem.actions.FindAction("Player/Pause");
+            _abilityRunner = GetComponent<AbilityRunner>();
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -126,7 +128,7 @@ namespace DebtDungeon.Player
             }
             else if (_attackAction.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseBasicAttack(_mouseDirection);
             }
 
             // Can the player click a mouse button and any of these keys at once?
