@@ -12,6 +12,7 @@ namespace DebtDungeon.AI
         Attack,
         Flee,
         Return,
+        Rally,
         Raid,
         Investigate
     }
@@ -105,6 +106,8 @@ namespace DebtDungeon.AI
         public AIState CurrentState => _currentState;
         public UnitRole Role => _role;
         public bool IsAlive => _agent != null && _agent.IsAlive;
+
+        
 
         private void Awake()
         {
@@ -226,6 +229,27 @@ namespace DebtDungeon.AI
             _isTelegraphing = false;
             TransitionToState(AIState.Raid);
             ForceRepath(raidTargetPosition);
+        }
+
+        private Vector2 _rallyPoint;
+
+        public void BeginRally(Vector2 rallyPoint)
+        {
+            if (!IsAlive)
+            {
+                return;
+            }
+            _rallyPoint = rallyPoint;
+            _isRaiding = true;
+            _isTelegraphing = false;
+            TransitionToState(AIState.Rally);
+            ForceRepath(rallyPoint);
+        }
+
+        public bool IsAtRallyPoint(float tolerance = 1.25f)
+        {
+            return IsAlive && _currentState == AIState.Rally &&
+                   Vector2.Distance(transform.position, _rallyPoint) <= tolerance;
         }
 
         private void Update()
@@ -408,6 +432,18 @@ namespace DebtDungeon.AI
                     {
                         TransitionToState(AIState.Wander);
                         PickNewWanderDestination();
+                    }
+                    break;
+
+                case AIState.Rally:
+                    if (Vector2.Distance(transform.position, _rallyPoint) <= 1.0f)
+                    {
+                        _desiredVelocity = Vector2.zero;
+                    }
+                    else
+                    {
+                        UpdatePathfinding(_rallyPoint);
+                        _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
                     }
                     break;
 

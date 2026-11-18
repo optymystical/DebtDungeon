@@ -1026,7 +1026,25 @@ MonoBehaviour:
     GuardConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
   _maxResidentsPerFaction: 10
   _maxGuardsPerFaction: 4
-  _raidIntervalSeconds: 10
+  _raidSettings:
+  - Faction: 2
+    RaidIntervalSeconds: 45
+    MinResidentsToRally: 4
+    RallyOffsetDistance: 2.2
+    RaidHornCue: {fileID: 0}
+    Timer: 0
+    IsRallying: 0
+    ActiveRallyPoint: {x: 0, y: 0}
+    RaidSquad: []
+  - Faction: 3
+    RaidIntervalSeconds: 50
+    MinResidentsToRally: 4
+    RallyOffsetDistance: 2.2
+    RaidHornCue: {fileID: 0}
+    Timer: 0
+    IsRallying: 0
+    ActiveRallyPoint: {x: 0, y: 0}
+    RaidSquad: []
 --- !u!4 &1643868493
 Transform:
   m_ObjectHideFlags: 0
@@ -1236,7 +1254,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!114 &1995273974
 MonoBehaviour:
   m_ObjectHideFlags: 0
