@@ -59,5 +59,17 @@ namespace DebtDungeon.FloorGen.Tests
                 }
             }
         }
+
+        // A chunk that isn't in the library can never appear on a floor
+        [Test]
+        public void EveryChunkDefinition_IsInTheLibrary()
+        {
+            foreach (string guid in AssetDatabase.FindAssets("t:ChunkDefinition"))
+            {
+                string path = AssetDatabase.GUIDToAssetPath(guid);
+                ChunkDefinition chunk = AssetDatabase.LoadAssetAtPath<ChunkDefinition>(path);
+                Assert.IsTrue(_library.Contains(chunk), path + " isn't in " + _library.name + ".");
+            }
+        }
     }
 }

@@ -69,6 +69,12 @@ namespace DebtDungeon.FloorGen
             return chunks;
         }
 
+        /// <summary>True if this chunk is in the library and can appear on a floor.</summary>
+        public bool Contains(ChunkDefinition chunk)
+        {
+            return _chunks.Contains(chunk);
+        }
+
         /// <summary>Which marker a tile is. False for any tile that isn't one of the five marker tiles.</summary>
         public bool TryGetMarkerKind(TileBase tile, out MarkerKind kind)
         {
