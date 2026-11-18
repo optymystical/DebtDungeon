@@ -1,4 +1,5 @@
 using DebtDungeon.Core;
+using DebtDungeon.Player;
 using DebtDungeon.Progression;
 using TMPro;
 using UnityEngine;
@@ -6,8 +7,9 @@ using UnityEngine;
 namespace DebtDungeon.Game
 {
     /// <summary>
-    /// The in-game HUD: name and level, health, armor or Shroud, XP, gold, and a reminder when points are
-    /// waiting to be spent. Energy and the ability bar come with the Ability framework.
+    /// The in-game HUD: name and level, health, armor or Shroud, XP, gold, status badges (Slowed, Poisoned,
+    /// In combat), and a reminder when points are waiting to be spent.
+    /// Energy and the ability bar come with the Ability framework.
     /// Reads values every frame but only rewrites text when something changed.
     /// Put it on the GameManager's object in the Main scene, next to PlayerBootstrap and RunStatsTracker.
     /// </summary>
@@ -18,6 +20,9 @@ namespace DebtDungeon.Game
         private static readonly Color ArmorColor = new Color(0.75f, 0.7f, 0.6f, 1f);
         private static readonly Color ShroudColor = new Color(0.55f, 0.45f, 0.95f, 1f);
         private static readonly Color XpColor = new Color(0.95f, 0.8f, 0.3f, 1f);
+        private static readonly Color SlowedColor = new Color(0.45f, 0.7f, 1f, 1f);
+        private static readonly Color PoisonedColor = new Color(0.55f, 0.9f, 0.35f, 1f);
+        private static readonly Color CombatColor = new Color(0.95f, 0.55f, 0.4f, 1f);
 
         [Tooltip("Leave empty to use the PlayerBootstrap on this object.")]
         [SerializeField] private PlayerBootstrap _bootstrap;
@@ -32,7 +37,17 @@ namespace DebtDungeon.Game
         private HudBar _xpBar;
         private TextMeshProUGUI _goldText;
         private TextMeshProUGUI _pointsText;
+        private GameObject _slowedBadge;
+        private GameObject _poisonedBadge;
+        private GameObject _combatBadge;
 
+        // Found once on the spawned player (Game may reference Player). Either can be missing on a test prefab.
+        private StatusEffects _statusEffects;
+        private ICombatState _combatState;
+        private bool _hasLookedForPlayerParts;
+
+        private string _lastName;
+        private int _lastLevel = -1;
         private int _lastGold = -1;
         private int _lastStatPoints = -1;
         private int _lastSkillPoints = -1;
@@ -78,7 +93,13 @@ namespace DebtDungeon.Game
             CharacterData character = _bootstrap.Character;
             CharacterProgress progress = character.Progress;
 
-            _nameText.SetText(character.Name + "   Lv " + progress.Level);
+            // Only rebuild the string when the name or level changed, not every frame.
+            if (character.Name != _lastName || progress.Level != _lastLevel)
+            {
+                _lastName = character.Name;
+                _lastLevel = progress.Level;
+                _nameText.text = $"{_lastName}   Lv {_lastLevel}";
+            }
 
             if (_bootstrap.PlayerHealth != null)
             {
@@ -86,6 +107,7 @@ namespace DebtDungeon.Game
             }
 
             UpdateDefenseBar();
+            UpdateStatusBadges();
 
             if (progress.IsMaxLevel)
             {
@@ -109,6 +131,31 @@ namespace DebtDungeon.Game
                 _lastSkillPoints = progress.UnspentSkillPoints;
                 bool hasPoints = _lastStatPoints > 0 || _lastSkillPoints > 0;
                 _pointsText.text = hasPoints ? $"Tab: {_lastStatPoints} stat / {_lastSkillPoints} skill points to spend" : string.Empty;
+            }
+        }
+
+        private void UpdateStatusBadges()
+        {
+            // PlayerBootstrap spawns the player in its Awake, so it exists by the first Update; look only once.
+            if (!_hasLookedForPlayerParts && _bootstrap.PlayerObject != null)
+            {
+                _hasLookedForPlayerParts = true;
+                _statusEffects = _bootstrap.PlayerObject.GetComponent<StatusEffects>();
+                _combatState = _bootstrap.PlayerObject.GetComponent<ICombatState>();
+            }
+
+            // SetActive only when the value changes; Unity ignores a SetActive to the same value anyway,
+            // but checking activeSelf first keeps it obvious.
+            SetBadge(_slowedBadge, _statusEffects != null && _statusEffects.IsSlowed);
+            SetBadge(_poisonedBadge, _statusEffects != null && _statusEffects.IsPoisoned);
+            SetBadge(_combatBadge, _combatState != null && _combatState.InCombat);
+        }
+
+        private static void SetBadge(GameObject badge, bool visible)
+        {
+            if (badge.activeSelf != visible)
+            {
+                badge.SetActive(visible);
             }
         }
 
@@ -144,13 +191,13 @@ namespace DebtDungeon.Game
             Canvas canvas = UIKit.CreateCanvas(transform, "HUD Canvas", 0);
             _root = canvas.gameObject;
 
-            // Top-left block, inside the safe 90% of the screen.
+            // Top-left block, inside the safe 90% of the screen: anchored 5% in from the left and top edges.
             RectTransform block = UIKit.CreateGroup(canvas.transform, "Status");
-            block.anchorMin = new Vector2(0.05f, 1f);
-            block.anchorMax = new Vector2(0.05f, 1f);
+            block.anchorMin = new Vector2(0.05f, 0.95f);
+            block.anchorMax = new Vector2(0.05f, 0.95f);
             block.pivot = new Vector2(0f, 1f);
-            block.anchoredPosition = new Vector2(0f, -40f);
-            block.sizeDelta = new Vector2(480f, 260f);
+            block.anchoredPosition = Vector2.zero;
+            block.sizeDelta = new Vector2(480f, 300f);
             UIKit.AddVerticalLayout(block, 8f, 0).childAlignment = TextAnchor.UpperLeft;
 
             _nameText = UIKit.CreateText(block, string.Empty, 30f, TextAlignmentOptions.Left, UIKit.TextColor);
@@ -159,6 +206,24 @@ namespace DebtDungeon.Game
             _xpBar = new HudBar(block, "XP", XpColor);
             _goldText = UIKit.CreateText(block, string.Empty, 26f, TextAlignmentOptions.Left, XpColor);
             _pointsText = UIKit.CreateText(block, string.Empty, 22f, TextAlignmentOptions.Left, UIKit.Accent);
+
+            RectTransform badges = UIKit.CreateGroup(block, "Status Badges");
+            UIKit.AddHorizontalLayout(badges, 8f, 0).childAlignment = TextAnchor.MiddleLeft;
+            UIKit.SetSize(badges, 30f);
+            _slowedBadge = CreateBadge(badges, "Slowed", SlowedColor);
+            _poisonedBadge = CreateBadge(badges, "Poisoned", PoisonedColor);
+            _combatBadge = CreateBadge(badges, "In combat", CombatColor);
+        }
+
+        // A small dark tag with colored text. Starts hidden; UpdateStatusBadges shows it while the effect is on.
+        private static GameObject CreateBadge(Transform parent, string label, Color color)
+        {
+            RectTransform badge = UIKit.CreatePanel(parent, label + " Badge", new Color(0f, 0f, 0f, 0.6f));
+            UIKit.SetSize(badge, 30f, 130f).flexibleWidth = 0f;
+            TextMeshProUGUI text = UIKit.CreateText(badge, label, 20f, TextAlignmentOptions.Center, color);
+            UIKit.Stretch(text.rectTransform);
+            badge.gameObject.SetActive(false);
+            return badge.gameObject;
         }
 
         /// <summary>

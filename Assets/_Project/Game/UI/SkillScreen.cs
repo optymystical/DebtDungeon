@@ -172,6 +172,7 @@ namespace DebtDungeon.Game
                 UIKit.AddHorizontalLayout(row, 8f, 0);
                 UIKit.SetSize(row, 52f);
                 TextMeshProUGUI label = UIKit.CreateText(row, $"{choice}  {value}   (Power {power:0.0})", 24f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
+                UIKit.FitText(label, 16f);
                 UITooltipTarget.Attach(label, $"{choice} {value}. Power = stat / 10 = {power:0.0}. Abilities and attacks that scale with {choice} multiply by this.");
                 label.raycastTarget = true; // so the tooltip can see the mouse
 
@@ -197,14 +198,17 @@ namespace DebtDungeon.Game
             UIKit.ClearChildren(_treeRow);
             if (_trees.Count == 0)
             {
-                UIKit.CreateText(_treeRow, "No skill trees for this archetype yet.", 26f, TextAlignmentOptions.Center, UIKit.MutedText);
+                TextMeshProUGUI none = UIKit.CreateText(_treeRow, "No skill trees for this archetype yet.", 26f, TextAlignmentOptions.Center, UIKit.MutedText);
+                UIKit.Stretch(none.rectTransform);
                 return;
             }
 
             CharacterSkills skills = _character.Skills;
+            List<RectTransform> panels = new List<RectTransform>();
             foreach (SkillTreeDefinition tree in _trees)
             {
                 RectTransform panel = UIKit.CreatePanel(_treeRow, tree.DisplayName, UIKit.ButtonColor * 0.8f);
+                panels.Add(panel);
                 UIKit.AddVerticalLayout(panel, 8f, 16);
 
                 TextMeshProUGUI title = UIKit.CreateText(panel, tree.DisplayName, 30f, TextAlignmentOptions.Center, UIKit.TextColor);
@@ -223,6 +227,9 @@ namespace DebtDungeon.Game
                     DrawNode(panel, tree, i, skills);
                 }
             }
+
+            // The trees share their area equally, pinned with anchors so they never move.
+            UIKit.PlaceColumns(16f, panels.ToArray());
         }
 
         private void DrawNode(Transform panel, SkillTreeDefinition tree, int index, CharacterSkills skills)
@@ -334,8 +341,8 @@ namespace DebtDungeon.Game
 
             UIKit.CreateText(backdrop, "Character   (Tab to close)", 48f, TextAlignmentOptions.Center, UIKit.Accent);
 
+            // No layout group here: the three columns are pinned with anchors below (UIKit.PlaceColumns).
             RectTransform columns = UIKit.CreateGroup(backdrop, "Columns");
-            UIKit.AddHorizontalLayout(columns, 24f, 0);
             UIKit.SetSize(columns, 720f);
 
             RectTransform statsPanel = UIKit.CreatePanel(columns, "Stats", UIKit.PanelColor);
@@ -344,18 +351,20 @@ namespace DebtDungeon.Game
             UIKit.AddVerticalLayout(_statsList, 8f, 0);
 
             _treeRow = UIKit.CreateGroup(columns, "Trees");
-            UIKit.AddHorizontalLayout(_treeRow, 16f, 0);
-            UIKit.SetSize(_treeRow, 720f, 760f);
 
             RectTransform ownedPanel = UIKit.CreatePanel(columns, "Owned", UIKit.PanelColor);
             UIKit.AddVerticalLayout(ownedPanel, 8f, 20);
             _ownedList = UIKit.CreateGroup(ownedPanel, "Owned List");
             UIKit.AddVerticalLayout(_ownedList, 6f, 0);
 
+            // Fixed slices of the width (stats 1, trees 2, owned 1.2), so the columns never move as text changes.
+            UIKit.PlaceColumns(24f, new[] { statsPanel, _treeRow, ownedPanel }, new[] { 1f, 2f, 1.2f });
+
             RectTransform details = UIKit.CreatePanel(backdrop, "Details", UIKit.PanelColor);
             UIKit.SetSize(details, 150f);
             UIKit.AddVerticalLayout(details, 4f, 16);
             _detailsText = UIKit.CreateText(details, string.Empty, 22f, TextAlignmentOptions.TopLeft, UIKit.TextColor);
+            UIKit.FitText(_detailsText, 14f); // long ability descriptions shrink to fit the fixed-height box
             _statusText = UIKit.CreateText(backdrop, string.Empty, 24f, TextAlignmentOptions.Center, UIKit.WarningText);
         }
     }

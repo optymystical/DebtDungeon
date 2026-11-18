@@ -5,7 +5,7 @@ using UnityEngine;
 namespace DebtDungeon.Game
 {
     /// <summary>
-    /// The title screen: Start (to character creation), Options (volume, fullscreen), Credits and Quit.
+    /// The title screen: Start (to character creation), Options (master, music and SFX volume, fullscreen), Credits and Quit.
     /// Shown while the game is in MainMenu. Put it on the GameManager's object in the MainMenu scene.
     /// </summary>
     [DisallowMultipleComponent]
@@ -23,6 +23,8 @@ namespace DebtDungeon.Game
         private UnityEngine.UI.Button _optionsBackButton;
         private UnityEngine.UI.Button _fullscreenButton;
         private TextMeshProUGUI _volumeText;
+        private TextMeshProUGUI _musicText;
+        private TextMeshProUGUI _sfxText;
 
         private void Awake()
         {
@@ -86,6 +88,18 @@ namespace DebtDungeon.Game
             RefreshOptions();
         }
 
+        private void ChangeMusic(float step)
+        {
+            GameSettings.SetMusicVolume(GameSettings.MusicVolume + step);
+            RefreshOptions();
+        }
+
+        private void ChangeSfx(float step)
+        {
+            GameSettings.SetSfxVolume(GameSettings.SfxVolume + step);
+            RefreshOptions();
+        }
+
         private void ToggleFullscreen()
         {
             GameSettings.SetFullscreen(!GameSettings.Fullscreen);
@@ -94,8 +108,15 @@ namespace DebtDungeon.Game
 
         private void RefreshOptions()
         {
-            _volumeText.text = $"Volume  {Mathf.RoundToInt(GameSettings.MasterVolume * 100f)}%";
+            _volumeText.text = $"Master  {Percent(GameSettings.MasterVolume)}";
+            _musicText.text = $"Music  {Percent(GameSettings.MusicVolume)}";
+            _sfxText.text = $"Sound effects  {Percent(GameSettings.SfxVolume)}";
             UIKit.SetButtonLabel(_fullscreenButton, GameSettings.Fullscreen ? "Fullscreen: On" : "Fullscreen: Off");
+        }
+
+        private static string Percent(float volume)
+        {
+            return Mathf.RoundToInt(volume * 100f) + "%";
         }
 
         private void Quit()
@@ -116,15 +137,20 @@ namespace DebtDungeon.Game
             UIKit.Stretch(background);
 
             RectTransform column = UIKit.CreateGroup(background, "Column");
-            UIKit.Center(column, new Vector2(560f, 620f));
+            // Wide enough for the tagline on one line and tall enough for everything, so the layout never has
+            // to squeeze a label below its real height (that's what made the tagline overlap Start).
+            UIKit.Center(column, new Vector2(960f, 760f));
             UIKit.AddVerticalLayout(column, 22f, 0);
 
             UIKit.CreateText(column, "Debt Dungeon", 96f, TextAlignmentOptions.Center, UIKit.Accent);
             UIKit.CreateText(column, "Work off what you owe. Try not to die doing it.", 28f, TextAlignmentOptions.Center, UIKit.MutedText);
-            _startButton = UIKit.CreateButton(column, "Start", _gameManager.OpenCharacterCreation, 72f);
-            _optionsButton = UIKit.CreateButton(column, "Options", () => ShowOptions(true), 72f);
-            UIKit.CreateButton(column, "Credits", () => ShowCredits(true), 72f);
-            UIKit.CreateButton(column, "Quit", Quit, 72f);
+            // The buttons sit in their own group, padded in from the sides so they stay 560 px wide.
+            RectTransform buttons = UIKit.CreateGroup(column, "Buttons");
+            UIKit.AddVerticalLayout(buttons, 22f, 0).padding = new RectOffset(200, 200, 0, 0);
+            _startButton = UIKit.CreateButton(buttons, "Start", _gameManager.OpenCharacterCreation, 72f);
+            _optionsButton = UIKit.CreateButton(buttons, "Options", () => ShowOptions(true), 72f);
+            UIKit.CreateButton(buttons, "Credits", () => ShowCredits(true), 72f);
+            UIKit.CreateButton(buttons, "Quit", Quit, 72f);
 
             // Credits: a window over the menu
             RectTransform credits = UIKit.CreatePanel(background, "Credits", UIKit.Backdrop);
@@ -148,20 +174,29 @@ namespace DebtDungeon.Game
             UIKit.Stretch(options);
             _options = options.gameObject;
             RectTransform optionsWindow = UIKit.CreatePanel(options, "Window", UIKit.PanelColor);
-            UIKit.Center(optionsWindow, new Vector2(640f, 460f));
+            UIKit.Center(optionsWindow, new Vector2(680f, 620f));
             UIKit.AddVerticalLayout(optionsWindow, 16f, 40);
             UIKit.CreateText(optionsWindow, "Options", 56f, TextAlignmentOptions.Center, UIKit.Accent);
 
-            RectTransform volumeRow = UIKit.CreateGroup(optionsWindow, "Volume Row");
-            UIKit.AddHorizontalLayout(volumeRow, 12f, 0);
-            UIKit.SetSize(volumeRow, 64f);
-            UIKit.SetSize(UIKit.CreateButton(volumeRow, "-", () => ChangeVolume(-0.1f), 64f), 64f, 80f).flexibleWidth = 0f;
-            _volumeText = UIKit.CreateText(volumeRow, string.Empty, 30f, TextAlignmentOptions.Center, UIKit.TextColor);
-            UIKit.SetSize(UIKit.CreateButton(volumeRow, "+", () => ChangeVolume(0.1f), 64f), 64f, 80f).flexibleWidth = 0f;
+            _volumeText = CreateVolumeRow(optionsWindow, "Master", ChangeVolume);
+            _musicText = CreateVolumeRow(optionsWindow, "Music", ChangeMusic);
+            _sfxText = CreateVolumeRow(optionsWindow, "Sound effects", ChangeSfx);
 
             _fullscreenButton = UIKit.CreateButton(optionsWindow, string.Empty, ToggleFullscreen, 64f);
             UIKit.CreateText(optionsWindow, "More options in Beta.", 22f, TextAlignmentOptions.Center, UIKit.MutedText);
             _optionsBackButton = UIKit.CreateButton(optionsWindow, "Back", () => ShowOptions(false), 64f);
+        }
+
+        // One "-  Music 60%  +" row. changeBy is called with -0.1 or +0.1.
+        private static TextMeshProUGUI CreateVolumeRow(Transform parent, string name, System.Action<float> changeBy)
+        {
+            RectTransform row = UIKit.CreateGroup(parent, name + " Row");
+            UIKit.AddHorizontalLayout(row, 12f, 0);
+            UIKit.SetSize(row, 64f);
+            UIKit.SetSize(UIKit.CreateButton(row, "-", () => changeBy(-0.1f), 64f), 64f, 80f).flexibleWidth = 0f;
+            TextMeshProUGUI text = UIKit.CreateText(row, string.Empty, 30f, TextAlignmentOptions.Center, UIKit.TextColor);
+            UIKit.SetSize(UIKit.CreateButton(row, "+", () => changeBy(0.1f), 64f), 64f, 80f).flexibleWidth = 0f;
+            return text;
         }
     }
 }

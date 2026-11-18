@@ -32,6 +32,12 @@ namespace DebtDungeon.Game
         /// <summary>The state the game is in now.</summary>
         public GameState CurrentState => _machine.Current;
 
+        /// <summary>
+        /// True while the equipment station has the game paused. The state is still Paused (so time stops and
+        /// Player ignores input), but the pause menu stays hidden and Esc closes the station instead.
+        /// </summary>
+        public bool IsStationOpen { get; private set; }
+
         private void Awake()
         {
             _machine = new GameStateMachine(_startState);
@@ -92,11 +98,50 @@ namespace DebtDungeon.Game
         [ContextMenu("Toggle Pause")]
         public void TogglePause()
         {
-            if (_machine.Current == GameState.Playing)
+            if (IsStationOpen)
+            {
+                CloseStation();
+            }
+            else if (_machine.Current == GameState.Playing)
             {
                 TryChange(GameState.Paused);
             }
             else if (_machine.Current == GameState.Paused)
+            {
+                TryChange(GameState.Playing);
+            }
+        }
+
+        /// <summary>The station screen opens: pause without the pause menu. False if the game isn't Playing.</summary>
+        public bool TryOpenStation()
+        {
+            if (_machine.Current != GameState.Playing)
+            {
+                return false;
+            }
+
+            // Set the flag before the state change, so the pause menu already knows to stay hidden
+            // when it hears GameStateChanged.
+            IsStationOpen = true;
+            if (!TryChange(GameState.Paused))
+            {
+                IsStationOpen = false;
+                return false;
+            }
+
+            return true;
+        }
+
+        /// <summary>The station screen closes: resume play.</summary>
+        public void CloseStation()
+        {
+            if (!IsStationOpen)
+            {
+                return;
+            }
+
+            IsStationOpen = false;
+            if (_machine.Current == GameState.Paused)
             {
                 TryChange(GameState.Playing);
             }

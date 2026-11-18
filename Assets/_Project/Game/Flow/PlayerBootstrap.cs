@@ -26,6 +26,9 @@ namespace DebtDungeon.Game
         [Tooltip("Used when the Main scene is opened directly (no character from the creator). Empty = the catalog's first preset.")]
         [SerializeField] private PresetDefinition _fallbackPreset;
 
+        [Tooltip("The CameraTarget's MouseLean (Player). The Cinemachine camera follows that target; it gets the spawned player here.")]
+        [SerializeField] private MouseLean _cameraTarget;
+
         private PlayerController _controller;
         private AbilityGranter _abilityGranter;
 
@@ -87,8 +90,17 @@ namespace DebtDungeon.Game
             // Progression's player components are added here, so the Player prefab stays Player-only.
             GetOrAdd<PlayerStats>(PlayerObject).Initialize(Character.Stats);
             Defenses = GetOrAdd<PlayerDefenses>(PlayerObject);
-            Defenses.Initialize(Character.Loadout);
+            Defenses.Initialize(Character.Loadout, Character.Stats);
             GetOrAdd<PlayerProgression>(PlayerObject).Initialize(Character);
+
+            if (_cameraTarget != null)
+            {
+                _cameraTarget.SetPlayer(PlayerObject.transform);
+            }
+            else
+            {
+                Debug.LogWarning("PlayerBootstrap has no Camera Target, so the camera won't follow the player.", this);
+            }
 
             _controller = PlayerObject.GetComponent<PlayerController>();
             ApplyBurden();
@@ -113,6 +125,28 @@ namespace DebtDungeon.Game
             {
                 _controller.SetBurdenSteps(Character.Loadout.BurdenSteps);
             }
+        }
+
+        // Play-mode test without attacks: right-click this component's header > this item.
+        // Adds exactly enough XP to reach the next level, through the same CharacterProgress.AddXp a kill uses,
+        // so the level-up event, stat/skill points, HUD and run stats all react as they would in play.
+        [ContextMenu("Debug: Grant XP To Next Level")]
+        private void DebugGrantLevel()
+        {
+            if (!Application.isPlaying || Character == null)
+            {
+                Debug.LogWarning("Enter Play mode in Main first.", this);
+                return;
+            }
+
+            CharacterProgress progress = Character.Progress;
+            if (progress.IsMaxLevel)
+            {
+                Debug.Log("Already at the max level.", this);
+                return;
+            }
+
+            progress.AddXp(progress.XpToNextLevel - progress.CurrentXp);
         }
 
         private PresetDefinition GetFallbackPreset()
