@@ -57,6 +57,10 @@ namespace DebtDungeon.FloorGen
 
             CheckBorder(problems);
             CheckDoorsConnect(problems);
+            if (_isSpawnChunk)
+            {
+                CheckSpawnCenter(problems);
+            }
             return problems;
         }
 
@@ -156,6 +160,22 @@ namespace DebtDungeon.FloorGen
                 if (!reached.Contains(door))
                 {
                     problems.Add("Door tile " + door + " can't be reached from the other doors.");
+                }
+            }
+        }
+
+        // PlayerStart is the center of the spawn chunk, so the four tiles around it must be floor
+        private void CheckSpawnCenter(List<string> problems)
+        {
+            for (int x =ChunkRules.Middle - 1; x <= ChunkRules.Middle; x++)
+            {
+                for (int y = ChunkRules.Middle - 1; y <= ChunkRules.Middle; y++)
+                {
+                    Vector2Int tile = new Vector2Int(x, y);
+                    if (!IsWalkable(tile))
+                    {
+                        problems.Add("Spawn chunks need floor on the four middle tiles (the player start); " + tile + " isn't.");
+                    }
                 }
             }
         }

@@ -12,6 +12,9 @@ namespace DebtDungeon.FloorGen
         public const int DoorStart = 7;
         public const int DoorWidth = 2;
 
+        ///<summary>Half the chunk size. The player starts on the corner shared by the four middle tiles.</summary>
+        public const int Middle = Size / 2;
+
         /// <summary>Chunk-local tile number <paramref name="index"/> (0 or 1) of the door slot on an edge.</summary>
         public static Vector2Int DoorTile(Direction edge, int index)
         {

@@ -1,6 +1,7 @@
 using DebtDungeon.Core;
 using UnityEngine;
 using UnityEngine.Tilemaps;
+using System.Collections.Generic;
 
 namespace DebtDungeon.FloorGen
 {
@@ -31,8 +32,14 @@ namespace DebtDungeon.FloorGen
         private FloorLayoutGenerator _layout;
         private int _currentSeed;
         private ChunkDefinition[,] _placedChunks;
+        private FloorQuery _floorQuery;
 
         public int CurrentSeed => _currentSeed;
+
+        /// <summary>
+        /// The last floor built, or null before the first Generate. Most systems get it from GameEvents.FloorGenerated instead.
+        /// </summary>
+        public IFloorQuery Floor => _floorQuery;
 
         private void Start()
         {
@@ -56,7 +63,12 @@ namespace DebtDungeon.FloorGen
             _placedChunks = _library.PickAll(cells, seed);
             new FloorStamper(_floorTilemap, _wallTilemap, _plugTile).Stamp(cells, _placedChunks);
 
+            // Spawn points come from the chunk markers (next card); empty until then
+            _floorQuery = new FloorQuery(cells, _layout.StartCell, _floorTilemap, _wallTilemap, new List<SpawnPoint>());
+
+            // Log before raising, so the seed is in the Console even if a listener throws
             Debug.Log("Floor generated. Seed: " + seed, this);
+            GameEvents.RaiseFloorGenerated(_floorQuery);
         }
 
         // Logs every missing reference at once, so a broken setup is obvious in the Console
@@ -119,6 +131,7 @@ namespace DebtDungeon.FloorGen
 
             _layout = null;
             _placedChunks = null;
+            _floorQuery = null;
         }
 
         private void OnDrawGizmos()
