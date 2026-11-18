@@ -90,7 +90,7 @@ namespace DebtDungeon.Game
             // Progression's player components are added here, so the Player prefab stays Player-only.
             GetOrAdd<PlayerStats>(PlayerObject).Initialize(Character.Stats);
             Defenses = GetOrAdd<PlayerDefenses>(PlayerObject);
-            Defenses.Initialize(Character.Loadout);
+            Defenses.Initialize(Character.Loadout, Character.Stats);
             GetOrAdd<PlayerProgression>(PlayerObject).Initialize(Character);
 
             if (_cameraTarget != null)
@@ -125,6 +125,28 @@ namespace DebtDungeon.Game
             {
                 _controller.SetBurdenSteps(Character.Loadout.BurdenSteps);
             }
+        }
+
+        // Play-mode test without attacks: right-click this component's header > this item.
+        // Adds exactly enough XP to reach the next level, through the same CharacterProgress.AddXp a kill uses,
+        // so the level-up event, stat/skill points, HUD and run stats all react as they would in play.
+        [ContextMenu("Debug: Grant XP To Next Level")]
+        private void DebugGrantLevel()
+        {
+            if (!Application.isPlaying || Character == null)
+            {
+                Debug.LogWarning("Enter Play mode in Main first.", this);
+                return;
+            }
+
+            CharacterProgress progress = Character.Progress;
+            if (progress.IsMaxLevel)
+            {
+                Debug.Log("Already at the max level.", this);
+                return;
+            }
+
+            progress.AddXp(progress.XpToNextLevel - progress.CurrentXp);
         }
 
         private PresetDefinition GetFallbackPreset()

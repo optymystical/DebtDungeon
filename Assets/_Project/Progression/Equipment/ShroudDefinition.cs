@@ -33,6 +33,9 @@ namespace DebtDungeon.Progression
         /// <summary>Most damage absorbed per hit.</summary>
         public int Limit => _limit;
 
+        /// <summary>A Shroud's Durability, Limit and regen scale with Build (the Magic defensive stat). Listed values = at 10.</summary>
+        public StatType ScalingStat => StatType.Build;
+
         /// <summary>Durability restored per second while regenerating.</summary>
         public float RegenPerSecond => _regenPerSecond;
 

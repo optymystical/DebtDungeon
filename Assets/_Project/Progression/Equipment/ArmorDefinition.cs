@@ -38,6 +38,9 @@ namespace DebtDungeon.Progression
         /// <summary>Most damage absorbed per hit.</summary>
         public int Limit => _limit;
 
+        /// <summary>Armor's Durability and Limit scale with Constitution (the Martial defensive stat). Listed values = at 10.</summary>
+        public StatType ScalingStat => StatType.Constitution;
+
         /// <inheritdoc/>
         public override EquipmentSlot Slot => EquipmentSlot.Armor;
 

@@ -18,6 +18,9 @@ namespace DebtDungeon.Progression
         /// <summary>The armor this pool belongs to.</summary>
         public ArmorDefinition Armor { get; }
 
+        /// <inheritdoc/>
+        public override StatType ScalingStat => Armor.ScalingStat;
+
         /// <summary>Back to full Durability (the station's repair).</summary>
         public void Repair()
         {

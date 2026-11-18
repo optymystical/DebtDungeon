@@ -5,7 +5,8 @@ namespace DebtDungeon.Progression
 {
     /// <summary>
     /// Connects the player's loadout to Core's Health: registers worn armor or Shroud as a damage absorber,
-    /// swaps it when the loadout changes, ticks Shroud regeneration, and repairs armor for the station.
+    /// swaps it when the loadout changes, scales it with the defensive stat, ticks Shroud regeneration,
+    /// and repairs armor for the station.
     /// </summary>
     [RequireComponent(typeof(Health))]
     [DisallowMultipleComponent]
@@ -13,6 +14,7 @@ namespace DebtDungeon.Progression
     {
         private Health _health;
         private Loadout _loadout;
+        private CharacterStats _stats;
         private ArmorAbsorber _armor;
         private ShroudAbsorber _shroud;
         private bool _isSubscribed;
@@ -46,8 +48,11 @@ namespace DebtDungeon.Progression
             Unsubscribe();
         }
 
-        /// <summary>Gives the player a loadout and registers its armor or Shroud. Call once when the player spawns.</summary>
-        public void Initialize(Loadout loadout)
+        /// <summary>
+        /// Gives the player a loadout (and the stats that scale its armor or Shroud) and registers the absorbers.
+        /// Call once when the player spawns. stats can be null (tests, sandboxes): the items then use their listed values.
+        /// </summary>
+        public void Initialize(Loadout loadout, CharacterStats stats = null)
         {
             if (loadout == null)
             {
@@ -57,6 +62,7 @@ namespace DebtDungeon.Progression
 
             Unsubscribe();
             _loadout = loadout;
+            _stats = stats;
             Subscribe();
             RefreshAbsorbers();
         }
@@ -89,6 +95,24 @@ namespace DebtDungeon.Progression
                 _shroud = wornShroud != null ? new ShroudAbsorber(wornShroud) : null;
                 _health.AddAbsorber(_shroud);
             }
+
+            // A newly worn item starts full, then scales up keeping 100%.
+            ApplyStatScaling();
+        }
+
+        // Stats changed (a stat point, an affix, a level) or an item was swapped: rescale both pools.
+        private void ApplyStatScaling()
+        {
+            ApplyStatPower(_armor);
+            ApplyStatPower(_shroud);
+        }
+
+        private void ApplyStatPower(EquipmentAbsorber absorber)
+        {
+            if (absorber != null)
+            {
+                absorber.ApplyStatPower(_stats != null ? _stats.GetPower(absorber.ScalingStat) : 1f);
+            }
         }
 
         private void Subscribe()
@@ -99,6 +123,11 @@ namespace DebtDungeon.Progression
             }
 
             _loadout.LoadoutChanged += RefreshAbsorbers;
+            if (_stats != null)
+            {
+                _stats.StatsChanged += ApplyStatScaling;
+            }
+
             _isSubscribed = true;
         }
 
@@ -110,6 +139,11 @@ namespace DebtDungeon.Progression
             }
 
             _loadout.LoadoutChanged -= RefreshAbsorbers;
+            if (_stats != null)
+            {
+                _stats.StatsChanged -= ApplyStatScaling;
+            }
+
             _isSubscribed = false;
         }
     }

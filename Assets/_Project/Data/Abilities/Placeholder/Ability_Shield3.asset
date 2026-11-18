@@ -13,9 +13,9 @@ MonoBehaviour:
   m_Name: Ability_Shield3
   m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PlaceholderAbility
   _id: shield_3
-  _displayName: Shield III (Adjust)
-  _description: "Upgrades Shield II: hits the shield fully absorbs don't restart your Shroud's recovery delay. (Placeholder: not usable until the ability framework lands.)"
+  _displayName: Shield III (Emplace)
+  _description: "Upgrades Shield II: Q raises a shield wall toward the mouse instead of a bubble (15 x Power health, 4 s). Enemies and their attacks cannot pass through it; you and your attacks can. Still reflects absorbed damage. (Placeholder: not usable until the ability framework lands.)"
   _icon: {fileID: 0}
   _kind: 1
-  _cooldown: 6
+  _cooldown: 8
   _energyCost: 30

@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PlaceholderAbility
   _id: crackle
   _displayName: Crackle
-  _description: "A bolt toward the mouse (8 x Power Magic damage) that chains to nearby enemies, each jump at -20% Accuracy, up to 4 jumps. (Placeholder: not usable until the ability framework lands.)"
+  _description: "A bolt toward the mouse (8 x Power Magic damage) that chains from each target hit to the nearest enemy it has not hit yet, each jump at another -20% Accuracy, until a jump misses or no one is left in range. (Placeholder: not usable until the ability framework lands.)"
   _icon: {fileID: 0}
   _kind: 2
   _cooldown: 3

@@ -14,8 +14,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PlaceholderAbility
   _id: close_quarters
   _displayName: Close Quarters
-  _description: "Guarded for 3 s: melee attacks against you have -40% Accuracy. (Placeholder: not usable until the ability framework lands.)"
+  _description: "Passive: melee attacks against you have -20% Accuracy while you wield a bladed weapon. (Placeholder: not usable until the ability framework lands.)"
   _icon: {fileID: 0}
-  _kind: 2
-  _cooldown: 10
-  _energyCost: 15
+  _kind: 3
+  _cooldown: 0
+  _energyCost: 0
