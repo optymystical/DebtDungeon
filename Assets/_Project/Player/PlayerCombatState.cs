@@ -1,26 +1,15 @@
 using DebtDungeon.Core;
 using UnityEngine;
-using UnityEngine.Serialization;
 using System.Collections;
 
 namespace DebtDungeon.Player
 {
     public class PlayerCombatState : MonoBehaviour, ICombatState
     {
-        [FormerlySerializedAs("_Health")]
         [SerializeField] private Health _health;
         private bool _inCombat = false;
         public bool InCombat => _inCombat;
         private Coroutine _myCoroutine;
-
-        private void Awake()
-        {
-            // Not wired on the player prefab, so fall back to this object's Health.
-            if (_health == null)
-            {
-                _health = GetComponent<Health>();
-            }
-        }
 
         private void OnEnable()
         {
@@ -31,7 +20,7 @@ namespace DebtDungeon.Player
         {
             _health.Damaged -= EnterCombat;
 
-            // Disabling stops the timer coroutine, so reset here or InCombat could stay true forever.
+            // Resetting 
             _inCombat = false;
             _myCoroutine = null;
         }
@@ -41,7 +30,7 @@ namespace DebtDungeon.Player
             MarkInCombat();
         }
 
-        /// <summary>Starts or restarts the 5 s in-combat timer. Call this from attack code when the player attacks.</summary>
+        // Starts or restarts the 5 sec in-combat timer. Call this from attack code when the player attacks
         public void MarkInCombat()
         {
             _inCombat = true;

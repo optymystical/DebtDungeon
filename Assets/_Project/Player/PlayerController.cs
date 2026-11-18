@@ -9,6 +9,7 @@ namespace DebtDungeon.Player
         [Header("References")]
         [SerializeField] private Rigidbody2D _rb;
         [SerializeField] private HitFeedback _hitFeedback;
+        [SerializeField] private AbilityRunner _abilityRunner;
 
         [Header("Settings")]
         [SerializeField] private float _baseMoveSpeed = 1;
@@ -57,6 +58,7 @@ namespace DebtDungeon.Player
             _openInventoryAction = InputSystem.actions.FindAction("Player/Open Inventory");
             _openSkillsAction = InputSystem.actions.FindAction("Player/Open Skills");
             _pauseAction = InputSystem.actions.FindAction("Player/Pause");
+            _abilityRunner = GetComponent<AbilityRunner>();
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -73,7 +75,6 @@ namespace DebtDungeon.Player
         private void Update()
         {
             // Core v1.4: no player input while paused or on the death/results screen.
-            // Time.timeScale = 0 stops movement, but Update still runs and would still read keys.
             if (IsInputBlocked())
             {
                 _moveInput = Vector2.zero;
@@ -84,8 +85,7 @@ namespace DebtDungeon.Player
             FaceCursor();
         }
 
-        // Blocked only in the frozen states, so sandbox scenes without a GameManager
-        // (CurrentGameState stays at its MainMenu default there) still accept input.
+        // Blocked only in the frozen states, so sandbox scenes without a GameManager still accept input.
         private static bool IsInputBlocked()
         {
             GameState state = GameEvents.CurrentGameState;
@@ -128,37 +128,37 @@ namespace DebtDungeon.Player
             }
             else if (_attackAction.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseBasicAttack(_mouseDirection);
             }
 
             // Can the player click a mouse button and any of these keys at once?
             if (_ability1Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(1);
             }
             else if (_ability2Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(2);
             }
             else if (_ability3Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(3);
             }
             else if (_ability4Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(4);
             }
             else if (_ability5Action.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseAbility(5);
             }
             else if (_defensiveAction.WasPressedThisFrame())
             {
-                
+                _abilityRunner.TryUseDefensive();
             }
             else if (_interactAction.WasPressedThisFrame())
             {
-                
+                // Not used for now?
             }
             else if (_useItemAction.WasPressedThisFrame())
             {
@@ -171,11 +171,11 @@ namespace DebtDungeon.Player
             }
             else if (_openSkillsAction.WasPressedThisFrame())
             {
-                
+                // Not used for now?
             }
             else if (_pauseAction.WasPressedThisFrame())
             {
-                
+                // Not used for now?
             }
 
             // Scroll through consumables
@@ -219,13 +219,13 @@ namespace DebtDungeon.Player
             }
         }
 
-        /// <summary>Speed multiplier from the ground under the player (water). 1 = normal.</summary>
+        // Speed multiplier from the ground under the player (water). 1 = normal
         public void SetTerrainMultiplier(float multiplier)
         {
             _terrainMultiplier = Mathf.Max(0f, multiplier);
         }
 
-        /// <summary>Speed multiplier from status effects (Slowed). 1 = normal. Set by StatusEffects.</summary>
+        // Speed multiplier from status effects (Slowed). 1 = normal. Set by StatusEffects
         public void SetStatusSpeedMultiplier(float multiplier)
         {
             _statusSpeedMultiplier = Mathf.Max(0f, multiplier);

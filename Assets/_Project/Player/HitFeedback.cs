@@ -7,12 +7,12 @@ namespace DebtDungeon.Player
 {
     public class HitFeedback : MonoBehaviour
     {
-        [FormerlySerializedAs("_Health")]
         [SerializeField] private Health _health;
         [SerializeField] private SpriteRenderer _spriteRenderer;
         [SerializeField] private Rigidbody2D _rigidBody;
         [SerializeField] private float _knockbackForce = 1f;
         [SerializeField] private float _knockbackDelay = 0.5f;
+        [SerializeField] private PlayerCombatState _playerCombatState;
         private Color _originalColor;
         private bool _isKnockingBack = false;
         private Coroutine _flashRoutine;
@@ -30,6 +30,7 @@ namespace DebtDungeon.Player
         }
         public void PlayerHit(DamageInfo info, int damage)
         {
+            _playerCombatState.MarkInCombat();
             FlashSprite();
             Knockback(info.Source);
         }

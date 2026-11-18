@@ -51,7 +51,7 @@ namespace DebtDungeon.Player
             // Fakes Attack
             if (Keyboard.current.spaceKey.wasPressedThisFrame)
             {
-                RollToHit();
+                //RollToHit();
             }
         }
 
