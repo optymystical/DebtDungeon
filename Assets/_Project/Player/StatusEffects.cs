@@ -22,6 +22,11 @@ namespace DebtDungeon.Player
         [SerializeField] private float _poisonDuration = 3f;
         [SerializeField] private int _strengthenStacks = 0;
         [SerializeField] private float _strengthenDuration = 3f;
+        [SerializeField] private int _weakenedStacks = 0;
+        [SerializeField] private float _weakenedDuration = 3f;
+        public int StrengthenedStacks => _weakenedStacks;
+        public int WeakenedStacks => _weakenedStacks;
+        private const int _maxStacks = 3;
 
         private List<StatusEffectType> _statusEffectTypes = new List<StatusEffectType>();
 
@@ -37,9 +42,13 @@ namespace DebtDungeon.Player
         private Coroutine _strengthenCoroutine;
         private float _strengthenEndTime;
 
+        private Coroutine _weakenedCoroutine;
+        private float _weakenedEndTime;
+
         public bool IsSlowed => _slowCoroutine != null;
         public bool IsPoisoned => _poisonCoroutine != null;
-        public bool IsStrengthened => _strengthenCoroutine != null;
+        public bool IsStrengthened => _strengthenStacks > 0;
+        public bool IsWeakened => _weakenedStacks > 0;
 
         public event System.Action<List<StatusEffectType>> EffectsChanged;
 
@@ -63,6 +72,7 @@ namespace DebtDungeon.Player
             RemoveStatus(StatusEffectType.Slowed);
             RemoveStatus(StatusEffectType.Poisoned);
             RemoveStatus(StatusEffectType.Strengthened);
+            RemoveStatus(StatusEffectType.Weakened);
         }
 
         // Core's IStatusReceiver: how AI, traps and abilities apply effects to the player
@@ -83,6 +93,9 @@ namespace DebtDungeon.Player
                     break;
                 case StatusEffectType.Strengthened:
                     ApplyStrengthened(duration, (int)magnitude);
+                    break;
+                case StatusEffectType.Weakened:
+                    ApplyWeakened(duration, (int)magnitude);
                     break;
             }
 
@@ -110,6 +123,10 @@ namespace DebtDungeon.Player
                     duration = _strengthenDuration;
                     magnitude = _strengthenStacks;
                     break;
+                case StatusEffectType.Weakened:
+                    duration = _weakenedDuration;
+                    magnitude = _weakenedStacks;
+                    break;
             }
 
             ApplyStatus(type, duration, magnitude, null, Faction.Spider, 1);
@@ -129,6 +146,8 @@ namespace DebtDungeon.Player
                         StopCoroutine(_slowCoroutine);
                     }
 
+                    _slowCoroutine = null;
+                    _slowEndTime = 0f;
                     EndSlow();
                     break;
                 case StatusEffectType.Poisoned:
@@ -139,6 +158,26 @@ namespace DebtDungeon.Player
 
                     _poisonCoroutine = null;
                     _poisonEndTime = 0f;
+                    break;
+                case StatusEffectType.Strengthened:
+                    if (_strengthenCoroutine != null)
+                    {
+                        StopCoroutine(_strengthenCoroutine);
+                    }
+
+                    _strengthenCoroutine = null;
+                    _strengthenEndTime = 0f;
+                    _strengthenStacks = 0;
+                    break;
+                case StatusEffectType.Weakened:
+                    if (_weakenedCoroutine != null)
+                    {
+                        StopCoroutine(_weakenedCoroutine);
+                    }
+
+                    _weakenedCoroutine = null;
+                    _weakenedEndTime = 0f;
+                    _weakenedStacks = 0;
                     break;
             }
 
@@ -169,14 +208,11 @@ namespace DebtDungeon.Player
                 yield return null;
             }
 
-            EndSlow();
+            RemoveStatus(StatusEffectType.Slowed);
         }
 
         private void EndSlow()
         {
-            _slowCoroutine = null;
-            _slowEndTime = 0f;
-
             if (_playerController != null)
             {
                 _playerController.SetStatusSpeedMultiplier(1f);
@@ -211,8 +247,6 @@ namespace DebtDungeon.Player
                 // Source can be null (the spider may be dead by now); Health and the death screen handle that.
                 _health.TakeDamage(new DamageInfo(_poisonDamagePerTick, DamageType.Poison, _poisonSource, _poisonFaction));
             }
-
-            _poisonCoroutine = null;
         }
 
         // Applies stacks of strengthened buff
@@ -220,10 +254,13 @@ namespace DebtDungeon.Player
         {
             _strengthenEndTime = Mathf.Max(_strengthenEndTime, Time.time + duration);
 
-            if (_playerController != null)
+            _strengthenStacks += stacks;
+            if (_strengthenStacks > _maxStacks)
             {
-                //_playerController.SetStatusSpeedMultiplier(1f);  Attack code needs a stat to modifier here
+                _strengthenStacks = _maxStacks;
             }
+
+            _weakenedStacks = 0;
 
             if (_strengthenCoroutine == null)
             {
@@ -239,18 +276,37 @@ namespace DebtDungeon.Player
                 yield return null;
             }
 
-            EndStrengthen();
+            RemoveStatus(StatusEffectType.Strengthened);
         }
 
-        private void EndStrengthen()
+        // Applies stacks of strengthened buff
+        private void ApplyWeakened(float duration, int stacks)
         {
-            _strengthenCoroutine = null;
-            _strengthenEndTime = 0f;
+            _weakenedEndTime = Mathf.Max(_weakenedEndTime, Time.time + duration);
 
-            if (_playerController != null)
+            _weakenedStacks += stacks;
+            if (_weakenedStacks > _maxStacks)
             {
-                //_playerController.SetStatusSpeedMultiplier(1f);  Attack code needs a stat to modifier here
+                _weakenedStacks = _maxStacks;
             }
+
+            _strengthenStacks = 0;
+
+            if (_weakenedCoroutine == null)
+            {
+                _weakenedCoroutine = StartCoroutine(WeakenedTimer());
+            }
+        }
+
+        // Waits until the (possibly refreshed) end time, then restores
+        private IEnumerator WeakenedTimer()
+        {
+            while (Time.time < _weakenedEndTime)
+            {
+                yield return null;
+            }
+
+            RemoveStatus(StatusEffectType.Weakened);
         }
     }
 }

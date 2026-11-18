@@ -9,6 +9,7 @@ namespace DebtDungeon.Player
     {
         [SerializeField] private GameObject _player;
         [SerializeField] private PlayerCombatState _playerCombatState;
+        [SerializeField] private StatusEffects _statusEffects;
         private List<AbilityDefinition> _abilities = new List<AbilityDefinition>();
         private Dictionary<AbilityDefinition, float> _readyTime = new Dictionary<AbilityDefinition, float>();
         private IStatProvider _stats;
@@ -103,6 +104,17 @@ namespace DebtDungeon.Player
             yield return new WaitForSeconds(basicAttack.Windup);
             _readyTime[basicAttack] = Time.time + basicAttack.Cooldown;
             float power = _stats != null ? StatRules.GetPower(_stats.GetStat(basicAttack.ScalingStat)) : 1f;
+
+            // Detect if player is strong or weak to modify power before Execute
+            if (_statusEffects.StrengthenedStacks > 0)
+            {
+                power *= _statusEffects.StrengthenedStacks;
+            }
+            else if (_statusEffects.WeakenedStacks > 0)
+            {
+                power /= _statusEffects.StrengthenedStacks;
+            }
+
             basicAttack.Execute(_player, Faction.Player, direction, Mathf.RoundToInt(basicAttack.BaseDamage * power), 100);
             _windingUpCoroutine = null;
         }
