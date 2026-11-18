@@ -15,14 +15,14 @@ namespace DebtDungeon.Player
             foreach (Collider2D collider in colliders)
             {
                 // Only attack valid colliders
-                Health health = collider.GetComponentInParent<Health>();
-                if (health != null && collider.gameObject.transform.parent.gameObject != user && health.IsAlive
-                    && health.Faction != Faction.Player)
+                Health targetsHealth = collider.GetComponentInParent<Health>();
+                if (targetsHealth != null && collider.gameObject.transform.parent.gameObject != user && targetsHealth.IsAlive
+                    && targetsHealth.Faction != Faction.Player)
                 {
                     HitResult result = CombatRules.RollHit(accuracy);
                     if (result != HitResult.Miss)
                     {
-                        health.TakeDamage(new DamageInfo(CombatRules.GetDamage(damage, result), _damageType, user,
+                        targetsHealth.TakeDamage(new DamageInfo(CombatRules.GetDamage(damage, result), _damageType, user,
                             userFaction, result == HitResult.Critical));
                     }
                 }
