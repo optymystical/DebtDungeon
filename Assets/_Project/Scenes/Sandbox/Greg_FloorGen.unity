@@ -463,7 +463,8 @@ MonoBehaviour:
   _floorTilemap: {fileID: 201086798}
   _wallTilemap: {fileID: 717585410}
   _plugTile: {fileID: 11400000, guid: 57331e79df720b8488b8d6128c743413, type: 2}
-  _debugSeed: 720792279
+  _waterTile: {fileID: 11400000, guid: 0242756baa16c594d8a06f731bf3dfd4, type: 2}
+  _debugSeed: 1664472257
   _generateOnStart: 1
   _showCellOverlay: 0
   _overlayAlpha: 0.35

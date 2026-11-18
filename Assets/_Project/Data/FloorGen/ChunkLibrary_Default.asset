@@ -19,3 +19,8 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3443b00739e45b34293c5a8218125ddf, type: 2}
   - {fileID: 11400000, guid: 374dc878170dc0a44849b124e5d019df, type: 2}
   - {fileID: 11400000, guid: 13c1d578a180d7341b0e3b78c469d88c, type: 2}
+  _spawnerMarker: {fileID: 11400000, guid: ea5d48bce1558134e8b6ca57d71dd016, type: 2}
+  _stationMarker: {fileID: 11400000, guid: 6d35bacd1fe21df4491b95b8a4c4d730, type: 2}
+  _chestMarker: {fileID: 11400000, guid: 3df9271c1f2937a409f1f455a6db34e0, type: 2}
+  _enemyMarker: {fileID: 11400000, guid: c5f36bf337ec04c419799d5ece667eda, type: 2}
+  _waterMarker: {fileID: 11400000, guid: 430322f25a57ccb449d6ebff449c5464, type: 2}
