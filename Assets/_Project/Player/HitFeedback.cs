@@ -32,7 +32,12 @@ namespace DebtDungeon.Player
         {
             _playerCombatState.MarkInCombat();
             FlashSprite();
-            Knockback(info.Source);
+
+            // Wrap-up fix (Chris/Claude): poison ticks are damage over time, not a hit, so they don't knock back.
+            if (info.Type != DamageType.Poison)
+            {
+                Knockback(info.Source);
+            }
         }
 
         private void OnEnable()

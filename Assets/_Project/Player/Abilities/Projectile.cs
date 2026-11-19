@@ -15,6 +15,12 @@ namespace DebtDungeon.Player
         private int _accuracy;
         private DamageType _damageType;
 
+        /// <summary>
+        /// Wrap-up addition (Chris/Claude): raised when the projectile reaches a living enemy, with the roll result
+        /// (Miss included). Crackle listens to it to start its chain. Basic attacks don't use it.
+        /// </summary>
+        public event System.Action<Health, HitResult> Hit;
+
         private void Awake()
         {
             _rb = GetComponent<Rigidbody2D>();
@@ -66,6 +72,7 @@ namespace DebtDungeon.Player
                     targetsHealth.TakeDamage(new DamageInfo(CombatRules.GetDamage(_damage, result), _damageType, _user,
                         _faction, result == HitResult.Critical));
                 }
+                Hit?.Invoke(targetsHealth, result);
                 Destroy(gameObject);
             }
         }

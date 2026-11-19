@@ -249,6 +249,23 @@ namespace DebtDungeon.AI
             ForceRepath(rallyPoint);
         }
 
+        /// <summary>
+        /// Wrap-up addition (Chris/Claude): drops the current target if it's this one, as if it went out of sight.
+        /// The normal state routing picks the next state (Wander / Rally / Raid) on the next update.
+        /// Used by Game's showcase ghost mode.
+        /// </summary>
+        public void ForgetTarget(Health target)
+        {
+            if (target == null || _currentTarget != target)
+            {
+                return;
+            }
+
+            _currentTarget = null;
+            _isTelegraphing = false;
+            ClearRangedTelegraphs();
+        }
+
         public void CancelRally()
         {
             if (!IsAlive)
@@ -589,6 +606,17 @@ namespace DebtDungeon.AI
                         _agent.VisualRenderer.color = new Color(1f, 0.65f, 0.2f);
                     }
 
+                    // Wrap-up addition (Chris/Claude): melee attacks show their reach while winding up.
+                    // ExecuteCoreCombatAttack hits the target if it's within AttackRange * 1.25, so the ring
+                    // is that size. It follows the attacker and is removed by ClearRangedTelegraphs.
+                    if (!isRanged && _agent.Stats != null && _agent.Stats.ShowGroundWarningCircle && _windupWarningCirclePrefab != null)
+                    {
+                        ClearRangedTelegraphs();
+                        _activeWindupCircle = Instantiate(_windupWarningCirclePrefab, transform.position, Quaternion.identity, transform);
+                        float meleeDiameter = attackRange * 1.25f * 2f;
+                        _activeWindupCircle.transform.localScale = new Vector3(meleeDiameter, meleeDiameter, 1f);
+                    }
+
                     if (isRanged)
                     {
                         _lockedAimPosition = _currentTarget.transform.position;
@@ -698,7 +726,8 @@ namespace DebtDungeon.AI
             }
 
             int accuracy = _agent.Stats != null ? _agent.Stats.Accuracy : CombatRules.BaseAccuracy;
-            HitResult hitResult = CombatRules.RollHit(accuracy);
+            // Wrap-up change (Chris/Claude, Core v1.7): roll against the target so its defenses (Close Quarters) count.
+            HitResult hitResult = CombatRules.RollHitAgainst(accuracy, _currentTarget, true);
 
             if (hitResult == HitResult.Miss)
             {

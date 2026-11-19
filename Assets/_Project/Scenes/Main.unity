@@ -314,6 +314,74 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1001 &260033912
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    serializedVersion: 3
+    m_TransformParent: {fileID: 0}
+    m_Modifications:
+    - target: {fileID: 3515099957080583995, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_Name
+      value: Floor
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalRotation.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalRotation.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalRotation.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 9126720729135392839, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+    m_RemovedGameObjects: []
+    m_AddedGameObjects: []
+    m_AddedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+--- !u!114 &260033913 stripped
+MonoBehaviour:
+  m_CorrespondingSourceObject: {fileID: 2469256595798791893, guid: 6b9f2f3e26fbdc343bc5b8ad5509c310, type: 3}
+  m_PrefabInstance: {fileID: 260033912}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 037f9b3a4ddd4a449b0d051e140ecddb, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.FloorGen::DebtDungeon.FloorGen.FloorGenerator
 --- !u!1 &541089412
 GameObject:
   m_ObjectHideFlags: 0
@@ -429,83 +497,6 @@ Transform:
   m_Children: []
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!1001 &702102594
-PrefabInstance:
-  m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 3260601129962617940, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_Name
-      value: GoblinSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: _guardConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: 0f06e530e2ca480419760b6b96962d23, type: 2}
-    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: _guardPrefab
-      value: 
-      objectReference: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
-    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: _spawnInterval
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: _specialistConfig
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 4364144537603858319, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: _specialistPrefab
-      value: 
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: 7
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
 --- !u!1 &834524532
 GameObject:
   m_ObjectHideFlags: 0
@@ -578,6 +569,9 @@ GameObject:
   - component: {fileID: 1398917783}
   - component: {fileID: 1398917784}
   - component: {fileID: 1398917785}
+  - component: {fileID: 1398917786}
+  - component: {fileID: 1398917787}
+  - component: {fileID: 1398917788}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -715,7 +709,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 2c69005d5e60461f9a4360e13ae55931, type: 3}
   m_Name: 
   m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.PlayerBootstrap
-  _playerPrefab: {fileID: 2152425332740726653, guid: 546c3f7259bd1014e929e5695d76f041, type: 3}
+  _playerPrefab: {fileID: 707825229474092213, guid: 3e026a5421e806447a73524dd59fa970, type: 3}
   _spawnPoint: {fileID: 541089413}
   _catalog: {fileID: 11400000, guid: f61356037d7a475a91b73169cb955798, type: 2}
   _fallbackPreset: {fileID: 11400000, guid: 484736db625b461faf61b75acd6e6a7b, type: 2}
@@ -809,75 +803,61 @@ MonoBehaviour:
   _bootstrap: {fileID: 0}
   _stationPrefab: {fileID: 7257112416641590013, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
   _placeholderStation: {fileID: 1009783181}
---- !u!1001 &1822066189
-PrefabInstance:
+--- !u!114 &1398917786
+MonoBehaviour:
   m_ObjectHideFlags: 0
-  serializedVersion: 2
-  m_Modification:
-    serializedVersion: 3
-    m_TransformParent: {fileID: 0}
-    m_Modifications:
-    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: _guardConfig
-      value: 
-      objectReference: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
-    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: _guardPrefab
-      value: 
-      objectReference: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
-    - target: {fileID: 1666856103449189834, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: _spawnInterval
-      value: 20
-      objectReference: {fileID: 0}
-    - target: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_Name
-      value: SpiderSpawner
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalPosition.x
-      value: -7
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalPosition.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalPosition.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalRotation.w
-      value: 1
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalRotation.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalRotation.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalRotation.z
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.x
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.y
-      value: 0
-      objectReference: {fileID: 0}
-    - target: {fileID: 8282751325776492793, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
-      propertyPath: m_LocalEulerAnglesHint.z
-      value: 0
-      objectReference: {fileID: 0}
-    m_RemovedComponents: []
-    m_RemovedGameObjects: []
-    m_AddedGameObjects: []
-    m_AddedComponents: []
-  m_SourcePrefab: {fileID: 100100000, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398917773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: b8a2bf16519822f4ba4e368cdfd71e2b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.FloorBootstrap
+  _floorGenerator: {fileID: 260033913}
+  _useSeedOverride: 0
+  _seedOverride: 0
+--- !u!114 &1398917787
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398917773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1c14a43f6993cbd40982ac956c3dc61b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.DamageNumbers
+  _lifetime: 0.7
+  _riseDistance: 0.8
+  _startHeight: 0.6
+  _fontSize: 4
+--- !u!114 &1398917788
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1398917773}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 0c1d2e3f40514263a4b5c6d7e8f90a1b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: DebtDungeon.Game::DebtDungeon.Game.ShowcaseRoom
+  _bootstrap: {fileID: 0}
+  _roomCenter: {x: -60, y: 40}
+  _roomSize: {x: 28, y: 18}
+  _floorSprite: {fileID: 21300000, guid: 8a2b3c4d5e6f40718293a4b5c6d7e8f9, type: 3}
+  _wallSprite: {fileID: 21300000, guid: 9b3c4d5e6f70418293a4b5c6d7e8f9a0, type: 3}
+  _goblinGruntPrefab: {fileID: 4645621396471598311, guid: bcf18a1ea511f1d47ba973c0d89ecc6f, type: 3}
+  _goblinSlingerPrefab: {fileID: 4645621396471598311, guid: 7fd1e2313685d904cb83401057bed224, type: 3}
+  _skitterlingPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
+  _webWeaverPrefab: {fileID: 6283056031644735363, guid: d3cafb3a51b124e49b2c51a71debaa8b, type: 3}
+  _goblinCampPrefab: {fileID: 3260601129962617940, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
+  _spiderNestPrefab: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
+  _stationPrefab: {fileID: 7257112416641590013, guid: 6ecc3dfcc51967e478f54704b8f6ae6d, type: 3}
 --- !u!1 &1890246882
 GameObject:
   m_ObjectHideFlags: 0
@@ -1062,6 +1042,7 @@ MonoBehaviour:
     RallyOffsetDistance: 2.2
     RaidHornCue: {fileID: 0}
     Timer: 0
+    RallyElapsed: 0
     IsRallying: 0
     ActiveRallyPoint: {x: 0, y: 0}
     RaidSquad: []
@@ -1071,6 +1052,7 @@ MonoBehaviour:
     RallyOffsetDistance: 2.2
     RaidHornCue: {fileID: 0}
     Timer: 0
+    RallyElapsed: 0
     IsRallying: 0
     ActiveRallyPoint: {x: 0, y: 0}
     RaidSquad: []
@@ -1166,10 +1148,9 @@ SceneRoots:
   - {fileID: 619394802}
   - {fileID: 1398917775}
   - {fileID: 541089413}
-  - {fileID: 702102594}
-  - {fileID: 1822066189}
   - {fileID: 2085050230}
   - {fileID: 1041466499301829804}
   - {fileID: 1890246886}
   - {fileID: 61449489}
   - {fileID: 834524534}
+  - {fileID: 260033912}

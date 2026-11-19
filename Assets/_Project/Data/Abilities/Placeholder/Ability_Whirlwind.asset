@@ -9,13 +9,19 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ebf8ecfcf44625a3981eaf028c4b93, type: 3}
+  m_Script: {fileID: 11500000, guid: b2d5f8013cae4d7f9a4b6c8e0f2d3a51, type: 3}
   m_Name: Ability_Whirlwind
-  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PlaceholderAbility
+  m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.SpinAttackDefinition
   _id: whirlwind
   _displayName: Whirlwind
-  _description: "Spin 360 degrees and hit every enemy in your weapon's reach for your basic attack damage. (Placeholder: not usable until the ability framework lands.)"
+  _description: "Spin 360 degrees and hit every enemy in your weapon's reach for your basic attack damage."
   _icon: {fileID: 0}
   _kind: 2
   _cooldown: 6
   _energyCost: 20
+  _windup: 0.2
+  _hits: 1
+  _timeBetweenHits: 0.25
+  _damageMultiplier: 1
+  _fallbackReach: 1.5
+  _spinSprite: {fileID: 21300000, guid: 7f3a6c1e9d2b4a8f8e5c0b1a2d3e4f5c, type: 3}

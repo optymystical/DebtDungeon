@@ -64,8 +64,8 @@ MonoBehaviour:
   _fallbackMaxResidents: 6
   _fallbackMaxGuards: 2
   _spawnInterval: 20
-  _specialistPrefab: {fileID: 0}
-  _specialistConfig: {fileID: 0}
+  _specialistPrefab: {fileID: 4645621396471598311, guid: 7fd1e2313685d904cb83401057bed224, type: 3}
+  _specialistConfig: {fileID: 11400000, guid: d43e63da6d6252e43b05b343038b5e2a, type: 2}
   _specialistSpawnChance: 0.3
   _exitKeyPrefab: {fileID: 1871191044612620439, guid: 74384c25a2040634a9931f2c7a591a00, type: 3}
 --- !u!61 &2875078934921924607
@@ -196,8 +196,8 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 525232168
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
   m_Sprite: {fileID: -5597245130582148735, guid: 38c71ad68d94eae48ba790fbbe93138a, type: 3}

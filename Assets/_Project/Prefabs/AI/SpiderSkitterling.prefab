@@ -205,7 +205,7 @@ MonoBehaviour:
   _attackCooldown: 1.2
   _fleeHealthThreshold: 0.2
   _trajectoryLine: {fileID: 0}
-  _windupWarningCirclePrefab: {fileID: 0}
+  _windupWarningCirclePrefab: {fileID: 5038285919432990541, guid: a6e8a9ff5e483a74ca4096ffc23133a9, type: 3}
 --- !u!114 &7192877917674648436
 MonoBehaviour:
   m_ObjectHideFlags: 0

@@ -15,6 +15,12 @@ namespace DebtDungeon.Core
         /// <summary>Anything with Health died. Raised automatically by Health. Progression awards XP; Game drops gold.</summary>
         public static event Action<KillInfo> ActorKilled;
 
+        /// <summary>
+        /// Core v1.8. Anything with Health took a hit: (who was hit, the hit, the damage that got through after
+        /// armor/Shroud). Raised automatically by Health, right after its own Damaged event. Game shows damage numbers.
+        /// </summary>
+        public static event Action<Health, DamageInfo, int> ActorDamaged;
+
         /// <summary>The player died. Raised automatically by Health, right after ActorKilled. Game shows the death screen.</summary>
         public static event Action<KillInfo> PlayerDied;
 
@@ -43,6 +49,12 @@ namespace DebtDungeon.Core
         public static void RaiseFloorGenerated(IFloorQuery floor)
         {
             FloorGenerated?.Invoke(floor);
+        }
+
+        /// <summary>Announces a hit. Only Health should call this.</summary>
+        public static void RaiseActorDamaged(Health target, DamageInfo damage, int damageTaken)
+        {
+            ActorDamaged?.Invoke(target, damage, damageTaken);
         }
 
         /// <summary>Announces a death. Health calls this; other code shouldn't need to.</summary>
@@ -91,6 +103,7 @@ namespace DebtDungeon.Core
         {
             FloorGenerated = null;
             ActorKilled = null;
+            ActorDamaged = null;
             PlayerDied = null;
             PlayerLeveledUp = null;
             SpawnerDestroyed = null;

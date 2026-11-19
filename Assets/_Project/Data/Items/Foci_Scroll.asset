@@ -17,7 +17,8 @@ MonoBehaviour:
   _description: "Channeler Foci (heavy). Slower, heavier bolts that scale with Reach. 2 free Offensive Affix slots."
   _icon: {fileID: 0}
   _statBonuses: []
-  _grantedAbilities: []
+  _grantedAbilities:
+  - {fileID: 11400000, guid: d35aba36238fe584699865f27defbc44, type: 2}
   _tags: []
   _fociType: 0
   _freeOffensiveSlots: 2

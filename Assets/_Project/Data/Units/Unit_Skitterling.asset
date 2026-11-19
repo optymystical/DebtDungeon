@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Unit_Skitterling
   m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.UnitConfig
   _attackWindupSeconds: 0.18
-  _postAttackBackstepDistance: 2.2
+  _postAttackBackstepDistance: 1.2
   _postAttackBackstepDuration: 0.22
   _packCohesionWeight: 0
   _packCohesionRadius: 4.5
@@ -26,6 +26,6 @@ MonoBehaviour:
   AttackDamage: 8
   DamageType: 0
   AttackRange: 1.2
-  AttackCooldownSeconds: 0.85
+  AttackCooldownSeconds: 1.4
   Accuracy: 100
   KnockbackForce: 5

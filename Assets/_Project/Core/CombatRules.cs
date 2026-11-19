@@ -38,6 +38,24 @@ namespace DebtDungeon.Core
             return HitResult.Hit;
         }
 
+        /// <summary>
+        /// Core v1.7. Rolls an attack against a specific defender: adds the defender's IDefenseModifier
+        /// (if it has one) to the attacker's Accuracy, then rolls as usual. With no modifier it is the same as RollHit.
+        /// </summary>
+        public static HitResult RollHitAgainst(int accuracy, Component defender, bool isMeleeAttack)
+        {
+            int modifier = 0;
+            if (defender != null)
+            {
+                IDefenseModifier defense = defender.GetComponentInParent<IDefenseModifier>();
+                if (defense != null)
+                {
+                    modifier = defense.GetDefenderAccuracyModifier(isMeleeAttack);
+                }
+            }
+            return RollHit(accuracy + modifier);
+        }
+
         /// <summary>Turns base damage into final damage for a roll: 0 on a miss, double on a crit.</summary>
         public static int GetDamage(int baseDamage, HitResult result)
         {

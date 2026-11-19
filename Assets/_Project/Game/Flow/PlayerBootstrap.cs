@@ -31,6 +31,7 @@ namespace DebtDungeon.Game
 
         private PlayerController _controller;
         private AbilityGranter _abilityGranter;
+        private AbilityRunner _abilityRunner;
 
         /// <summary>The character for this run.</summary>
         public CharacterData Character { get; private set; }
@@ -70,6 +71,7 @@ namespace DebtDungeon.Game
             if (Character != null)
             {
                 Character.Loadout.LoadoutChanged -= ApplyBurden;
+                Character.Skills.SkillsChanged -= ApplyBurden;
             }
 
             _abilityGranter?.Dispose();
@@ -103,11 +105,15 @@ namespace DebtDungeon.Game
             }
 
             _controller = PlayerObject.GetComponent<PlayerController>();
-            ApplyBurden();
-            Character.Loadout.LoadoutChanged += ApplyBurden;
-
             // Abilities: granted only once Player has a component implementing Core's IAbilityUser.
             IAbilityUser abilityUser = PlayerObject.GetComponent<IAbilityUser>();
+
+            // Stats feed ability power (Strengthened/Weakened scale off it). AbilityRunner is Player's IAbilityUser.
+            _abilityRunner = PlayerObject.GetComponent<AbilityRunner>();
+            if (_abilityRunner != null)
+            {
+                _abilityRunner.SetStats(Character.Stats);
+            }
             if (abilityUser != null)
             {
                 _abilityGranter = new AbilityGranter(Character.Loadout, Character.Skills, abilityUser);
@@ -116,6 +122,12 @@ namespace DebtDungeon.Game
             {
                 Debug.LogWarning("Player has no IAbilityUser yet (Ability framework card). Skills can be bought but aren't granted.", PlayerObject);
             }
+
+            // Subscribed after the granter, so these run after it has granted or revoked abilities
+            // (Careful Steps changes burden only while it's granted).
+            ApplyBurden();
+            Character.Loadout.LoadoutChanged += ApplyBurden;
+            Character.Skills.SkillsChanged += ApplyBurden;
         }
 
         // Burden lives on the loadout (Progression); movement lives on the controller (Player). Game connects them.
@@ -123,7 +135,9 @@ namespace DebtDungeon.Game
         {
             if (_controller != null)
             {
-                _controller.SetBurdenSteps(Character.Loadout.BurdenSteps);
+                // Careful Steps (a Player passive) takes steps off the loadout's burden.
+                int relief = _abilityRunner != null ? _abilityRunner.GetBurdenRelief() : 0;
+                _controller.SetBurdenSteps(Mathf.Max(0, Character.Loadout.BurdenSteps - relief));
             }
         }
 
