@@ -171,9 +171,13 @@ namespace DebtDungeon.Game
                 RectTransform row = UIKit.CreateGroup(_statsList, choice + " Row");
                 UIKit.AddHorizontalLayout(row, 8f, 0);
                 UIKit.SetSize(row, 52f);
-                TextMeshProUGUI label = UIKit.CreateText(row, $"{choice}  {value}   (Power {power:0.0})", 24f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
+                // Name the worn gear that scales with this stat, so it's clear which stats matter right now.
+                string usedBy = GetGearUsingStat(choice);
+                string usedByText = usedBy.Length > 0 ? $"   <color=#33BFB3>· {usedBy}</color>" : string.Empty;
+                TextMeshProUGUI label = UIKit.CreateText(row, $"{choice}  {value}   (Power {power:0.0}){usedByText}", 24f, TextAlignmentOptions.MidlineLeft, UIKit.TextColor);
                 UIKit.FitText(label, 16f);
-                UITooltipTarget.Attach(label, $"{choice} {value}. Power = stat / 10 = {power:0.0}. Abilities and attacks that scale with {choice} multiply by this.");
+                string usedByTip = usedBy.Length > 0 ? $"\n\nUsed by your {usedBy}." : string.Empty;
+                UITooltipTarget.Attach(label, $"{choice} {value}. Power = stat / 10 = {power:0.0}. Abilities and attacks that scale with {choice} multiply by this.{usedByTip}");
                 label.raycastTarget = true; // so the tooltip can see the mouse
 
                 Button plus = UIKit.CreateButton(row, "+1", () => SpendStat(choice), 52f);
@@ -283,7 +287,8 @@ namespace DebtDungeon.Game
                 EquipmentDefinition item = _character.Loadout.GetEquipped(slot);
                 if (item != null)
                 {
-                    TextMeshProUGUI label = UIKit.CreateText(_ownedList, $"{slot}: {item.DisplayName}", 22f, TextAlignmentOptions.Left, UIKit.TextColor);
+                    string statNote = TryGetScalingStat(item, out StatType itemStat) ? $"  (uses {itemStat})" : string.Empty;
+                    TextMeshProUGUI label = UIKit.CreateText(_ownedList, $"{slot}: {item.DisplayName}{statNote}", 22f, TextAlignmentOptions.Left, UIKit.TextColor);
                     label.raycastTarget = true;
                     UITooltipTarget.Attach(label, item.Description);
                 }
@@ -293,6 +298,50 @@ namespace DebtDungeon.Game
             {
                 UIKit.CreateText(_ownedList, $"Affix: {affix.Affix.DisplayName} ({affix.Form})", 22f, TextAlignmentOptions.Left, UIKit.TextColor);
             }
+        }
+
+        // The stat an item scales with: the weapon's or Foci's attack stat, or the armor's or Shroud's defensive stat.
+        // Affixes and other items don't scale, so they return false.
+        private static bool TryGetScalingStat(EquipmentDefinition item, out StatType stat)
+        {
+            if (item is WeaponDefinition weapon)
+            {
+                stat = weapon.ScalingStat;
+                return true;
+            }
+            if (item is FociDefinition foci)
+            {
+                stat = foci.ScalingStat;
+                return true;
+            }
+            if (item is ArmorDefinition armor)
+            {
+                stat = armor.ScalingStat;
+                return true;
+            }
+            if (item is ShroudDefinition shroud)
+            {
+                stat = shroud.ScalingStat;
+                return true;
+            }
+
+            stat = default;
+            return false;
+        }
+
+        // Names of the worn items that scale with this stat, e.g. "Sword" or "Leather Coat". Empty if none.
+        private string GetGearUsingStat(StatType stat)
+        {
+            string names = string.Empty;
+            foreach (EquipmentSlot slot in WornSlots)
+            {
+                EquipmentDefinition item = _character.Loadout.GetEquipped(slot);
+                if (item != null && TryGetScalingStat(item, out StatType itemStat) && itemStat == stat)
+                {
+                    names = names.Length == 0 ? item.DisplayName : names + ", " + item.DisplayName;
+                }
+            }
+            return names;
         }
 
         // ----- Actions -----

@@ -3,6 +3,30 @@
 Every Core change gets a version bump and an entry here. "Affects" lists module numbers:
 1 FloorGen, 2 AI, 3 Player & Combat, 4 Progression, UI = HUD/menus.
 
+## v1.9 — Nov 19, 2026
+
+- `Health.SetInvulnerable(bool)` and `Health.IsInvulnerable`: while on, `TakeDamage` returns before anything else
+  (no absorbers, no `Damaged`, no `ActorDamaged`). Used by Game's showcase-room ghost mode (debug only).
+  Additive: nothing existing changed. *(UI)*
+
+## v1.8 — Nov 19, 2026
+
+- `GameEvents.ActorDamaged(Health target, DamageInfo damage, int damageTaken)`: raised by `Health.TakeDamage`
+  right after its own `Damaged` event, for every hit that gets through the faction and i-frame checks
+  (damageTaken can be 0 when absorbers soaked it). Cleared on Play start like the other events. Game's
+  `DamageNumbers` and Player's Limber passive listen to it. Additive: nothing existing changed. *(3, UI)*
+
+## v1.7 — Nov 19, 2026
+
+- New `IDefenseModifier.GetDefenderAccuracyModifier(bool isMeleeAttack)`: lets a defender change the Accuracy of
+  attacks against it. Player's `AbilityRunner` implements it (Close Quarters: -20 vs melee). *(2, 3)*
+- `CombatRules.RollHitAgainst(int accuracy, Component defender, bool isMeleeAttack)`: adds the defender's
+  modifier (found with `GetComponentInParent<IDefenseModifier>()`) and rolls as usual; with no modifier it equals
+  `RollHit`. AI's melee roll now uses it. *(2, 3)*
+- `Health.AddAbsorber(IDamageAbsorber absorber, bool runFirst)`: with runFirst the absorber goes in front of the
+  others (Shield and Brace soak before armor and the Shroud). The one-argument version is unchanged. *(3, 4)*
+- All additive: existing calls compile and behave the same.
+
 ## v1.6 — Nov 16, 2026
 
 - `ICombatState.MarkInCombat()`: starts or restarts the 5 s in-combat timer. Lets AI keep the player in combat

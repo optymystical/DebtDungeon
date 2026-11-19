@@ -18,6 +18,11 @@ namespace DebtDungeon.Game
         private static readonly EquipmentSlot[] WornSlots =
             { EquipmentSlot.Weapon, EquipmentSlot.Armor, EquipmentSlot.Foci, EquipmentSlot.Shroud };
 
+        // Affixes are hidden for First Playable (decided Nov 19) because they aren't fully built yet.
+        // The data and Loadout rules are untouched: set this to true to bring the rows back.
+        // (static readonly, not const, so the compiler doesn't warn that the affix code is unreachable)
+        private static readonly bool ShowAffixes = false;
+
         private readonly RectTransform _list;
         private readonly Func<EquipmentSlot, List<EquipmentDefinition>> _getChoices;
         private readonly Action<string, bool> _setStatus;
@@ -49,6 +54,11 @@ namespace DebtDungeon.Game
                 {
                     AddSlotRow(loadout, slot);
                 }
+            }
+
+            if (!ShowAffixes)
+            {
+                return;
             }
 
             List<EquipmentDefinition> affixes = _getChoices(EquipmentSlot.Affix);

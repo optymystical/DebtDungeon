@@ -104,11 +104,11 @@ SpriteRenderer:
   m_AutoUVMaxAngle: 89
   m_LightmapParameters: {fileID: 0}
   m_GlobalIlluminationMeshLod: 0
-  m_SortingLayerID: 0
-  m_SortingLayer: 0
+  m_SortingLayerID: 525232168
+  m_SortingLayer: 4
   m_SortingOrder: 0
   m_MaskInteraction: 0
-  m_Sprite: {fileID: 7482667652216324306, guid: 75f5f34dc1b5347e0b8351032682f224, type: 3}
+  m_Sprite: {fileID: 21300000, guid: d7e3a1c94b2f4e5a8c6b0f1e2d3c4b5a, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
   m_FlipX: 0
   m_FlipY: 0
@@ -238,7 +238,7 @@ MonoBehaviour:
   _health: {fileID: 8239117192879967569}
   _spriteRenderer: {fileID: 4009666917000852287}
   _rigidBody: {fileID: 1030241875207564683}
-  _knockbackForce: 10
+  _knockbackForce: 5
   _knockbackDelay: 0.2
   _playerCombatState: {fileID: 6098436760110208286}
 --- !u!114 &6098436760110208286

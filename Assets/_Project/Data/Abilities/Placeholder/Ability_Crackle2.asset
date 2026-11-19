@@ -9,13 +9,27 @@ MonoBehaviour:
   m_GameObject: {fileID: 0}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 88ebf8ecfcf44625a3981eaf028c4b93, type: 3}
+  m_Script: {fileID: 11500000, guid: d4f7ba235ec04f91bc6d8e0a2b4f5c73, type: 3}
   m_Name: Ability_Crackle2
-  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.PlaceholderAbility
+  m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.ChainBoltDefinition
   _id: crackle_2
   _displayName: Crackle II (Electrify)
-  _description: "Upgrades Crackle: the first hit on each target is Strengthened (+50% damage). (Placeholder: not usable until the ability framework lands.)"
+  _description: "Upgrades Crackle: the first hit on each target is Strengthened (+50% damage)."
   _icon: {fileID: 0}
   _kind: 2
   _cooldown: 3
   _energyCost: 20
+  _windup: 0.15
+  _damagePerPower: 8
+  _fallbackStat: 4
+  _strengthenedHits: 1
+  _rodDamagePerPower: 0
+  _chainRange: 4
+  _accuracyLossPerJump: 20
+  _maxJumps: 20
+  _jumpDelay: 0.08
+  _boltPrefab: {fileID: 8537543836161227434, guid: eb46c893555f51f47b51b23e2a52c5ab, type: 3}
+  _boltSpeed: 9
+  _boltLifetime: 1
+  _boltColor: {r: 1, g: 0.95, b: 0.45, a: 1}
+  _beamSprite: {fileID: 21300000, guid: 29ecf7f8a3b54ee6ab1c3d5f7a9eb0c8, type: 3}

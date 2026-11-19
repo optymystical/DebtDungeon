@@ -31,9 +31,13 @@ namespace DebtDungeon.Core
         private int _currentHealth;
         private float _invulnerableUntil;
         private bool _isDead;
+        private bool _isInvulnerable;
 
         /// <summary>Who this belongs to.</summary>
         public Faction Faction => _faction;
+
+        /// <summary>Core v1.9. True while SetInvulnerable(true) is on: every hit is ignored.</summary>
+        public bool IsInvulnerable => _isInvulnerable;
 
         /// <summary>False once health has reached zero.</summary>
         public bool IsAlive => !_isDead;
@@ -75,6 +79,12 @@ namespace DebtDungeon.Core
                 return;
             }
 
+            // Core v1.9: ignored entirely, before any event, so there's no flash, knockback or combat flag.
+            if (_isInvulnerable)
+            {
+                return;
+            }
+
             // No friendly fire. Traps use Faction.Neutral, so they still hurt every faction.
             if (damage.SourceFaction == _faction)
             {
@@ -91,12 +101,22 @@ namespace DebtDungeon.Core
             _invulnerableUntil = Time.time + _invulnerabilityDuration;
 
             Damaged?.Invoke(damage, damageTaken);
+            GameEvents.RaiseActorDamaged(this, damage, damageTaken);
             HealthChanged?.Invoke(_currentHealth, _maxHealth);
 
             if (_currentHealth == 0)
             {
                 Die(damage);
             }
+        }
+
+        /// <summary>
+        /// Core v1.9. Turns invulnerability on or off. While on, TakeDamage ignores every hit (Game's showcase
+        /// ghost mode). Healing and max-HP changes still work.
+        /// </summary>
+        public void SetInvulnerable(bool invulnerable)
+        {
+            _isInvulnerable = invulnerable;
         }
 
         /// <summary>Restores hit points, up to max. Does nothing once dead.</summary>
@@ -152,6 +172,27 @@ namespace DebtDungeon.Core
             }
 
             _absorbers.Add(absorber);
+        }
+
+        /// <summary>
+        /// Core v1.7. Adds an absorber; with runFirst it goes in front of the others, so it soaks the hit
+        /// before armor or the Shroud (Shield, Brace). Without runFirst it is the same as AddAbsorber(absorber).
+        /// </summary>
+        public void AddAbsorber(IDamageAbsorber absorber, bool runFirst)
+        {
+            if (absorber == null || _absorbers.Contains(absorber))
+            {
+                return;
+            }
+
+            if (runFirst)
+            {
+                _absorbers.Insert(0, absorber);
+            }
+            else
+            {
+                _absorbers.Add(absorber);
+            }
         }
 
         /// <summary>Removes an absorber, e.g. when the loadout changes at the station.</summary>

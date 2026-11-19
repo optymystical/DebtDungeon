@@ -17,7 +17,8 @@ MonoBehaviour:
   _description: "Heavy Bladed weapon. Slow, wide arcs that scale with Strength. Grants Parry."
   _icon: {fileID: 0}
   _statBonuses: []
-  _grantedAbilities: []
+  _grantedAbilities:
+  - {fileID: 11400000, guid: 08ad14c6c4a6049448e42eca7fb2b45c, type: 2}
   _tags:
   - 0
   _weight: 1

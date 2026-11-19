@@ -1,4 +1,5 @@
 using UnityEngine;
+using System.Collections;
 using System.Collections.Generic;
 using DebtDungeon.Core;
 using System;
@@ -16,6 +17,7 @@ namespace DebtDungeon.AI
     public class FactionSpawner2D : MonoBehaviour, IKillReward
     {
         private const float DefaultSpawnRadius = 0.8f;
+        private const float HitFlashDuration = 0.1f;
 
         [Header("Spawner Identity & Rewards")]
         [SerializeField] private string _displayName = "Goblin Camp";
@@ -49,6 +51,11 @@ namespace DebtDungeon.AI
         private readonly List<FactionAI2D> _localGuards = new List<FactionAI2D>();
         private float _spawnTimer;
 
+        // Wrap-up addition (Chris/Claude): red hit flash, same look and length as CombatAgent2D's on units.
+        private SpriteRenderer _spriteRenderer;
+        private Color _baseColor = Color.white;
+        private Coroutine _flashCoroutine;
+
         // IKillReward Implementation
         public string DisplayName => !string.IsNullOrWhiteSpace(_displayName) ? _displayName : gameObject.name;
         public int XpReward => _xpReward;
@@ -65,6 +72,11 @@ namespace DebtDungeon.AI
         private void Awake()
         {
             _health = GetComponent<Health>();
+            _spriteRenderer = GetComponentInChildren<SpriteRenderer>();
+            if (_spriteRenderer != null)
+            {
+                _baseColor = _spriteRenderer.color;
+            }
             // Layer comes from the prefab (Goblin or Spider), so faction attacks and masks can hit the spawner.
         }
 
@@ -73,6 +85,7 @@ namespace DebtDungeon.AI
             if (_health != null)
             {
                 _health.Died += HandleSpawnerDied;
+                _health.Damaged += HandleSpawnerDamaged;
             }
         }
 
@@ -81,7 +94,37 @@ namespace DebtDungeon.AI
             if (_health != null)
             {
                 _health.Died -= HandleSpawnerDied;
+                _health.Damaged -= HandleSpawnerDamaged;
             }
+        }
+
+        private void HandleSpawnerDamaged(DamageInfo info, int damageTaken)
+        {
+            if (_spriteRenderer == null)
+            {
+                return;
+            }
+
+            if (_flashCoroutine != null)
+            {
+                StopCoroutine(_flashCoroutine);
+            }
+
+            _flashCoroutine = StartCoroutine(HitFlashRoutine());
+        }
+
+        private IEnumerator HitFlashRoutine()
+        {
+            _spriteRenderer.color = Color.red;
+            yield return new WaitForSeconds(HitFlashDuration);
+
+            // The base color is stored once in Awake, so quick repeat hits can't leave it stuck on red.
+            if (_spriteRenderer != null)
+            {
+                _spriteRenderer.color = _baseColor;
+            }
+
+            _flashCoroutine = null;
         }
 
         public void ConfigureFromFloor(

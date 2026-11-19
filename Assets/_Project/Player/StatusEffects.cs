@@ -24,7 +24,7 @@ namespace DebtDungeon.Player
         [SerializeField] private float _strengthenDuration = 3f;
         [SerializeField] private int _weakenedStacks = 0;
         [SerializeField] private float _weakenedDuration = 3f;
-        public int StrengthenedStacks => _weakenedStacks;
+        public int StrengthenedStacks => _strengthenStacks; // Wrap-up fix: returned _weakenedStacks
         public int WeakenedStacks => _weakenedStacks;
         private const int _maxStacks = 3;
 
@@ -247,6 +247,11 @@ namespace DebtDungeon.Player
                 // Source can be null (the spider may be dead by now); Health and the death screen handle that.
                 _health.TakeDamage(new DamageInfo(_poisonDamagePerTick, DamageType.Poison, _poisonSource, _poisonFaction));
             }
+
+            // Wrap-up fix (Chris/Claude): clear the poison when it runs out, like SlowTimer does for Slowed.
+            // Without this _poisonCoroutine stayed set, so IsPoisoned (the HUD tag) never turned off and a new
+            // poison could never start ticking again.
+            RemoveStatus(StatusEffectType.Poisoned);
         }
 
         // Applies stacks of strengthened buff
