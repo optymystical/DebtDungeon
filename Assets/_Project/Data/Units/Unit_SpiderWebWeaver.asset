@@ -1,0 +1,46 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 71f1ce5ff0e105144abe46e695abfe65, type: 3}
+  m_Name: Unit_SpiderWebWeaver
+  m_EditorClassIdentifier: DebtDungeon.AI::DebtDungeon.AI.UnitConfig
+  _attackWindupSeconds: 0.65
+  _postAttackBackstepDistance: 0
+  _postAttackBackstepDuration: 0.25
+  _packCohesionWeight: 0
+  _packCohesionRadius: 4.5
+  IsRangedKiter: 1
+  MinKeepDistance: 3
+  PreferredRange: 5.5
+  ProjectilePrefab: {fileID: 349600485054363222, guid: 875c3abc7a2aaf24d9595dfa96ebdf5a, type: 3}
+  ProjectileSpeed: 5.5
+  AoERadius: 1
+  ShowTrajectoryTelegraph: 1
+  ShowGroundWarningCircle: 0
+  SlowMultiplier: 0.45
+  SlowDurationSeconds: 3
+  ApplyPoison: 1
+  PoisonTickDamage: 2
+  PoisonTickInterval: 1
+  PoisonDurationSeconds: 4
+  DisplayName: Spider Web Weaver
+  Style: 3
+  GoldDropAmount: 5
+  XpReward: 10
+  SightRadius: 8
+  HearingRadius: 10
+  MoveSpeed: 4.2
+  AttackDamage: 6
+  DamageType: 0
+  AttackRange: 5.5
+  AttackCooldownSeconds: 1.8
+  Accuracy: 100
+  KnockbackForce: 1.5

@@ -1,0 +1,29 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ececb9f084ed45768fe23248e9ca378e, type: 3}
+  m_Name: SkillTree_MediumArmor
+  m_EditorClassIdentifier: DebtDungeon.Progression::DebtDungeon.Progression.SkillTreeDefinition
+  _displayName: Medium Armor
+  _description: Martial defense. Scales with Constitution. Needs Medium armor to use.
+  _archetype: 0
+  _requiresEquipment: 1
+  _requiredTag: 2
+  _nodes:
+  - _grantedAbilities:
+    - {fileID: 11400000, guid: 8899da8dc5844c86a56cd283188efe37, type: 2}
+    _replacedAbility: {fileID: 0}
+  - _grantedAbilities:
+    - {fileID: 11400000, guid: 9c526caec2e74d96b06826e7abe2bf3d, type: 2}
+    _replacedAbility: {fileID: 0}
+  - _grantedAbilities:
+    - {fileID: 11400000, guid: 4975438dcc0f41cfb7d06b619e318f48, type: 2}
+    _replacedAbility: {fileID: 0}

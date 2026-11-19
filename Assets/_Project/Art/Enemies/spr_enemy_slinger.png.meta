@@ -1,0 +1,1502 @@
+fileFormatVersion: 2
+guid: 6413409f76ec05d41a8ab30e4f586a8a
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1318240755317243391
+    second: spr_enemy_slinger_0
+  - first:
+      213: -4031868945093622800
+    second: spr_enemy_slinger_1
+  - first:
+      213: -1664420606769839467
+    second: spr_enemy_slinger_2
+  - first:
+      213: -2577636822643734119
+    second: spr_enemy_slinger_3
+  - first:
+      213: 7264984003941922127
+    second: spr_enemy_slinger_4
+  - first:
+      213: -4698011785008131644
+    second: spr_enemy_slinger_5
+  - first:
+      213: -4341546783499595501
+    second: spr_enemy_slinger_6
+  - first:
+      213: -5909035564431142717
+    second: spr_enemy_slinger_7
+  - first:
+      213: -5252953454932009969
+    second: spr_enemy_slinger_8
+  - first:
+      213: -6932259667978439521
+    second: spr_enemy_slinger_9
+  - first:
+      213: -6505025538826185948
+    second: spr_enemy_slinger_10
+  - first:
+      213: 4106614729626419163
+    second: spr_enemy_slinger_11
+  - first:
+      213: 1594791507336089900
+    second: spr_enemy_slinger_12
+  - first:
+      213: 5155741679517277982
+    second: spr_enemy_slinger_13
+  - first:
+      213: 866835304030496372
+    second: spr_enemy_slinger_14
+  - first:
+      213: 8481310129641607957
+    second: spr_enemy_slinger_15
+  - first:
+      213: -3751255476736131341
+    second: spr_enemy_slinger_16
+  - first:
+      213: -3925161983271970174
+    second: spr_enemy_slinger_17
+  - first:
+      213: 6019036780186162843
+    second: spr_enemy_slinger_18
+  - first:
+      213: 2613427017639416098
+    second: spr_enemy_slinger_19
+  - first:
+      213: 6145274235872911253
+    second: spr_enemy_slinger_20
+  - first:
+      213: -2434940186392791543
+    second: spr_enemy_slinger_21
+  - first:
+      213: 3004778119214685697
+    second: spr_enemy_slinger_22
+  - first:
+      213: -1843872259435723837
+    second: spr_enemy_slinger_23
+  - first:
+      213: -5663755522642981965
+    second: spr_enemy_slinger_24
+  - first:
+      213: -8518242516336055842
+    second: spr_enemy_slinger_25
+  - first:
+      213: 4135016095527405638
+    second: spr_enemy_slinger_26
+  - first:
+      213: -4868911478546543212
+    second: spr_enemy_slinger_27
+  - first:
+      213: -6282142235178013913
+    second: spr_enemy_slinger_28
+  - first:
+      213: 3111168078415456213
+    second: spr_enemy_slinger_29
+  - first:
+      213: -16222617519676673
+    second: spr_enemy_slinger_30
+  - first:
+      213: -3229504570969479728
+    second: spr_enemy_slinger_31
+  - first:
+      213: -709146275795732278
+    second: spr_enemy_slinger_32
+  - first:
+      213: -7813839345789125824
+    second: spr_enemy_slinger_33
+  - first:
+      213: 8508556690081503037
+    second: spr_enemy_slinger_34
+  - first:
+      213: 7443466889657216927
+    second: spr_enemy_slinger_35
+  - first:
+      213: -7438291459747096842
+    second: spr_enemy_slinger_36
+  - first:
+      213: -5163977677813797342
+    second: spr_enemy_slinger_37
+  - first:
+      213: 8123214222840241061
+    second: spr_enemy_slinger_38
+  - first:
+      213: -2303911413361349665
+    second: spr_enemy_slinger_39
+  - first:
+      213: 230437784589923986
+    second: spr_enemy_slinger_40
+  - first:
+      213: 271738092804185030
+    second: spr_enemy_slinger_41
+  - first:
+      213: -9206120089802946360
+    second: spr_enemy_slinger_42
+  - first:
+      213: 2771914084014541160
+    second: spr_enemy_slinger_43
+  - first:
+      213: 4662289360514625303
+    second: spr_enemy_slinger_44
+  - first:
+      213: 4874836093236331954
+    second: spr_enemy_slinger_45
+  - first:
+      213: -6665396031402387512
+    second: spr_enemy_slinger_46
+  - first:
+      213: 5099243543003124592
+    second: spr_enemy_slinger_47
+  - first:
+      213: -2873280218843382077
+    second: spr_enemy_slinger_48
+  - first:
+      213: 6699323684921171019
+    second: spr_enemy_slinger_49
+  - first:
+      213: 8789739122244164520
+    second: spr_enemy_slinger_50
+  - first:
+      213: -3979073345274845038
+    second: spr_enemy_slinger_51
+  - first:
+      213: -6737306036237243296
+    second: spr_enemy_slinger_52
+  - first:
+      213: 5474864745582685265
+    second: spr_enemy_slinger_53
+  - first:
+      213: -7971931321508744075
+    second: spr_enemy_slinger_54
+  - first:
+      213: 1162171602856622852
+    second: spr_enemy_slinger_55
+  - first:
+      213: 5417632689892437726
+    second: spr_enemy_slinger_56
+  - first:
+      213: 6100577677084302029
+    second: spr_enemy_slinger_57
+  - first:
+      213: 7004950733702843409
+    second: spr_enemy_slinger_58
+  - first:
+      213: 268932352515082551
+    second: spr_enemy_slinger_59
+  - first:
+      213: 2925239142502576102
+    second: spr_enemy_slinger_60
+  - first:
+      213: 712406544663045311
+    second: spr_enemy_slinger_61
+  - first:
+      213: 678085667533642644
+    second: spr_enemy_slinger_62
+  - first:
+      213: 1709171611360605684
+    second: spr_enemy_slinger_63
+  - first:
+      213: -5244841007258618215
+    second: spr_enemy_slinger_64
+  - first:
+      213: 8172806847062079974
+    second: spr_enemy_slinger_65
+  - first:
+      213: 6029343961896136490
+    second: spr_enemy_slinger_66
+  - first:
+      213: 6352800932767295269
+    second: spr_enemy_slinger_67
+  - first:
+      213: 6365114039639939087
+    second: spr_enemy_slinger_68
+  - first:
+      213: 5470728808206388326
+    second: spr_enemy_slinger_69
+  - first:
+      213: -5724223975346563443
+    second: spr_enemy_slinger_70
+  - first:
+      213: 2953331695955619988
+    second: spr_enemy_slinger_71
+  - first:
+      213: -3377007353793310479
+    second: spr_enemy_slinger_72
+  - first:
+      213: 1759272507500736137
+    second: spr_enemy_slinger_73
+  - first:
+      213: -8857416373624736651
+    second: spr_enemy_slinger_74
+  - first:
+      213: 182482997443500098
+    second: spr_enemy_slinger_75
+  - first:
+      213: 3722001961508378415
+    second: spr_enemy_slinger_76
+  - first:
+      213: 3911682679442500163
+    second: spr_enemy_slinger_77
+  - first:
+      213: 1527997137689923588
+    second: spr_enemy_slinger_78
+  - first:
+      213: 7811804828248499052
+    second: spr_enemy_slinger_79
+  - first:
+      213: -2135343658425609514
+    second: spr_enemy_slinger_80
+  - first:
+      213: 1986482639329885300
+    second: spr_enemy_slinger_81
+  - first:
+      213: -3387940642117821121
+    second: spr_enemy_slinger_82
+  - first:
+      213: -7252439115129564797
+    second: spr_enemy_slinger_83
+  - first:
+      213: -5476606481952264580
+    second: spr_enemy_slinger_84
+  - first:
+      213: -3033889516299164514
+    second: spr_enemy_slinger_85
+  - first:
+      213: -7235136107899563022
+    second: spr_enemy_slinger_86
+  - first:
+      213: 9033708340826166761
+    second: spr_enemy_slinger_87
+  - first:
+      213: 1093944426758385672
+    second: spr_enemy_slinger_88
+  - first:
+      213: -3894692867511868481
+    second: spr_enemy_slinger_89
+  - first:
+      213: 8418812047124394733
+    second: spr_enemy_slinger_90
+  - first:
+      213: -7962533877476198443
+    second: spr_enemy_slinger_91
+  - first:
+      213: -5945333233950771865
+    second: spr_enemy_slinger_92
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 256
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_enemy_slinger_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 1028fd2740ba4bde0800000000000000
+      internalID: -1318240755317243391
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0f304c26e8ceb08c0800000000000000
+      internalID: -4031868945093622800
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 592c4a0d64ac6e8e0800000000000000
+      internalID: -1664420606769839467
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9998a5a77f46a3cd0800000000000000
+      internalID: -2577636822643734119
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f457ad5c57862d460800000000000000
+      internalID: 7264984003941922127
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4c1ddf33c2f4dceb0800000000000000
+      internalID: -4698011785008131644
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 31154c1f33abfb3c0800000000000000
+      internalID: -4341546783499595501
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c09ee82673eefda0800000000000000
+      internalID: -5909035564431142717
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0cdd110aa2c917b0800000000000000
+      internalID: -5252953454932009969
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f94b0678f8aabcf90800000000000000
+      internalID: -6932259667978439521
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 423db6fccb189b5a0800000000000000
+      internalID: -6505025538826185948
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: bdff4ccb650adf830800000000000000
+      internalID: 4106614729626419163
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c21d3952d66d12610800000000000000
+      internalID: 1594791507336089900
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e1f9d41cdbfdc8740800000000000000
+      internalID: 5155741679517277982
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_14
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4766187cd1e970c00800000000000000
+      internalID: 866835304030496372
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 513d53380aaa3b570800000000000000
+      internalID: 8481310129641607957
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3fe7767d40dd0fbc0800000000000000
+      internalID: -3751255476736131341
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 28ad43df8f50789c0800000000000000
+      internalID: -3925161983271970174
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b96d105bf0ae78350800000000000000
+      internalID: 6019036780186162843
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2215ec8a602c44420800000000000000
+      internalID: 2613427017639416098
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_20
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 59f9094cb56684550800000000000000
+      internalID: 6145274235872911253
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_21
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 906fbb42dca553ed0800000000000000
+      internalID: -2434940186392791543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_22
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 10e58a887cd13b920800000000000000
+      internalID: 3004778119214685697
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3c3032503ff3966e0800000000000000
+      internalID: -1843872259435723837
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3bb453a2c5c4661b0800000000000000
+      internalID: -5663755522642981965
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ed9e82f109f19c980800000000000000
+      internalID: -8518242516336055842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6480f6a0b37826930800000000000000
+      internalID: 4135016095527405638
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 49d496e8ec62e6cb0800000000000000
+      internalID: -4868911478546543212
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 72b6cbbdbe851d8a0800000000000000
+      internalID: -6282142235178013913
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5d7ec7632e61d2b20800000000000000
+      internalID: 3111168078415456213
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_30
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ff2a9658d9d56cff0800000000000000
+      internalID: -16222617519676673
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_31
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0d52dde04be7e23d0800000000000000
+      internalID: -3229504570969479728
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ac87769283b9826f0800000000000000
+      internalID: -709146275795732278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04bb446b38aaf8390800000000000000
+      internalID: -7813839345789125824
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_34
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: d37d497ba37741670800000000000000
+      internalID: 8508556690081503037
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_35
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f9f666fe2b18c4760800000000000000
+      internalID: 7443466889657216927
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_36
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6f6d3fdb351e5c890800000000000000
+      internalID: -7438291459747096842
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_37
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 22eacd579add558b0800000000000000
+      internalID: -5163977677813797342
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_38
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5ab1bca0c447bb070800000000000000
+      internalID: 8123214222840241061
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_39
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fdbe0a4b6ccd600e0800000000000000
+      internalID: -2303911413361349665
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_40
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2967f45b1fda23300800000000000000
+      internalID: 230437784589923986
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_41
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 6cb198d0b5865c300800000000000000
+      internalID: 271738092804185030
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_42
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c845bfed8a4d3080800000000000000
+      internalID: -9206120089802946360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_43
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 869c6955c21d77620800000000000000
+      internalID: 2771914084014541160
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_44
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 71fae85b877c3b040800000000000000
+      internalID: 4662289360514625303
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_45
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2b5ca9b4995e6a340800000000000000
+      internalID: 4874836093236331954
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_46
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 8c756fccf91cf73a0800000000000000
+      internalID: -6665396031402387512
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_slinger_47
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 073d7e34cf624c640800000000000000
+      internalID: 5099243543003124592
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: a87a7de1bb379ad4596548cf7fc95a3e
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_enemy_slinger_0: -1318240755317243391
+      spr_enemy_slinger_1: -4031868945093622800
+      spr_enemy_slinger_10: -6505025538826185948
+      spr_enemy_slinger_11: 4106614729626419163
+      spr_enemy_slinger_12: 1594791507336089900
+      spr_enemy_slinger_13: 5155741679517277982
+      spr_enemy_slinger_14: 866835304030496372
+      spr_enemy_slinger_15: 8481310129641607957
+      spr_enemy_slinger_16: -3751255476736131341
+      spr_enemy_slinger_17: -3925161983271970174
+      spr_enemy_slinger_18: 6019036780186162843
+      spr_enemy_slinger_19: 2613427017639416098
+      spr_enemy_slinger_2: -1664420606769839467
+      spr_enemy_slinger_20: 6145274235872911253
+      spr_enemy_slinger_21: -2434940186392791543
+      spr_enemy_slinger_22: 3004778119214685697
+      spr_enemy_slinger_23: -1843872259435723837
+      spr_enemy_slinger_24: -5663755522642981965
+      spr_enemy_slinger_25: -8518242516336055842
+      spr_enemy_slinger_26: 4135016095527405638
+      spr_enemy_slinger_27: -4868911478546543212
+      spr_enemy_slinger_28: -6282142235178013913
+      spr_enemy_slinger_29: 3111168078415456213
+      spr_enemy_slinger_3: -2577636822643734119
+      spr_enemy_slinger_30: -16222617519676673
+      spr_enemy_slinger_31: -3229504570969479728
+      spr_enemy_slinger_32: -709146275795732278
+      spr_enemy_slinger_33: -7813839345789125824
+      spr_enemy_slinger_34: 8508556690081503037
+      spr_enemy_slinger_35: 7443466889657216927
+      spr_enemy_slinger_36: -7438291459747096842
+      spr_enemy_slinger_37: -5163977677813797342
+      spr_enemy_slinger_38: 8123214222840241061
+      spr_enemy_slinger_39: -2303911413361349665
+      spr_enemy_slinger_4: 7264984003941922127
+      spr_enemy_slinger_40: 230437784589923986
+      spr_enemy_slinger_41: 271738092804185030
+      spr_enemy_slinger_42: -9206120089802946360
+      spr_enemy_slinger_43: 2771914084014541160
+      spr_enemy_slinger_44: 4662289360514625303
+      spr_enemy_slinger_45: 4874836093236331954
+      spr_enemy_slinger_46: -6665396031402387512
+      spr_enemy_slinger_47: 5099243543003124592
+      spr_enemy_slinger_5: -4698011785008131644
+      spr_enemy_slinger_6: -4341546783499595501
+      spr_enemy_slinger_7: -5909035564431142717
+      spr_enemy_slinger_8: -5252953454932009969
+      spr_enemy_slinger_9: -6932259667978439521
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

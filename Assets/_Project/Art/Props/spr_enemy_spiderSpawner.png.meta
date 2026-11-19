@@ -1,0 +1,1362 @@
+fileFormatVersion: 2
+guid: 83afbea95d05e654f950603e6995a306
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: 607258796449512884
+    second: spr_enemy_spiderSpawner_0
+  - first:
+      213: 2994243656652320529
+    second: spr_enemy_spiderSpawner_1
+  - first:
+      213: 1557032609179640899
+    second: spr_enemy_spiderSpawner_2
+  - first:
+      213: -2454796872445551664
+    second: spr_enemy_spiderSpawner_3
+  - first:
+      213: 5979664666713968649
+    second: spr_enemy_spiderSpawner_4
+  - first:
+      213: 4136479716813784139
+    second: spr_enemy_spiderSpawner_5
+  - first:
+      213: 2321124606973293419
+    second: spr_enemy_spiderSpawner_6
+  - first:
+      213: 5076258139582558611
+    second: spr_enemy_spiderSpawner_7
+  - first:
+      213: -2735661392298730376
+    second: spr_enemy_spiderSpawner_8
+  - first:
+      213: -5755999938904817767
+    second: spr_enemy_spiderSpawner_9
+  - first:
+      213: 7739847946282632204
+    second: spr_enemy_spiderSpawner_10
+  - first:
+      213: 4405723575982608773
+    second: spr_enemy_spiderSpawner_11
+  - first:
+      213: -8766434308554678833
+    second: spr_enemy_spiderSpawner_12
+  - first:
+      213: 4551626525289217686
+    second: spr_enemy_spiderSpawner_13
+  - first:
+      213: 8989516881689699232
+    second: spr_enemy_spiderSpawner_14
+  - first:
+      213: -245811606965193337
+    second: spr_enemy_spiderSpawner_15
+  - first:
+      213: 7311040418785846300
+    second: spr_enemy_spiderSpawner_16
+  - first:
+      213: -4826507770984877374
+    second: spr_enemy_spiderSpawner_17
+  - first:
+      213: 8555578349003410543
+    second: spr_enemy_spiderSpawner_18
+  - first:
+      213: 3930011277701065657
+    second: spr_enemy_spiderSpawner_19
+  - first:
+      213: -8922615668810806961
+    second: spr_enemy_spiderSpawner_20
+  - first:
+      213: -3298768984328885168
+    second: spr_enemy_spiderSpawner_21
+  - first:
+      213: 8061422646886367436
+    second: spr_enemy_spiderSpawner_22
+  - first:
+      213: -3777090083307657238
+    second: spr_enemy_spiderSpawner_23
+  - first:
+      213: 3418057480058131787
+    second: spr_enemy_spiderSpawner_24
+  - first:
+      213: -6911272680158440436
+    second: spr_enemy_spiderSpawner_25
+  - first:
+      213: -7110428468303474439
+    second: spr_enemy_spiderSpawner_26
+  - first:
+      213: 4934072551442381796
+    second: spr_enemy_spiderSpawner_27
+  - first:
+      213: -3975557597585976851
+    second: spr_enemy_spiderSpawner_28
+  - first:
+      213: 2034821682153009822
+    second: spr_enemy_spiderSpawner_29
+  - first:
+      213: 3805860310229179268
+    second: spr_enemy_spiderSpawner_30
+  - first:
+      213: -7175729182276499628
+    second: spr_enemy_spiderSpawner_31
+  - first:
+      213: 585748640613817215
+    second: spr_enemy_spiderSpawner_32
+  - first:
+      213: -6811476035745129024
+    second: spr_enemy_spiderSpawner_33
+  - first:
+      213: 56976296993584021
+    second: spr_enemy_spiderSpawner_34
+  - first:
+      213: -8623406580233739926
+    second: spr_enemy_spiderSpawner_35
+  - first:
+      213: 7931307733819864710
+    second: spr_enemy_spiderSpawner_36
+  - first:
+      213: 7032611644160818703
+    second: spr_enemy_spiderSpawner_37
+  - first:
+      213: 7876693737533590894
+    second: spr_enemy_spiderSpawner_38
+  - first:
+      213: 478707856603360048
+    second: spr_enemy_spiderSpawner_39
+  - first:
+      213: 8781637696767350221
+    second: spr_enemy_spiderSpawner_40
+  - first:
+      213: 8407380703056623278
+    second: spr_enemy_spiderSpawner_41
+  - first:
+      213: -4204685832550097610
+    second: spr_enemy_spiderSpawner_42
+  - first:
+      213: -7330223170023911360
+    second: spr_enemy_spiderSpawner_43
+  - first:
+      213: -4251411740701766386
+    second: spr_enemy_spiderSpawner_44
+  - first:
+      213: -6127763022269834870
+    second: spr_enemy_spiderSpawner_45
+  - first:
+      213: 1019631011697299134
+    second: spr_enemy_spiderSpawner_46
+  - first:
+      213: 6424008625757741951
+    second: spr_enemy_spiderSpawner_47
+  - first:
+      213: -7311986028622028810
+    second: spr_enemy_spiderSpawner_48
+  - first:
+      213: -7444487052757378083
+    second: spr_enemy_spiderSpawner_49
+  - first:
+      213: 8129538855461912981
+    second: spr_enemy_spiderSpawner_50
+  - first:
+      213: -3097067279791639451
+    second: spr_enemy_spiderSpawner_51
+  - first:
+      213: 1212020452276113459
+    second: spr_enemy_spiderSpawner_52
+  - first:
+      213: 5982409485617277903
+    second: spr_enemy_spiderSpawner_53
+  - first:
+      213: 8698288465984547099
+    second: spr_enemy_spiderSpawner_54
+  - first:
+      213: 7722821813247710520
+    second: spr_enemy_spiderSpawner_55
+  - first:
+      213: 2368790339175230702
+    second: spr_enemy_spiderSpawner_56
+  - first:
+      213: -6312541363029931287
+    second: spr_enemy_spiderSpawner_57
+  - first:
+      213: 3394935013694740921
+    second: spr_enemy_spiderSpawner_58
+  - first:
+      213: 188048849678534955
+    second: spr_enemy_spiderSpawner_59
+  - first:
+      213: -8770504227442866963
+    second: spr_enemy_spiderSpawner_60
+  - first:
+      213: -3136196410714933289
+    second: spr_enemy_spiderSpawner_61
+  - first:
+      213: 6721618823421479445
+    second: spr_enemy_spiderSpawner_62
+  - first:
+      213: 4209933789472732703
+    second: spr_enemy_spiderSpawner_63
+  - first:
+      213: 6862670846638301902
+    second: spr_enemy_spiderSpawner_64
+  - first:
+      213: -3085478295185110325
+    second: spr_enemy_spiderSpawner_65
+  - first:
+      213: -4016968944854784161
+    second: spr_enemy_spiderSpawner_66
+  - first:
+      213: -8391504861321782908
+    second: spr_enemy_spiderSpawner_67
+  - first:
+      213: -2656293650251584786
+    second: spr_enemy_spiderSpawner_68
+  - first:
+      213: 2480331002592233080
+    second: spr_enemy_spiderSpawner_69
+  - first:
+      213: -6167051426876241019
+    second: spr_enemy_spiderSpawner_70
+  - first:
+      213: -4070808788821107430
+    second: spr_enemy_spiderSpawner_71
+  - first:
+      213: -6028087394378513930
+    second: spr_enemy_spiderSpawner_72
+  - first:
+      213: 2240993751211083170
+    second: spr_enemy_spiderSpawner_73
+  - first:
+      213: -3451849037756435219
+    second: spr_enemy_spiderSpawner_74
+  - first:
+      213: 2310208055162267724
+    second: spr_enemy_spiderSpawner_75
+  - first:
+      213: 331437815908910729
+    second: spr_enemy_spiderSpawner_76
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 0
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 128
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 0
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_0
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4bdba1178aa6d6800800000000000000
+      internalID: 607258796449512884
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_1
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 11f6ab5ddb0bd8920800000000000000
+      internalID: 2994243656652320529
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_2
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 3442ad598e0bb9510800000000000000
+      internalID: 1557032609179640899
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_3
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0db9426204fceedd0800000000000000
+      internalID: -2454796872445551664
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_4
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 900d07f25590cf250800000000000000
+      internalID: 5979664666713968649
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_5
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b444b4de26ab76930800000000000000
+      internalID: 4136479716813784139
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_6
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b63bf0e388a463020800000000000000
+      internalID: 2321124606973293419
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_7
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1494
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 391f00ef1ed727640800000000000000
+      internalID: 5076258139582558611
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_8
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 87c9846357af80ad0800000000000000
+      internalID: -2735661392298730376
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_9
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 99f786a5d849e10b0800000000000000
+      internalID: -5755999938904817767
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_10
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c0486bd13b6796b60800000000000000
+      internalID: 7739847946282632204
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_11
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 581d105ff36442d30800000000000000
+      internalID: 4405723575982608773
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_12
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: fcd1dc3617e575680800000000000000
+      internalID: -8766434308554678833
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_13
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 69efb1e8530aa2f30800000000000000
+      internalID: 4551626525289217686
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_14
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0a3ed73b9fd21cc70800000000000000
+      internalID: 8989516881689699232
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_15
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 1196
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 785fb2555a3b69cf0800000000000000
+      internalID: -245811606965193337
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_16
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c14e04c7688067560800000000000000
+      internalID: 7311040418785846300
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_17
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 2c2b8c411ccc40db0800000000000000
+      internalID: -4826507770984877374
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_18
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f6c0f54dd258bb670800000000000000
+      internalID: 8555578349003410543
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_19
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9bba6aa5f643a8630800000000000000
+      internalID: 3930011277701065657
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_20
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f498231c2508c2480800000000000000
+      internalID: -8922615668810806961
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_21
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 05c200d161b6832d0800000000000000
+      internalID: -3298768984328885168
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_22
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: cc083f3af2defdf60800000000000000
+      internalID: 8061422646886367436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_23
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 898
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ae7ebc3c494159bc0800000000000000
+      internalID: -3777090083307657238
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_24
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: b455bb02b216f6f20800000000000000
+      internalID: 3418057480058131787
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_25
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: c045b496d1a3610a0800000000000000
+      internalID: -6911272680158440436
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_26
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 9f052f11bfea25d90800000000000000
+      internalID: -7110428468303474439
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_27
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 4eb7abcf7d8597440800000000000000
+      internalID: 4934072551442381796
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_28
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: de158cbad6bf3d8c0800000000000000
+      internalID: -3975557597585976851
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_29
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e923ef9f9832d3c10800000000000000
+      internalID: 2034821682153009822
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_30
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 48bd7ffa9c121d430800000000000000
+      internalID: 3805860310229179268
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_31
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 600
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 457410ec350ba6c90800000000000000
+      internalID: -7175729182276499628
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_32
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f7b5473094ff02800800000000000000
+      internalID: 585748640613817215
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_33
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 0cd535d52a6c871a0800000000000000
+      internalID: -6811476035745129024
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_34
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 5937be6e3ab6ac000800000000000000
+      internalID: 56976296993584021
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_35
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 302
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: a61e66f6761835880800000000000000
+      internalID: -8623406580233739926
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_36
+      rect:
+        serializedVersion: 2
+        x: 0
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 68634aeac5aa11e60800000000000000
+      internalID: 7931307733819864710
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_37
+      rect:
+        serializedVersion: 2
+        x: 300
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: f0e3b7da70bd89160800000000000000
+      internalID: 7032611644160818703
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_38
+      rect:
+        serializedVersion: 2
+        x: 600
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: e6dcb36c833af4d60800000000000000
+      internalID: 7876693737533590894
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_39
+      rect:
+        serializedVersion: 2
+        x: 900
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 03b28006246b4a600800000000000000
+      internalID: 478707856603360048
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_40
+      rect:
+        serializedVersion: 2
+        x: 1200
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: dc55ff545f4aed970800000000000000
+      internalID: 8781637696767350221
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_41
+      rect:
+        serializedVersion: 2
+        x: 1500
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: ea6f92984340da470800000000000000
+      internalID: 8407380703056623278
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_42
+      rect:
+        serializedVersion: 2
+        x: 1800
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 63ddbbe3384f5a5c0800000000000000
+      internalID: -4204685832550097610
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: spr_enemy_spiderSpawner_43
+      rect:
+        serializedVersion: 2
+        x: 2100
+        y: 4
+        width: 300
+        height: 298
+      alignment: 0
+      pivot: {x: 0.5, y: 0.5}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: -1
+      bones: []
+      spriteID: 04013623dd0d54a90800000000000000
+      internalID: -7330223170023911360
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: bc26165cda3366946b9a4302ceab9b61
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries:
+      - key: SpriteEditor.SliceSettings
+        value: '{"sliceOnImport":false,"gridCellCount":{"x":8.0,"y":6.0},"gridSpriteSize":{"x":300.0,"y":298.0},"gridSpriteOffset":{"x":0.0,"y":0.0},"gridSpritePadding":{"x":0.0,"y":0.0},"pivot":{"x":0.5,"y":0.5},"pivotPixels":{"x":0.0,"y":0.0},"autoSlicingMethod":0,"spriteAlignment":0,"pivotUnitMode":0,"slicingType":2,"keepEmptyRects":false,"isAlternate":false}'
+    nameFileIdTable:
+      spr_enemy_spiderSpawner_0: 607258796449512884
+      spr_enemy_spiderSpawner_1: 2994243656652320529
+      spr_enemy_spiderSpawner_10: 7739847946282632204
+      spr_enemy_spiderSpawner_11: 4405723575982608773
+      spr_enemy_spiderSpawner_12: -8766434308554678833
+      spr_enemy_spiderSpawner_13: 4551626525289217686
+      spr_enemy_spiderSpawner_14: 8989516881689699232
+      spr_enemy_spiderSpawner_15: -245811606965193337
+      spr_enemy_spiderSpawner_16: 7311040418785846300
+      spr_enemy_spiderSpawner_17: -4826507770984877374
+      spr_enemy_spiderSpawner_18: 8555578349003410543
+      spr_enemy_spiderSpawner_19: 3930011277701065657
+      spr_enemy_spiderSpawner_2: 1557032609179640899
+      spr_enemy_spiderSpawner_20: -8922615668810806961
+      spr_enemy_spiderSpawner_21: -3298768984328885168
+      spr_enemy_spiderSpawner_22: 8061422646886367436
+      spr_enemy_spiderSpawner_23: -3777090083307657238
+      spr_enemy_spiderSpawner_24: 3418057480058131787
+      spr_enemy_spiderSpawner_25: -6911272680158440436
+      spr_enemy_spiderSpawner_26: -7110428468303474439
+      spr_enemy_spiderSpawner_27: 4934072551442381796
+      spr_enemy_spiderSpawner_28: -3975557597585976851
+      spr_enemy_spiderSpawner_29: 2034821682153009822
+      spr_enemy_spiderSpawner_3: -2454796872445551664
+      spr_enemy_spiderSpawner_30: 3805860310229179268
+      spr_enemy_spiderSpawner_31: -7175729182276499628
+      spr_enemy_spiderSpawner_32: 585748640613817215
+      spr_enemy_spiderSpawner_33: -6811476035745129024
+      spr_enemy_spiderSpawner_34: 56976296993584021
+      spr_enemy_spiderSpawner_35: -8623406580233739926
+      spr_enemy_spiderSpawner_36: 7931307733819864710
+      spr_enemy_spiderSpawner_37: 7032611644160818703
+      spr_enemy_spiderSpawner_38: 7876693737533590894
+      spr_enemy_spiderSpawner_39: 478707856603360048
+      spr_enemy_spiderSpawner_4: 5979664666713968649
+      spr_enemy_spiderSpawner_40: 8781637696767350221
+      spr_enemy_spiderSpawner_41: 8407380703056623278
+      spr_enemy_spiderSpawner_42: -4204685832550097610
+      spr_enemy_spiderSpawner_43: -7330223170023911360
+      spr_enemy_spiderSpawner_5: 4136479716813784139
+      spr_enemy_spiderSpawner_6: 2321124606973293419
+      spr_enemy_spiderSpawner_7: 5076258139582558611
+      spr_enemy_spiderSpawner_8: -2735661392298730376
+      spr_enemy_spiderSpawner_9: -5755999938904817767
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

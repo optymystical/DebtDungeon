@@ -1,0 +1,33 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f6b9dc4570e24bb3de8f0a2c4d6b7e95, type: 3}
+  m_Name: Ability_Shield3
+  m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.EmplaceDefinition
+  _id: shield_3
+  _displayName: Shield III (Emplace)
+  _description: "Upgrades Shield II: Q raises a shield wall toward the mouse instead of a bubble (15 x Power health, 4 s). Enemies cannot walk through it and attack it instead; you and your attacks pass through. Still reflects absorbed damage."
+  _icon: {fileID: 0}
+  _kind: 1
+  _cooldown: 8
+  _energyCost: 30
+  _windup: 0.1
+  _wallPrefab: {fileID: 5101440921370001001, guid: 4b0e191ac5d74008cd3e5f7a9cbd2e0a, type: 3}
+  _powerStat: 5
+  _healthPerPower: 15
+  _duration: 4
+  _distance: 1.5
+  _width: 3
+  _thickness: 0.375
+  _wallSprite: {fileID: 21300000, guid: 3afd0809b4c64ff7bc2d4e6f8bafc1d9, type: 3}
+  _wallColor: {r: 0.45, g: 0.6, b: 1, a: 0.85}
+  _reflect: 1
+  _beamSprite: {fileID: 21300000, guid: 29ecf7f8a3b54ee6ab1c3d5f7a9eb0c8, type: 3}
