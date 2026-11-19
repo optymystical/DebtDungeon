@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7e8a64e82d2ba6347ae5c228faf37884, type: 3}
   m_Name: Attack_GreatswordCleave
   m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.MeleeAttackDefinition
-  _id: 
-  _displayName: 
+  _id: greatsword_cleave
+  _displayName: Greatsword Cleave
   _description: 
   _icon: {fileID: 0}
   _kind: 0
