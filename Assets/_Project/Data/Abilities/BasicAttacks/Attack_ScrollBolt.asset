@@ -12,8 +12,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 92da94fad76bded439369c71a4dff146, type: 3}
   m_Name: Attack_ScrollBolt
   m_EditorClassIdentifier: DebtDungeon.Player::DebtDungeon.Player.ProjectileAttackDefinition
-  _id: 
-  _displayName: 
+  _id: scroll_bolt
+  _displayName: Scroll Bolt
   _description: 
   _icon: {fileID: 0}
   _kind: 0

@@ -7,6 +7,7 @@ namespace DebtDungeon.Player
 {
     public class AbilityRunner : MonoBehaviour, IAbilityUser
     {
+        [Header("References")]
         [SerializeField] private GameObject _player;
         [SerializeField] private PlayerCombatState _playerCombatState;
         [SerializeField] private PlayerEnergy _playerEnergy;
@@ -16,13 +17,15 @@ namespace DebtDungeon.Player
         private Dictionary<AbilityDefinition, float> _readyTime = new Dictionary<AbilityDefinition, float>();
         private IStatProvider _stats;
 
+        // Ability Slots
         private AbilityDefinition _ability1 = null;
         private AbilityDefinition _ability2 = null;
         private AbilityDefinition _ability3 = null;
         private AbilityDefinition _ability4 = null;
         private AbilityDefinition _ability5 = null;
-        private AbilityDefinition _defensive = null;
+        private AbilityDefinition _defensiveAbility = null;
 
+        // Timer coroutines
         private Coroutine _windingUpCoroutine = null;
         private Coroutine _active1Coroutine = null;
         private Coroutine _active2Coroutine = null;
@@ -32,15 +35,15 @@ namespace DebtDungeon.Player
         private Coroutine _defensiveCoroutine = null;
 
         // For testing
-        [SerializeField] private List<AbilityDefinition> _testAbilities;
+        //[SerializeField] private List<AbilityDefinition> _testAbilities;
 
-        private void Start()
-        {
-            foreach (AbilityDefinition ability in _testAbilities)
-            {
-                GrantAbility(ability);
-            }
-        }
+        //private void Start()
+        //{
+        //    foreach (AbilityDefinition ability in _testAbilities)
+        //    {
+        //        GrantAbility(ability);
+        //    }
+        //}
 
         private void OnDisable()
         {
@@ -51,11 +54,14 @@ namespace DebtDungeon.Player
         /// <summary>Adds an ability and slots it by its Kind. Granting one it already has does nothing.</summary>
         public void GrantAbility(AbilityDefinition ability)
         {
-            _abilities.Add(ability);
-
-            if (ability.Kind == AbilityKind.Active)
+            if (!_abilities.Contains(ability))
             {
-                TryAddActiveToSlot(ability); 
+                _abilities.Add(ability);
+
+                if (ability.Kind == AbilityKind.Active)
+                {
+                    TryAddActiveToSlot(ability);
+                }
             }
         }
 
@@ -109,7 +115,6 @@ namespace DebtDungeon.Player
             {
                 return false;
             }
-
             return true;
         }
 
@@ -135,9 +140,9 @@ namespace DebtDungeon.Player
             {
                 _ability5 = null;
             }
-            else if (_defensive == ability)
+            else if (_defensiveAbility == ability)
             {
-                _defensive = null;
+                _defensiveAbility = null;
             }
         }
 
@@ -155,7 +160,6 @@ namespace DebtDungeon.Player
             {
                 return true;
             }
-
             return Time.time >= readyAt;
         }
 
@@ -165,6 +169,7 @@ namespace DebtDungeon.Player
 
             BasicAttackDefinition basicAttack = null;
 
+            // Since player should only have one, find first basic attack
             foreach (AbilityDefinition ability in _abilities)
             {
                 if (ability.Kind == AbilityKind.BasicAttack)
@@ -173,6 +178,7 @@ namespace DebtDungeon.Player
                     break;
                 }
             }
+
             // Cancel if can't attack now
             if (!basicAttack || !IsReady(basicAttack) || _windingUpCoroutine != null)
             {
@@ -184,7 +190,7 @@ namespace DebtDungeon.Player
             return true;
         }
 
-        // Assuming player can only have one defensive ability at a time
+        // From PlayerController input. Assumes player can only have one defensive ability at a time
         public bool TryUseAbility(int num)
         {
             _playerCombatState.MarkInCombat();
@@ -207,6 +213,9 @@ namespace DebtDungeon.Player
                     break;
                 case 5:
                     activeAbility = _ability5;
+                    break;
+                case 6:
+                    activeAbility = _defensiveAbility;
                     break;
             }
 
@@ -240,37 +249,10 @@ namespace DebtDungeon.Player
                 {
                     _active5Coroutine = StartCoroutine(Active5Timer(activeAbility.Cooldown));
                 }
-                return true;
-            }
-            return false;
-        }
-
-        // Assuming player can only have one defensive ability at a time
-        public bool TryUseDefensive()
-        {
-            _playerCombatState.MarkInCombat();
-
-            AbilityDefinition defensiveAbility = null;
-
-            foreach (AbilityDefinition ability in _abilities)
-            {
-                if (ability.Kind == AbilityKind.Defensive)
+                else if (activeAbility == _defensiveAbility)
                 {
-                    defensiveAbility = ability;
-                    break;
+                    _defensiveCoroutine = StartCoroutine(DefensiveTimer(activeAbility.Cooldown));
                 }
-            }
-            // Cancel if can't use it now
-            if (!defensiveAbility || !IsReady(defensiveAbility) || _windingUpCoroutine != null)
-            {
-                return false;
-            }
-
-            // Use energy, canceling if can't
-            if (_playerEnergy.UseEnergy(defensiveAbility.EnergyCost))
-            {
-                _readyTime[defensiveAbility] = Time.time + defensiveAbility.Cooldown;
-                _defensiveCoroutine = StartCoroutine(DefensiveTimer(defensiveAbility.Cooldown));
                 return true;
             }
             return false;
@@ -285,11 +267,13 @@ namespace DebtDungeon.Player
             // Detect if player is strong or weak to modify power before Execute
             if (_statusEffects.StrengthenedStacks > 0)
             {
-                power *= _statusEffects.StrengthenedStacks;
+                // Str1 +50%   Str2 +100%   Str3 +150%
+                power += (power * _statusEffects.StrengthenedStacks)/2;
             }
             else if (_statusEffects.WeakenedStacks > 0)
             {
-                power /= _statusEffects.StrengthenedStacks;
+                // Weak1 -20%   Weak2 -40%   Weak3 -60%
+                power -= power * (0.2f * _statusEffects.WeakenedStacks);
             }
 
             basicAttack.Execute(_player, Faction.Player, direction, Mathf.RoundToInt(basicAttack.BaseDamage * power), 100);

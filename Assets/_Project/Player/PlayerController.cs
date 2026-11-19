@@ -154,7 +154,7 @@ namespace DebtDungeon.Player
             }
             else if (_defensiveAction.WasPressedThisFrame())
             {
-                _abilityRunner.TryUseDefensive();
+                _abilityRunner.TryUseAbility(6);
             }
             else if (_interactAction.WasPressedThisFrame())
             {
