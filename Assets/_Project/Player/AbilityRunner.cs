@@ -40,15 +40,15 @@ namespace DebtDungeon.Player
         private float _pendingBonusUntil;
 
         // For testing
-        //[SerializeField] private List<AbilityDefinition> _testAbilities;
+        [SerializeField] private List<AbilityDefinition> _testAbilities;
 
-        //private void Start()
-        //{
-        //    foreach (AbilityDefinition ability in _testAbilities)
-        //    {
-        //        GrantAbility(ability);
-        //    }
-        //}
+        private void Start()
+        {
+            foreach (AbilityDefinition ability in _testAbilities)
+            {
+                GrantAbility(ability);
+            }
+        }
 
         private void Awake()
         {
