@@ -12,8 +12,8 @@ namespace DebtDungeon.Player
         [SerializeField] private AbilityRunner _abilityRunner;
 
         [Header("Settings")]
-        [SerializeField] private float _baseMoveSpeed = 1;
-        [SerializeField] private float _turnSpeed = 1;
+        [SerializeField] private float _baseMoveSpeed = 1f;
+        [SerializeField] private float _turnSpeed = 1f;
 
         private Vector2 _moveInput;
         private Camera _camera;
@@ -59,6 +59,9 @@ namespace DebtDungeon.Player
             _openSkillsAction = InputSystem.actions.FindAction("Player/Open Skills");
             _pauseAction = InputSystem.actions.FindAction("Player/Pause");
             _abilityRunner = GetComponent<AbilityRunner>();
+
+            // Alter movement based on archetype: magic is slower than martial
+            _baseMoveSpeed = Progression
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created

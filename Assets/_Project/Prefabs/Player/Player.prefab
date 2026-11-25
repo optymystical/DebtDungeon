@@ -57,7 +57,7 @@ MonoBehaviour:
   _rb: {fileID: 1030241875207564683}
   _hitFeedback: {fileID: 2383624863722295484}
   _abilityRunner: {fileID: 7117527635846813071}
-  _baseMoveSpeed: 3
+  _baseMoveSpeed: 4
   _turnSpeed: 300
 --- !u!212 &4009666917000852287
 SpriteRenderer:
@@ -182,7 +182,7 @@ PolygonCollider2D:
   m_Offset: {x: 0, y: 0}
   m_SpriteTilingProperty:
     border: {x: 0, y: 0, z: 0, w: 0}
-    pivot: {x: 0.5, y: 0.28866667}
+    pivot: {x: 0.5, y: 0.5}
     oldSize: {x: 1, y: 1}
     newSize: {x: 1, y: 1}
     adaptiveTilingThreshold: 0.5
@@ -292,17 +292,6 @@ MonoBehaviour:
   _playerCombatState: {fileID: 6098436760110208286}
   _playerEnergy: {fileID: 7083286062687095106}
   _statusEffects: {fileID: 2317975496077565927}
-  _testAbilities:
-  - {fileID: 11400000, guid: 98aa35d96533459e9922d63321de85c1, type: 2}
-  - {fileID: 11400000, guid: b7057d670ca41654dbbf180d6dbf8125, type: 2}
-  - {fileID: 11400000, guid: 9c526caec2e74d96b06826e7abe2bf3d, type: 2}
-  - {fileID: 11400000, guid: f2fa2ccd0f5d4ee38c181fdcf4fad915, type: 2}
-  - {fileID: 11400000, guid: e3b7c82d732c45ef83c18e553c1781cc, type: 2}
-  - {fileID: 11400000, guid: c861534537004c238ab8ee8051199017, type: 2}
-  - {fileID: 11400000, guid: ba5108ce5f86468fb77c19d43ba49e5f, type: 2}
-  - {fileID: 11400000, guid: 975c621596e94035b6d366c55034c522, type: 2}
-  - {fileID: 11400000, guid: 8899da8dc5844c86a56cd283188efe37, type: 2}
-  - {fileID: 11400000, guid: 4975438dcc0f41cfb7d06b619e318f48, type: 2}
 --- !u!114 &7083286062687095106
 MonoBehaviour:
   m_ObjectHideFlags: 0
