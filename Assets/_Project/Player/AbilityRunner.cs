@@ -460,6 +460,7 @@ namespace DebtDungeon.Player
                 return true;
             }
             InsufficientEnergy?.Invoke(num);
+            GetComponent<AudioSource>().Play();
             return false;
         }
 
