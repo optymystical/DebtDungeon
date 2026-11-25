@@ -13,6 +13,8 @@ namespace DebtDungeon.Player
 
         [Header("Settings")]
         [SerializeField] private float _baseMoveSpeed = 1f;
+        [SerializeField] private float _martialMoveSpeed = 1f;
+        [SerializeField] private float _magicMoveSpeed = 0.85f;
         [SerializeField] private float _turnSpeed = 1f;
 
         private Vector2 _moveInput;
@@ -59,9 +61,6 @@ namespace DebtDungeon.Player
             _openSkillsAction = InputSystem.actions.FindAction("Player/Open Skills");
             _pauseAction = InputSystem.actions.FindAction("Player/Pause");
             _abilityRunner = GetComponent<AbilityRunner>();
-
-            // Alter movement based on archetype: magic is slower than martial
-            _baseMoveSpeed = Progression
         }
 
         // Start is called once before the first execution of Update after the MonoBehaviour is created
@@ -86,6 +85,11 @@ namespace DebtDungeon.Player
 
             GatherInput();
             FaceCursor();
+        }
+
+        public void SetArchetype(Archetype archetype)
+        {
+            _baseMoveSpeed = archetype == Archetype.Magic ? _magicMoveSpeed : _martialMoveSpeed;
         }
 
         // Blocked only in the frozen states, so sandbox scenes without a GameManager still accept input.
