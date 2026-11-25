@@ -42,6 +42,7 @@ namespace DebtDungeon.Player
 
         // Events
         public event Action<int> AbilityReady;
+        public event Action<int> InsufficientEnergy;
 
         // For testing
         //[SerializeField] private List<AbilityDefinition> _testAbilities;
@@ -458,6 +459,7 @@ namespace DebtDungeon.Player
                 }
                 return true;
             }
+            InsufficientEnergy?.Invoke(num);
             return false;
         }
 
