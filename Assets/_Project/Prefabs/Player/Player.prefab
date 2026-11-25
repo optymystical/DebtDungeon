@@ -58,7 +58,9 @@ MonoBehaviour:
   _rb: {fileID: 1030241875207564683}
   _hitFeedback: {fileID: 2383624863722295484}
   _abilityRunner: {fileID: 7117527635846813071}
-  _baseMoveSpeed: 3
+  _baseMoveSpeed: 4
+  _martialMoveSpeed: 1
+  _magicMoveSpeed: 0.85
   _turnSpeed: 300
 --- !u!212 &4009666917000852287
 SpriteRenderer:

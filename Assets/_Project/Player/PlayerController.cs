@@ -12,8 +12,10 @@ namespace DebtDungeon.Player
         [SerializeField] private AbilityRunner _abilityRunner;
 
         [Header("Settings")]
-        [SerializeField] private float _baseMoveSpeed = 1;
-        [SerializeField] private float _turnSpeed = 1;
+        [SerializeField] private float _baseMoveSpeed = 1f;
+        [SerializeField] private float _martialMoveSpeed = 1f;
+        [SerializeField] private float _magicMoveSpeed = 0.85f;
+        [SerializeField] private float _turnSpeed = 1f;
 
         private Vector2 _moveInput;
         private Camera _camera;
@@ -83,6 +85,11 @@ namespace DebtDungeon.Player
 
             GatherInput();
             FaceCursor();
+        }
+
+        public void SetArchetype(Archetype archetype)
+        {
+            _baseMoveSpeed = archetype == Archetype.Magic ? _magicMoveSpeed : _martialMoveSpeed;
         }
 
         // Blocked only in the frozen states, so sandbox scenes without a GameManager still accept input.
