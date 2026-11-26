@@ -1024,7 +1024,6 @@ MonoBehaviour:
     SpawnerPrefab: {fileID: 4357668866879366134, guid: bf5c103690596f34699fc8971bf68cb7, type: 3}
     ResidentPrefab: {fileID: 6283056031644735363, guid: d3cafb3a51b124e49b2c51a71debaa8b, type: 3}
     GuardPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
-    SpecialistPrefab: {fileID: 0}
     ResidentConfig: {fileID: 11400000, guid: ada639a6de2087a4c8abcfe499b06226, type: 2}
     GuardConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
     SpecialistConfig: {fileID: 0}
