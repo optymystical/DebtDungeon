@@ -35,6 +35,7 @@ namespace DebtDungeon.Player
         private Coroutine _active4Coroutine = null;
         private Coroutine _active5Coroutine = null;
         private Coroutine _defensiveCoroutine = null;
+        private Coroutine _sprintCoroutine = null;
 
         // Wrap-up additions (Chris/Claude): passives and timed barriers
         private Health _health;
@@ -73,7 +74,13 @@ namespace DebtDungeon.Player
         {
             GameEvents.ActorDamaged -= HandleActorDamaged;
             _windingUpCoroutine = null;
+            _active1Coroutine = null;
+            _active2Coroutine = null;
+            _active3Coroutine = null;
+            _active4Coroutine = null;
+            _active5Coroutine = null;
             _defensiveCoroutine = null;
+            _sprintCoroutine = null;
         }
 
         // ---- Passives (wrap-up additions) ----
@@ -296,6 +303,10 @@ namespace DebtDungeon.Player
             {
                 _defensiveAbility = null;
             }
+            else if (_sprintAbility == ability)
+            {
+                _sprintAbility = null;
+            }
         }
 
         public void SetStats(IStatProvider stats)
@@ -359,7 +370,7 @@ namespace DebtDungeon.Player
             return Mathf.RoundToInt(basicAttack.BaseDamage * GetModifiedPower(basicAttack.ScalingStat));
         }
 
-        /// <summary>The ability in a key slot: 1–5 for actives, 6 for the defensive (Q). Null if empty.</summary>
+        /// <summary>The ability in a key slot: 1–5 for actives, 6 for the defensive (Q), 7 for sprint. Null if empty.</summary>
         public AbilityDefinition GetSlot(int num)
         {
             switch (num)
@@ -370,6 +381,7 @@ namespace DebtDungeon.Player
                 case 4: return _ability4;
                 case 5: return _ability5;
                 case 6: return _defensiveAbility;
+                case 7: return _sprintAbility;
                 default: return null;
             }
         }
@@ -470,6 +482,10 @@ namespace DebtDungeon.Player
                 {
                     _defensiveCoroutine = StartCoroutine(DefensiveTimer(activeAbility.Cooldown));
                 }
+                else if (activeAbility == _sprintAbility)
+                {
+                    _sprintCoroutine = StartCoroutine(SprintTimer(activeAbility.Cooldown));
+                }
 
                 // Wrap-up addition: real skills run after their windup. Placeholder assets still do nothing.
                 if (activeAbility is SkillDefinition skill)
@@ -538,6 +554,13 @@ namespace DebtDungeon.Player
             yield return new WaitForSeconds(cooldown);
             _defensiveCoroutine = null;
             AbilityReady?.Invoke(6);
+        }
+
+        private IEnumerator SprintTimer(float cooldown)
+        {
+            yield return new WaitForSeconds(cooldown);
+            _sprintCoroutine = null;
+            AbilityReady?.Invoke(7);
         }
     }
 }
