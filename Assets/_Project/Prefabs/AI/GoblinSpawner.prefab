@@ -64,10 +64,9 @@ MonoBehaviour:
   _fallbackMaxResidents: 6
   _fallbackMaxGuards: 2
   _spawnInterval: 20
-  _specialistPrefab: {fileID: 4645621396471598311, guid: 7fd1e2313685d904cb83401057bed224, type: 3}
-  _specialistConfig: {fileID: 11400000, guid: d43e63da6d6252e43b05b343038b5e2a, type: 2}
+  _specialistPrefab: {fileID: 0}
+  _specialistConfig: {fileID: 0}
   _specialistSpawnChance: 0.3
-  _exitKeyPrefab: {fileID: 1871191044612620439, guid: 74384c25a2040634a9931f2c7a591a00, type: 3}
 --- !u!61 &2875078934921924607
 BoxCollider2D:
   m_ObjectHideFlags: 0

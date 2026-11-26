@@ -17,13 +17,28 @@ MonoBehaviour:
   _postAttackBackstepDuration: 0.22
   _packCohesionWeight: 0
   _packCohesionRadius: 4.5
+  IsRangedKiter: 0
+  MinKeepDistance: 3.2
+  PreferredRange: 6
+  ProjectilePrefab: {fileID: 0}
+  ProjectileSpeed: 4.5
+  AoERadius: 1.35
+  ShowTrajectoryTelegraph: 1
+  ShowGroundWarningCircle: 1
+  SlowMultiplier: 0.45
+  SlowDurationSeconds: 3
+  ApplyPoison: 1
+  PoisonTickDamage: 2
+  PoisonTickInterval: 1
+  PoisonDurationSeconds: 4
   DisplayName: Skitter
   Style: 1
-  GoldDropAmount: 5
-  XpReward: 10
-  MoveSpeed: 3.5
+  GoldDropAmount: 12
+  XpReward: 25
   SightRadius: 6.5
-  AttackDamage: 8
+  HearingRadius: 9
+  MoveSpeed: 5.2
+  AttackDamage: 14
   DamageType: 0
   AttackRange: 1.2
   AttackCooldownSeconds: 1.4

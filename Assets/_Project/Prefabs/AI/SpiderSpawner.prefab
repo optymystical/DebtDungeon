@@ -53,9 +53,9 @@ MonoBehaviour:
   _xpReward: 50
   _goldReward: 25
   _factionData: {fileID: 11400000, guid: d773133b004fb2b4aa3146eb24bfb05d, type: 2}
-  _residentPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
+  _residentPrefab: {fileID: 6283056031644735363, guid: d3cafb3a51b124e49b2c51a71debaa8b, type: 3}
   _guardPrefab: {fileID: 2298115806659062241, guid: d46ed04a555884c41b2c87ff9c058adb, type: 3}
-  _residentConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
+  _residentConfig: {fileID: 11400000, guid: ada639a6de2087a4c8abcfe499b06226, type: 2}
   _guardConfig: {fileID: 11400000, guid: f65733fe78882114cb76963504ab6f68, type: 2}
   _rivalTerritoryTarget: {fileID: 7421434317301486737, guid: 26eaa0712fbceec4f8f452818a7e9862, type: 3}
   _obstacleMask:
@@ -64,10 +64,9 @@ MonoBehaviour:
   _fallbackMaxResidents: 6
   _fallbackMaxGuards: 2
   _spawnInterval: 20
-  _specialistPrefab: {fileID: 6283056031644735363, guid: d3cafb3a51b124e49b2c51a71debaa8b, type: 3}
-  _specialistConfig: {fileID: 11400000, guid: ada639a6de2087a4c8abcfe499b06226, type: 2}
+  _specialistPrefab: {fileID: 0}
+  _specialistConfig: {fileID: 0}
   _specialistSpawnChance: 0.3
-  _exitKeyPrefab: {fileID: 1871191044612620439, guid: 74384c25a2040634a9931f2c7a591a00, type: 3}
 --- !u!61 &1343616601263768819
 BoxCollider2D:
   m_ObjectHideFlags: 0

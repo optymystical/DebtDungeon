@@ -19,7 +19,7 @@ MonoBehaviour:
   _packCohesionRadius: 4.5
   IsRangedKiter: 1
   MinKeepDistance: 3
-  PreferredRange: 5.5
+  PreferredRange: 6
   ProjectilePrefab: {fileID: 349600485054363222, guid: 875c3abc7a2aaf24d9595dfa96ebdf5a, type: 3}
   ProjectileSpeed: 5.5
   AoERadius: 1
@@ -37,7 +37,7 @@ MonoBehaviour:
   XpReward: 10
   SightRadius: 8
   HearingRadius: 10
-  MoveSpeed: 4.2
+  MoveSpeed: 3.2
   AttackDamage: 6
   DamageType: 0
   AttackRange: 5.5

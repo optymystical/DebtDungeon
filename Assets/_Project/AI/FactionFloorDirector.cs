@@ -287,8 +287,17 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            FactionSpawnSet neutralSet = GetSpawnSet(Faction.Neutral);
-            if (neutralSet == null || neutralSet.ResidentPrefab == null)
+            // Gather all active playable/enemy faction sets (excluding Neutral) so units count toward faction caps
+            List<FactionSpawnSet> activeSets = new List<FactionSpawnSet>();
+            for (int i = 0; i < _factionSets.Count; i++)
+            {
+                if (_factionSets[i].Faction != Faction.Neutral && _factionSets[i].ResidentPrefab != null)
+                {
+                    activeSets.Add(_factionSets[i]);
+                }
+            }
+
+            if (activeSets.Count == 0)
             {
                 return;
             }
@@ -317,6 +326,13 @@ namespace DebtDungeon.AI
 
             for (int attempt = 0; attempt < _extraNeutralEncounters * 8 && spawned < _extraNeutralEncounters; attempt++)
             {
+                // Pick a random faction that still has open Resident capacity under _maxResidentsPerFaction
+                FactionSpawnSet chosenSet = activeSets[UnityEngine.Random.Range(0, activeSets.Count)];
+                if (!CanSpawnForFaction(chosenSet.Faction, UnitRole.Resident))
+                {
+                    continue;
+                }
+
                 Vector2Int chunkCell = candidateChunks[UnityEngine.Random.Range(0, candidateChunks.Count)];
                 BoundsInt bounds = floor.GetChunkTileBounds(chunkCell);
                 Vector3 rawPos = GetWalkableChunkCenter(bounds);
@@ -342,12 +358,12 @@ namespace DebtDungeon.AI
                     continue;
                 }
 
-                GameObject prefab = (neutralSet.SpecialistPrefab != null && UnityEngine.Random.value < _generationSpecialistChance)
-                    ? neutralSet.SpecialistPrefab
-                    : neutralSet.ResidentPrefab;
-                UnitConfig config = (prefab == neutralSet.SpecialistPrefab && neutralSet.SpecialistConfig != null)
-                    ? neutralSet.SpecialistConfig
-                    : neutralSet.ResidentConfig;
+                GameObject prefab = (chosenSet.SpecialistPrefab != null && UnityEngine.Random.value < _generationSpecialistChance)
+                    ? chosenSet.SpecialistPrefab
+                    : chosenSet.ResidentPrefab;
+                UnitConfig config = (prefab == chosenSet.SpecialistPrefab && chosenSet.SpecialistConfig != null)
+                    ? chosenSet.SpecialistConfig
+                    : chosenSet.ResidentConfig;
 
                 GameObject unitObj = Instantiate(prefab, safePos, Quaternion.identity);
                 if (unitObj.TryGetComponent(out CombatAgent2D combat) && config != null)
