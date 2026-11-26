@@ -43,22 +43,24 @@ namespace DebtDungeon.Player
         // Events
         public event Action<int> AbilityReady;
         public event Action<int> InsufficientEnergy;
+        private AudioSource _audioSource;
 
         // For testing
-        [SerializeField] private List<AbilityDefinition> _testAbilities;
+        //[SerializeField] private List<AbilityDefinition> _testAbilities;
 
-        private void Start()
-        {
-            foreach (AbilityDefinition ability in _testAbilities)
-            {
-                GrantAbility(ability);
-            }
-        }
+        //private void Start()
+        //{
+        //    foreach (AbilityDefinition ability in _testAbilities)
+        //    {
+        //        GrantAbility(ability);
+        //    }
+        //}
 
         private void Awake()
         {
             GameObject owner = _player != null ? _player : gameObject;
             _health = owner.GetComponent<Health>();
+            _audioSource = owner.GetComponent<AudioSource>();
         }
 
         private void OnEnable()
@@ -460,7 +462,7 @@ namespace DebtDungeon.Player
                 return true;
             }
             InsufficientEnergy?.Invoke(num);
-            GetComponent<AudioSource>().Play();
+            _audioSource.Play();
             return false;
         }
 
