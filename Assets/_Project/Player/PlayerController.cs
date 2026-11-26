@@ -15,6 +15,7 @@ namespace DebtDungeon.Player
         [SerializeField] private float _baseMoveSpeed = 1f;
         [SerializeField] private float _martialMoveSpeed = 1f;
         [SerializeField] private float _magicMoveSpeed = 0.85f;
+        [SerializeField] private float _archetypeSpeedMultiplier = 1f;
         [SerializeField] private float _turnSpeed = 1f;
 
         private Vector2 _moveInput;
@@ -89,7 +90,7 @@ namespace DebtDungeon.Player
 
         public void SetArchetype(Archetype archetype)
         {
-            _baseMoveSpeed = archetype == Archetype.Magic ? _magicMoveSpeed : _martialMoveSpeed;
+            _archetypeSpeedMultiplier = archetype == Archetype.Magic ? _magicMoveSpeed : _martialMoveSpeed;
         }
 
         // Blocked only in the frozen states, so sandbox scenes without a GameManager still accept input.
@@ -105,7 +106,8 @@ namespace DebtDungeon.Player
             bool isKnockingBack = _hitFeedback != null && _hitFeedback.IsKnockingBack;
             if (_rb != null && !isKnockingBack)
             {
-                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _burdenMultiplier * _terrainMultiplier * _statusSpeedMultiplier;
+                _rb.linearVelocity = _moveInput * _baseMoveSpeed * _archetypeSpeedMultiplier * _burdenMultiplier * _terrainMultiplier
+                    * _statusSpeedMultiplier;
 
                 // Rotates sprite to face destination while moving
                 if (_moveInput != Vector2.zero)
