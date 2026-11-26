@@ -160,7 +160,7 @@ CircleCollider2D:
   m_CompositeOperation: 0
   m_CompositeOrder: 0
   m_Offset: {x: 0, y: 0}
-  m_Radius: 0.45
+  m_Radius: 0.35
 --- !u!114 &5934769959843523098
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -204,6 +204,11 @@ MonoBehaviour:
   _attackTelegraphDuration: 0.65
   _attackCooldown: 1.2
   _fleeHealthThreshold: 0.2
+  _spiderAmbushBurstSpeedMultiplier: 1.35
+  _spiderAmbushBurstDuration: 1.5
+  _spiderFlankWeight: 0.55
+  _barkOffset: {x: 0, y: 0.85, z: 0}
+  _barkCooldownSeconds: 2.5
   _trajectoryLine: {fileID: 0}
   _windupWarningCirclePrefab: {fileID: 5038285919432990541, guid: a6e8a9ff5e483a74ca4096ffc23133a9, type: 3}
 --- !u!114 &7938495285181322973

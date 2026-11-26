@@ -64,11 +64,7 @@ namespace DebtDungeon.AI
         public Faction Faction => _health != null ? _health.Faction : Faction.Neutral;
         public bool IsDestroyed => _health == null || !_health.IsAlive;
 
-        //public IReadOnlyList<FactionAI2D> ActiveResidents => _activeResidents;
-        //public IReadOnlyList<FactionAI2D> ActiveGuards => _activeGuards;
-        //public int TotalLivingCount => _activeResidents.Count + _activeGuards.Count;
-        //public bool IsDestroyed => _health == null || !_health.IsAlive;
-
+        
         private void Awake()
         {
             _health = GetComponent<Health>();
@@ -215,8 +211,8 @@ namespace DebtDungeon.AI
                 return;
             }
 
-            Vector2 spawnOffset = UnityEngine.Random.insideUnitCircle * DefaultSpawnRadius;
-            Vector2 spawnPosition = (Vector2)transform.position + spawnOffset;
+            
+            Vector2 spawnPosition = FindWalkableSpawnPoint();
 
             GameObject unitObject = Instantiate(selectedPrefab, spawnPosition, Quaternion.identity);
 
@@ -241,10 +237,44 @@ namespace DebtDungeon.AI
                 }
 
                 Vector2 targetTerritory = _rivalTerritoryTarget != null ? (Vector2)_rivalTerritoryTarget.position : Vector2.zero;
-                ai.ConfigureRole(role, transform.position, _obstacleMask, _factionData, targetTerritory);
+                ai.ConfigureRole(role, spawnPosition, _obstacleMask, _factionData, targetTerritory);
                 localTracker.Add(ai);
                 _onUnitSpawnedCallback?.Invoke(Faction,ai);
             }
+        }
+
+        private Vector2 FindWalkableSpawnPoint()
+        {
+            for (int attempt = 0; attempt < 10; attempt++)
+            {
+                Vector2 candidate = (Vector2)transform.position + UnityEngine.Random.insideUnitCircle * DefaultSpawnRadius;
+                if (IsPositionWalkable(candidate))
+                {
+                    return candidate;
+                }
+            }
+
+            // Widen search radius to 1.6 units if immediate perimeter is blocked
+            for (int i = 0; i < 12; i++)
+            {
+                float angle = i * Mathf.PI * 2f / 12f;
+                Vector2 candidate = (Vector2)transform.position + new Vector2(Mathf.Cos(angle), Mathf.Sin(angle)) * 1.6f;
+                if (IsPositionWalkable(candidate))
+                {
+                    return candidate;
+                }
+            }
+
+            return transform.position;
+        }
+        private bool IsPositionWalkable(Vector2 pos)
+        {
+            if (_floor != null)
+            {
+                return _floor.IsWalkable(_floor.WorldToCell(pos));
+            }
+
+            return Physics2D.OverlapCircle(pos, 0.35f, _obstacleMask) == null;
         }
 
         private void HandleSpawnerDied(KillInfo kill)

@@ -12,8 +12,10 @@ namespace DebtDungeon.AI
         public GameObject SpawnerPrefab;
         public GameObject ResidentPrefab;
         public GameObject GuardPrefab;
+        public GameObject SpecialistPrefab;
         public UnitConfig ResidentConfig;
         public UnitConfig GuardConfig;
+        public UnitConfig SpecialistConfig; 
     }
 
     [Serializable]
@@ -49,6 +51,11 @@ namespace DebtDungeon.AI
         [Header("Map-Wide Faction Population Caps (8 Total Per Faction)")]
         [SerializeField, Min(1)] private int _maxResidentsPerFaction = 6;
         [SerializeField, Min(1)] private int _maxGuardsPerFaction = 2;
+
+        [Header("Generation Specialists & Neutral Encounters")]
+        [SerializeField, Range(0f, 1f)] private float _generationSpecialistChance = 0.3f;
+        [SerializeField, Min(0)] private int _extraNeutralEncounters = 6;
+        [SerializeField, Min(1f)] private float _minNeutralSpacing = 4.5f;
 
         [Header("Per-Faction Raid Scheduler")]
         [SerializeField]
@@ -125,6 +132,7 @@ namespace DebtDungeon.AI
             for (int i = 0; i < _raidSettings.Count; i++)
             {
                 _raidSettings[i].Timer = _raidSettings[i].RaidIntervalSeconds;
+                _raidSettings[i].RallyElapsed = 0f;
                 _raidSettings[i].IsRallying = false;
                 _raidSettings[i].RaidSquad.Clear();
             }
@@ -163,93 +171,199 @@ namespace DebtDungeon.AI
         private void ProcessFloorSpawnPoints(IFloorQuery floor)
         {
             IReadOnlyList<SpawnPoint> spawnPoints = floor.GetSpawnPoints();
-            if (spawnPoints == null)
+            if (spawnPoints != null)
+            {
+                // 1. Place faction spawners on verified walkable tiles
+                for (int i = 0; i < spawnPoints.Count; i++)
+                {
+                    SpawnPoint sp = spawnPoints[i];
+                    if (sp.Type != SpawnPointType.Spawner)
+                    {
+                        continue;
+                    }
+
+                    FactionSpawnSet set = GetSpawnSet(sp.Faction);
+                    if (set == null || set.SpawnerPrefab == null)
+                    {
+                        continue;
+                    }
+
+                    Vector3 safeSpawnerPos = FindNearestWalkablePosition(sp.Position, 5);
+                    GameObject spawnerObj = Instantiate(set.SpawnerPrefab, safeSpawnerPos, Quaternion.identity);
+                    FactionSpawner2D spawner = spawnerObj.GetComponent<FactionSpawner2D>();
+                    if (spawner != null)
+                    {
+                        _activeSpawners.Add(spawner);
+                    }
+                }
+
+                for (int i = 0; i < _activeSpawners.Count; i++)
+                {
+                    FactionSpawner2D spawner = _activeSpawners[i];
+                    Vector3 rivalPos = FindRivalTargetPosition(spawner.Faction, spawner.transform.position);
+                    spawner.ConfigureFromFloor(
+                        floor,
+                        _factionData,
+                        _obstacleMask,
+                        rivalPos,
+                        CanSpawnForFaction,
+                        RegisterSpawnedUnit);
+                }
+
+                // 2. Place standalone enemies on verified walkable tiles (including specialists)
+                for (int i = 0; i < spawnPoints.Count; i++)
+                {
+                    SpawnPoint sp = spawnPoints[i];
+                    if (sp.Type != SpawnPointType.SingleEnemy)
+                    {
+                        continue;
+                    }
+
+                    FactionSpawnSet set = GetSpawnSet(sp.Faction);
+                    if (set == null)
+                    {
+                        continue;
+                    }
+
+                    Vector3 safeSpawnPos = FindNearestWalkablePosition(sp.Position, 5);
+                    Vector2Int tileCell = floor.WorldToCell(safeSpawnPos);
+                    if (!floor.IsWalkable(tileCell))
+                    {
+                        continue;
+                    }
+
+                    ChunkIntensity intensity = floor.GetIntensityAt(tileCell);
+                    UnitRole role = intensity == ChunkIntensity.Minor ? UnitRole.Guard : UnitRole.Resident;
+
+                    if (!CanSpawnForFaction(sp.Faction, role))
+                    {
+                        continue;
+                    }
+
+                    GameObject prefab = role == UnitRole.Guard ? set.GuardPrefab : set.ResidentPrefab;
+                    UnitConfig config = role == UnitRole.Guard ? set.GuardConfig : set.ResidentConfig;
+
+                    if (role == UnitRole.Resident && set.SpecialistPrefab != null && UnityEngine.Random.value < _generationSpecialistChance)
+                    {
+                        prefab = set.SpecialistPrefab;
+                        if (set.SpecialistConfig != null)
+                        {
+                            config = set.SpecialistConfig;
+                        }
+                    }
+
+                    if (prefab == null)
+                    {
+                        continue;
+                    }
+
+                    GameObject unitObj = Instantiate(prefab, safeSpawnPos, Quaternion.identity);
+
+                    CombatAgent2D combat = unitObj.GetComponent<CombatAgent2D>();
+                    if (combat != null && config != null)
+                    {
+                        combat.Initialize(config);
+                    }
+
+                    FactionAI2D ai = unitObj.GetComponent<FactionAI2D>();
+                    if (ai != null)
+                    {
+                        ai.SetFloorQuery(floor);
+                        Vector2 rivalPos = FindRivalTargetPosition(sp.Faction, safeSpawnPos);
+                        ai.ConfigureRole(role, safeSpawnPos, _obstacleMask, _factionData, rivalPos);
+                        RegisterSpawnedUnit(sp.Faction, ai);
+                    }
+                }
+            }
+
+            // 3. Populate extra neutral encounters on walkable neutral chunks
+            SpawnNeutralEncounters(floor);
+        }
+
+        private void SpawnNeutralEncounters(IFloorQuery floor)
+        {
+            if (_extraNeutralEncounters <= 0)
             {
                 return;
             }
 
-            for (int i = 0; i < spawnPoints.Count; i++)
+            FactionSpawnSet neutralSet = GetSpawnSet(Faction.Neutral);
+            if (neutralSet == null || neutralSet.ResidentPrefab == null)
             {
-                SpawnPoint sp = spawnPoints[i];
-                if (sp.Type != SpawnPointType.Spawner)
-                {
-                    continue;
-                }
-
-                FactionSpawnSet set = GetSpawnSet(sp.Faction);
-                if (set == null || set.SpawnerPrefab == null)
-                {
-                    continue;
-                }
-
-                GameObject spawnerObj = Instantiate(set.SpawnerPrefab, sp.Position, Quaternion.identity);
-                FactionSpawner2D spawner = spawnerObj.GetComponent<FactionSpawner2D>();
-                if (spawner != null)
-                {
-                    _activeSpawners.Add(spawner);
-                }
+                return;
             }
 
-            for (int i = 0; i < _activeSpawners.Count; i++)
+            List<Vector2Int> candidateChunks = new List<Vector2Int>();
+            IReadOnlyList<Vector2Int> minorNeutral = floor.GetChunkCells(Faction.Neutral, ChunkIntensity.Minor);
+            IReadOnlyList<Vector2Int> majorNeutral = floor.GetChunkCells(Faction.Neutral, ChunkIntensity.Major);
+
+            if (minorNeutral != null)
             {
-                FactionSpawner2D spawner = _activeSpawners[i];
-                Vector3 rivalPos = FindRivalTargetPosition(spawner.Faction, spawner.transform.position);
-                spawner.ConfigureFromFloor(
-                    floor,
-                    _factionData,
-                    _obstacleMask,
-                    rivalPos,
-                    CanSpawnForFaction,
-                    RegisterSpawnedUnit);
+                candidateChunks.AddRange(minorNeutral);
             }
 
-            for (int i = 0; i < spawnPoints.Count; i++)
+            if (majorNeutral != null)
             {
-                SpawnPoint sp = spawnPoints[i];
-                if (sp.Type != SpawnPointType.SingleEnemy)
+                candidateChunks.AddRange(majorNeutral);
+            }
+
+            if (candidateChunks.Count == 0)
+            {
+                return;
+            }
+
+            List<Vector3> placedPositions = new List<Vector3>();
+            int spawned = 0;
+
+            for (int attempt = 0; attempt < _extraNeutralEncounters * 8 && spawned < _extraNeutralEncounters; attempt++)
+            {
+                Vector2Int chunkCell = candidateChunks[UnityEngine.Random.Range(0, candidateChunks.Count)];
+                BoundsInt bounds = floor.GetChunkTileBounds(chunkCell);
+                Vector3 rawPos = GetWalkableChunkCenter(bounds);
+                Vector3 safePos = FindNearestWalkablePosition(rawPos, 5);
+
+                if (!floor.IsWalkable(floor.WorldToCell(safePos)))
                 {
                     continue;
                 }
 
-                FactionSpawnSet set = GetSpawnSet(sp.Faction);
-                if (set == null)
+                bool tooClose = false;
+                for (int p = 0; p < placedPositions.Count; p++)
+                {
+                    if (Vector3.Distance(safePos, placedPositions[p]) < _minNeutralSpacing)
+                    {
+                        tooClose = true;
+                        break;
+                    }
+                }
+
+                if (tooClose)
                 {
                     continue;
                 }
 
-                Vector2Int tileCell = floor.WorldToCell(sp.Position);
-                ChunkIntensity intensity = floor.GetIntensityAt(tileCell);
-                UnitRole role = intensity == ChunkIntensity.Minor ? UnitRole.Guard : UnitRole.Resident;
+                GameObject prefab = (neutralSet.SpecialistPrefab != null && UnityEngine.Random.value < _generationSpecialistChance)
+                    ? neutralSet.SpecialistPrefab
+                    : neutralSet.ResidentPrefab;
+                UnitConfig config = (prefab == neutralSet.SpecialistPrefab && neutralSet.SpecialistConfig != null)
+                    ? neutralSet.SpecialistConfig
+                    : neutralSet.ResidentConfig;
 
-                if (!CanSpawnForFaction(sp.Faction, role))
-                {
-                    continue;
-                }
-
-                GameObject prefab = role == UnitRole.Guard ? set.GuardPrefab : set.ResidentPrefab;
-                UnitConfig config = role == UnitRole.Guard ? set.GuardConfig : set.ResidentConfig;
-
-                if (prefab == null)
-                {
-                    continue;
-                }
-
-                GameObject unitObj = Instantiate(prefab, sp.Position, Quaternion.identity);
-
-                CombatAgent2D combat = unitObj.GetComponent<CombatAgent2D>();
-                if (combat != null && config != null)
+                GameObject unitObj = Instantiate(prefab, safePos, Quaternion.identity);
+                if (unitObj.TryGetComponent(out CombatAgent2D combat) && config != null)
                 {
                     combat.Initialize(config);
                 }
 
-                FactionAI2D ai = unitObj.GetComponent<FactionAI2D>();
-                if (ai != null)
+                if (unitObj.TryGetComponent(out FactionAI2D ai))
                 {
                     ai.SetFloorQuery(floor);
-                    Vector2 rivalPos = FindRivalTargetPosition(sp.Faction, sp.Position);
-                    ai.ConfigureRole(role, sp.Position, _obstacleMask, _factionData, rivalPos);
-                    RegisterSpawnedUnit(sp.Faction, ai);
+                    ai.ConfigureRole(UnitRole.Resident, safePos, _obstacleMask, _factionData, Vector2.zero);
+                    RegisterSpawnedUnit(Faction.Neutral, ai);
                 }
+
+                placedPositions.Add(safePos);
+                spawned++;
             }
         }
 
@@ -340,17 +454,7 @@ namespace DebtDungeon.AI
                 }
 
                 Vector2 rawRally = origin + toTarget * cfg.RallyOffsetDistance;
-                if (_currentFloor != null)
-                {
-                    Vector2Int rallyCell = _currentFloor.WorldToCell(rawRally);
-                    cfg.ActiveRallyPoint = _currentFloor.IsWalkable(rallyCell)
-                        ? (Vector2)_currentFloor.CellToWorld(rallyCell)
-                        : origin;
-                }
-                else
-                {
-                    cfg.ActiveRallyPoint = rawRally;
-                }
+                cfg.ActiveRallyPoint = FindNearestWalkablePosition(rawRally, 4);
 
                 cfg.RaidSquad.Clear();
 
@@ -637,6 +741,57 @@ namespace DebtDungeon.AI
             }
 
             return _currentFloor.CellToWorld(centerTile);
+        }
+
+        private Vector3 FindNearestWalkablePosition(Vector3 rawPos, int maxRadiusTiles = 5)
+        {
+            if (_currentFloor != null)
+            {
+                Vector2Int originCell = _currentFloor.WorldToCell(rawPos);
+                if (_currentFloor.IsWalkable(originCell))
+                {
+                    return _currentFloor.CellToWorld(originCell);
+                }
+
+                for (int radius = 1; radius <= maxRadiusTiles; radius++)
+                {
+                    for (int dx = -radius; dx <= radius; dx++)
+                    {
+                        for (int dy = -radius; dy <= radius; dy++)
+                        {
+                            if (Mathf.Abs(dx) != radius && Mathf.Abs(dy) != radius)
+                            {
+                                continue;
+                            }
+
+                            Vector2Int candidate = new Vector2Int(originCell.x + dx, originCell.y + dy);
+                            if (_currentFloor.IsWalkable(candidate))
+                            {
+                                return _currentFloor.CellToWorld(candidate);
+                            }
+                        }
+                    }
+                }
+            }
+            else
+            {
+                if (Physics2D.OverlapCircle(rawPos, 0.35f, _obstacleMask) == null)
+                {
+                    return rawPos;
+                }
+
+                for (int i = 0; i < 12; i++)
+                {
+                    float angle = i * Mathf.PI * 2f / 12f;
+                    Vector3 candidate = rawPos + new Vector3(Mathf.Cos(angle), Mathf.Sin(angle), 0f) * 1.1f;
+                    if (Physics2D.OverlapCircle(candidate, 0.35f, _obstacleMask) == null)
+                    {
+                        return candidate;
+                    }
+                }
+            }
+
+            return rawPos;
         }
 
         private bool HasLivingHostilesNear(Vector3 center, Faction targetFaction, float radius)
