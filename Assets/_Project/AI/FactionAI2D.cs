@@ -60,6 +60,16 @@ namespace DebtDungeon.AI
         [SerializeField] private float _attackCooldown = 1.2f;
         [SerializeField, Range(0f, 0.5f)] private float _fleeHealthThreshold = 0.2f;
 
+        [Header("Faction Asymmetry Tuning")]
+        [SerializeField] private float _spiderAmbushBurstSpeedMultiplier = 1.35f;
+        [SerializeField] private float _spiderAmbushBurstDuration = 1.5f;
+        [SerializeField] private float _spiderFlankWeight = 0.55f;
+
+        [Header("Barks & Telegraph Clarity")]
+        [SerializeField] private Vector3 _barkOffset = new Vector3(0f, 0.85f, 0f);
+        [SerializeField] private float _barkCooldownSeconds = 2.5f;
+        private float _nextBarkAllowedTime;
+
         [Header("Ranged Telegraph Visual")]
         [SerializeField] private LineRenderer _trajectoryLine;
         [SerializeField] private GameObject _windupWarningCirclePrefab;
@@ -68,6 +78,8 @@ namespace DebtDungeon.AI
         private GameObject _activeWindupCircle;
         private Vector2 _investigatePosition;
         private float _investigateTimer;
+        private float _ambushBurstTimer;
+        private float _flankSign = 1f;
 
         private const float PlayerCombatPingInterval = 1.0f;
         private float _playerCombatPingTimer;
@@ -124,6 +136,7 @@ namespace DebtDungeon.AI
         private void Start()
         {
             _cohesionTimer = UnityEngine.Random.Range(0f, 0.25f);
+            _flankSign = UnityEngine.Random.value < 0.5f ? 1f : -1f;
 
             if (!_hasSpawnAnchor)
             {
@@ -164,6 +177,12 @@ namespace DebtDungeon.AI
         private void HandleNoiseHeard(Vector2 noisePos, float soundRadius)
         {
             if (!IsAlive || _agent.Stats == null || _agent.Stats.HearingRadius <= 0f)
+            {
+                return;
+            }
+
+            // Fearless units (flee threshold <= 0, e.g. Undead phalanx) ignore off-screen noise distractions
+            if (_fleeHealthThreshold <= 0f)
             {
                 return;
             }
@@ -450,13 +469,21 @@ namespace DebtDungeon.AI
             switch (_currentState)
             {
                 case AIState.Wander:
+                    // Spiders lurk motionless in ambush until prey enters range or makes noise
+                    if (_agent.Faction == Faction.Spider && (_agent.Stats == null || !_agent.Stats.IsRangedKiter))
+                    {
+                        _desiredVelocity = Vector2.zero;
+                        break;
+                    }
+
                     if (Vector2.Distance(transform.position, _wanderDestination) <= 0.6f)
                     {
                         PickNewWanderDestination();
                     }
 
                     UpdatePathfinding(_wanderDestination);
-                    _desiredVelocity = ComputeSmoothSteering() * (moveSpeed * 0.65f);
+                    float wanderScale = _fleeHealthThreshold <= 0f ? 0.55f : 0.65f;
+                    _desiredVelocity = ComputeSmoothSteering() * (moveSpeed * wanderScale);
                     break;
 
                 case AIState.Investigate:
@@ -515,6 +542,11 @@ namespace DebtDungeon.AI
                 case AIState.Chase:
                     if (_currentTarget != null)
                     {
+                        if (_ambushBurstTimer > 0f)
+                        {
+                            _ambushBurstTimer -= Time.deltaTime;
+                        }
+
                         float dist = Vector2.Distance(transform.position, _currentTarget.transform.position);
                         if (_agent.Stats != null && _agent.Stats.IsRangedKiter && dist < _agent.Stats.MinKeepDistance)
                         {
@@ -526,7 +558,20 @@ namespace DebtDungeon.AI
                         else
                         {
                             UpdatePathfinding(_currentTarget.transform.position);
-                            _desiredVelocity = ComputeSmoothSteering() * moveSpeed;
+                            Vector2 heading = ComputeSmoothSteering();
+
+                            // Spiders circle the flanks of targets slowed by Web Weavers
+                            if (_agent.Faction == Faction.Spider &&
+                                _currentTarget.TryGetComponent(out StatusEffectReceiver2D targetStatus) &&
+                                targetStatus.SpeedMultiplier < 0.99f)
+                            {
+                                Vector2 toTarget = ((Vector2)_currentTarget.transform.position - (Vector2)transform.position).normalized;
+                                Vector2 flankPerp = new Vector2(-toTarget.y, toTarget.x) * _flankSign;
+                                heading = (heading + flankPerp * _spiderFlankWeight).normalized;
+                            }
+
+                            float burstMult = _ambushBurstTimer > 0f ? _spiderAmbushBurstSpeedMultiplier : 1f;
+                            _desiredVelocity = heading * (moveSpeed * burstMult);
                         }
                     }
                     break;
@@ -551,9 +596,18 @@ namespace DebtDungeon.AI
                     break;
 
                 case AIState.Flee:
-                    Vector2 threatPos = _currentTarget != null ? (Vector2)_currentTarget.transform.position : _rivalTerritoryOrigin;
-                    Vector2 fleeDir = ((Vector2)transform.position - threatPos).normalized;
-                    Vector2 fleeDest = (Vector2)transform.position + fleeDir * 5f;
+                    Vector2 fleeDest;
+                    if (_agent.Faction == Faction.Goblin && TryFindNearestAlliedGuardOrBase(out Vector2 rallyBackupPos))
+                    {
+                        fleeDest = rallyBackupPos;
+                    }
+                    else
+                    {
+                        Vector2 threatPos = _currentTarget != null ? (Vector2)_currentTarget.transform.position : _rivalTerritoryOrigin;
+                        Vector2 fleeDir = ((Vector2)transform.position - threatPos).normalized;
+                        fleeDest = (Vector2)transform.position + fleeDir * 5f;
+                    }
+
                     UpdatePathfinding(fleeDest);
                     _desiredVelocity = ComputeSmoothSteering() * (moveSpeed * 1.15f);
                     break;
@@ -705,6 +759,17 @@ namespace DebtDungeon.AI
             }
         }
 
+        private void TryShowBark(AIBarkType barkType, bool bypassCooldown = false)
+        {
+            if (!bypassCooldown && Time.time < _nextBarkAllowedTime)
+            {
+                return;
+            }
+
+            _nextBarkAllowedTime = Time.time + _barkCooldownSeconds;
+            AIBarkPopup.Spawn(transform.position + _barkOffset, barkType);
+        }
+
         private void ExecuteCoreCombatAttack()
         {
             if (_agent.VisualRenderer != null)
@@ -790,7 +855,8 @@ namespace DebtDungeon.AI
             int hitCount = Physics2D.OverlapCircle(transform.position, sightRadius, _targetFilter, _scanBuffer);
 
             Health bestTarget = null;
-            float closestDist = float.MaxValue;
+            float bestScore = float.MinValue;
+            bool isControlWeaver = _agent.Stats != null && _agent.Stats.IsRangedKiter;
 
             for (int i = 0; i < hitCount; i++)
             {
@@ -806,15 +872,35 @@ namespace DebtDungeon.AI
                     continue;
                 }
 
-                if (!IsHostileTo(candidate.Faction))
+                if (!IsHostileTo(candidate.Faction) || !HasLineOfSight(candidate.transform))
                 {
                     continue;
                 }
 
                 float dist = Vector2.Distance(transform.position, candidate.transform.position);
-                if (dist < closestDist && HasLineOfSight(candidate.transform))
+                float score = (sightRadius - dist) * 2.0f;
+
+                // Bonus for finishing off wounded targets (< 40% HP)
+                if (candidate.MaxHealth > 0 && (float)candidate.CurrentHealth / candidate.MaxHealth <= 0.4f)
                 {
-                    closestDist = dist;
+                    score += 4.5f;
+                }
+
+                // Deprioritize static spawners when active enemy fighters are nearby
+                if (candidate.GetComponent<FactionSpawner2D>() != null)
+                {
+                    score -= 3.5f;
+                }
+
+                // Control/ranged kiters prefer un-slowed targets to spread crowd control
+                if (isControlWeaver && candidate.TryGetComponent(out StatusEffectReceiver2D status) && status.SpeedMultiplier < 0.99f)
+                {
+                    score -= 5.0f;
+                }
+
+                if (score > bestScore)
+                {
+                    bestScore = score;
                     bestTarget = candidate;
                 }
             }
@@ -1017,6 +1103,37 @@ namespace DebtDungeon.AI
             _wanderDestination = _spawnAnchor + randomOffset;
         }
 
+        private bool TryFindNearestAlliedGuardOrBase(out Vector2 backupPos)
+        {
+            backupPos = _spawnAnchor;
+            float bestDist = float.MaxValue;
+            bool found = false;
+
+            int hitCount = Physics2D.OverlapCircle(transform.position, 14f, _targetFilter, _scanBuffer);
+            for (int i = 0; i < hitCount; i++)
+            {
+                Collider2D col = _scanBuffer[i];
+                if (col == null || col.gameObject == gameObject)
+                {
+                    continue;
+                }
+
+                if (col.TryGetComponent(out FactionAI2D allyAI) && allyAI.IsAlive &&
+                    allyAI.Role == UnitRole.Guard && allyAI.GetComponent<Health>()?.Faction == _agent.Faction)
+                {
+                    float dist = Vector2.Distance(transform.position, allyAI.transform.position);
+                    if (dist < bestDist)
+                    {
+                        bestDist = dist;
+                        backupPos = allyAI.transform.position;
+                        found = true;
+                    }
+                }
+            }
+
+            return found || _hasSpawnAnchor;
+        }
+
         private void EndRaid()
         {
             _isRallying = false;
@@ -1033,11 +1150,49 @@ namespace DebtDungeon.AI
                 return;
             }
 
+            AIState previousState = _currentState;
             _currentState = newState;
 
             if (_agent != null && _agent.VisualRenderer != null && !_isTelegraphing)
             {
                 _agent.VisualRenderer.color = Color.white;
+            }
+
+            switch (newState)
+            {
+                case AIState.Chase:
+                    if (previousState == AIState.Wander || previousState == AIState.Investigate)
+                    {
+                        TryShowBark(AIBarkType.Alert);
+
+                        if (_agent.Faction == Faction.Goblin)
+                        {
+                            NoiseEventBus.EmitNoise(transform.position, 6.5f);
+                        }
+                        else if (_agent.Faction == Faction.Spider)
+                        {
+                            _ambushBurstTimer = _spiderAmbushBurstDuration;
+                        }
+                    }
+                    break;
+                case AIState.Investigate:
+                    TryShowBark(AIBarkType.Investigate);
+                    break;
+                case AIState.Flee:
+                    TryShowBark(AIBarkType.Flee, bypassCooldown: true);
+                    break;
+                case AIState.Rally:
+                    if (previousState == AIState.Wander)
+                    {
+                        TryShowBark(AIBarkType.Rally);
+                    }
+                    break;
+                case AIState.Return:
+                    if (previousState == AIState.Chase || previousState == AIState.Investigate)
+                    {
+                        TryShowBark(AIBarkType.Confused);
+                    }
+                    break;
             }
         }
 

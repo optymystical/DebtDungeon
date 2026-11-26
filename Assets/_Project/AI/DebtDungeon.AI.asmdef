@@ -3,7 +3,8 @@
     "rootNamespace": "DebtDungeon.AI",
     "references": [
         "DebtDungeon.Core",
-        "Unity.InputSystem"
+        "Unity.InputSystem",
+        "Unity.TextMeshPro"
     ],
     "includePlatforms": [],
     "excludePlatforms": [],

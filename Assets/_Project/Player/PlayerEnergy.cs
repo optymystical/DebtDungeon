@@ -1,4 +1,5 @@
 using DebtDungeon.Core;
+using System;
 using UnityEngine;
 
 namespace DebtDungeon.Player
@@ -24,6 +25,7 @@ namespace DebtDungeon.Player
             }
         }
 
+        // Adds energy to _energyCurrent
         public void RechargeEnergy(int rechargeRate)
         {
             _energyCurrent += rechargeRate;
@@ -33,6 +35,7 @@ namespace DebtDungeon.Player
             }
         }
 
+        // Called by abilities that are trying to use energy
         public bool UseEnergy(int energy)
         {
             if (_energyCurrent - energy < 0)

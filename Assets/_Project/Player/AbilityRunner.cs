@@ -1,4 +1,5 @@
 using DebtDungeon.Core;
+using System;
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
@@ -39,6 +40,11 @@ namespace DebtDungeon.Player
         private int _pendingAccuracyBonus;   // Limber: waiting for the next attack
         private float _pendingBonusUntil;
 
+        // Events
+        public event Action<int> AbilityReady;
+        public event Action<int> InsufficientEnergy;
+        private AudioSource _audioSource;
+
         // For testing
         //[SerializeField] private List<AbilityDefinition> _testAbilities;
 
@@ -54,6 +60,7 @@ namespace DebtDungeon.Player
         {
             GameObject owner = _player != null ? _player : gameObject;
             _health = owner.GetComponent<Health>();
+            _audioSource = owner.GetComponent<AudioSource>();
         }
 
         private void OnEnable()
@@ -454,6 +461,8 @@ namespace DebtDungeon.Player
                 }
                 return true;
             }
+            InsufficientEnergy?.Invoke(num);
+            _audioSource.Play();
             return false;
         }
 
@@ -480,32 +489,38 @@ namespace DebtDungeon.Player
         {
             yield return new WaitForSeconds(cooldown);
             _active1Coroutine = null;
+            AbilityReady?.Invoke(1);
         }
         private IEnumerator Active2Timer(float cooldown)
         {
             yield return new WaitForSeconds(cooldown);
             _active2Coroutine = null;
+            AbilityReady?.Invoke(2);
         }
         private IEnumerator Active3Timer(float cooldown)
         {
             yield return new WaitForSeconds(cooldown);
             _active3Coroutine = null;
+            AbilityReady?.Invoke(3);
         }
         private IEnumerator Active4Timer(float cooldown)
         {
             yield return new WaitForSeconds(cooldown);
             _active4Coroutine = null;
+            AbilityReady?.Invoke(4);
         }
         private IEnumerator Active5Timer(float cooldown)
         {
             yield return new WaitForSeconds(cooldown);
             _active5Coroutine = null;
+            AbilityReady?.Invoke(5);
         }
 
         private IEnumerator DefensiveTimer(float cooldown)
         {
             yield return new WaitForSeconds(cooldown);
             _defensiveCoroutine = null;
+            AbilityReady?.Invoke(6);
         }
     }
 }
