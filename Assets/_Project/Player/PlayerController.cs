@@ -31,6 +31,7 @@ namespace DebtDungeon.Player
         private InputAction _ability4Action;
         private InputAction _ability5Action;
         private InputAction _defensiveAction;
+        private InputAction _sprintAction;
         private InputAction _interactAction;
         private InputAction _useItemAction;
         private InputAction _openInventoryAction;
@@ -56,6 +57,7 @@ namespace DebtDungeon.Player
             _ability4Action = InputSystem.actions.FindAction("Player/Ability 4");
             _ability5Action = InputSystem.actions.FindAction("Player/Ability 5");
             _defensiveAction = InputSystem.actions.FindAction("Player/Defensive Ability");
+            _sprintAction = InputSystem.actions.FindAction("Player/Sprint");
             _interactAction = InputSystem.actions.FindAction("Player/Interact");
             _useItemAction = InputSystem.actions.FindAction("Player/Use Item");
             _openInventoryAction = InputSystem.actions.FindAction("Player/Open Inventory");
@@ -164,6 +166,10 @@ namespace DebtDungeon.Player
             else if (_defensiveAction.WasPressedThisFrame())
             {
                 _abilityRunner.TryUseAbility(6, _mouseDirection);
+            }
+            else if (_sprintAction.WasPressedThisFrame())
+            {
+                _abilityRunner.TryUseAbility(7, _mouseDirection);
             }
             else if (_interactAction.WasPressedThisFrame())
             {

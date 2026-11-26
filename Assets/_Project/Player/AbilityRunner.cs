@@ -25,6 +25,7 @@ namespace DebtDungeon.Player
         private AbilityDefinition _ability4 = null;
         private AbilityDefinition _ability5 = null;
         private AbilityDefinition _defensiveAbility = null;
+        private AbilityDefinition _sprintAbility = null;
 
         // Timer coroutines
         private Coroutine _windingUpCoroutine = null;
@@ -194,8 +195,7 @@ namespace DebtDungeon.Player
                 }
                 else if (ability.Kind == AbilityKind.Defensive)
                 {
-                    // Wrap-up fix (Chris/Claude): defensives go in the Q slot, so TryUseAbility(6) can find them.
-                    _defensiveAbility = ability;
+                    TryAddDefensiveToSlot(ability);
                 }
             }
         }
@@ -245,6 +245,23 @@ namespace DebtDungeon.Player
             else if (!_ability5)
             {
                 _ability5 = ability;
+            }
+            else
+            {
+                return false;
+            }
+            return true;
+        }
+
+        private bool TryAddDefensiveToSlot(AbilityDefinition ability)
+        {
+            if (!_defensiveAbility)
+            {
+                _defensiveAbility = ability;
+            }
+            else if (!_sprintAbility)
+            {
+                _sprintAbility = ability;
             }
             else
             {
